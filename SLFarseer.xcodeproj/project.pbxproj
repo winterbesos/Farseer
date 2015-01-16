@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		396DA0FE1A69536B009534DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA0FD1A69536B009534DE /* AppDelegate.m */; };
+		396DA1001A69536B009534DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA0FF1A69536B009534DE /* main.m */; };
+		396DA1031A69536B009534DE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1021A69536B009534DE /* ViewController.m */; };
+		396DA1061A69536B009534DE /* SLFarseer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1041A69536B009534DE /* SLFarseer.xcdatamodeld */; };
+		396DA1081A69536B009534DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DA1071A69536B009534DE /* Images.xcassets */; };
+		396DA10B1A69536B009534DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DA1091A69536B009534DE /* Main.storyboard */; };
+		396DA1171A69536B009534DE /* SLFarseerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1161A69536B009534DE /* SLFarseerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		396DA1111A69536B009534DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 396DA0EF1A69536B009534DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 396DA0F61A69536B009534DE;
+			remoteInfo = SLFarseer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		396DA0F71A69536B009534DE /* SLFarseer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		396DA0FB1A69536B009534DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		396DA0FC1A69536B009534DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		396DA0FD1A69536B009534DE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		396DA0FF1A69536B009534DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		396DA1011A69536B009534DE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		396DA1021A69536B009534DE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		396DA1051A69536B009534DE /* SLFarseer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SLFarseer.xcdatamodel; sourceTree = "<group>"; };
+		396DA1071A69536B009534DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		396DA10A1A69536B009534DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		396DA1101A69536B009534DE /* SLFarseerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		396DA1151A69536B009534DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		396DA1161A69536B009534DE /* SLFarseerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		396DA0F41A69536B009534DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		396DA10D1A69536B009534DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		396DA0EE1A69536B009534DE = {
+			isa = PBXGroup;
+			children = (
+				396DA0F91A69536B009534DE /* SLFarseer */,
+				396DA1131A69536B009534DE /* SLFarseerTests */,
+				396DA0F81A69536B009534DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		396DA0F81A69536B009534DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				396DA0F71A69536B009534DE /* SLFarseer.app */,
+				396DA1101A69536B009534DE /* SLFarseerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		396DA0F91A69536B009534DE /* SLFarseer */ = {
+			isa = PBXGroup;
+			children = (
+				396DA0FC1A69536B009534DE /* AppDelegate.h */,
+				396DA0FD1A69536B009534DE /* AppDelegate.m */,
+				396DA1011A69536B009534DE /* ViewController.h */,
+				396DA1021A69536B009534DE /* ViewController.m */,
+				396DA1071A69536B009534DE /* Images.xcassets */,
+				396DA1091A69536B009534DE /* Main.storyboard */,
+				396DA1041A69536B009534DE /* SLFarseer.xcdatamodeld */,
+				396DA0FA1A69536B009534DE /* Supporting Files */,
+			);
+			path = SLFarseer;
+			sourceTree = "<group>";
+		};
+		396DA0FA1A69536B009534DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				396DA0FB1A69536B009534DE /* Info.plist */,
+				396DA0FF1A69536B009534DE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		396DA1131A69536B009534DE /* SLFarseerTests */ = {
+			isa = PBXGroup;
+			children = (
+				396DA1161A69536B009534DE /* SLFarseerTests.m */,
+				396DA1141A69536B009534DE /* Supporting Files */,
+			);
+			path = SLFarseerTests;
+			sourceTree = "<group>";
+		};
+		396DA1141A69536B009534DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				396DA1151A69536B009534DE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		396DA0F61A69536B009534DE /* SLFarseer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 396DA11A1A69536B009534DE /* Build configuration list for PBXNativeTarget "SLFarseer" */;
+			buildPhases = (
+				396DA0F31A69536B009534DE /* Sources */,
+				396DA0F41A69536B009534DE /* Frameworks */,
+				396DA0F51A69536B009534DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SLFarseer;
+			productName = SLFarseer;
+			productReference = 396DA0F71A69536B009534DE /* SLFarseer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		396DA10F1A69536B009534DE /* SLFarseerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 396DA11D1A69536B009534DE /* Build configuration list for PBXNativeTarget "SLFarseerTests" */;
+			buildPhases = (
+				396DA10C1A69536B009534DE /* Sources */,
+				396DA10D1A69536B009534DE /* Frameworks */,
+				396DA10E1A69536B009534DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				396DA1121A69536B009534DE /* PBXTargetDependency */,
+			);
+			name = SLFarseerTests;
+			productName = SLFarseerTests;
+			productReference = 396DA1101A69536B009534DE /* SLFarseerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		396DA0EF1A69536B009534DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Qeekers;
+				TargetAttributes = {
+					396DA0F61A69536B009534DE = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					396DA10F1A69536B009534DE = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 396DA0F61A69536B009534DE;
+					};
+				};
+			};
+			buildConfigurationList = 396DA0F21A69536B009534DE /* Build configuration list for PBXProject "SLFarseer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 396DA0EE1A69536B009534DE;
+			productRefGroup = 396DA0F81A69536B009534DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				396DA0F61A69536B009534DE /* SLFarseer */,
+				396DA10F1A69536B009534DE /* SLFarseerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		396DA0F51A69536B009534DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396DA1081A69536B009534DE /* Images.xcassets in Resources */,
+				396DA10B1A69536B009534DE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		396DA10E1A69536B009534DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		396DA0F31A69536B009534DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396DA1031A69536B009534DE /* ViewController.m in Sources */,
+				396DA1061A69536B009534DE /* SLFarseer.xcdatamodeld in Sources */,
+				396DA1001A69536B009534DE /* main.m in Sources */,
+				396DA0FE1A69536B009534DE /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		396DA10C1A69536B009534DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396DA1171A69536B009534DE /* SLFarseerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		396DA1121A69536B009534DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 396DA0F61A69536B009534DE /* SLFarseer */;
+			targetProxy = 396DA1111A69536B009534DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		396DA1091A69536B009534DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				396DA10A1A69536B009534DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		396DA1181A69536B009534DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		396DA1191A69536B009534DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		396DA11B1A69536B009534DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SLFarseer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		396DA11C1A69536B009534DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SLFarseer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		396DA11E1A69536B009534DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SLFarseerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLFarseer.app/Contents/MacOS/SLFarseer";
+			};
+			name = Debug;
+		};
+		396DA11F1A69536B009534DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SLFarseerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLFarseer.app/Contents/MacOS/SLFarseer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		396DA0F21A69536B009534DE /* Build configuration list for PBXProject "SLFarseer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396DA1181A69536B009534DE /* Debug */,
+				396DA1191A69536B009534DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		396DA11A1A69536B009534DE /* Build configuration list for PBXNativeTarget "SLFarseer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396DA11B1A69536B009534DE /* Debug */,
+				396DA11C1A69536B009534DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		396DA11D1A69536B009534DE /* Build configuration list for PBXNativeTarget "SLFarseerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396DA11E1A69536B009534DE /* Debug */,
+				396DA11F1A69536B009534DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		396DA1041A69536B009534DE /* SLFarseer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				396DA1051A69536B009534DE /* SLFarseer.xcdatamodel */,
+			);
+			currentVersion = 396DA1051A69536B009534DE /* SLFarseer.xcdatamodel */;
+			path = SLFarseer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 396DA0EF1A69536B009534DE /* Project object */;
+}
