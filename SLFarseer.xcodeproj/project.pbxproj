@@ -14,6 +14,8 @@
 		396DA1081A69536B009534DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DA1071A69536B009534DE /* Images.xcassets */; };
 		396DA10B1A69536B009534DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DA1091A69536B009534DE /* Main.storyboard */; };
 		396DA1171A69536B009534DE /* SLFarseerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1161A69536B009534DE /* SLFarseerTests.m */; };
+		396DA1221A695922009534DE /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1211A695922009534DE /* FSLogManager.m */; };
+		396DA1251A695935009534DE /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1241A695935009534DE /* FSDebugCentral.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		396DA1101A69536B009534DE /* SLFarseerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DA1151A69536B009534DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396DA1161A69536B009534DE /* SLFarseerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseerTests.m; sourceTree = "<group>"; };
+		396DA1201A695922009534DE /* FSLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogManager.h; sourceTree = "<group>"; };
+		396DA1211A695922009534DE /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogManager.m; sourceTree = "<group>"; };
+		396DA1231A695935009534DE /* FSDebugCentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDebugCentral.h; sourceTree = "<group>"; };
+		396DA1241A695935009534DE /* FSDebugCentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDebugCentral.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 				396DA0FD1A69536B009534DE /* AppDelegate.m */,
 				396DA1011A69536B009534DE /* ViewController.h */,
 				396DA1021A69536B009534DE /* ViewController.m */,
+				396DA1261A69593D009534DE /* DebugCentral */,
 				396DA1071A69536B009534DE /* Images.xcassets */,
 				396DA1091A69536B009534DE /* Main.storyboard */,
 				396DA1041A69536B009534DE /* SLFarseer.xcdatamodeld */,
@@ -117,6 +124,17 @@
 				396DA1151A69536B009534DE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		396DA1261A69593D009534DE /* DebugCentral */ = {
+			isa = PBXGroup;
+			children = (
+				396DA1231A695935009534DE /* FSDebugCentral.h */,
+				396DA1241A695935009534DE /* FSDebugCentral.m */,
+				396DA1201A695922009534DE /* FSLogManager.h */,
+				396DA1211A695922009534DE /* FSLogManager.m */,
+			);
+			name = DebugCentral;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +236,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396DA1221A695922009534DE /* FSLogManager.m in Sources */,
 				396DA1031A69536B009534DE /* ViewController.m in Sources */,
+				396DA1251A695935009534DE /* FSDebugCentral.m in Sources */,
 				396DA1061A69536B009534DE /* SLFarseer.xcdatamodeld in Sources */,
 				396DA1001A69536B009534DE /* main.m in Sources */,
 				396DA0FE1A69536B009534DE /* AppDelegate.m in Sources */,

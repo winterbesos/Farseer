@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "FSDebugCentral.h"
+
 @interface AppDelegate ()
 
 - (IBAction)saveAction:(id)sender;
@@ -17,7 +19,7 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    [FSDebugCentral setup];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
