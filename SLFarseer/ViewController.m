@@ -7,13 +7,18 @@
 //
 
 #import "ViewController.h"
+#import "FSLog.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Do any additional setup after loading the view.
+    FSFatal(@"this is a fatal error [OC]");
+    FSError(@"this is a error [OC]");
+    FSWarning(@"this is a warning [OC]");
+    FSLog(@"this is a log [OC]");
+    FSMinor(@"this is a minor log [OC]");
 }
 
 - (void)setRepresentedObject:(id)representedObject {
