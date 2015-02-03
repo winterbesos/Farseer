@@ -16,6 +16,7 @@
 		396DA1171A69536B009534DE /* SLFarseerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1161A69536B009534DE /* SLFarseerTests.m */; };
 		396DA1221A695922009534DE /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1211A695922009534DE /* FSLogManager.m */; };
 		396DA1251A695935009534DE /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 396DA1241A695935009534DE /* FSDebugCentral.m */; };
+		398DDF541A8069CC0019BB12 /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDF531A8069CC0019BB12 /* FSLog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		396DA1211A695922009534DE /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogManager.m; sourceTree = "<group>"; };
 		396DA1231A695935009534DE /* FSDebugCentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDebugCentral.h; sourceTree = "<group>"; };
 		396DA1241A695935009534DE /* FSDebugCentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDebugCentral.m; sourceTree = "<group>"; };
+		398DDF521A8069CC0019BB12 /* FSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLog.h; sourceTree = "<group>"; };
+		398DDF531A8069CC0019BB12 /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				396DA1241A695935009534DE /* FSDebugCentral.m */,
 				396DA1201A695922009534DE /* FSLogManager.h */,
 				396DA1211A695922009534DE /* FSLogManager.m */,
+				398DDF521A8069CC0019BB12 /* FSLog.h */,
+				398DDF531A8069CC0019BB12 /* FSLog.m */,
 			);
 			name = DebugCentral;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				396DA1221A695922009534DE /* FSLogManager.m in Sources */,
 				396DA1031A69536B009534DE /* ViewController.m in Sources */,
 				396DA1251A695935009534DE /* FSDebugCentral.m in Sources */,
+				398DDF541A8069CC0019BB12 /* FSLog.m in Sources */,
 				396DA1061A69536B009534DE /* SLFarseer.xcdatamodeld in Sources */,
 				396DA1001A69536B009534DE /* main.m in Sources */,
 				396DA0FE1A69536B009534DE /* AppDelegate.m in Sources */,
@@ -428,6 +434,7 @@
 				396DA11C1A69536B009534DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		396DA11D1A69536B009534DE /* Build configuration list for PBXNativeTarget "SLFarseerTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +443,7 @@
 				396DA11F1A69536B009534DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
