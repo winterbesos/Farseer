@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		398DDFA21A80C6250019BB12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFA11A80C6250019BB12 /* AppDelegate.m */; };
+		398DDFA41A80C6250019BB12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFA31A80C6250019BB12 /* main.m */; };
+		398DDFA71A80C6250019BB12 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFA61A80C6250019BB12 /* OCViewController.m */; };
+		398DDFA91A80C6250019BB12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFA81A80C6250019BB12 /* Images.xcassets */; };
+		398DDFAC1A80C6250019BB12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFAA1A80C6250019BB12 /* Main.storyboard */; };
+		398DDFB81A80C6250019BB12 /* SLFarseer_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFB71A80C6250019BB12 /* SLFarseer_MacTests.m */; };
+		398DDFF91A80C6C50019BB12 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFF81A80C6C50019BB12 /* SwiftViewController.swift */; };
+		398DE00C1A80C7380019BB12 /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0061A80C7380019BB12 /* FSDebugCentral.m */; };
+		398DE00D1A80C7380019BB12 /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0081A80C7380019BB12 /* FSLog.m */; };
+		398DE00E1A80C7380019BB12 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE00A1A80C7380019BB12 /* FSLogManager.m */; };
+		398DE00F1A80C7380019BB12 /* FSSwfitSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DE00B1A80C7380019BB12 /* FSSwfitSupport.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		398DDFB21A80C6250019BB12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDF931A80C6250019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 398DDF9A1A80C6250019BB12;
+			remoteInfo = SLFarseer_Mac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		398DDF9B1A80C6250019BB12 /* SLFarseer_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		398DDF9F1A80C6250019BB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		398DDFA01A80C6250019BB12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		398DDFA11A80C6250019BB12 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		398DDFA31A80C6250019BB12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		398DDFA51A80C6250019BB12 /* OCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
+		398DDFA61A80C6250019BB12 /* OCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
+		398DDFA81A80C6250019BB12 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		398DDFAB1A80C6250019BB12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		398DDFB11A80C6250019BB12 /* SLFarseer_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseer_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		398DDFB61A80C6250019BB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		398DDFB71A80C6250019BB12 /* SLFarseer_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseer_MacTests.m; sourceTree = "<group>"; };
+		398DDFF81A80C6C50019BB12 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
+		398DE0051A80C7380019BB12 /* FSDebugCentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDebugCentral.h; path = ../../SLFarseer/FSDebugCentral.h; sourceTree = "<group>"; };
+		398DE0061A80C7380019BB12 /* FSDebugCentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDebugCentral.m; path = ../../SLFarseer/FSDebugCentral.m; sourceTree = "<group>"; };
+		398DE0071A80C7380019BB12 /* FSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLog.h; path = ../../SLFarseer/FSLog.h; sourceTree = "<group>"; };
+		398DE0081A80C7380019BB12 /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLog.m; path = ../../SLFarseer/FSLog.m; sourceTree = "<group>"; };
+		398DE0091A80C7380019BB12 /* FSLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLogManager.h; path = ../../SLFarseer/FSLogManager.h; sourceTree = "<group>"; };
+		398DE00A1A80C7380019BB12 /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLogManager.m; path = ../../SLFarseer/FSLogManager.m; sourceTree = "<group>"; };
+		398DE00B1A80C7380019BB12 /* FSSwfitSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSSwfitSupport.swift; path = ../../SLFarseer/FSSwfitSupport.swift; sourceTree = "<group>"; };
+		398DE0211A80C8AD0019BB12 /* SLFarseer_Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_Mac-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		398DDF981A80C6250019BB12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398DDFAE1A80C6250019BB12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		398DDF921A80C6250019BB12 = {
+			isa = PBXGroup;
+			children = (
+				398DDF9D1A80C6250019BB12 /* SLFarseer_Mac */,
+				398DDFB41A80C6250019BB12 /* SLFarseer_MacTests */,
+				398DDF9C1A80C6250019BB12 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		398DDF9C1A80C6250019BB12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				398DDF9B1A80C6250019BB12 /* SLFarseer_Mac.app */,
+				398DDFB11A80C6250019BB12 /* SLFarseer_MacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		398DDF9D1A80C6250019BB12 /* SLFarseer_Mac */ = {
+			isa = PBXGroup;
+			children = (
+				398DDFF61A80C6740019BB12 /* SLFarseer */,
+				398DDFA01A80C6250019BB12 /* AppDelegate.h */,
+				398DDFA11A80C6250019BB12 /* AppDelegate.m */,
+				398DDFA51A80C6250019BB12 /* OCViewController.h */,
+				398DDFA61A80C6250019BB12 /* OCViewController.m */,
+				398DDFF81A80C6C50019BB12 /* SwiftViewController.swift */,
+				398DDFA81A80C6250019BB12 /* Images.xcassets */,
+				398DDFAA1A80C6250019BB12 /* Main.storyboard */,
+				398DDF9E1A80C6250019BB12 /* Supporting Files */,
+			);
+			path = SLFarseer_Mac;
+			sourceTree = "<group>";
+		};
+		398DDF9E1A80C6250019BB12 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				398DE0211A80C8AD0019BB12 /* SLFarseer_Mac-Bridging-Header.h */,
+				398DDF9F1A80C6250019BB12 /* Info.plist */,
+				398DDFA31A80C6250019BB12 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		398DDFB41A80C6250019BB12 /* SLFarseer_MacTests */ = {
+			isa = PBXGroup;
+			children = (
+				398DDFB71A80C6250019BB12 /* SLFarseer_MacTests.m */,
+				398DDFB51A80C6250019BB12 /* Supporting Files */,
+			);
+			path = SLFarseer_MacTests;
+			sourceTree = "<group>";
+		};
+		398DDFB51A80C6250019BB12 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				398DDFB61A80C6250019BB12 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		398DDFF61A80C6740019BB12 /* SLFarseer */ = {
+			isa = PBXGroup;
+			children = (
+				398DE0051A80C7380019BB12 /* FSDebugCentral.h */,
+				398DE0061A80C7380019BB12 /* FSDebugCentral.m */,
+				398DE0071A80C7380019BB12 /* FSLog.h */,
+				398DE0081A80C7380019BB12 /* FSLog.m */,
+				398DE0091A80C7380019BB12 /* FSLogManager.h */,
+				398DE00A1A80C7380019BB12 /* FSLogManager.m */,
+				398DE00B1A80C7380019BB12 /* FSSwfitSupport.swift */,
+			);
+			name = SLFarseer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		398DDF9A1A80C6250019BB12 /* SLFarseer_Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 398DDFBB1A80C6250019BB12 /* Build configuration list for PBXNativeTarget "SLFarseer_Mac" */;
+			buildPhases = (
+				398DDF971A80C6250019BB12 /* Sources */,
+				398DDF981A80C6250019BB12 /* Frameworks */,
+				398DDF991A80C6250019BB12 /* Resources */,
+				398DE0241A80CC450019BB12 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SLFarseer_Mac;
+			productName = SLFarseer_Mac;
+			productReference = 398DDF9B1A80C6250019BB12 /* SLFarseer_Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		398DDFB01A80C6250019BB12 /* SLFarseer_MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 398DDFBE1A80C6250019BB12 /* Build configuration list for PBXNativeTarget "SLFarseer_MacTests" */;
+			buildPhases = (
+				398DDFAD1A80C6250019BB12 /* Sources */,
+				398DDFAE1A80C6250019BB12 /* Frameworks */,
+				398DDFAF1A80C6250019BB12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				398DDFB31A80C6250019BB12 /* PBXTargetDependency */,
+			);
+			name = SLFarseer_MacTests;
+			productName = SLFarseer_MacTests;
+			productReference = 398DDFB11A80C6250019BB12 /* SLFarseer_MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		398DDF931A80C6250019BB12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Qeekers;
+				TargetAttributes = {
+					398DDF9A1A80C6250019BB12 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					398DDFB01A80C6250019BB12 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 398DDF9A1A80C6250019BB12;
+					};
+				};
+			};
+			buildConfigurationList = 398DDF961A80C6250019BB12 /* Build configuration list for PBXProject "SLFarseer_Mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 398DDF921A80C6250019BB12;
+			productRefGroup = 398DDF9C1A80C6250019BB12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				398DDF9A1A80C6250019BB12 /* SLFarseer_Mac */,
+				398DDFB01A80C6250019BB12 /* SLFarseer_MacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		398DDF991A80C6250019BB12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398DDFA91A80C6250019BB12 /* Images.xcassets in Resources */,
+				398DDFAC1A80C6250019BB12 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398DDFAF1A80C6250019BB12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		398DE0241A80CC450019BB12 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../Script/farseer.sh -m";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		398DDF971A80C6250019BB12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398DE00E1A80C7380019BB12 /* FSLogManager.m in Sources */,
+				398DDFF91A80C6C50019BB12 /* SwiftViewController.swift in Sources */,
+				398DE00F1A80C7380019BB12 /* FSSwfitSupport.swift in Sources */,
+				398DDFA71A80C6250019BB12 /* OCViewController.m in Sources */,
+				398DDFA41A80C6250019BB12 /* main.m in Sources */,
+				398DE00D1A80C7380019BB12 /* FSLog.m in Sources */,
+				398DE00C1A80C7380019BB12 /* FSDebugCentral.m in Sources */,
+				398DDFA21A80C6250019BB12 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398DDFAD1A80C6250019BB12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398DDFB81A80C6250019BB12 /* SLFarseer_MacTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		398DDFB31A80C6250019BB12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 398DDF9A1A80C6250019BB12 /* SLFarseer_Mac */;
+			targetProxy = 398DDFB21A80C6250019BB12 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		398DDFAA1A80C6250019BB12 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				398DDFAB1A80C6250019BB12 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		398DDFB91A80C6250019BB12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		398DDFBA1A80C6250019BB12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		398DDFBC1A80C6250019BB12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SLFarseer_Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_Mac/SLFarseer_Mac-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		398DDFBD1A80C6250019BB12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SLFarseer_Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_Mac/SLFarseer_Mac-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		398DDFBF1A80C6250019BB12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SLFarseer_MacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLFarseer_Mac.app/Contents/MacOS/SLFarseer_Mac";
+			};
+			name = Debug;
+		};
+		398DDFC01A80C6250019BB12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SLFarseer_MacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLFarseer_Mac.app/Contents/MacOS/SLFarseer_Mac";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		398DDF961A80C6250019BB12 /* Build configuration list for PBXProject "SLFarseer_Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				398DDFB91A80C6250019BB12 /* Debug */,
+				398DDFBA1A80C6250019BB12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		398DDFBB1A80C6250019BB12 /* Build configuration list for PBXNativeTarget "SLFarseer_Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				398DDFBC1A80C6250019BB12 /* Debug */,
+				398DDFBD1A80C6250019BB12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		398DDFBE1A80C6250019BB12 /* Build configuration list for PBXNativeTarget "SLFarseer_MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				398DDFBF1A80C6250019BB12 /* Debug */,
+				398DDFC01A80C6250019BB12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 398DDF931A80C6250019BB12 /* Project object */;
+}

@@ -13,17 +13,32 @@
 #include <time.h>
 #include <string.h>
 #include <assert.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <pwd.h>
+#include <sys/types.h>
+#include <dirent.h>
 
 static char FPRINT_OUT_FILE_PATH[64] = {0};
 static BOOL launched = false;
 
-void FS_LaunchCentral()
+// console level config
+#define SLCONSOLE_LEVEL Error
+#define HOME_PATH       "/Users/Salo"
+
+static void FS_LaunchCentral()
 {
+    // get fasser document path
+    char fullpath[256] = HOME_PATH;
     time_t t = time(0);
-    char path[64];
-    strftime(path, sizeof(path), "/Users/Salo/Documents/Farseer/Log/log_%Y-%m-%d_%H%M%S.log", localtime(&t));
-    
-    strcpy(FPRINT_OUT_FILE_PATH, path);
+    const char *path = "/Documents/Farseer/Log/";
+    strcat(fullpath, path);
+
+    char filename[64];
+    strftime(filename, sizeof(filename), "log_%Y-%m-%d_%H%M%S.log", localtime(&t));
+    strcat(fullpath, filename);
+
+    strcpy(FPRINT_OUT_FILE_PATH, fullpath);
     FILE *fp = fopen(FPRINT_OUT_FILE_PATH,"w");
     if (!fp)
     {
@@ -63,12 +78,14 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
             break;
     }
     
-    if (level >= Error) {
+    if (level >= Error)
+    {
         printf("%s:%s\n", prefix, cLog);
     }
-    
+
     FILE    *fp = fopen(FPRINT_OUT_FILE_PATH, "a");
-    if (!fp) {
+    if (!fp)
+    {
         assert(false);
     }
     fprintf(fp, "%s:%s\n", prefix, cLog);

@@ -17,9 +17,6 @@
 #define FSLog(format, ...)      FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], Log)
 #define FSMinor(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], Minor)
 
-// console level config
-#define SLCONSOLE_LEVEL Error
-
 typedef enum {
     Minor = 0,
     Log,
@@ -28,5 +25,4 @@ typedef enum {
     Fatal,
 } FSLogLevel;
 #define SLCONSOLE_LEVEL Error
-FOUNDATION_EXPORT void FS_LaunchCentral();
 FOUNDATION_EXPORT void FS_DebugLog(NSString *log, FSLogLevel level);
