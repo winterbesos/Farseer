@@ -7,7 +7,7 @@
 //
 
 #import "OCViewController.h"
-#import "SLFarseer.h"
+#import <SLFarseer/FSLog.h>
 
 @implementation OCViewController
 

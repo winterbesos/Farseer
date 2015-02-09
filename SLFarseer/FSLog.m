@@ -111,3 +111,7 @@ void FSPLog(NSString *log) {
 void FSPMinor(NSString *log) {
     FS_DebugLog(log, Minor);
 }
+
+void test() {
+    
+}

@@ -36,3 +36,5 @@ void FSPWarning(NSString *log);
 void FSPLog(NSString *log);
 
 void FSPMinor(NSString *log);
+
+void test();
