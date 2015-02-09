@@ -4,14 +4,49 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>SLFarseer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>SLFarseer_Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>39106C831A8353C00076CD07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39106C8D1A8353C00076CD07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39703B8B1A834F6A007FE10E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39703B951A834F6A007FE10E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39703BB01A834FAC007FE10E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39703BBA1A834FAC007FE10E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>398DDF9A1A80C6250019BB12</key>
 		<dict>
 			<key>primary</key>

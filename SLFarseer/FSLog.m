@@ -1,5 +1,5 @@
 //
-//  SLFLog.c
+//  FSLog.m
 //  imoffice_for_mac
 //
 //  Created by Go Salo on 1/30/15.
@@ -90,4 +90,24 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
     }
     fprintf(fp, "%s:%s\n", prefix, cLog);
     fclose(fp);
+}
+
+void FSPFatal(NSString *log) {
+    FS_DebugLog(log, Fatal);
+}
+
+void FSPError(NSString *log) {
+    FS_DebugLog(log, Error);
+}
+
+void FSPWarning(NSString *log) {
+    FS_DebugLog(log, Warning);
+}
+
+void FSPLog(NSString *log) {
+    FS_DebugLog(log, Log);
+}
+
+void FSPMinor(NSString *log) {
+    FS_DebugLog(log, Minor);
 }

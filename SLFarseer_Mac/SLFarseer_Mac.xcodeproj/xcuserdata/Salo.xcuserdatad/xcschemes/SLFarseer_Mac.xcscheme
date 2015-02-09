@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "398DDF9A1A80C6250019BB12"
-               BuildableName = "SLFarseer_Mac.app"
-               BlueprintName = "SLFarseer_Mac"
+               BuildableName = "SLFarseer_MacDemo.app"
+               BlueprintName = "SLFarseer_MacDemo"
                ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,6 +31,34 @@
                BlueprintIdentifier = "398DDFB01A80C6250019BB12"
                BuildableName = "SLFarseer_MacTests.xctest"
                BlueprintName = "SLFarseer_MacTests"
+               ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39703BBA1A834FAC007FE10E"
+               BuildableName = "SLFarseerFrameworkTests.xctest"
+               BlueprintName = "SLFarseerFrameworkTests"
+               ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39106C8D1A8353C00076CD07"
+               BuildableName = "SLFarseerTests.xctest"
+               BlueprintName = "SLFarseerTests"
                ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -52,13 +80,33 @@
                ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39703BBA1A834FAC007FE10E"
+               BuildableName = "SLFarseerFrameworkTests.xctest"
+               BlueprintName = "SLFarseerFrameworkTests"
+               ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39106C8D1A8353C00076CD07"
+               BuildableName = "SLFarseerTests.xctest"
+               BlueprintName = "SLFarseerTests"
+               ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "398DDF9A1A80C6250019BB12"
-            BuildableName = "SLFarseer_Mac.app"
-            BlueprintName = "SLFarseer_Mac"
+            BuildableName = "SLFarseer_MacDemo.app"
+            BlueprintName = "SLFarseer_MacDemo"
             ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +124,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "398DDF9A1A80C6250019BB12"
-            BuildableName = "SLFarseer_Mac.app"
-            BlueprintName = "SLFarseer_Mac"
+            BuildableName = "SLFarseer_MacDemo.app"
+            BlueprintName = "SLFarseer_MacDemo"
             ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -94,8 +142,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "398DDF9A1A80C6250019BB12"
-            BuildableName = "SLFarseer_Mac.app"
-            BlueprintName = "SLFarseer_Mac"
+            BuildableName = "SLFarseer_MacDemo.app"
+            BlueprintName = "SLFarseer_MacDemo"
             ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

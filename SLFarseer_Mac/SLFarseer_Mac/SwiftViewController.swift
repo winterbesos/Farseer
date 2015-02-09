@@ -13,11 +13,11 @@ class SwiftViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FSFatal("this is a fatal error [Swift]")
-        FSError("this is a error [Swift]")
-        FSWarning("this is a warning [Swift]")
-        FSLog("this is a log [Swift]")
-        FSMinor("this is a minor log [Swift]")
+        FSPFatal("this is a fatal error [Swift]")
+        FSPError("this is a error [Swift]")
+        FSPWarning("this is a warning [Swift]")
+        FSPLog("this is a log [Swift]")
+        FSPMinor("this is a minor log [Swift]")
     }
     
 }

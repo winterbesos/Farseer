@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define FSEerror()
-#define FSWarning()
-#define FSLog()
-#define FSRecord()
-#define FSDescribe()
-
 @interface FSLogManager : NSObject
 
 @end

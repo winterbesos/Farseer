@@ -1,5 +1,5 @@
 //
-//  SLFLog.h
+//  FSLog.h
 //  imoffice_for_mac
 //
 //  Created by Go Salo on 1/30/15.
@@ -26,3 +26,13 @@ typedef enum {
 } FSLogLevel;
 #define SLCONSOLE_LEVEL Error
 FOUNDATION_EXPORT void FS_DebugLog(NSString *log, FSLogLevel level);
+
+void FSPFatal(NSString *log);
+
+void FSPError(NSString *log);
+
+void FSPWarning(NSString *log);
+
+void FSPLog(NSString *log);
+
+void FSPMinor(NSString *log);
