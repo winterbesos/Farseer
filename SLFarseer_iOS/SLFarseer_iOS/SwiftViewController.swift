@@ -13,11 +13,11 @@ class SwiftViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FSFatal("this is a fatal error [Swift]")
-        FSError("this is a error [Swift]")
-        FSWarning("this is a warning [Swift]")
-        FSLog("this is a log [Swift]")
-        FSMinor("this is a minor log [Swift]")
+        FSPFatal("this is a fatal error [Swift]")
+        FSPError("this is a error [Swift]")
+        FSPWarning("this is a warning [Swift]")
+        FSPLog("this is a log [Swift]")
+        FSPMinor("this is a minor log [Swift]")
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +33,7 @@ class SwiftViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
+    }w
     */
 
 }

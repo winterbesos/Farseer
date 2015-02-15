@@ -16,7 +16,6 @@
 		398DE0181A80C7760019BB12 /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0121A80C7760019BB12 /* FSDebugCentral.m */; };
 		398DE0191A80C7760019BB12 /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0141A80C7760019BB12 /* FSLog.m */; };
 		398DE01A1A80C7760019BB12 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0161A80C7760019BB12 /* FSLogManager.m */; };
-		398DE01B1A80C7760019BB12 /* FSSwfitSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0171A80C7760019BB12 /* FSSwfitSupport.swift */; };
 		398DE01D1A80C7B80019BB12 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */; };
 		398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* OCViewController.m */; };
 /* End PBXBuildFile section */
@@ -49,7 +48,6 @@
 		398DE0141A80C7760019BB12 /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLog.m; sourceTree = "<group>"; };
 		398DE0151A80C7760019BB12 /* FSLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogManager.h; sourceTree = "<group>"; };
 		398DE0161A80C7760019BB12 /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogManager.m; sourceTree = "<group>"; };
-		398DE0171A80C7760019BB12 /* FSSwfitSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSSwfitSupport.swift; sourceTree = "<group>"; };
 		398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		398DE01E1A80C7F10019BB12 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
 		398DE01F1A80C7F10019BB12 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				398DE0141A80C7760019BB12 /* FSLog.m */,
 				398DE0151A80C7760019BB12 /* FSLogManager.h */,
 				398DE0161A80C7760019BB12 /* FSLogManager.m */,
-				398DE0171A80C7760019BB12 /* FSSwfitSupport.swift */,
 			);
 			name = SLFarseer;
 			path = ../../SLFarseer;
@@ -270,7 +267,6 @@
 			files = (
 				398DE01A1A80C7760019BB12 /* FSLogManager.m in Sources */,
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
-				398DE01B1A80C7760019BB12 /* FSSwfitSupport.swift in Sources */,
 				398DE01D1A80C7B80019BB12 /* SwiftViewController.swift in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
 				398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */,

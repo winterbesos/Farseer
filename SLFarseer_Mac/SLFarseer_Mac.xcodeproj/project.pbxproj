@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39038F7E1A89F6F800CCE701 /* SLFarseer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39106C841A8353C00076CD07 /* SLFarseer.framework */; };
+		39038F7F1A89F6F800CCE701 /* SLFarseer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39106C841A8353C00076CD07 /* SLFarseer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39106C891A8353C00076CD07 /* SLFarseer.h in Headers */ = {isa = PBXBuildFile; fileRef = 39106C881A8353C00076CD07 /* SLFarseer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39106C8F1A8353C00076CD07 /* SLFarseer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39106C841A8353C00076CD07 /* SLFarseer.framework */; };
 		39106C981A8353C00076CD07 /* SLFarseerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39106C971A8353C00076CD07 /* SLFarseerTests.m */; };
-		39106C9B1A8353C00076CD07 /* SLFarseer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39106C841A8353C00076CD07 /* SLFarseer.framework */; };
-		39106C9C1A8353C00076CD07 /* SLFarseer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39106C841A8353C00076CD07 /* SLFarseer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39106CA31A83540E0076CD07 /* FSDebugCentral.h in Headers */ = {isa = PBXBuildFile; fileRef = 398DE0051A80C7380019BB12 /* FSDebugCentral.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39106CA41A83540E0076CD07 /* FSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 398DE0071A80C7380019BB12 /* FSLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39106CA51A83540E0076CD07 /* FSLogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 398DE0091A80C7380019BB12 /* FSLogManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -20,6 +20,18 @@
 		39106CA81A8354700076CD07 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE00A1A80C7380019BB12 /* FSLogManager.m */; };
 		391C23271A8661430032EED5 /* FSBTProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 391C23251A8661430032EED5 /* FSBTProtocol.h */; };
 		391C23281A8661430032EED5 /* FSBTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C23261A8661430032EED5 /* FSBTProtocol.m */; };
+		39436F011A90A038006B0E70 /* FSBLEPerpheralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EF01A90A038006B0E70 /* FSBLEPerpheralService.h */; };
+		39436F021A90A038006B0E70 /* FSBLEPerpheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39436EF11A90A038006B0E70 /* FSBLEPerpheralService.m */; };
+		39436F031A90A038006B0E70 /* FSBLEDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EF21A90A038006B0E70 /* FSBLEDefine.h */; };
+		39436F041A90A038006B0E70 /* FSPackageIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EF31A90A038006B0E70 /* FSPackageIn.h */; };
+		39436F051A90A038006B0E70 /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 39436EF41A90A038006B0E70 /* FSPackageIn.mm */; };
+		39436F061A90A038006B0E70 /* FSPerpheralClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EF51A90A038006B0E70 /* FSPerpheralClient.h */; };
+		39436F071A90A038006B0E70 /* FSPerpheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39436EF61A90A038006B0E70 /* FSPerpheralClient.m */; };
+		39436F081A90A038006B0E70 /* FSInitBLEPacker.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EF81A90A038006B0E70 /* FSInitBLEPacker.h */; };
+		39436F091A90A038006B0E70 /* FSInitBLEPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39436EF91A90A038006B0E70 /* FSInitBLEPacker.m */; };
+		39436F0A1A90A038006B0E70 /* FSPackerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EFA1A90A038006B0E70 /* FSPackerFactory.h */; };
+		39436F0B1A90A038006B0E70 /* FSPackerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 39436EFB1A90A038006B0E70 /* FSPackerFactory.m */; };
+		39436F0C1A90A038006B0E70 /* FSPackerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 39436EFC1A90A038006B0E70 /* FSPackerProtocol.h */; };
 		398DDFA21A80C6250019BB12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFA11A80C6250019BB12 /* AppDelegate.m */; };
 		398DDFA41A80C6250019BB12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFA31A80C6250019BB12 /* main.m */; };
 		398DDFA71A80C6250019BB12 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFA61A80C6250019BB12 /* OCViewController.m */; };
@@ -29,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		39038F801A89F6F800CCE701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDF931A80C6250019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39106C831A8353C00076CD07;
+			remoteInfo = SLFarseer;
+		};
 		39106C901A8353C00076CD07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDF931A80C6250019BB12 /* Project object */;
@@ -43,23 +62,16 @@
 			remoteGlobalIDString = 398DDF9A1A80C6250019BB12;
 			remoteInfo = SLFarseer_MacDemo;
 		};
-		39106C991A8353C00076CD07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDF931A80C6250019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39106C831A8353C00076CD07;
-			remoteInfo = SLFarseer;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		39703BA41A834F6A007FE10E /* Embed Frameworks */ = {
+		39038F821A89F6F900CCE701 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				39106C9C1A8353C00076CD07 /* SLFarseer.framework in Embed Frameworks */,
+				39038F7F1A89F6F800CCE701 /* SLFarseer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +87,18 @@
 		39106C971A8353C00076CD07 /* SLFarseerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseerTests.m; sourceTree = "<group>"; };
 		391C23251A8661430032EED5 /* FSBTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTProtocol.h; sourceTree = "<group>"; };
 		391C23261A8661430032EED5 /* FSBTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTProtocol.m; sourceTree = "<group>"; };
+		39436EF01A90A038006B0E70 /* FSBLEPerpheralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEPerpheralService.h; sourceTree = "<group>"; };
+		39436EF11A90A038006B0E70 /* FSBLEPerpheralService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEPerpheralService.m; sourceTree = "<group>"; };
+		39436EF21A90A038006B0E70 /* FSBLEDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLEDefine.h; path = FSBLEPerpheralCentral/FSBLEDefine.h; sourceTree = "<group>"; };
+		39436EF31A90A038006B0E70 /* FSPackageIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPackageIn.h; sourceTree = "<group>"; };
+		39436EF41A90A038006B0E70 /* FSPackageIn.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FSPackageIn.mm; sourceTree = "<group>"; };
+		39436EF51A90A038006B0E70 /* FSPerpheralClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPerpheralClient.h; sourceTree = "<group>"; };
+		39436EF61A90A038006B0E70 /* FSPerpheralClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPerpheralClient.m; sourceTree = "<group>"; };
+		39436EF81A90A038006B0E70 /* FSInitBLEPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSInitBLEPacker.h; sourceTree = "<group>"; };
+		39436EF91A90A038006B0E70 /* FSInitBLEPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSInitBLEPacker.m; sourceTree = "<group>"; };
+		39436EFA1A90A038006B0E70 /* FSPackerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPackerFactory.h; sourceTree = "<group>"; };
+		39436EFB1A90A038006B0E70 /* FSPackerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPackerFactory.m; sourceTree = "<group>"; };
+		39436EFC1A90A038006B0E70 /* FSPackerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPackerProtocol.h; sourceTree = "<group>"; };
 		398DDF9B1A80C6250019BB12 /* SLFarseer_MacDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_MacDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		398DDF9F1A80C6250019BB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		398DDFA01A80C6250019BB12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39106C9B1A8353C00076CD07 /* SLFarseer.framework in Frameworks */,
+				39038F7E1A89F6F800CCE701 /* SLFarseer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +178,43 @@
 				39106C961A8353C00076CD07 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39436EEA1A90A038006B0E70 /* FSBLEClient */ = {
+			isa = PBXGroup;
+			children = (
+				39436EF21A90A038006B0E70 /* FSBLEDefine.h */,
+				39436EEF1A90A038006B0E70 /* FSBLEPerpheral */,
+			);
+			name = FSBLEClient;
+			path = SLBluetoothService;
+			sourceTree = "<group>";
+		};
+		39436EEF1A90A038006B0E70 /* FSBLEPerpheral */ = {
+			isa = PBXGroup;
+			children = (
+				39436EF01A90A038006B0E70 /* FSBLEPerpheralService.h */,
+				39436EF11A90A038006B0E70 /* FSBLEPerpheralService.m */,
+				39436EF31A90A038006B0E70 /* FSPackageIn.h */,
+				39436EF41A90A038006B0E70 /* FSPackageIn.mm */,
+				39436EF51A90A038006B0E70 /* FSPerpheralClient.h */,
+				39436EF61A90A038006B0E70 /* FSPerpheralClient.m */,
+				39436EF71A90A038006B0E70 /* Protocol */,
+			);
+			name = FSBLEPerpheral;
+			path = FSBLEPerpheralCentral;
+			sourceTree = "<group>";
+		};
+		39436EF71A90A038006B0E70 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				39436EF81A90A038006B0E70 /* FSInitBLEPacker.h */,
+				39436EF91A90A038006B0E70 /* FSInitBLEPacker.m */,
+				39436EFA1A90A038006B0E70 /* FSPackerFactory.h */,
+				39436EFB1A90A038006B0E70 /* FSPackerFactory.m */,
+				39436EFC1A90A038006B0E70 /* FSPackerProtocol.h */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		398DDF921A80C6250019BB12 = {
@@ -212,6 +273,7 @@
 				398DE00A1A80C7380019BB12 /* FSLogManager.m */,
 				391C23251A8661430032EED5 /* FSBTProtocol.h */,
 				391C23261A8661430032EED5 /* FSBTProtocol.m */,
+				39436EEA1A90A038006B0E70 /* FSBLEClient */,
 			);
 			name = SLFarseer;
 			path = SLFarseer_Mac;
@@ -225,9 +287,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				391C23271A8661430032EED5 /* FSBTProtocol.h in Headers */,
+				39436F041A90A038006B0E70 /* FSPackageIn.h in Headers */,
 				39106C891A8353C00076CD07 /* SLFarseer.h in Headers */,
+				39436F061A90A038006B0E70 /* FSPerpheralClient.h in Headers */,
+				39436F011A90A038006B0E70 /* FSBLEPerpheralService.h in Headers */,
 				39106CA31A83540E0076CD07 /* FSDebugCentral.h in Headers */,
 				39106CA41A83540E0076CD07 /* FSLog.h in Headers */,
+				39436F081A90A038006B0E70 /* FSInitBLEPacker.h in Headers */,
+				39436F0A1A90A038006B0E70 /* FSPackerFactory.h in Headers */,
+				39436F0C1A90A038006B0E70 /* FSPackerProtocol.h in Headers */,
+				39436F031A90A038006B0E70 /* FSBLEDefine.h in Headers */,
 				39106CA51A83540E0076CD07 /* FSLogManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,12 +349,12 @@
 				398DDF981A80C6250019BB12 /* Frameworks */,
 				398DDF991A80C6250019BB12 /* Resources */,
 				398DE0241A80CC450019BB12 /* Run Script */,
-				39703BA41A834F6A007FE10E /* Embed Frameworks */,
+				39038F821A89F6F900CCE701 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				39106C9A1A8353C00076CD07 /* PBXTargetDependency */,
+				39038F811A89F6F800CCE701 /* PBXTargetDependency */,
 			);
 			name = SLFarseer_MacDemo;
 			productName = SLFarseer_Mac;
@@ -381,9 +450,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39436F0B1A90A038006B0E70 /* FSPackerFactory.m in Sources */,
+				39436F051A90A038006B0E70 /* FSPackageIn.mm in Sources */,
 				39106CA61A8354700076CD07 /* FSDebugCentral.m in Sources */,
+				39436F091A90A038006B0E70 /* FSInitBLEPacker.m in Sources */,
 				39106CA71A8354700076CD07 /* FSLog.m in Sources */,
+				39436F021A90A038006B0E70 /* FSBLEPerpheralService.m in Sources */,
 				391C23281A8661430032EED5 /* FSBTProtocol.m in Sources */,
+				39436F071A90A038006B0E70 /* FSPerpheralClient.m in Sources */,
 				39106CA81A8354700076CD07 /* FSLogManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +484,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		39038F811A89F6F800CCE701 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39106C831A8353C00076CD07 /* SLFarseer */;
+			targetProxy = 39038F801A89F6F800CCE701 /* PBXContainerItemProxy */;
+		};
 		39106C911A8353C00076CD07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 39106C831A8353C00076CD07 /* SLFarseer */;
@@ -419,11 +498,6 @@
 			isa = PBXTargetDependency;
 			target = 398DDF9A1A80C6250019BB12 /* SLFarseer_MacDemo */;
 			targetProxy = 39106C921A8353C00076CD07 /* PBXContainerItemProxy */;
-		};
-		39106C9A1A8353C00076CD07 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39106C831A8353C00076CD07 /* SLFarseer */;
-			targetProxy = 39106C991A8353C00076CD07 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -442,6 +516,7 @@
 		39106C9E1A8353C00076CD07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -466,6 +541,7 @@
 		39106C9F1A8353C00076CD07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -598,6 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SLFarseer_Mac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -612,6 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SLFarseer_Mac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

@@ -26,6 +26,7 @@ static BOOL launched = false;
 #define SLCONSOLE_LEVEL Error
 #define HOME_PATH       "/Users/Salo"
 
+
 static void FS_LaunchCentral()
 {
     // get fasser document path
@@ -48,8 +49,10 @@ static void FS_LaunchCentral()
     launched = true;
 }
 
+
 void FS_DebugLog(NSString *log, FSLogLevel level)
 {
+    
     if (!launched)
     {
         FS_LaunchCentral();
@@ -77,7 +80,7 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
             assert(false);
             break;
     }
-    
+
     if (level >= Error)
     {
         printf("%s:%s\n", prefix, cLog);
@@ -110,8 +113,4 @@ void FSPLog(NSString *log) {
 
 void FSPMinor(NSString *log) {
     FS_DebugLog(log, Minor);
-}
-
-void test() {
-    
 }
