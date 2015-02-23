@@ -8,6 +8,7 @@
 
 #import "OCViewController.h"
 #import "FSLog.h"
+#import "FSBLEPerpheralService.h"
 
 @interface OCViewController ()
 
@@ -18,11 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    FSFatal(@"this is a fatal error [OC]");
-    FSError(@"this is a error [OC]");
-    FSWarning(@"this is a warning [OC]");
-    FSLog(@"this is a log [OC]");
-    FSMinor(@"this is a minor log [OC]");
+//    FSFatal(@"this is a fatal error [OC]");
+//    FSError(@"this is a error [OC]");
+//    FSWarning(@"this is a warning [OC]");
+//    FSLog(@"this is a log [OC]");
+//    FSMinor(@"this is a minor log [OC]");
+    
+    [FSBLEPerpheralService install];
 }
 
 - (void)didReceiveMemoryWarning {

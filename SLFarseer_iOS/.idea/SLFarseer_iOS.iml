@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$/../SLFarseer">
       <sourceFolder url="file://$MODULE_DIR$/../SLFarseer" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../SLFarseer_Mac/SLFarseer_Mac/SLBluetoothService">
+      <sourceFolder url="file://$MODULE_DIR$/../SLFarseer_Mac/SLFarseer_Mac/SLBluetoothService" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

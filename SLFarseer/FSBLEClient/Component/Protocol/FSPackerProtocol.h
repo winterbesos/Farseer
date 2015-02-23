@@ -8,12 +8,10 @@
 
 #import "FSPackageIn.h"
 
-@class FSPerpheralClient;
-
 @protocol FSPackerDelegate <NSObject>
 
 @required
 
-- (void)unpack:(FSPackageIn *)packageIn client:(FSPerpheralClient *)client;
+- (void)unpack:(FSPackageIn *)packageIn client:(id)client;
 
 @end

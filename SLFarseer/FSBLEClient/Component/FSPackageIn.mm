@@ -33,9 +33,9 @@
 #pragma mark - Read Method
 
 - (Byte)readByte {
-    if (_readPos + sizeof(PKG_HEADER) + sizeof(Byte) < _pkg.length) {
+    if (_readPos + sizeof(PKG_HEADER) + sizeof(Byte) <= _pkg.length) {
         Byte value;
-        [_pkg getBytes:&value range:NSMakeRange(_readPos, sizeof(Byte))];
+        [_pkg getBytes:&value range:NSMakeRange(_readPos + sizeof(PKG_HEADER), sizeof(Byte))];
         _readPos += sizeof(Byte);
         return value;
     }
@@ -44,9 +44,9 @@
 }
 
 - (UInt16)readUInt16 {
-    if (_readPos + sizeof(PKG_HEADER) + sizeof(UInt16) < _pkg.length) {
+    if (_readPos + sizeof(PKG_HEADER) + sizeof(UInt16) <= _pkg.length) {
         UInt16 value;
-        [_pkg getBytes:&value range:NSMakeRange(_readPos, sizeof(UInt16))];
+        [_pkg getBytes:&value range:NSMakeRange(_readPos + sizeof(PKG_HEADER), sizeof(UInt16))];
         _readPos += sizeof(UInt16);
         return value;
     }
@@ -55,9 +55,9 @@
 }
 
 - (UInt32)readUInt32 {
-    if (_readPos + sizeof(PKG_HEADER) + sizeof(UInt32) < _pkg.length) {
+    if (_readPos + sizeof(PKG_HEADER) + sizeof(UInt32) <= _pkg.length) {
         UInt32 value;
-        [_pkg getBytes:&value range:NSMakeRange(_readPos, sizeof(UInt32))];
+        [_pkg getBytes:&value range:NSMakeRange(_readPos + sizeof(PKG_HEADER), sizeof(UInt32))];
         _readPos += sizeof(UInt32);
         return value;
     }
@@ -66,9 +66,9 @@
 }
 
 - (UInt64)readUInt64 {
-    if (_readPos + sizeof(PKG_HEADER) + sizeof(UInt64) < _pkg.length) {
+    if (_readPos + sizeof(PKG_HEADER) + sizeof(UInt64) <= _pkg.length) {
         UInt64 value;
-        [_pkg getBytes:&value range:NSMakeRange(_readPos, sizeof(UInt64))];
+        [_pkg getBytes:&value range:NSMakeRange(_readPos + sizeof(PKG_HEADER), sizeof(UInt64))];
         _readPos += sizeof(UInt64);
         return value;
     }
@@ -77,15 +77,18 @@
 }
 
 - (NSString *)readString {
-    if (_readPos + sizeof(PKG_HEADER) + sizeof(Byte) < _pkg.length) {
+    if (_readPos + sizeof(PKG_HEADER) + sizeof(Byte) <= _pkg.length) {
         Byte len;
-        [_pkg getBytes:&len range:NSMakeRange(_readPos, sizeof(Byte))];
+        [_pkg getBytes:&len range:NSMakeRange(_readPos + sizeof(PKG_HEADER), sizeof(Byte))];
         
         _readPos += sizeof(Byte);
-        if (_readPos + sizeof(PKG_HEADER) + len < _pkg.length) {
-            NSData *stringData = [_pkg subdataWithRange:NSMakeRange(_readPos, len)];
+        if (_readPos + sizeof(PKG_HEADER) + len <= _pkg.length) {
+            NSData *stringData = [_pkg subdataWithRange:NSMakeRange(_readPos + sizeof(PKG_HEADER), len)];
             NSString *string = [[NSString alloc] initWithData:stringData encoding:NSUTF8StringEncoding];
+            _readPos += len;
             return string;
+        } else {
+            NSAssert(false, @"-(void)readString error");
         }
     }
     

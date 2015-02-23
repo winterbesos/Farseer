@@ -11,58 +11,63 @@
 #import "FSPackageIn.h"
 #import "FSPackerFactory.h"
 #import "FSPerpheralClient.h"
+#import "FSBLEUtilities.h"
 
-static NSString *kReadUUIDString = @"622C6B76-5A52-48F7-8595-468F7B8DD11D";
+static NSString *kPeripheralInfoCharacteristicUUIDString = @"838D0104-C9B7-4B34-97B9-8213E24D5493";
+static NSString *kWriteLogCharacteristicUUIDString = @"622C6B76-5A52-48F7-8595-468F7B8DD11D";
 static NSString *kServiceUUIDString = @"A7D38D3B-0D9C-4D3C-AC9F-46C5E608A316";
-static CBPeripheralManager *manager = nil;
+static FSBLEPerpheralService *kBLEService = nil;
 
 @interface FSBLEPerpheralService () <CBPeripheralManagerDelegate>
 
 @end
 
 @implementation FSBLEPerpheralService {
-    FSPerpheralClient *_client;
+    CBPeripheralManager *_manager;
+    FSPerpheralClient   *_client;
+    
+    CBMutableCharacteristic *_logCharacteristic;
 }
 
-- (void)setup {
-    _client = [[FSPerpheralClient alloc] init];
-    
-    CBPeripheralManager *perpheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
-        manager = perpheralManager;
-    
++ (void)install {
+    if (!kBLEService) {
+        kBLEService = [[FSBLEPerpheralService alloc] init];
+        kBLEService->_manager = [[CBPeripheralManager alloc] initWithDelegate:kBLEService queue:nil];
+    }
 }
 
-- (void)setupStatusMechine {
+- (void)statusMechine {
     
 }
 
 - (void)setupService {
     
     // 主Log通信服务
-    CBUUID *cUUID = [CBUUID UUIDWithString:kReadUUIDString];
-    CBCharacteristicProperties properties = CBCharacteristicPropertyWriteWithoutResponse; // CBCharacteristicPropertyBroadcast |
+    CBUUID *cUUID = [CBUUID UUIDWithString:kWriteLogCharacteristicUUIDString];
+    CBCharacteristicProperties properties = CBCharacteristicPropertyWriteWithoutResponse | CBCharacteristicPropertyNotify; // CBCharacteristicPropertyBroadcast |
     CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc] initWithType:cUUID properties:properties value:nil permissions:CBAttributePermissionsWriteable];
     
-    CBUUID *sUUID = [CBUUID UUIDWithString:kServiceUUIDString];
-    CBMutableService *service = [[CBMutableService alloc] initWithType:sUUID primary:true];
-    [service setCharacteristics:@[characteristic]];
-    [manager addService:service];
+    CBUUID *piCharacteristic = [CBUUID UUIDWithString:kPeripheralInfoCharacteristicUUIDString];
     
-}
-
-- (void)printIsAdvertising {
-    NSLog(manager.isAdvertising ? @"advertising: true" : @"advertising: false");
+    CBMutableCharacteristic *peripheralInfoCharacteristic = [[CBMutableCharacteristic alloc] initWithType:piCharacteristic properties:CBCharacteristicPropertyRead value:[FSBLEUtilities getPeripheralInfoData] permissions:CBAttributePermissionsReadable];
+    
+    _logCharacteristic = characteristic;
+    
+    CBUUID *sUUID = [CBUUID UUIDWithString:kServiceUUIDString];
+    CBMutableService *bService = [[CBMutableService alloc] initWithType:sUUID primary:true];
+    [bService setCharacteristics:@[characteristic, peripheralInfoCharacteristic]];
+    [kBLEService->_manager addService:bService];
+    
 }
 
 #pragma mark - CBPerpheralManager Delegate
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
-    NSLog(@"%s: %ld", __FUNCTION__, peripheral.state);
+    NSLog(@"%s: %ld", __FUNCTION__, (long)peripheral.state);
 
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         [self setupService];
     }
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(printIsAdvertising) userInfo:nil repeats:YES];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral willRestoreState:(NSDictionary *)dict {
@@ -77,13 +82,15 @@ static CBPeripheralManager *manager = nil;
     NSLog(@"%s: %@ %@", __FUNCTION__, service, error);
     
     if (!error) {
-        [manager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"SL TEST",
+        [kBLEService->_manager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"SLFarseer",
                                     CBAdvertisementDataServiceUUIDsKey: @[[CBUUID UUIDWithString:kServiceUUIDString]]}];
     }
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
     NSLog(@"%s: %@ %@", __FUNCTION__, central, characteristic);
+    
+//    [peripheral updateValue:[@"a" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:_logCharacteristic onSubscribedCentrals:@[central]];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {

@@ -9,7 +9,7 @@
 #import "FSInitBLEPacker.h"
 #import "FSPackerProtocol.h"
 #import "FSPackageIn.h"
-#import "FSPerpheralClient.h"
+#import "FSCentralClient.h"
 
 @interface FSInitBLEPacker () <FSPackerDelegate>
 
@@ -17,13 +17,14 @@
 
 @implementation FSInitBLEPacker
 
-- (void)unpack:(FSPackageIn *)packageIn client:(FSPerpheralClient *)client {
+- (void)unpack:(FSPackageIn *)packageIn client:(id)client {
+    Byte osType = [packageIn readByte];
     NSString *osVersion = [packageIn readString];
-    NSString *osType = [packageIn readString];
     NSString *deviceType = [packageIn readString];
+    NSString *deviceName = [packageIn readString];
     NSString *bundleName = [packageIn readString];
     
-    [client recvInitBLEWithOSVersion:osVersion osType:osType deviceType:deviceType bundleName:bundleName];
+    [client recvInitBLEWithOSType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName];
 }
 
 @end

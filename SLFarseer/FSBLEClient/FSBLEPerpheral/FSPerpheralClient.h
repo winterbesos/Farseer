@@ -1,5 +1,5 @@
 //
-//  BTCentrelService.h
+//  FSPerpheralClient.h
 //  SLBTServiceDemo
 //
 //  Created by Go Salo on 2/15/15.
@@ -7,13 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSBLEDefine.h"
 
-@protocol FSBLEPerpheralServiceDelegate <NSObject>
-
-@end
-
-@interface FSBLEPerpheralService : NSObject
-
-- (void)setup;
+@interface FSPerpheralClient : NSObject
 
 @end

@@ -25,4 +25,17 @@ typedef NS_ENUM(Byte, CMD) {
     CMDCPLogging            = 0Xb1,
 };
 
+typedef NS_ENUM(Byte, BLEOSType) {
+    BLEOSTypeIOS,
+    BLEOSTypeOSX
+};
+
+typedef NS_ENUM(Byte, BLEDeviceType) {
+    BLEDeviceTypeIPod,
+    BLEDeviceTypeIPhone,
+    BLEDeviceTypeIPad,
+    BLEDeviceTypeMac,
+    BLEDeviceTypeAppleWatch
+};
+
 #endif
