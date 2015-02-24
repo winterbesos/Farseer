@@ -86,9 +86,17 @@ static FSBLECenteralService *service = nil;
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
+//    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     
     if ([characteristic.UUID.UUIDString isEqualToString:@"838D0104-C9B7-4B34-97B9-8213E24D5493"]) {
+        Byte cmd;
+        [characteristic.value getBytes:&cmd length:sizeof(cmd)];
+        
+        FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
+        [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client];
+    }
+    
+    if ([characteristic.UUID.UUIDString isEqualToString:@"622C6B76-5A52-48F7-8595-468F7B8DD11D"]) {
         Byte cmd;
         [characteristic.value getBytes:&cmd length:sizeof(cmd)];
         

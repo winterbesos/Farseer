@@ -76,6 +76,15 @@
     return 0;
 }
 
+- (NSDate *)readDate {
+    UInt64 value = [self readUInt64];
+    if (value) {
+        return [NSDate dateWithTimeIntervalSinceReferenceDate:value];
+    }
+    
+    return nil;
+}
+
 - (NSString *)readString {
     if (_readPos + sizeof(PKG_HEADER) + sizeof(Byte) <= _pkg.length) {
         Byte len;

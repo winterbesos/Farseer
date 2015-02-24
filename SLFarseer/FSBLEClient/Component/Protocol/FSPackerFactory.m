@@ -9,6 +9,7 @@
 #import "FSPackerFactory.h"
 
 #import "FSInitBLEPacker.h"
+#import "FSBLESyncLogPacker.h"
 
 @implementation FSPackerFactory
 
@@ -28,7 +29,7 @@
             
             break;
         case CMDCPLogging:
-            
+            packerObj = [[FSBLESyncLogPacker alloc] init];
             break;
         default:
             break;

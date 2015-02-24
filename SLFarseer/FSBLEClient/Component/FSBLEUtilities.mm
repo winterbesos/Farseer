@@ -60,4 +60,21 @@
     return pkgData;
 }
 
++ (NSData *)getLogDataWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
+    struct PKG_HEADER header;
+    header.cmd = CMDCPLogging;
+    header.currentPackage = 1;
+    header.totalPackage = 1;
+    header.sequId = 0;
+
+    NSTimeInterval timeInterval = [date timeIntervalSinceReferenceDate];
+    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
+    [logData appendBytes:&number length:sizeof(Byte)];
+    [logData appendBytes:&timeInterval length:sizeof(NSTimeInterval)];
+    [logData appendBytes:&level length:sizeof(Byte)];
+    [logData appendData:[self getDataWithPkgString:content]];
+    
+    return logData;
+}
+
 @end

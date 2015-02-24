@@ -25,7 +25,7 @@ static FSBLEPerpheralService *kBLEService = nil;
 @implementation FSBLEPerpheralService {
     CBPeripheralManager *_manager;
     FSPerpheralClient   *_client;
-    
+    CBCentral           *_central;
     CBMutableCharacteristic *_logCharacteristic;
 }
 
@@ -33,6 +33,15 @@ static FSBLEPerpheralService *kBLEService = nil;
     if (!kBLEService) {
         kBLEService = [[FSBLEPerpheralService alloc] init];
         kBLEService->_manager = [[CBPeripheralManager alloc] initWithDelegate:kBLEService queue:nil];
+    }
+}
+
+#pragma mark - Business Logic
+
++ (void)updateLogCharacteristicWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
+    if (kBLEService->_central) {
+        NSData *logData = [FSBLEUtilities getLogDataWithNumber:number date:date level:level content:content];
+        [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
     }
 }
 
@@ -90,7 +99,7 @@ static FSBLEPerpheralService *kBLEService = nil;
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
     NSLog(@"%s: %@ %@", __FUNCTION__, central, characteristic);
     
-//    [peripheral updateValue:[@"a" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:_logCharacteristic onSubscribedCentrals:@[central]];
+    _central = central;
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {

@@ -16,4 +16,6 @@
 
 + (void)install;
 
++ (void)updateLogCharacteristicWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
+
 @end

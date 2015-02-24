@@ -14,4 +14,8 @@
     NSLog(@"%s: %d %@ %@ %@ %@", __FUNCTION__, osType, osVersion, deviceType, deviceName, bundleName);
 }
 
+- (void)recvSyncLogWithLogNumber:(Byte)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
+    NSLog(@"%d %@ %d %@", logNumber, logDate, logLevel, content);
+}
+
 @end

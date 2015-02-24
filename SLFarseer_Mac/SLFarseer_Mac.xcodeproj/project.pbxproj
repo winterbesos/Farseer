@@ -20,6 +20,8 @@
 		39106CA81A8354700076CD07 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE00A1A80C7380019BB12 /* FSLogManager.m */; };
 		391C23271A8661430032EED5 /* FSBTProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 391C23251A8661430032EED5 /* FSBTProtocol.h */; };
 		391C23281A8661430032EED5 /* FSBTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C23261A8661430032EED5 /* FSBTProtocol.m */; };
+		392A9CEC1A9C603C00F3C8F8 /* FSBLESyncLogPacker.h in Headers */ = {isa = PBXBuildFile; fileRef = 392A9CEA1A9C603C00F3C8F8 /* FSBLESyncLogPacker.h */; };
+		392A9CED1A9C603C00F3C8F8 /* FSBLESyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392A9CEB1A9C603C00F3C8F8 /* FSBLESyncLogPacker.m */; };
 		392B86B21A9B4DEF00B9F32A /* FSBLECenteralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 392B86AE1A9B4DEF00B9F32A /* FSBLECenteralService.h */; };
 		392B86B31A9B4DEF00B9F32A /* FSBLECenteralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86AF1A9B4DEF00B9F32A /* FSBLECenteralService.m */; };
 		392B86B41A9B4DEF00B9F32A /* FSCentralClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 392B86B01A9B4DEF00B9F32A /* FSCentralClient.h */; };
@@ -93,6 +95,8 @@
 		39106C971A8353C00076CD07 /* SLFarseerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseerTests.m; sourceTree = "<group>"; };
 		391C23251A8661430032EED5 /* FSBTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTProtocol.h; sourceTree = "<group>"; };
 		391C23261A8661430032EED5 /* FSBTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTProtocol.m; sourceTree = "<group>"; };
+		392A9CEA1A9C603C00F3C8F8 /* FSBLESyncLogPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLESyncLogPacker.h; sourceTree = "<group>"; };
+		392A9CEB1A9C603C00F3C8F8 /* FSBLESyncLogPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLESyncLogPacker.m; sourceTree = "<group>"; };
 		392B86AE1A9B4DEF00B9F32A /* FSBLECenteralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLECenteralService.h; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSBLECenteralService.h; sourceTree = "<group>"; };
 		392B86AF1A9B4DEF00B9F32A /* FSBLECenteralService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBLECenteralService.m; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSBLECenteralService.m; sourceTree = "<group>"; };
 		392B86B01A9B4DEF00B9F32A /* FSCentralClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCentralClient.h; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSCentralClient.h; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 			children = (
 				392B86C81A9B4E1D00B9F32A /* FSInitBLEPacker.h */,
 				392B86C91A9B4E1D00B9F32A /* FSInitBLEPacker.m */,
+				392A9CEA1A9C603C00F3C8F8 /* FSBLESyncLogPacker.h */,
+				392A9CEB1A9C603C00F3C8F8 /* FSBLESyncLogPacker.m */,
 				392B86CA1A9B4E1D00B9F32A /* FSPackerFactory.h */,
 				392B86CB1A9B4E1D00B9F32A /* FSPackerFactory.m */,
 				392B86CC1A9B4E1D00B9F32A /* FSPackerProtocol.h */,
@@ -332,6 +338,7 @@
 				39106CA41A83540E0076CD07 /* FSLog.h in Headers */,
 				392B86BA1A9B4DFC00B9F32A /* FSBLEPerpheralService.h in Headers */,
 				392B86CF1A9B4E1D00B9F32A /* FSPackerFactory.h in Headers */,
+				392A9CEC1A9C603C00F3C8F8 /* FSBLESyncLogPacker.h in Headers */,
 				392B86CD1A9B4E1D00B9F32A /* FSInitBLEPacker.h in Headers */,
 				392B86B21A9B4DEF00B9F32A /* FSBLECenteralService.h in Headers */,
 				392B86D11A9B4E1D00B9F32A /* FSPackerProtocol.h in Headers */,
@@ -497,6 +504,7 @@
 				392B86BB1A9B4DFC00B9F32A /* FSBLEPerpheralService.m in Sources */,
 				391C23281A8661430032EED5 /* FSBTProtocol.m in Sources */,
 				392B86B31A9B4DEF00B9F32A /* FSBLECenteralService.m in Sources */,
+				392A9CED1A9C603C00F3C8F8 /* FSBLESyncLogPacker.m in Sources */,
 				392B86C51A9B4E0C00B9F32A /* FSBLEUtilities.mm in Sources */,
 				39106CA81A8354700076CD07 /* FSLogManager.m in Sources */,
 				392B86D01A9B4E1D00B9F32A /* FSPackerFactory.m in Sources */,

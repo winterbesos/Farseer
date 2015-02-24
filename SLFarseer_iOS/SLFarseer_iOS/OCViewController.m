@@ -18,14 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(scheduleLog) userInfo:nil repeats:YES];
+}
 
-//    FSFatal(@"this is a fatal error [OC]");
+- (void)scheduleLog {
+    FSFatal(@"this is a fatal error [OC]");
 //    FSError(@"this is a error [OC]");
 //    FSWarning(@"this is a warning [OC]");
 //    FSLog(@"this is a log [OC]");
 //    FSMinor(@"this is a minor log [OC]");
-    
-    [FSBLEPerpheralService install];
 }
 
 - (void)didReceiveMemoryWarning {

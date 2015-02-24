@@ -19,6 +19,8 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+#import "FSBLEPerpheralService.h"
+
 static char FPRINT_OUT_FILE_PATH[64] = {0};
 static BOOL launched = false;
 
@@ -29,16 +31,19 @@ static BOOL launched = false;
 
 static void FS_LaunchCentral()
 {
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+    [FSBLEPerpheralService install];
+#else
     // get fasser document path
     char fullpath[256] = HOME_PATH;
     time_t t = time(0);
     const char *path = "/Documents/Farseer/Log/";
     strcat(fullpath, path);
-
+    
     char filename[64];
     strftime(filename, sizeof(filename), "log_%Y-%m-%d_%H%M%S.log", localtime(&t));
     strcat(fullpath, filename);
-
+    
     strcpy(FPRINT_OUT_FILE_PATH, fullpath);
     FILE *fp = fopen(FPRINT_OUT_FILE_PATH,"w");
     if (!fp)
@@ -46,17 +51,24 @@ static void FS_LaunchCentral()
         assert(false);
     }
     fclose(fp);
+#endif
     launched = true;
 }
 
 
 void FS_DebugLog(NSString *log, FSLogLevel level)
 {
-    
     if (!launched)
     {
         FS_LaunchCentral();
     }
+    
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+    static Byte logNumber = 0;
+    [FSBLEPerpheralService updateLogCharacteristicWithNumber:(Byte)logNumber date:[NSDate date] level:level content:log];
+    
+    logNumber ++;
+#elif TARGET_OS_MAC
     
     const char *cLog = [log cStringUsingEncoding:NSUTF8StringEncoding];
     char *prefix = NULL;
@@ -93,6 +105,8 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
     }
     fprintf(fp, "%s:%s\n", prefix, cLog);
     fclose(fp);
+    
+#endif
 }
 
 void FSPFatal(NSString *log) {

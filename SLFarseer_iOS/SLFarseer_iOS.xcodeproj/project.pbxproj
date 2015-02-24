@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392A9CE61A9C521B00F3C8F8 /* FSBLESyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392A9CE51A9C521B00F3C8F8 /* FSBLESyncLogPacker.m */; };
 		392B86D71A9B4E4D00B9F32A /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 392B86D41A9B4E4D00B9F32A /* FSBLEUtilities.mm */; };
 		392B86D81A9B4E4D00B9F32A /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 392B86D61A9B4E4D00B9F32A /* FSPackageIn.mm */; };
 		392B86DE1A9B4E5A00B9F32A /* FSInitBLEPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86DA1A9B4E5A00B9F32A /* FSInitBLEPacker.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		392A9CE41A9C521B00F3C8F8 /* FSBLESyncLogPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLESyncLogPacker.h; sourceTree = "<group>"; };
+		392A9CE51A9C521B00F3C8F8 /* FSBLESyncLogPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLESyncLogPacker.m; sourceTree = "<group>"; };
 		392B86D21A9B4E4D00B9F32A /* FSBLEDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLEDefine.h; path = ../../../SLFarseer/FSBLEClient/Component/FSBLEDefine.h; sourceTree = "<group>"; };
 		392B86D31A9B4E4D00B9F32A /* FSBLEUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLEUtilities.h; path = ../../../SLFarseer/FSBLEClient/Component/FSBLEUtilities.h; sourceTree = "<group>"; };
 		392B86D41A9B4E4D00B9F32A /* FSBLEUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FSBLEUtilities.mm; path = ../../../SLFarseer/FSBLEClient/Component/FSBLEUtilities.mm; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 			children = (
 				392B86D91A9B4E5A00B9F32A /* FSInitBLEPacker.h */,
 				392B86DA1A9B4E5A00B9F32A /* FSInitBLEPacker.m */,
+				392A9CE41A9C521B00F3C8F8 /* FSBLESyncLogPacker.h */,
+				392A9CE51A9C521B00F3C8F8 /* FSBLESyncLogPacker.m */,
 				392B86DB1A9B4E5A00B9F32A /* FSPackerFactory.h */,
 				392B86DC1A9B4E5A00B9F32A /* FSPackerFactory.m */,
 				392B86DD1A9B4E5A00B9F32A /* FSPackerProtocol.h */,
@@ -352,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392A9CE61A9C521B00F3C8F8 /* FSBLESyncLogPacker.m in Sources */,
 				398DE01A1A80C7760019BB12 /* FSLogManager.m in Sources */,
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
 				392B86DF1A9B4E5A00B9F32A /* FSPackerFactory.m in Sources */,

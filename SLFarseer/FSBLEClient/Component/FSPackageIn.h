@@ -15,6 +15,7 @@
 
 + (instancetype)decode:(NSData *)data;
 
+- (NSDate *)readDate;
 - (NSString *)readString;
 - (Byte)readByte;
 - (UInt16)readUInt16;
