@@ -10,18 +10,40 @@
 
 @interface LogViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *logTextView;
+
 @end
 
 @implementation LogViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)popGesture:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)insertLogWithLogNumber:(Byte)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
+    self.logTextView.text = [self.logTextView.text stringByAppendingString:[NSString stringWithFormat:@"%d %@ %d %@\n", logNumber, logDate, logLevel, content]];
 }
 
 /*

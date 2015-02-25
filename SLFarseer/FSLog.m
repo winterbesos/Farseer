@@ -31,7 +31,7 @@ static BOOL launched = false;
 
 static void FS_LaunchCentral()
 {
-#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR || 1
     [FSBLEPerpheralService install];
 #else
     // get fasser document path
@@ -63,9 +63,9 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
         FS_LaunchCentral();
     }
     
-#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR || 1
     static Byte logNumber = 0;
-    [FSBLEPerpheralService updateLogCharacteristicWithNumber:(Byte)logNumber date:[NSDate date] level:level content:log];
+    [FSBLEPerpheralService inputLogToCacheWithNumber:(Byte)logNumber date:[NSDate date] level:level content:log];
     
     logNumber ++;
 #elif TARGET_OS_MAC

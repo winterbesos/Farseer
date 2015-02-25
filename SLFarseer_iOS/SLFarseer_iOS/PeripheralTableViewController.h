@@ -10,4 +10,6 @@
 
 @interface PeripheralTableViewController : UITableViewController
 
+- (void)scanPeripheral;
+
 @end

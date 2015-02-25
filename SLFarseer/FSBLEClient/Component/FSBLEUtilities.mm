@@ -62,7 +62,7 @@
 
 + (NSData *)getLogDataWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
     struct PKG_HEADER header;
-    header.cmd = CMDCPLogging;
+    header.cmd = CMDRecLogging;
     header.currentPackage = 1;
     header.totalPackage = 1;
     header.sequId = 0;
@@ -74,6 +74,19 @@
     [logData appendBytes:&level length:sizeof(Byte)];
     [logData appendData:[self getDataWithPkgString:content]];
     
+    return logData;
+}
+
++ (NSData *)getReqLogWithNumber:(Byte)number {
+    struct PKG_HEADER header;
+    header.cmd = CMDReqLogging;
+    header.currentPackage = 1;
+    header.totalPackage = 1;
+    header.sequId = 0;
+    
+    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
+    [logData appendBytes:&number length:sizeof(Byte)];
+
     return logData;
 }
 

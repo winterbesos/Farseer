@@ -12,5 +12,6 @@
 
 + (NSData *)getPeripheralInfoData;
 + (NSData *)getLogDataWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
++ (NSData *)getReqLogWithNumber:(Byte)number;
 
 @end

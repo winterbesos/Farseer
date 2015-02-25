@@ -7,7 +7,12 @@
 //
 
 #import "FSPerpheralClient.h"
+#import "FSBLEPerpheralService.h"
 
 @implementation FSPerpheralClient
+
+- (void)recvSyncLogWithLogNumber:(Byte)logNum {
+    [FSBLEPerpheralService updateLogCharacteristicWithLogNum:logNum];
+}
 
 @end

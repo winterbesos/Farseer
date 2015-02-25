@@ -15,3 +15,13 @@
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client;
 
 @end
+
+@protocol FSBLEResDelegate <NSObject>
+
+- (void)recvSyncLogWithLogNumber:(Byte)logNum;
+
+@end
+
+@protocol FSBLEReqDelegate <NSObject>
+
+@end

@@ -10,4 +10,6 @@
 
 @interface LogViewController : UIViewController
 
+- (void)insertLogWithLogNumber:(Byte)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content ;
+
 @end

@@ -18,11 +18,13 @@ struct PKG_HEADER {
 
 typedef NS_ENUM(Byte, CMD) {
     CMDCPInit               = 0xa0,
-    CMDCPBeginReceiveLog    = 0xa1,
+//    CMDCPBeginReceiveLog    = 0xa1,
     CMDCPLoggingACK         = 0xa2,
     
     CMDPCInit               = 0xb0,
-    CMDCPLogging            = 0Xb1,
+    
+    CMDReqLogging            = 0xa1,
+    CMDRecLogging            = 0Xb1,
 };
 
 typedef NS_ENUM(Byte, BLEOSType) {

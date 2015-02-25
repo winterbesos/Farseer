@@ -12,6 +12,7 @@
 #import "FSPackerFactory.h"
 #import "FSPerpheralClient.h"
 #import "FSBLEUtilities.h"
+#import "FSBLELog.h"
 
 static NSString *kPeripheralInfoCharacteristicUUIDString = @"838D0104-C9B7-4B34-97B9-8213E24D5493";
 static NSString *kWriteLogCharacteristicUUIDString = @"622C6B76-5A52-48F7-8595-468F7B8DD11D";
@@ -27,21 +28,53 @@ static FSBLEPerpheralService *kBLEService = nil;
     FSPerpheralClient   *_client;
     CBCentral           *_central;
     CBMutableCharacteristic *_logCharacteristic;
+    
+    NSMutableDictionary      *_logDictionary;
+    Byte                     _waitingLogNumber;
 }
 
 + (void)install {
     if (!kBLEService) {
         kBLEService = [[FSBLEPerpheralService alloc] init];
         kBLEService->_manager = [[CBPeripheralManager alloc] initWithDelegate:kBLEService queue:nil];
+        kBLEService->_logDictionary = [NSMutableDictionary dictionary];
+        kBLEService->_client = [[FSPerpheralClient alloc] init];
     }
+}
+
++ (void)uninstall {
+    
 }
 
 #pragma mark - Business Logic
 
-+ (void)updateLogCharacteristicWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
+- (void)recvSyncLogWithLogNumber:(Byte)logNum {
+    FSBLELog *log = _logDictionary[@(logNum)];
+    if (log == nil) {
+        _waitingLogNumber = logNum;
+    }
+    NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
+    [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
+}
+
++ (void)inputLogToCacheWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
+    FSBLELog *log = [FSBLELog logWithNumber:number date:date level:level content:content];
+    [kBLEService->_logDictionary setObject:log forKey:@(number)];
+    
+    [self updateLogCharacteristicWithLogNum:kBLEService->_waitingLogNumber];
+}
+
++ (void)updateLogCharacteristicWithLogNum:(Byte)logNum {
     if (kBLEService->_central) {
-        NSData *logData = [FSBLEUtilities getLogDataWithNumber:number date:date level:level content:content];
-        [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
+        FSBLELog *log = kBLEService->_logDictionary[@(logNum)];
+        
+        if (!log) {
+            kBLEService->_waitingLogNumber = logNum;
+            return;
+        } else {
+            NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
+            [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
+        }
     }
 }
 
@@ -50,7 +83,6 @@ static FSBLEPerpheralService *kBLEService = nil;
 }
 
 - (void)setupService {
-    
     // 主Log通信服务
     CBUUID *cUUID = [CBUUID UUIDWithString:kWriteLogCharacteristicUUIDString];
     CBCharacteristicProperties properties = CBCharacteristicPropertyWriteWithoutResponse | CBCharacteristicPropertyNotify; // CBCharacteristicPropertyBroadcast |

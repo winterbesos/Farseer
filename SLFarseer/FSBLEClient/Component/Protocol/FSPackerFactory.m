@@ -9,7 +9,8 @@
 #import "FSPackerFactory.h"
 
 #import "FSInitBLEPacker.h"
-#import "FSBLESyncLogPacker.h"
+#import "FSBLEResSyncLogPacker.h"
+#import "FSBLEReqSyncLogPacker.h"
 
 @implementation FSPackerFactory
 
@@ -19,17 +20,17 @@
         case CMDCPInit:
             packerObj = [[FSInitBLEPacker alloc] init];
             break;
-        case CMDCPBeginReceiveLog:
-            
-            break;
         case CMDCPLoggingACK:
             
             break;
         case CMDPCInit:
             
             break;
-        case CMDCPLogging:
-            packerObj = [[FSBLESyncLogPacker alloc] init];
+        case CMDRecLogging:
+            packerObj = [[FSBLEResSyncLogPacker alloc] init];
+            break;
+        case CMDReqLogging:
+            packerObj = [[FSBLEReqSyncLogPacker alloc] init];
             break;
         default:
             break;
