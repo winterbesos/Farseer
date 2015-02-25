@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FSBLESyncLogPacker : NSObject
+@interface FSBLEResSyncLogPacker : NSObject
 
 @end

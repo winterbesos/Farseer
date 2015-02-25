@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Qeekers. All rights reserved.
 //
 
-#import "FSBLESyncLogPacker.h"
+#import "FSBLEResSyncLogPacker.h"
 #import "FSPackerProtocol.h"
 #import "FSPackageIn.h"
 #import "FSCentralClient.h"
 
-@implementation FSBLESyncLogPacker
+@implementation FSBLEResSyncLogPacker
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client {
     
