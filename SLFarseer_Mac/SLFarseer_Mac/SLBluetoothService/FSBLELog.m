@@ -19,4 +19,8 @@
     return log;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%d %@ %d %@", self.log_number, self.log_date, self.log_level, self.log_content];
+}
+
 @end

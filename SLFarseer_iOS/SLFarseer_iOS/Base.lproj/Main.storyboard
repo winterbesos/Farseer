@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -31,53 +31,59 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPa-ry-tdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="-439"/>
+            <point key="canvasLocation" x="1204" y="-152"/>
         </scene>
         <!--Log View Controller-->
-        <scene sceneID="raN-Fu-h2C">
+        <scene sceneID="PAG-S0-JQ5">
             <objects>
-                <viewController id="oiU-M7-hzR" customClass="LogViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a3Y-Qe-hzX"/>
-                        <viewControllerLayoutGuide type="bottom" id="87r-cc-ejr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EzJ-I8-R3V">
+                <tableViewController id="gCQ-21-WyB" customClass="LogViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="15" sectionHeaderHeight="1" sectionFooterHeight="22" id="Fep-gs-6Ur">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQo-kv-TAQ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="K9o-FD-KT2" appends="YES" id="hCZ-LX-SDm"/>
-                                </connections>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="vQo-kv-TAQ" secondAttribute="trailing" id="C4d-Zo-GFM"/>
-                            <constraint firstItem="vQo-kv-TAQ" firstAttribute="top" secondItem="EzJ-I8-R3V" secondAttribute="top" id="fNH-LY-bny"/>
-                            <constraint firstItem="87r-cc-ejr" firstAttribute="top" secondItem="vQo-kv-TAQ" secondAttribute="bottom" id="fiZ-8i-Khf"/>
-                            <constraint firstItem="vQo-kv-TAQ" firstAttribute="leading" secondItem="EzJ-I8-R3V" secondAttribute="leading" id="qLt-eq-2Cb"/>
-                        </constraints>
-                    </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="15" id="I7U-vA-bXm" customClass="LogTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I7U-vA-bXm" id="n7o-ob-m33">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nK1-3C-P2W">
+                                            <rect key="frame" x="15" y="-1" width="570" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="nK1-3C-P2W" secondAttribute="centerY" id="SUM-ox-nbn"/>
+                                        <constraint firstAttribute="trailing" secondItem="nK1-3C-P2W" secondAttribute="trailing" constant="15" id="VFz-Ax-d5P"/>
+                                        <constraint firstAttribute="centerX" secondItem="nK1-3C-P2W" secondAttribute="centerX" id="cEG-ME-7PN"/>
+                                        <constraint firstItem="nK1-3C-P2W" firstAttribute="leading" secondItem="n7o-ob-m33" secondAttribute="leading" constant="15" id="n6k-Qb-2UX"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textLabel.textColor">
+                                        <color key="value" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="logLabel" destination="nK1-3C-P2W" id="fs9-YO-T1B"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gCQ-21-WyB" id="ki0-eW-gAS"/>
+                            <outlet property="delegate" destination="gCQ-21-WyB" id="Zur-eJ-ohf"/>
+                        </connections>
+                    </tableView>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="logTextView" destination="vQo-kv-TAQ" id="oMB-Fl-DXF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j5x-bN-euo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="4" id="K9o-FD-KT2">
-                    <connections>
-                        <action selector="popGesture:" destination="oiU-M7-hzR" id="caa-fB-p5Q"/>
-                    </connections>
-                </tapGestureRecognizer>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="snC-lc-cLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469" y="223"/>
+            <point key="canvasLocation" x="757" y="595"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="60y-Iy-lDe">
@@ -128,7 +134,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="oiU-M7-hzR" kind="show" id="T8a-sN-FFR"/>
+                                    <segue destination="gCQ-21-WyB" kind="show" id="HZf-Uq-1kl"/>
                                 </connections>
                             </button>
                         </barButtonItem>

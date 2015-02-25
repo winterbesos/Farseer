@@ -25,6 +25,34 @@ static void *AssociatedObjectHandle;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"%s",__FUNCTION__);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self scanPeripheral];
+    NSLog(@"%s",__FUNCTION__);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"%s",__FUNCTION__);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self stopScanAndClearPeripheral];
+    NSLog(@"%s",__FUNCTION__);
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    NSLog(@"%s",__FUNCTION__);
 }
 
 #pragma mark - Private Method
@@ -45,6 +73,12 @@ static void *AssociatedObjectHandle;
         objc_setAssociatedObject(perpheral, &AssociatedObjectHandle, RSSI, OBJC_ASSOCIATION_RETAIN);
         [self.tableView reloadData];
     }];
+}
+
+- (void)stopScanAndClearPeripheral {
+    [FSBLECenteralService stopScan];
+    _peripheralsDataList = nil;
+    [self.tableView reloadData];                                                              
 }
 
 #pragma mark - UITableView Delegate and DataSource

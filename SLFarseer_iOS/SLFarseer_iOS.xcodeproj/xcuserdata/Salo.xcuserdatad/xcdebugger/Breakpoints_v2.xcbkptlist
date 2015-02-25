@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../SLFarseer/FSBLEClient/FSBLECentral/FSBLECenteralService.m"
-            timestampString = "446552481.742848"
+            timestampString = "446564115.518459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "+requLogWithLogNumber:"
             landmarkType = "5">
          </BreakpointContent>

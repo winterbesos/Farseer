@@ -12,6 +12,7 @@
 #import "LogViewController.h"
 #import "FSBLECenteralService.h"
 #import "PeripheralTableViewController.h"
+#import "FSBLELog.h"
 
 @interface OCViewController ()
 
@@ -22,25 +23,35 @@
 
 @implementation OCViewController {
     LogViewController *_logViewController;
+    
+    BOOL leftVCIsOpen;
+    BOOL leftVCIsAnimating;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [FSBLECenteralService installWithClient:self stateChangedCallback:^(CBCentralManagerState state) {
-        if (state == CBCentralManagerStatePoweredOn) {
-            [self.leftViewController scanPeripheral];
-        }
-    }];
+    [FSBLECenteralService installWithClient:self stateChangedCallback:nil];
+    
+    PeripheralTableViewController *leftVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PeripheralTableViewController"];
+    self.leftViewController = leftVC;
+    self.leftViewController.tableView.userInteractionEnabled = YES;
+    
+    [self addChildViewController:leftVC];
+    
+    [leftVC didMoveToParentViewController:self];
+    [leftVC.view setFrame:CGRectMake(-200, 0, 200, leftVC.view.frame.size.height)];
 }
 
 #pragma mark - Private Method
 
 - (void)showPeripheralTableView {
-    self.leftViewController.view.hidden = NO;
-//    [self.leftViewController beginAppearanceTransition:YES animated:YES];
-    
+    if (leftVCIsAnimating) {
+        return;
+    }
+    leftVCIsAnimating = YES;
     CGRect newFrame = CGRectMake(0, 0, 200, self.view.bounds.size.height);
+    [self.childControllerContainerView addSubview:self.leftViewController.view];
     
     [UIView
      animateWithDuration:(0.3)
@@ -50,12 +61,30 @@
          [self.leftViewController.view setFrame:newFrame];
      }
      completion:^(BOOL finished) {
-//         [self.leftViewController endAppearanceTransition];
+         leftVCIsAnimating = NO;
      }];
+    leftVCIsOpen = YES;
 }
 
 - (void)hidePeripheralTableView {
+    if (leftVCIsAnimating) {
+        return;
+    }
+    leftVCIsAnimating = YES;
+    CGRect newFrame = CGRectMake(-200, 0, 200, self.view.bounds.size.height);
     
+    [UIView
+     animateWithDuration:(0.3)
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseOut
+     animations:^{
+         [self.leftViewController.view setFrame:newFrame];
+     }
+     completion:^(BOOL finished) {
+         [self.leftViewController.view removeFromSuperview];
+         leftVCIsAnimating = NO;
+     }];
+    leftVCIsOpen = NO;
 }
 
 #pragma mark - BLE Client
@@ -65,36 +94,22 @@
 }
 
 - (void)recvSyncLogWithLogNumber:(Byte)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
-    [_logViewController insertLogWithLogNumber:logNumber logDate:logDate logLevel:logLevel content:content];
+    FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content];
+    [_logViewController insertLogWithLog:log];
     [FSBLECenteralService requLogWithLogNumber:(logNumber + 1)];
 }
 
 #pragma mark - Actions
 
 - (IBAction)peripheralListButtonAction:(id)sender {
-    [self showPeripheralTableView];
+    if (leftVCIsOpen) {
+        [self hidePeripheralTableView];
+    } else {
+        [self showPeripheralTableView];
+    }
 }
 
 #pragma mark - Property
-
-- (UIViewController *)leftViewController {
-    if (!_leftViewController) {
-        PeripheralTableViewController *leftVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PeripheralTableViewController"];
-        self.leftViewController = leftVC;
-        self.leftViewController.tableView.userInteractionEnabled = YES;
-        
-        [self addChildViewController:leftVC];
-        
-        [self.childControllerContainerView addSubview:leftVC.view];
-        [self.childControllerContainerView sendSubviewToBack:leftVC.view];
-        
-        [leftVC.view setHidden:YES];
-        [leftVC didMoveToParentViewController:self];
-        [leftVC.view setFrame:CGRectMake(-200, 0, 200, leftVC.view.frame.size.height)];
-    }
-    
-    return _leftViewController;
-}
 
 - (UIView *)childControllerContainerView {
     if (_childControllerContainerView == nil) {

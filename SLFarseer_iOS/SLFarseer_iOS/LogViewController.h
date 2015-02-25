@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LogViewController : UIViewController
+@class FSBLELog;
 
-- (void)insertLogWithLogNumber:(Byte)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content ;
+@interface LogViewController : UITableViewController
+
+- (void)insertLogWithLog:(FSBLELog *)log;
 
 @end

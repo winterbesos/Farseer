@@ -31,6 +31,7 @@
 		398DE01A1A80C7760019BB12 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0161A80C7760019BB12 /* FSLogManager.m */; };
 		398DE01D1A80C7B80019BB12 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */; };
 		398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* OCViewController.m */; };
+		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		398DE01E1A80C7F10019BB12 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
 		398DE01F1A80C7F10019BB12 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
+		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,8 @@
 				394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */,
 				3987802C1A9DAD7000D7397F /* LogViewController.h */,
 				3987802D1A9DAD7000D7397F /* LogViewController.m */,
+				39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */,
+				39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */,
 				398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */,
 				398DDFDA1A80C63D0019BB12 /* Main.storyboard */,
 				398DDFDD1A80C63D0019BB12 /* Images.xcassets */,
@@ -318,6 +323,7 @@
 				TargetAttributes = {
 					398DDFC91A80C63D0019BB12 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = DXZA325EJP;
 					};
 					398DDFE51A80C63D0019BB12 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -392,6 +398,7 @@
 				392B86DF1A9B4E5A00B9F32A /* FSPackerFactory.m in Sources */,
 				398DE01D1A80C7B80019BB12 /* SwiftViewController.swift in Sources */,
 				392B86E51A9B4E6800B9F32A /* FSPerpheralClient.m in Sources */,
+				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				3912EAC41A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m in Sources */,
 				392B86EB1A9B4E7200B9F32A /* FSCentralClient.m in Sources */,
 				392B86D71A9B4E4D00B9F32A /* FSBLEUtilities.mm in Sources */,
@@ -526,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -538,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

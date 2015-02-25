@@ -65,6 +65,10 @@ static FSBLECenteralService *service = nil;
     [service->_manager scanForPeripheralsWithServices:@[serviceUUID] options:@{}];
 }
 
++ (void)stopScan {
+    [service->_manager stopScan];
+}
+
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *perpheral))callback {
     service->connectPeripheralCallback = callback;
 }
