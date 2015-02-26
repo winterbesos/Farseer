@@ -64,7 +64,7 @@
     NSLog(@"%s: %d %@ %@ %@ %@", __FUNCTION__, osType, osVersion, deviceType, deviceName, bundleName);
 }
 
-- (void)recvSyncLogWithLogNumber:(Byte)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
+- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
     [_logViewController insertLogWithLogNumber:logNumber logDate:logDate logLevel:logLevel content:content];
     [FSBLECenteralService requLogWithLogNumber:(logNumber + 1)];
 }

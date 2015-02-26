@@ -30,7 +30,7 @@ static FSBLEPerpheralService *kBLEService = nil;
     CBMutableCharacteristic *_logCharacteristic;
     
     NSMutableDictionary      *_logDictionary;
-    Byte                     _waitingLogNumber;
+    UInt32                   _waitingLogNumber;
 }
 
 + (void)install {
@@ -48,7 +48,7 @@ static FSBLEPerpheralService *kBLEService = nil;
 
 #pragma mark - Business Logic
 
-- (void)recvSyncLogWithLogNumber:(Byte)logNum {
+- (void)recvSyncLogWithLogNumber:(UInt32)logNum {
     FSBLELog *log = _logDictionary[@(logNum)];
     if (log == nil) {
         _waitingLogNumber = logNum;
@@ -57,14 +57,14 @@ static FSBLEPerpheralService *kBLEService = nil;
     [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
 }
 
-+ (void)inputLogToCacheWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
++ (void)inputLogToCacheWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
     FSBLELog *log = [FSBLELog logWithNumber:number date:date level:level content:content];
     [kBLEService->_logDictionary setObject:log forKey:@(number)];
     
     [self updateLogCharacteristicWithLogNum:kBLEService->_waitingLogNumber];
 }
 
-+ (void)updateLogCharacteristicWithLogNum:(Byte)logNum {
++ (void)updateLogCharacteristicWithLogNum:(UInt32)logNum {
     if (kBLEService->_central) {
         FSBLELog *log = kBLEService->_logDictionary[@(logNum)];
         
@@ -73,6 +73,7 @@ static FSBLEPerpheralService *kBLEService = nil;
             return;
         } else {
             NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
+            NSLog(@"upload log number is : %d", log.log_number);
             [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
         }
     }

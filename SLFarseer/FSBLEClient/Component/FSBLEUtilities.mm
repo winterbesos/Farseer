@@ -60,7 +60,7 @@
     return pkgData;
 }
 
-+ (NSData *)getLogDataWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
++ (NSData *)getLogDataWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
     struct PKG_HEADER header;
     header.cmd = CMDRecLogging;
     header.currentPackage = 1;
@@ -69,7 +69,7 @@
 
     NSTimeInterval timeInterval = [date timeIntervalSinceReferenceDate];
     NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
-    [logData appendBytes:&number length:sizeof(Byte)];
+    [logData appendBytes:&number length:sizeof(number)];
     [logData appendBytes:&timeInterval length:sizeof(NSTimeInterval)];
     [logData appendBytes:&level length:sizeof(Byte)];
     [logData appendData:[self getDataWithPkgString:content]];
@@ -77,7 +77,7 @@
     return logData;
 }
 
-+ (NSData *)getReqLogWithNumber:(Byte)number {
++ (NSData *)getReqLogWithNumber:(UInt32)number {
     struct PKG_HEADER header;
     header.cmd = CMDReqLogging;
     header.currentPackage = 1;
@@ -85,7 +85,7 @@
     header.sequId = 0;
     
     NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
-    [logData appendBytes:&number length:sizeof(Byte)];
+    [logData appendBytes:&number length:sizeof(number)];
 
     return logData;
 }

@@ -10,7 +10,7 @@
 
 @implementation FSBLELog
 
-+ (FSBLELog *)logWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
++ (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
     FSBLELog *log = [[FSBLELog alloc] init];
     log->_log_number = number;
     log->_log_date = date;

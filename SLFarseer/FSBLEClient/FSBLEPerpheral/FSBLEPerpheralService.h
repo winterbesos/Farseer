@@ -16,7 +16,7 @@
 
 + (void)install;
 
-+ (void)updateLogCharacteristicWithLogNum:(Byte)logNum;
-+ (void)inputLogToCacheWithNumber:(Byte)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
++ (void)updateLogCharacteristicWithLogNum:(UInt32)logNum;
++ (void)inputLogToCacheWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
 
 @end

@@ -75,7 +75,7 @@ static FSBLECenteralService *service = nil;
 
 #pragma mark - 
 
-+ (void)requLogWithLogNumber:(Byte)logNum {
++ (void)requLogWithLogNumber:(UInt32)logNum {
     NSData *reqLogData = [FSBLEUtilities getReqLogWithNumber:logNum];
     for (CBService *ser in [service->_peripheral services]) {
         if ([ser.UUID.UUIDString isEqualToString:@"A7D38D3B-0D9C-4D3C-AC9F-46C5E608A316"]) {

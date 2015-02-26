@@ -11,7 +11,7 @@
 
 @implementation FSPerpheralClient
 
-- (void)recvSyncLogWithLogNumber:(Byte)logNum {
+- (void)recvSyncLogWithLogNumber:(UInt32)logNum {
     [FSBLEPerpheralService updateLogCharacteristicWithLogNum:logNum];
 }
 

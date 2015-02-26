@@ -64,8 +64,8 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
     }
     
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR || 1
-    static Byte logNumber = 0;
-    [FSBLEPerpheralService inputLogToCacheWithNumber:(Byte)logNumber date:[NSDate date] level:level content:log];
+    static UInt32 logNumber = 0;
+    [FSBLEPerpheralService inputLogToCacheWithNumber:logNumber date:[NSDate date] level:level content:log];
     
     logNumber ++;
 #elif TARGET_OS_MAC

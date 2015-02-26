@@ -15,7 +15,7 @@
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client {
     
-    Byte logNum = [packageIn readByte];
+    UInt32 logNum = [packageIn readUInt32];
     NSDate *logDate = [packageIn readDate];
     Byte logLevel = [packageIn readByte];
     NSString *content = [packageIn readString];

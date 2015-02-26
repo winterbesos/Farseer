@@ -14,7 +14,7 @@
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client {
     
-    Byte logNum = [packageIn readByte];
+    UInt32 logNum = [packageIn readUInt32];
     
     [client recvSyncLogWithLogNumber:logNum];
 }

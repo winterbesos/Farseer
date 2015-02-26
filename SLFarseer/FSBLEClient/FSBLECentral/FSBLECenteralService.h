@@ -20,6 +20,6 @@
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback;
 + (void)connectToPeripheral:(CBPeripheral *)peripheral;
 
-+ (void)requLogWithLogNumber:(Byte)logNum;
++ (void)requLogWithLogNumber:(UInt32)logNum;
 
 @end

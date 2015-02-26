@@ -18,7 +18,7 @@
 
 @protocol FSBLEResDelegate <NSObject>
 
-- (void)recvSyncLogWithLogNumber:(Byte)logNum;
+- (void)recvSyncLogWithLogNumber:(UInt32)logNum;
 
 @end
 
