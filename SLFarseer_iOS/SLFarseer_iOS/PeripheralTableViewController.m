@@ -25,12 +25,25 @@ static void *AssociatedObjectHandle;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _peripheralsDataList = [NSMutableArray array];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self scanPeripheral];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self stopScanAndClearPeripheral];
 }
 
 #pragma mark - Private Method
 
 - (void)scanPeripheral {
-    _peripheralsDataList = [NSMutableArray array];
     [FSBLECenteralService setConnectPeripheralCallback:^(CBPeripheral *perpheral) {
         [self.tableView reloadData];
     }];
@@ -45,6 +58,17 @@ static void *AssociatedObjectHandle;
         objc_setAssociatedObject(perpheral, &AssociatedObjectHandle, RSSI, OBJC_ASSOCIATION_RETAIN);
         [self.tableView reloadData];
     }];
+}
+
+- (void)stopScanAndClearPeripheral {
+    [FSBLECenteralService stopScan];
+    [self resetRSSI];
+}
+
+- (void)resetRSSI {
+    for (CBPeripheral *peripheral in _peripheralsDataList) {
+        objc_setAssociatedObject(peripheral, &AssociatedObjectHandle, @(-127), OBJC_ASSOCIATION_RETAIN);
+    }
 }
 
 #pragma mark - UITableView Delegate and DataSource
@@ -65,23 +89,29 @@ static void *AssociatedObjectHandle;
     
     NSNumber *RSSI = objc_getAssociatedObject(peripheral, &AssociatedObjectHandle);
     UIColor *stateColor = nil;
-    switch (peripheral.state) {
-        case CBPeripheralStateConnected:
-            stateColor = [UIColor greenColor];
-            break;
-        case CBPeripheralStateConnecting:
-            stateColor = [UIColor yellowColor];
-            break;
-        case CBPeripheralStateDisconnected:
-            stateColor = [UIColor redColor];
-            break;
-        default:
-            NSAssert(NO, @"错误的连接类型");
-            break;
+    if (RSSI.intValue == -127) {
+        stateColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    } else {
+        switch (peripheral.state) {
+            case CBPeripheralStateConnected:
+                stateColor = [UIColor greenColor];
+                break;
+            case CBPeripheralStateConnecting:
+                stateColor = [UIColor yellowColor];
+                break;
+            case CBPeripheralStateDisconnected:
+                stateColor = [UIColor redColor];
+                break;
+            default:
+                NSAssert(NO, @"错误的连接类型");
+                break;
+        }
     }
     
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.backgroundColor = stateColor;
-    cell.textLabel.text = [NSString stringWithFormat:@"RSSI:%@ Name:%@", RSSI, peripheral.name];
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ RSSI:%@", peripheral.name, RSSI];
     
     return cell;
 }

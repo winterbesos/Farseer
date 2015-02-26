@@ -7,18 +7,27 @@
 //
 
 #import "LogViewController.h"
+#import "LogTableViewCell.h"
+#import "FSBLELog.h"
 
 @interface LogViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextView *logTextView;
-
 @end
 
-@implementation LogViewController
+@implementation LogViewController {
+    NSMutableArray *_logList;
+}
+
+- (void)awakeFromNib {
+    _logList = [NSMutableArray array];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTableView:)];
+    [tapGesture setNumberOfTapsRequired:2];
+    [self.tableView addGestureRecognizer:tapGesture];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,27 +42,33 @@
     self.navigationController.navigationBarHidden = NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Public Method
+
+- (void)insertLogWithLog:(FSBLELog *)log {
+    [_logList addObject:log];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (IBAction)popGesture:(id)sender {
+#pragma mark - Actions
+
+- (void)tapTableView:(UITapGestureRecognizer *)tap {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)insertLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
-    self.logTextView.text = [self.logTextView.text stringByAppendingString:[NSString stringWithFormat:@"%d %@ %d %@\n", logNumber, logDate, logLevel, content]];
+#pragma mark - UITableView Delegate and DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _logList.count;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogCell" forIndexPath:indexPath];
+    [cell setLog:_logList[indexPath.row]];
+    return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [LogTableViewCell calculateCellHeightWithLog:_logList[indexPath.row]];
+}
 
 @end

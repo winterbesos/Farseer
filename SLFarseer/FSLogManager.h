@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class FSBLELog;
+
 @interface FSLogManager : NSObject
+
++ (void)inputLog:(FSBLELog *)log toFile:(const char *)filePath;
 
 @end

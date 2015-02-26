@@ -61,8 +61,12 @@ static FSBLECenteralService *service = nil;
 
 + (void)scanDidDisconvered:(void(^)(CBPeripheral *perpheral, NSNumber *RSSI))callback {
     service->didDisconveredCallback = callback;
-    CBUUID *serviceUUID = [CBUUID UUIDWithString:@"A7D38D3B-0D9C-4D3C-AC9F-46C5E608A316"];
+    CBUUID *serviceUUID = [CBUUID UUIDWithString:kServiceUUIDString];
     [service->_manager scanForPeripheralsWithServices:@[serviceUUID] options:@{}];
+}
+
++ (void)stopScan {
+    [service->_manager stopScan];
 }
 
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *perpheral))callback {
@@ -78,9 +82,9 @@ static FSBLECenteralService *service = nil;
 + (void)requLogWithLogNumber:(UInt32)logNum {
     NSData *reqLogData = [FSBLEUtilities getReqLogWithNumber:logNum];
     for (CBService *ser in [service->_peripheral services]) {
-        if ([ser.UUID.UUIDString isEqualToString:@"A7D38D3B-0D9C-4D3C-AC9F-46C5E608A316"]) {
+        if ([ser.UUID.UUIDString isEqualToString:kServiceUUIDString]) {
             for (CBCharacteristic *characteristic in ser.characteristics) {
-                if ([characteristic.UUID.UUIDString isEqualToString:@"622C6B76-5A52-48F7-8595-468F7B8DD11D"]) {
+                if ([characteristic.UUID.UUIDString isEqualToString:kWriteLogCharacteristicUUIDString]) {
                     [service->_peripheral writeValue:reqLogData forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
                     break;
                 }
@@ -142,35 +146,11 @@ static FSBLECenteralService *service = nil;
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
+    Byte cmd;
+    [characteristic.value getBytes:&cmd length:sizeof(cmd)];
     
-    if ([characteristic.UUID.UUIDString isEqualToString:@"838D0104-C9B7-4B34-97B9-8213E24D5493"]) {
-        Byte cmd;
-        [characteristic.value getBytes:&cmd length:sizeof(cmd)];
-        
-        FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
-        [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client];
-        
-        for (CBService *service in [peripheral services]) {
-            if ([service.UUID.UUIDString isEqualToString:@"A7D38D3B-0D9C-4D3C-AC9F-46C5E608A316"]) {
-                for (CBCharacteristic *characteristic in service.characteristics) {
-                    if ([characteristic.UUID.UUIDString isEqualToString:@"622C6B76-5A52-48F7-8595-468F7B8DD11D"]) {
-                        [FSBLECenteralService requLogWithLogNumber:0];
-                        break;
-                    }
-                }
-                
-                break;
-            }
-        }
-    }
-    
-    if ([characteristic.UUID.UUIDString isEqualToString:@"622C6B76-5A52-48F7-8595-468F7B8DD11D"]) {
-        Byte cmd;
-        [characteristic.value getBytes:&cmd length:sizeof(cmd)];
-        
-        FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
-        [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client];
-    }
+    FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
+    [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
@@ -204,12 +184,12 @@ static FSBLECenteralService *service = nil;
     for (CBCharacteristic *characteristic in service.characteristics) {
         NSLog(@"disconverd in service: %@ characteristic: %@", service.UUID, characteristic.UUID);
         
-        if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:@"622C6B76-5A52-48F7-8595-468F7B8DD11D"]) {
+        if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteLogCharacteristicUUIDString]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
             NSLog(@"discovered log characteristic");
         }
         
-        if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:@"838D0104-C9B7-4B34-97B9-8213E24D5493"]) {
+        if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kPeripheralInfoCharacteristicUUIDString]) {
             [peripheral readValueForCharacteristic:characteristic];
             NSLog(@"read value in char: %@", characteristic.UUID.UUIDString);
         }

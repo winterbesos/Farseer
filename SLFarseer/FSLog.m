@@ -18,58 +18,57 @@
 #include <pwd.h>
 #include <sys/types.h>
 #include <dirent.h>
+#import "FSLogManager.h"
+#import "FSBLELog.h"
 
-#import "FSBLEPerpheralService.h"
+static char FPRINT_OUT_FILE_PATH[512] = {0};
 
-static char FPRINT_OUT_FILE_PATH[64] = {0};
-static BOOL launched = false;
-
-// console level config
-#define SLCONSOLE_LEVEL Error
-#define HOME_PATH       "/Users/Salo"
-
-
-static void FS_LaunchCentral()
-{
-#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR || 1
-    [FSBLEPerpheralService install];
-#else
-    // get fasser document path
-    char fullpath[256] = HOME_PATH;
-    time_t t = time(0);
-    const char *path = "/Documents/Farseer/Log/";
-    strcat(fullpath, path);
-    
-    char filename[64];
-    strftime(filename, sizeof(filename), "log_%Y-%m-%d_%H%M%S.log", localtime(&t));
-    strcat(fullpath, filename);
-    
-    strcpy(FPRINT_OUT_FILE_PATH, fullpath);
-    FILE *fp = fopen(FPRINT_OUT_FILE_PATH,"w");
-    if (!fp)
-    {
-        assert(false);
-    }
-    fclose(fp);
+static const char * dataPath() {
+#if TARGET_OS_IPHONE
+    NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *dataPath = [pathList objectAtIndex:0];
+#elif TARGET_OS_MAC
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
+    NSString *dataPath = [path stringByAppendingPathComponent:bundleId]; // 相当于IOS的 documentpath
 #endif
-    launched = true;
+    return [dataPath cStringUsingEncoding:NSUTF8StringEncoding];
+}
+
+static void FS_LaunchCentralIfNeed()
+{
+    static BOOL launched = false;
+    if (!launched)
+    {
+        // get fasser document path
+        char fullpath[256] = {0};
+        strcpy(fullpath, dataPath());
+        
+        char filename[64];
+        time_t t = time(0);
+        strftime(filename, sizeof(filename), "/Farseer/Log/log_%Y-%m-%d_%H%M%S.log", localtime(&t));
+        strcat(fullpath, filename);
+        
+        strcpy(FPRINT_OUT_FILE_PATH, fullpath);
+        FILE *fp = fopen(FPRINT_OUT_FILE_PATH,"w");
+        if (!fp)
+        {
+            assert(false);
+        }
+        fclose(fp);
+
+        launched = true;
+    }
 }
 
 
 void FS_DebugLog(NSString *log, FSLogLevel level)
 {
-    if (!launched)
-    {
-        FS_LaunchCentral();
-    }
+    FS_LaunchCentralIfNeed();
     
-#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR || 1
-    static UInt32 logNumber = 0;
-    [FSBLEPerpheralService inputLogToCacheWithNumber:logNumber date:[NSDate date] level:level content:log];
+    [FSLogManager inputLog:[FSBLELog createLogWithLevel:level content:log] toFile:FPRINT_OUT_FILE_PATH];
     
-    logNumber ++;
-#elif TARGET_OS_MAC
-    
+#ifdef DEBUG
     const char *cLog = [log cStringUsingEncoding:NSUTF8StringEncoding];
     char *prefix = NULL;
     switch (level) {
@@ -92,20 +91,11 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
             assert(false);
             break;
     }
-
-    if (level >= Error)
+    
+    if (level >= SLCONSOLE_LEVEL)
     {
         printf("%s:%s\n", prefix, cLog);
     }
-
-    FILE    *fp = fopen(FPRINT_OUT_FILE_PATH, "a");
-    if (!fp)
-    {
-        assert(false);
-    }
-    fprintf(fp, "%s:%s\n", prefix, cLog);
-    fclose(fp);
-    
 #endif
 }
 

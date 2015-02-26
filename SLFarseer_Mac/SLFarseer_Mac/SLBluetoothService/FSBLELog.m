@@ -8,6 +8,8 @@
 
 #import "FSBLELog.h"
 
+static UInt32 logNumber = 0;
+
 @implementation FSBLELog
 
 + (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
@@ -17,6 +19,21 @@
     log->_log_level = level;
     log->_log_content = content;
     return log;
+}
+
++ (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content {
+    FSBLELog *log = [[FSBLELog alloc] init];
+    log->_log_number = logNumber;
+    log->_log_date = [NSDate date];
+    log->_log_level = level;
+    log->_log_content = content;
+    
+    logNumber ++;
+    return log;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%u %@ %d %@", self.log_number, self.log_date, self.log_level, self.log_content];
 }
 
 @end

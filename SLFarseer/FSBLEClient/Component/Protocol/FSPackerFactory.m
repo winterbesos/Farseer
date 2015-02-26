@@ -20,12 +20,6 @@
         case CMDCPInit:
             packerObj = [[FSInitBLEPacker alloc] init];
             break;
-        case CMDCPLoggingACK:
-            
-            break;
-        case CMDPCInit:
-            
-            break;
         case CMDRecLogging:
             packerObj = [[FSBLEResSyncLogPacker alloc] init];
             break;

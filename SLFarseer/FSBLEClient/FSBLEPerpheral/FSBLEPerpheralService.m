@@ -14,9 +14,6 @@
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
 
-static NSString *kPeripheralInfoCharacteristicUUIDString = @"838D0104-C9B7-4B34-97B9-8213E24D5493";
-static NSString *kWriteLogCharacteristicUUIDString = @"622C6B76-5A52-48F7-8595-468F7B8DD11D";
-static NSString *kServiceUUIDString = @"A7D38D3B-0D9C-4D3C-AC9F-46C5E608A316";
 static FSBLEPerpheralService *kBLEService = nil;
 
 @interface FSBLEPerpheralService () <CBPeripheralManagerDelegate>
@@ -24,13 +21,13 @@ static FSBLEPerpheralService *kBLEService = nil;
 @end
 
 @implementation FSBLEPerpheralService {
-    CBPeripheralManager *_manager;
-    FSPerpheralClient   *_client;
-    CBCentral           *_central;
-    CBMutableCharacteristic *_logCharacteristic;
+    CBPeripheralManager         *_manager;
+    FSPerpheralClient           *_client;
+    CBCentral                   *_central;
+    CBMutableCharacteristic     *_logCharacteristic;
     
-    NSMutableDictionary      *_logDictionary;
-    UInt32                   _waitingLogNumber;
+    NSMutableDictionary         *_logDictionary;
+    UInt32                      _waitingLogNumber;
 }
 
 + (void)install {
@@ -39,11 +36,12 @@ static FSBLEPerpheralService *kBLEService = nil;
         kBLEService->_manager = [[CBPeripheralManager alloc] initWithDelegate:kBLEService queue:nil];
         kBLEService->_logDictionary = [NSMutableDictionary dictionary];
         kBLEService->_client = [[FSPerpheralClient alloc] init];
+        kBLEService->_waitingLogNumber = -1;
     }
 }
 
 + (void)uninstall {
-    
+    kBLEService = nil;
 }
 
 #pragma mark - Business Logic
@@ -68,12 +66,17 @@ static FSBLEPerpheralService *kBLEService = nil;
     if (kBLEService->_central) {
         FSBLELog *log = kBLEService->_logDictionary[@(logNum)];
         
+        if (logNum == -1) {
+            return;
+        } else {
+            kBLEService->_waitingLogNumber = -1;
+        }
+        
         if (!log) {
             kBLEService->_waitingLogNumber = logNum;
             return;
         } else {
             NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
-            NSLog(@"upload log number is : %d", log.log_number);
             [kBLEService->_manager updateValue:logData forCharacteristic:kBLEService->_logCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
         }
     }

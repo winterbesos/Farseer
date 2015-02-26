@@ -7,17 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3912EAC41A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3912EAC31A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m */; };
-		3912EAC81A9DC75F00718F9A /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3912EAC71A9DC75F00718F9A /* FSBLELog.m */; };
-		392A9CE61A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392A9CE51A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m */; };
-		392B86D71A9B4E4D00B9F32A /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 392B86D41A9B4E4D00B9F32A /* FSBLEUtilities.mm */; };
-		392B86D81A9B4E4D00B9F32A /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 392B86D61A9B4E4D00B9F32A /* FSPackageIn.mm */; };
-		392B86DE1A9B4E5A00B9F32A /* FSInitBLEPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86DA1A9B4E5A00B9F32A /* FSInitBLEPacker.m */; };
-		392B86DF1A9B4E5A00B9F32A /* FSPackerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86DC1A9B4E5A00B9F32A /* FSPackerFactory.m */; };
-		392B86E41A9B4E6800B9F32A /* FSBLEPerpheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E11A9B4E6800B9F32A /* FSBLEPerpheralService.m */; };
-		392B86E51A9B4E6800B9F32A /* FSPerpheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E31A9B4E6800B9F32A /* FSPerpheralClient.m */; };
-		392B86EA1A9B4E7200B9F32A /* FSBLECenteralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E71A9B4E7200B9F32A /* FSBLECenteralService.m */; };
-		392B86EB1A9B4E7200B9F32A /* FSCentralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E91A9B4E7200B9F32A /* FSCentralClient.m */; };
 		394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */; };
 		3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3987802D1A9DAD7000D7397F /* LogViewController.m */; };
 		398DDFD01A80C63D0019BB12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFCF1A80C63D0019BB12 /* main.m */; };
@@ -26,11 +15,27 @@
 		398DDFDE1A80C63D0019BB12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDD1A80C63D0019BB12 /* Images.xcassets */; };
 		398DDFE11A80C63D0019BB12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDF1A80C63D0019BB12 /* LaunchScreen.xib */; };
 		398DDFED1A80C63D0019BB12 /* SLFarseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */; };
-		398DE0181A80C7760019BB12 /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0121A80C7760019BB12 /* FSDebugCentral.m */; };
-		398DE0191A80C7760019BB12 /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0141A80C7760019BB12 /* FSLog.m */; };
-		398DE01A1A80C7760019BB12 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0161A80C7760019BB12 /* FSLogManager.m */; };
-		398DE01D1A80C7B80019BB12 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */; };
 		398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* OCViewController.m */; };
+		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
+		39EC515A1A9EF253004D5484 /* SLFarseer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39EC51591A9EF253004D5484 /* SLFarseer.h */; };
+		39EC515C1A9EF253004D5484 /* SLFarseer.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EC515B1A9EF253004D5484 /* SLFarseer.m */; };
+		39EC51621A9EF253004D5484 /* libSLFarseer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EC51571A9EF253004D5484 /* libSLFarseer.a */; };
+		39EC516E1A9EF2DE004D5484 /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0121A80C7760019BB12 /* FSDebugCentral.m */; };
+		39EC516F1A9EF2DE004D5484 /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0141A80C7760019BB12 /* FSLog.m */; };
+		39EC51701A9EF2DE004D5484 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE0161A80C7760019BB12 /* FSLogManager.m */; };
+		39EC51711A9EF2FD004D5484 /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3912EAC71A9DC75F00718F9A /* FSBLELog.m */; };
+		39EC51721A9EF2FD004D5484 /* FSBLELogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EC51361A9EC454004D5484 /* FSBLELogInfo.m */; };
+		39EC51731A9EF2FD004D5484 /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 392B86D41A9B4E4D00B9F32A /* FSBLEUtilities.mm */; };
+		39EC51741A9EF2FD004D5484 /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 392B86D61A9B4E4D00B9F32A /* FSPackageIn.mm */; };
+		39EC51751A9EF2FD004D5484 /* FSInitBLEPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86DA1A9B4E5A00B9F32A /* FSInitBLEPacker.m */; };
+		39EC51761A9EF2FD004D5484 /* FSBLEResSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392A9CE51A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m */; };
+		39EC51771A9EF2FD004D5484 /* FSBLEReqSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3912EAC31A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m */; };
+		39EC51781A9EF2FD004D5484 /* FSPackerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86DC1A9B4E5A00B9F32A /* FSPackerFactory.m */; };
+		39EC51791A9EF2FD004D5484 /* FSBLEPerpheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E11A9B4E6800B9F32A /* FSBLEPerpheralService.m */; };
+		39EC517A1A9EF2FD004D5484 /* FSPerpheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E31A9B4E6800B9F32A /* FSPerpheralClient.m */; };
+		39EC517B1A9EF2FD004D5484 /* FSBLECenteralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E71A9B4E7200B9F32A /* FSBLECenteralService.m */; };
+		39EC517C1A9EF2FD004D5484 /* FSCentralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E91A9B4E7200B9F32A /* FSCentralClient.m */; };
+		39EC517D1A9EF340004D5484 /* libSLFarseer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EC51571A9EF253004D5484 /* libSLFarseer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +46,27 @@
 			remoteGlobalIDString = 398DDFC91A80C63D0019BB12;
 			remoteInfo = SLFarseer_iOS;
 		};
+		39EC51631A9EF253004D5484 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39EC51561A9EF253004D5484;
+			remoteInfo = SLFarseer;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		39EC51551A9EF253004D5484 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				39EC515A1A9EF253004D5484 /* SLFarseer.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3912EAC21A9DC4C200718F9A /* FSBLEReqSyncLogPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEReqSyncLogPacker.h; sourceTree = "<group>"; };
@@ -83,16 +108,24 @@
 		398DDFE61A80C63D0019BB12 /* SLFarseer_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseer_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		398DDFEB1A80C63D0019BB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseer_iOSTests.m; sourceTree = "<group>"; };
-		398DE0111A80C7760019BB12 /* FSDebugCentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDebugCentral.h; sourceTree = "<group>"; };
-		398DE0121A80C7760019BB12 /* FSDebugCentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDebugCentral.m; sourceTree = "<group>"; };
-		398DE0131A80C7760019BB12 /* FSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLog.h; sourceTree = "<group>"; };
-		398DE0141A80C7760019BB12 /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLog.m; sourceTree = "<group>"; };
-		398DE0151A80C7760019BB12 /* FSLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLogManager.h; sourceTree = "<group>"; };
-		398DE0161A80C7760019BB12 /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLogManager.m; sourceTree = "<group>"; };
-		398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
+		398DE0111A80C7760019BB12 /* FSDebugCentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDebugCentral.h; path = ../../SLFarseer/FSDebugCentral.h; sourceTree = "<group>"; };
+		398DE0121A80C7760019BB12 /* FSDebugCentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDebugCentral.m; path = ../../SLFarseer/FSDebugCentral.m; sourceTree = "<group>"; };
+		398DE0131A80C7760019BB12 /* FSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLog.h; path = ../../SLFarseer/FSLog.h; sourceTree = "<group>"; };
+		398DE0141A80C7760019BB12 /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLog.m; path = ../../SLFarseer/FSLog.m; sourceTree = "<group>"; };
+		398DE0151A80C7760019BB12 /* FSLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLogManager.h; path = ../../SLFarseer/FSLogManager.h; sourceTree = "<group>"; };
+		398DE0161A80C7760019BB12 /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLogManager.m; path = ../../SLFarseer/FSLogManager.m; sourceTree = "<group>"; };
 		398DE01E1A80C7F10019BB12 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
 		398DE01F1A80C7F10019BB12 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
+		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
+		39EC51351A9EC454004D5484 /* FSBLELogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLELogInfo.h; sourceTree = "<group>"; };
+		39EC51361A9EC454004D5484 /* FSBLELogInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLELogInfo.m; sourceTree = "<group>"; };
+		39EC51571A9EF253004D5484 /* libSLFarseer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSLFarseer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		39EC51591A9EF253004D5484 /* SLFarseer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLFarseer.h; sourceTree = "<group>"; };
+		39EC515B1A9EF253004D5484 /* SLFarseer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseer.m; sourceTree = "<group>"; };
+		39EC51611A9EF253004D5484 /* SLFarseerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39EC51671A9EF253004D5484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39EC517D1A9EF340004D5484 /* libSLFarseer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +141,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39EC51541A9EF253004D5484 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39EC515E1A9EF253004D5484 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39EC51621A9EF253004D5484 /* libSLFarseer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +167,8 @@
 			children = (
 				3912EAC61A9DC75F00718F9A /* FSBLELog.h */,
 				3912EAC71A9DC75F00718F9A /* FSBLELog.m */,
+				39EC51351A9EC454004D5484 /* FSBLELogInfo.h */,
+				39EC51361A9EC454004D5484 /* FSBLELogInfo.m */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -155,7 +206,7 @@
 				39428A981A9B4C6300C48E9A /* FSBLECentral */,
 			);
 			name = SLBluetoothService;
-			path = ../SLFarseer_Mac/SLFarseer_Mac/SLBluetoothService;
+			path = ../../SLFarseer_Mac/SLFarseer_Mac/SLBluetoothService;
 			sourceTree = "<group>";
 		};
 		39436F161A9AB419006B0E70 /* FSBLEPerpheral */ = {
@@ -192,6 +243,8 @@
 			children = (
 				398DDFCC1A80C63D0019BB12 /* SLFarseer_iOS */,
 				398DDFE91A80C63D0019BB12 /* SLFarseer_iOSTests */,
+				39EC51581A9EF253004D5484 /* SLFarseer */,
+				39EC51651A9EF253004D5484 /* SLFarseerTests */,
 				398DDFCB1A80C63D0019BB12 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -201,6 +254,8 @@
 			children = (
 				398DDFCA1A80C63D0019BB12 /* SLFarseer_iOS.app */,
 				398DDFE61A80C63D0019BB12 /* SLFarseer_iOSTests.xctest */,
+				39EC51571A9EF253004D5484 /* libSLFarseer.a */,
+				39EC51611A9EF253004D5484 /* SLFarseerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,7 +263,6 @@
 		398DDFCC1A80C63D0019BB12 /* SLFarseer_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				398DE0101A80C7760019BB12 /* SLFarseer */,
 				398DDFD11A80C63D0019BB12 /* AppDelegate.h */,
 				398DDFD21A80C63D0019BB12 /* AppDelegate.m */,
 				398DE01E1A80C7F10019BB12 /* OCViewController.h */,
@@ -217,7 +271,8 @@
 				394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */,
 				3987802C1A9DAD7000D7397F /* LogViewController.h */,
 				3987802D1A9DAD7000D7397F /* LogViewController.m */,
-				398DE01C1A80C7B80019BB12 /* SwiftViewController.swift */,
+				39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */,
+				39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */,
 				398DDFDA1A80C63D0019BB12 /* Main.storyboard */,
 				398DDFDD1A80C63D0019BB12 /* Images.xcassets */,
 				398DDFDF1A80C63D0019BB12 /* LaunchScreen.xib */,
@@ -253,9 +308,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		398DE0101A80C7760019BB12 /* SLFarseer */ = {
+		39EC51581A9EF253004D5484 /* SLFarseer */ = {
 			isa = PBXGroup;
 			children = (
+				39EC51591A9EF253004D5484 /* SLFarseer.h */,
+				39EC515B1A9EF253004D5484 /* SLFarseer.m */,
 				398DE0111A80C7760019BB12 /* FSDebugCentral.h */,
 				398DE0121A80C7760019BB12 /* FSDebugCentral.m */,
 				398DE0131A80C7760019BB12 /* FSLog.h */,
@@ -264,8 +321,23 @@
 				398DE0161A80C7760019BB12 /* FSLogManager.m */,
 				39436F131A9AB419006B0E70 /* SLBluetoothService */,
 			);
-			name = SLFarseer;
-			path = ../../SLFarseer;
+			path = SLFarseer;
+			sourceTree = "<group>";
+		};
+		39EC51651A9EF253004D5484 /* SLFarseerTests */ = {
+			isa = PBXGroup;
+			children = (
+				39EC51661A9EF253004D5484 /* Supporting Files */,
+			);
+			path = SLFarseerTests;
+			sourceTree = "<group>";
+		};
+		39EC51661A9EF253004D5484 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39EC51671A9EF253004D5484 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +379,41 @@
 			productReference = 398DDFE61A80C63D0019BB12 /* SLFarseer_iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		39EC51561A9EF253004D5484 /* SLFarseer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39EC51681A9EF253004D5484 /* Build configuration list for PBXNativeTarget "SLFarseer" */;
+			buildPhases = (
+				39EC51531A9EF253004D5484 /* Sources */,
+				39EC51541A9EF253004D5484 /* Frameworks */,
+				39EC51551A9EF253004D5484 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SLFarseer;
+			productName = SLFarseer;
+			productReference = 39EC51571A9EF253004D5484 /* libSLFarseer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		39EC51601A9EF253004D5484 /* SLFarseerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39EC516B1A9EF253004D5484 /* Build configuration list for PBXNativeTarget "SLFarseerTests" */;
+			buildPhases = (
+				39EC515D1A9EF253004D5484 /* Sources */,
+				39EC515E1A9EF253004D5484 /* Frameworks */,
+				39EC515F1A9EF253004D5484 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39EC51641A9EF253004D5484 /* PBXTargetDependency */,
+			);
+			name = SLFarseerTests;
+			productName = SLFarseerTests;
+			productReference = 39EC51611A9EF253004D5484 /* SLFarseerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -318,10 +425,17 @@
 				TargetAttributes = {
 					398DDFC91A80C63D0019BB12 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = DXZA325EJP;
 					};
 					398DDFE51A80C63D0019BB12 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 398DDFC91A80C63D0019BB12;
+					};
+					39EC51561A9EF253004D5484 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					39EC51601A9EF253004D5484 = {
+						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
 			};
@@ -340,6 +454,8 @@
 			targets = (
 				398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */,
 				398DDFE51A80C63D0019BB12 /* SLFarseer_iOSTests */,
+				39EC51561A9EF253004D5484 /* SLFarseer */,
+				39EC51601A9EF253004D5484 /* SLFarseerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -356,6 +472,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		398DDFE41A80C63D0019BB12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39EC515F1A9EF253004D5484 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -385,26 +508,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				392A9CE61A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m in Sources */,
-				398DE01A1A80C7760019BB12 /* FSLogManager.m in Sources */,
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
-				3912EAC81A9DC75F00718F9A /* FSBLELog.m in Sources */,
-				392B86DF1A9B4E5A00B9F32A /* FSPackerFactory.m in Sources */,
-				398DE01D1A80C7B80019BB12 /* SwiftViewController.swift in Sources */,
-				392B86E51A9B4E6800B9F32A /* FSPerpheralClient.m in Sources */,
-				3912EAC41A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m in Sources */,
-				392B86EB1A9B4E7200B9F32A /* FSCentralClient.m in Sources */,
-				392B86D71A9B4E4D00B9F32A /* FSBLEUtilities.mm in Sources */,
+				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
-				392B86E41A9B4E6800B9F32A /* FSBLEPerpheralService.m in Sources */,
-				392B86D81A9B4E4D00B9F32A /* FSPackageIn.mm in Sources */,
 				3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */,
-				392B86DE1A9B4E5A00B9F32A /* FSInitBLEPacker.m in Sources */,
 				398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */,
 				394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */,
-				398DE0191A80C7760019BB12 /* FSLog.m in Sources */,
-				392B86EA1A9B4E7200B9F32A /* FSBLECenteralService.m in Sources */,
-				398DE0181A80C7760019BB12 /* FSDebugCentral.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +525,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39EC51531A9EF253004D5484 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39EC516F1A9EF2DE004D5484 /* FSLog.m in Sources */,
+				39EC517A1A9EF2FD004D5484 /* FSPerpheralClient.m in Sources */,
+				39EC516E1A9EF2DE004D5484 /* FSDebugCentral.m in Sources */,
+				39EC51741A9EF2FD004D5484 /* FSPackageIn.mm in Sources */,
+				39EC51761A9EF2FD004D5484 /* FSBLEResSyncLogPacker.m in Sources */,
+				39EC51751A9EF2FD004D5484 /* FSInitBLEPacker.m in Sources */,
+				39EC51771A9EF2FD004D5484 /* FSBLEReqSyncLogPacker.m in Sources */,
+				39EC517B1A9EF2FD004D5484 /* FSBLECenteralService.m in Sources */,
+				39EC515C1A9EF253004D5484 /* SLFarseer.m in Sources */,
+				39EC51731A9EF2FD004D5484 /* FSBLEUtilities.mm in Sources */,
+				39EC51711A9EF2FD004D5484 /* FSBLELog.m in Sources */,
+				39EC51701A9EF2DE004D5484 /* FSLogManager.m in Sources */,
+				39EC51791A9EF2FD004D5484 /* FSBLEPerpheralService.m in Sources */,
+				39EC517C1A9EF2FD004D5484 /* FSCentralClient.m in Sources */,
+				39EC51721A9EF2FD004D5484 /* FSBLELogInfo.m in Sources */,
+				39EC51781A9EF2FD004D5484 /* FSPackerFactory.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39EC515D1A9EF253004D5484 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -423,6 +562,11 @@
 			isa = PBXTargetDependency;
 			target = 398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */;
 			targetProxy = 398DDFE71A80C63D0019BB12 /* PBXContainerItemProxy */;
+		};
+		39EC51641A9EF253004D5484 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39EC51561A9EF253004D5484 /* SLFarseer */;
+			targetProxy = 39EC51631A9EF253004D5484 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -526,8 +670,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -538,8 +685,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -580,6 +730,61 @@
 			};
 			name = Release;
 		};
+		39EC51691A9EF253004D5484 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		39EC516A1A9EF253004D5484 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		39EC516C1A9EF253004D5484 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SLFarseerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		39EC516D1A9EF253004D5484 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SLFarseerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -606,6 +811,24 @@
 			buildConfigurations = (
 				398DDFF41A80C63D0019BB12 /* Debug */,
 				398DDFF51A80C63D0019BB12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39EC51681A9EF253004D5484 /* Build configuration list for PBXNativeTarget "SLFarseer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39EC51691A9EF253004D5484 /* Debug */,
+				39EC516A1A9EF253004D5484 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39EC516B1A9EF253004D5484 /* Build configuration list for PBXNativeTarget "SLFarseerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39EC516C1A9EF253004D5484 /* Debug */,
+				39EC516D1A9EF253004D5484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

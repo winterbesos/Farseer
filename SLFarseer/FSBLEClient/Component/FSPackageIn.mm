@@ -97,7 +97,8 @@
             _readPos += len;
             return string;
         } else {
-            NSAssert(false, @"-(void)readString error");
+            return @"";
+//            NSAssert(false, @"-(void)readString error");
         }
     }
     

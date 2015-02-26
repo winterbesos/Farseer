@@ -15,6 +15,7 @@
 @property (nonatomic, assign, readonly)Byte       log_level;
 @property (nonatomic, copy, readonly)NSString     *log_content;
 
++ (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content;
 + (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
 
 @end

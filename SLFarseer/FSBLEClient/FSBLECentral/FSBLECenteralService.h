@@ -17,6 +17,7 @@
 + (void)installWithClient:(id)client stateChangedCallback:(void(^)(CBCentralManagerState state))callback;
 + (void)uninstall;
 + (void)scanDidDisconvered:(void(^)(CBPeripheral *perpheral, NSNumber *RSSI))callback;
++ (void)stopScan;
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback;
 + (void)connectToPeripheral:(CBPeripheral *)peripheral;
 

@@ -15,6 +15,7 @@
 @interface FSBLEPerpheralService : NSObject
 
 + (void)install;
++ (void)uninstall;
 
 + (void)updateLogCharacteristicWithLogNum:(UInt32)logNum;
 + (void)inputLogToCacheWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
