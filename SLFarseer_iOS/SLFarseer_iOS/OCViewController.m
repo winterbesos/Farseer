@@ -15,6 +15,8 @@
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
 
+#import "FSLogManager.h"
+
 @interface OCViewController ()
 
 @property (strong, nonatomic) PeripheralTableViewController *leftViewController;
@@ -24,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *deviceTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deviceNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bundleNameLabel;
+@property (weak, nonatomic) IBOutlet UITextView *installedLogTextView;
 
 @end
 
@@ -135,7 +138,6 @@
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
     FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content];
     [_logViewController insertLogWithLog:log];
-    NSLog(@"recv log : %@", log);
     [FSBLECenteralService requLogWithLogNumber:(logNumber + 1)];
 }
 
@@ -151,6 +153,10 @@
 
 - (IBAction)logButtonAction:(id)sender {
     [self.navigationController pushViewController:_logViewController animated:YES];
+}
+
+- (IBAction)installLogButtonAction:(id)sender {
+    [FSLogManager installLogFile:logFilePath()];
 }
 
 #pragma mark - Property

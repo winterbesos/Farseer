@@ -9,6 +9,8 @@
 #import "FSDebugCentral.h"
 
 #import "FSBLEPerpheralService.h"
+#import "FSLogManager.h"
+#import "FSLog.h"
 
 static FSDebugCentral *instance = nil;
 
@@ -28,7 +30,13 @@ static FSDebugCentral *instance = nil;
     callback([NSError errorWithDomain:@"You can't open BLE Debug on iPhone Simulator" code:999 userInfo:nil]);
 #else
     instance->openBLEDebugCallback = callback;
-    [FSBLEPerpheralService install];
+    [FSBLEPerpheralService install:^(NSError *error) {
+        if (error) {
+            callback(error);
+        } else {
+            [FSLogManager installLogFile:logFilePath()];
+        }
+    }];
 #endif
 }
 

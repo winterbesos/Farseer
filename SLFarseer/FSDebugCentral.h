@@ -20,4 +20,6 @@
 
 + (void)setup;
 
++ (void)openBLEDebug:(void(^)(NSError *error))callback;
+
 @end

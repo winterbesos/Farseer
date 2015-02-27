@@ -18,11 +18,7 @@
     UInt32 logNum = [packageIn readUInt32];
     NSDate *logDate = [packageIn readDate];
     Byte logLevel = [packageIn readByte];
-    
-    NSString *content = nil;
-    if (logNum != 0) {
-        content = [packageIn readString];
-    }
+    NSString *content = [packageIn readString];
     
     [client recvSyncLogWithLogNumber:logNum logDate:logDate logLevel:logLevel content:content];
 }

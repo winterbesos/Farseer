@@ -7,6 +7,7 @@
 //
 
 #import "FSBLELog.h"
+#import "FSBLEUtilities.h"
 
 static UInt32 logNumber = 0;
 
@@ -32,8 +33,20 @@ static UInt32 logNumber = 0;
     return log;
 }
 
+- (NSData *)dataValue {
+    NSTimeInterval logTimeInterval = [_log_date timeIntervalSinceReferenceDate];
+    
+    NSMutableData *data = [NSMutableData data];
+    [data appendBytes:&_log_number length:sizeof(_log_number)];
+    [data appendBytes:&logTimeInterval length:sizeof(logTimeInterval)];
+    [data appendBytes:&_log_level length:sizeof(_log_level)];
+    [data appendData:[FSBLEUtilities getDataWithPkgString:_log_content]];
+    
+    return data;
+}
+
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%u %@ %d %@", self.log_number, self.log_date, self.log_level, self.log_content];
+    return [NSString stringWithFormat:@"%u %@ %d %@", (unsigned int)self.log_number, self.log_date, self.log_level, self.log_content];
 }
 
 @end

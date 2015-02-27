@@ -12,6 +12,10 @@
 
 @interface FSLogManager : NSObject
 
++ (NSArray *)logList;
+
 + (void)inputLog:(FSBLELog *)log toFile:(const char *)filePath;
+
++ (void)installLogFile:(const char *)filePath;
 
 @end

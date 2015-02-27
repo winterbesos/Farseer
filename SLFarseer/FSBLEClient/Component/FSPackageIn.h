@@ -12,7 +12,9 @@
 @interface FSPackageIn : NSObject
 
 @property (nonatomic, readonly)struct PKG_HEADER header;
+@property (nonatomic, readonly)struct LOG_HEADER logHeader;
 
+- (instancetype)initWithLogData:(NSData *)data;
 + (instancetype)decode:(NSData *)data;
 
 - (NSDate *)readDate;

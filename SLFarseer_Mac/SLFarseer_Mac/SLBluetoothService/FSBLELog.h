@@ -18,4 +18,6 @@
 + (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content;
 + (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
 
+- (NSData *)dataValue;
+
 @end

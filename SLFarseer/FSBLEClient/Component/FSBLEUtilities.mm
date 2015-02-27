@@ -52,12 +52,21 @@
 }
 
 + (NSData *)getDataWithPkgString:(NSString *)string {
-    NSData *bodyData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    
-    Byte len = bodyData.length;
-    NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
-    [pkgData appendData:bodyData];
-    return pkgData;
+    if (string.length > 90) {
+        NSData *bodyData = [@"消息过长，暂不支持" dataUsingEncoding:NSUTF8StringEncoding];
+        
+        Byte len = bodyData.length;
+        NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
+        [pkgData appendData:bodyData];
+        return pkgData;
+    } else {
+        NSData *bodyData = [string dataUsingEncoding:NSUTF8StringEncoding];
+        
+        Byte len = bodyData.length;
+        NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
+        [pkgData appendData:bodyData];
+        return pkgData;
+    }
 }
 
 + (NSData *)getLogDataWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {

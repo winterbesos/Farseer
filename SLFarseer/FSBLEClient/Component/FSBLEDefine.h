@@ -16,6 +16,10 @@ struct PKG_HEADER {
     Byte currentPackage;
 };
 
+struct LOG_HEADER {
+    Byte a;
+};
+
 typedef NS_ENUM(Byte, CMD) {
     CMDCPInit               = 0xa0,
     

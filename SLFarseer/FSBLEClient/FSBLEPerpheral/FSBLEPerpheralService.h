@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class FSBLELog;
+
 @protocol FSBLEPerpheralServiceDelegate <NSObject>
 
 @end
 
 @interface FSBLEPerpheralService : NSObject
 
-+ (void)install;
++ (void)install:(void(^)(NSError *error))callback;
 + (void)uninstall;
 
-+ (void)updateLogCharacteristicWithLogNum:(UInt32)logNum;
-+ (void)inputLogToCacheWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
++ (void)inputLogToCacheWithLog:(FSBLELog *)log;
 
 @end

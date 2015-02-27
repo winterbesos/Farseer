@@ -8,6 +8,8 @@
 
 #import "FSLogManager.h"
 #import "FSBLELog.h"
+#import "FSPackageIn.h"
+#import "FSBLEPerpheralService.h"
 
 static dispatch_queue_t logFileOperationQueue;
 static NSMutableArray   *cacheLogs;
@@ -23,6 +25,7 @@ static NSMutableArray   *cacheLogs;
     dispatch_async(logFileOperationQueue, ^{
         [self writeLog:log ToFile:filePath];
         [self cacheLogIfNeed:log];
+        [FSBLEPerpheralService inputLogToCacheWithLog:log];
     });
 }
 
@@ -32,8 +35,10 @@ static NSMutableArray   *cacheLogs;
     {
         assert(false);
     }
-
-    fprintf(fp, "%u %f %d %s\n", log.log_number, [log.log_date timeIntervalSinceReferenceDate], log.log_level, [log.log_content cStringUsingEncoding:NSUTF8StringEncoding]);
+    
+    NSData *dataValue = [log dataValue];
+    const void *bytes = [dataValue bytes];
+    fwrite(bytes, sizeof(Byte), dataValue.length, fp);
     fclose(fp);
 }
 
@@ -44,36 +49,30 @@ static NSMutableArray   *cacheLogs;
 }
 
 + (void)installLogFile:(const char *)filePath {
+    if (cacheLogs) {
+        return;
+    }
+    
+    if (!logFileOperationQueue) {
+        logFileOperationQueue = dispatch_queue_create("logFileOperationQueue", NULL);
+    }
+    
     dispatch_async(logFileOperationQueue, ^{
         cacheLogs = [NSMutableArray array];
         
-        FILE    *fp = fopen(filePath, "r");
-        if (!fp)
-        {
-            assert(false);
+        NSData *data = [[NSData alloc] initWithContentsOfFile:[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding]];
+        FSPackageIn *packageIn = [[FSPackageIn alloc] initWithLogData:data];
+        
+        while (1) {
+            UInt32 number = [packageIn readUInt32];
+            NSDate *date = [packageIn readDate];
+            Byte level = [packageIn readByte];
+            NSString *content = [packageIn readString];
+            if (!content) {
+                break;
+            }
+            [cacheLogs addObject:[FSBLELog logWithNumber:number date:date level:level content:content]];
         }
-        
-//        // ==
-//        i=0;
-//        while(!feof(fp))
-//        {
-//            if(fgets(a,1000,fp))
-//            {
-//                i++;
-//                if(i==n)
-//                {
-//                    puts(a);
-//                    fclose(fp);
-//                    return 0;
-//                }
-//            }else{
-//                break;
-//            }
-//        }
-//        
-//        //==
-        
-        fclose(fp);
     });
 }
 
@@ -81,6 +80,10 @@ static NSMutableArray   *cacheLogs;
     dispatch_async(logFileOperationQueue, ^{
         cacheLogs = nil;
     });
+}
+
++ (NSArray *)logList {
+    return cacheLogs;
 }
 
 @end

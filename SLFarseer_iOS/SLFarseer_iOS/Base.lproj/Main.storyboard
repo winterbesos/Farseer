@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Peripheral Table View Controller-->
@@ -200,6 +201,29 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmp-V9-NjY">
+                                <rect key="frame" x="380" y="181" width="71" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="T2G-OG-gF3"/>
+                                    <constraint firstAttribute="height" constant="30" id="jaU-XK-nDr"/>
+                                </constraints>
+                                <state key="normal" title="Install Log">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="installLogButtonAction:" destination="baW-zA-c9E" eventType="touchUpInside" id="aV5-sD-KGk"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4y-Ks-Ax2">
+                                <rect key="frame" x="380" y="219" width="210" height="297"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="IBw-WL-YyD"/>
+                                    <constraint firstAttribute="height" constant="297" id="WFW-xG-6yK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -211,9 +235,13 @@
                             <constraint firstItem="7c0-A3-mmM" firstAttribute="top" secondItem="F8F-SI-dQB" secondAttribute="bottom" constant="32" id="EJl-s1-EnJ"/>
                             <constraint firstItem="rfX-Uu-M6l" firstAttribute="leading" secondItem="Z0j-Kj-1Ds" secondAttribute="trailing" constant="5" id="EYd-1c-XoM"/>
                             <constraint firstAttribute="trailing" secondItem="bcr-Gk-hHn" secondAttribute="trailing" constant="10" id="M2n-Z1-x9I"/>
+                            <constraint firstItem="Kmp-V9-NjY" firstAttribute="top" secondItem="SjQ-w2-ZuF" secondAttribute="bottom" constant="8" id="NNm-Q1-NTN"/>
                             <constraint firstItem="Z0j-Kj-1Ds" firstAttribute="centerY" secondItem="rfX-Uu-M6l" secondAttribute="centerY" constant="1" id="NS6-FD-UUb"/>
                             <constraint firstItem="oZa-Jw-A4w" firstAttribute="centerY" secondItem="bcr-Gk-hHn" secondAttribute="centerY" constant="1" id="T2N-DT-d4G"/>
                             <constraint firstItem="SjQ-w2-ZuF" firstAttribute="centerY" secondItem="Fuh-hQ-4mM" secondAttribute="centerY" constant="1" id="TZZ-Ta-Zey"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y4y-Ks-Ax2" secondAttribute="trailing" constant="-6" id="Z2o-g0-dOD"/>
+                            <constraint firstItem="y4y-Ks-Ax2" firstAttribute="top" secondItem="Kmp-V9-NjY" secondAttribute="bottom" constant="8" id="Z8o-Is-miI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kmp-V9-NjY" secondAttribute="trailing" constant="133" id="cOh-Z4-CTg"/>
                             <constraint firstItem="rfX-Uu-M6l" firstAttribute="top" secondItem="7c0-A3-mmM" secondAttribute="bottom" constant="8" id="gjv-KC-mdJ"/>
                             <constraint firstItem="bcr-Gk-hHn" firstAttribute="leading" secondItem="oZa-Jw-A4w" secondAttribute="trailing" constant="5" id="i89-AA-TvZ"/>
                             <constraint firstItem="bcr-Gk-hHn" firstAttribute="top" secondItem="sYc-gc-6UA" secondAttribute="bottom" constant="8" id="jaJ-FW-jHb"/>
@@ -257,6 +285,7 @@
                         <outlet property="bundleNameLabel" destination="Fuh-hQ-4mM" id="dUc-OJ-P9V"/>
                         <outlet property="deviceNameLabel" destination="bcr-Gk-hHn" id="RbY-hL-R2t"/>
                         <outlet property="deviceTypeLabel" destination="sYc-gc-6UA" id="FBE-qm-kxd"/>
+                        <outlet property="installedLogTextView" destination="y4y-Ks-Ax2" id="Wbt-bL-jN2"/>
                         <outlet property="osTypeLabel" destination="7c0-A3-mmM" id="0Xc-mN-PKF"/>
                         <outlet property="osVersionLabel" destination="rfX-Uu-M6l" id="qUK-Xu-Ue0"/>
                     </connections>

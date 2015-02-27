@@ -17,7 +17,7 @@
 }
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
-    NSLog(@"%u %@ %d %@", logNumber, logDate, logLevel, content);
+    NSLog(@"%u %@ %d %@", (unsigned int)logNumber, logDate, logLevel, content);
 }
 
 @end
