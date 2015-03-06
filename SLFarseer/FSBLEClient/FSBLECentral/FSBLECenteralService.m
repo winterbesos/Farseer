@@ -25,7 +25,7 @@ static FSBLECenteralService *service = nil;
     NSTimer             *_bleConnectTimer;
     
     void(^didDisconveredCallback)(CBPeripheral *perpheral, NSNumber *RSSI);
-    void(^connectPeripheralCallback)(CBPeripheral *perpheral);
+    void(^connectionStatusChangedCallback)(CBPeripheral *perpheral);
     void(^stateChangedCallback)(CBCentralManagerState state);
     
     CBPeripheral *_peripheral;
@@ -54,7 +54,7 @@ static FSBLECenteralService *service = nil;
     [service->_manager stopScan];
     service->_client = nil;
     service->stateChangedCallback = nil;
-    service->connectPeripheralCallback = nil;
+    service->connectionStatusChangedCallback = nil;
     service->didDisconveredCallback = nil;
     service = nil;
 }
@@ -70,7 +70,7 @@ static FSBLECenteralService *service = nil;
 }
 
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *perpheral))callback {
-    service->connectPeripheralCallback = callback;
+    service->connectionStatusChangedCallback = callback;
 }
 
 + (void)connectToPeripheral:(CBPeripheral *)peripheral {
@@ -105,21 +105,15 @@ static FSBLECenteralService *service = nil;
         service->_bleConnectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(connectTimeout:) userInfo:perpheral repeats:NO];
         [service->_manager connectPeripheral:perpheral options:nil];
     } else {
-//        NSLog(@"is connected");
         return;
     }
-    connectPeripheralCallback(perpheral);
+    connectionStatusChangedCallback(perpheral);
 //    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)connectTimeout:(NSTimer *)timer {
-//    NSLog(@"connect to peripheral timeout, retrying");
     [_manager cancelPeripheralConnection:timer.userInfo];
     [self performSelector:@selector(connectToPeripheral:) withObject:timer.userInfo afterDelay:1];
-}
-
-- (void)statusMechine {
-    
 }
 
 #pragma mark - CBPeripheral Delegate
@@ -134,6 +128,7 @@ static FSBLECenteralService *service = nil;
 
 - (void)peripheral:(CBPeripheral *)peripheral didModifyServices:(NSArray *)invalidatedServices {
 //    NSLog(@"%s", __FUNCTION__);
+    [_manager cancelPeripheralConnection:peripheral];
 }
 
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error {
@@ -145,12 +140,12 @@ static FSBLECenteralService *service = nil;
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
+//    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     Byte cmd;
     [characteristic.value getBytes:&cmd length:sizeof(cmd)];
     
     FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
-    [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client];
+    [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
@@ -226,7 +221,7 @@ static FSBLECenteralService *service = nil;
 //    NSLog(@"%s: %@ %@", __FUNCTION__, central, peripheral);
     [_bleConnectTimer invalidate];
     _peripheral = peripheral;
-    connectPeripheralCallback(peripheral);
+    connectionStatusChangedCallback(peripheral);
     
     peripheral.delegate = self;
     [peripheral discoverServices:nil];
@@ -235,13 +230,13 @@ static FSBLECenteralService *service = nil;
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 //    NSLog(@"%s: %@ %@ %@", __FUNCTION__, central, peripheral, error);
     _peripheral = nil;
-    connectPeripheralCallback(peripheral);
+    connectionStatusChangedCallback(peripheral);
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 //    NSLog(@"%s: %@ %@ %@", __FUNCTION__, central, peripheral, error);
     _peripheral = nil;
-    connectPeripheralCallback(peripheral);
+    connectionStatusChangedCallback(peripheral);
 }
 
 @end

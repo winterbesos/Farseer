@@ -9,13 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @class FSBLELog;
+@class CBPeripheral;
 
 @interface FSLogManager : NSObject
 
 + (NSArray *)logList;
++ (void)inputLog:(FSBLELog *)log;
 
-+ (void)inputLog:(FSBLELog *)log toFile:(const char *)filePath;
++ (void)uninstallLogFile;
++ (BOOL)installLogFile;
 
-+ (void)installLogFile:(const char *)filePath;
+#pragma mark - Central
+
++ (void)saveLog:(NSArray *)logs peripheral:(CBPeripheral *)peripheral bundleName:(NSString *)bundleName callback:(void(^)(float percentage))callback;
+
++ (NSString *)FS_Path;
 
 @end

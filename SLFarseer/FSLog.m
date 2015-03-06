@@ -20,73 +20,13 @@
 #include <dirent.h>
 #import "FSLogManager.h"
 #import "FSBLELog.h"
-
 #import "FSBLEDefine.h"
 
-static char FPRINT_OUT_FILE_PATH[512] = {0};
-
-char *logFilePath() {
-    return FPRINT_OUT_FILE_PATH;
-}
-
-static const char * logPath() {
-#if TARGET_OS_IPHONE
-    NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *dataPath = [[pathList objectAtIndex:0] stringByAppendingPathComponent:@"/Farseer/Log/"];
-#elif TARGET_OS_MAC
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
-    NSString *dataPath = [[path stringByAppendingPathComponent:bundleId] stringByAppendingPathComponent:@"/Farseer/Log/"]; // 相当于IOS的 documentpath
-#endif
-    return [dataPath cStringUsingEncoding:NSUTF8StringEncoding];
-}
-
-static void createLogPathIfNeed()
-{
-    NSError *err;
-    [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithCString:logPath() encoding:NSUTF8StringEncoding] withIntermediateDirectories:YES attributes:nil error:&err];
-}
-
-static void FS_LaunchCentralIfNeed()
-{
-    static BOOL launched = false;
-    if (!launched)
-    {
-        createLogPathIfNeed();
-        
-        // get fasser document path
-        char fullpath[256] = {0};
-        strcpy(fullpath, logPath());
-        
-        char filename[64];
-        time_t t = time(0);
-        strftime(filename, sizeof(filename), "log_%Y-%m-%d_%H%M%S.log", localtime(&t));
-        strcat(fullpath, filename);
-        
-        strcpy(FPRINT_OUT_FILE_PATH, fullpath);
-        FILE *fp = fopen(FPRINT_OUT_FILE_PATH,"w");
-        if (!fp)
-        {
-            assert(false);
-        }
-        
-        struct LOG_HEADER header;
-        header.a = 1;
-        
-        fwrite(&header, sizeof(Byte), 1, fp);
-        
-        fclose(fp);
-
-        launched = true;
-    }
-}
-
+#define SLCONSOLE_LEVEL Warning
 
 void FS_DebugLog(NSString *log, FSLogLevel level)
-{
-    FS_LaunchCentralIfNeed();
-    
-    [FSLogManager inputLog:[FSBLELog createLogWithLevel:level content:log] toFile:FPRINT_OUT_FILE_PATH];
+{   
+    [FSLogManager inputLog:[FSBLELog createLogWithLevel:level content:log]];
     
 #ifdef DEBUG
     const char *cLog = [log cStringUsingEncoding:NSUTF8StringEncoding];
@@ -116,6 +56,12 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
     {
         printf("%s:%s\n", prefix, cLog);
     }
+    
+    if (level == Fatal) {
+        printf("fatal error");
+        assert(false);
+    }
+    
 #endif
 }
 

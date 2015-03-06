@@ -17,14 +17,14 @@
 
 @implementation FSInitBLEPacker
 
-- (void)unpack:(FSPackageIn *)packageIn client:(id)client {
+- (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral {
     Byte osType = [packageIn readByte];
     NSString *osVersion = [packageIn readString];
     NSString *deviceType = [packageIn readString];
     NSString *deviceName = [packageIn readString];
     NSString *bundleName = [packageIn readString];
     
-    [client recvInitBLEWithOSType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName];
+    [client recvInitBLEWithOSType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName peripheral:peripheral];
 }
 
 @end

@@ -19,7 +19,9 @@
 @interface FSDebugCentral : NSObject
 
 + (void)setup;
++ (FSDebugCentral *)getInstance;
 
++ (void)closeBLEDebug;
 + (void)openBLEDebug:(void(^)(NSError *error))callback;
 
 @end

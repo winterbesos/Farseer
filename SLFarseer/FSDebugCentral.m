@@ -24,6 +24,13 @@ static FSDebugCentral *instance = nil;
     }
 }
 
++ (FSDebugCentral *)getInstance {
+    [self setup];
+    return instance;
+}
+
+#pragma mark - BLE Debug
+
 + (void)openBLEDebug:(void(^)(NSError *error))callback {
     NSParameterAssert(callback != nil);
 #if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
@@ -34,19 +41,16 @@ static FSDebugCentral *instance = nil;
         if (error) {
             callback(error);
         } else {
-            [FSLogManager installLogFile:logFilePath()];
+            BOOL installed = [FSLogManager installLogFile];
+            callback(installed ? nil : [NSError errorWithDomain:@"FSLogManager has installed" code:999 userInfo:nil]);
         }
     }];
 #endif
 }
 
 + (void)closeBLEDebug {
+    [FSLogManager uninstallLogFile];
     [FSBLEPerpheralService uninstall];
-}
-
-+ (void)getObjectWithDefaultObject:(id)object {
-    NSLog(@"%s, %d", __FILE__, __LINE__);
-
 }
 
 @end

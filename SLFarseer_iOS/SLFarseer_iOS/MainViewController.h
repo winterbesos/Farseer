@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OCViewController : UIViewController
+@interface MainViewController : UIViewController
 
 @end

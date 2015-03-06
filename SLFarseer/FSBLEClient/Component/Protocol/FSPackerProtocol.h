@@ -8,11 +8,13 @@
 
 #import "FSPackageIn.h"
 
+@class CBPeripheral;
+
 @protocol FSPackerDelegate <NSObject>
 
-@required
-
+@optional
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client;
+- (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral;
 
 @end
 

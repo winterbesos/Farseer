@@ -9,17 +9,6 @@
 #ifndef SLBTServiceDemo_FSDefine_h
 #define SLBTServiceDemo_FSDefine_h
 
-struct PKG_HEADER {
-    Byte cmd;
-    Byte sequId;
-    Byte totalPackage;
-    Byte currentPackage;
-};
-
-struct LOG_HEADER {
-    Byte a;
-};
-
 typedef NS_ENUM(Byte, CMD) {
     CMDCPInit               = 0xa0,
     
@@ -38,6 +27,17 @@ typedef NS_ENUM(Byte, BLEDeviceType) {
     BLEDeviceTypeIPad,
     BLEDeviceTypeMac,
     BLEDeviceTypeAppleWatch
+};
+
+struct PKG_HEADER {
+    Byte cmd;
+    Byte sequId;
+    Byte totalPackage;
+    Byte currentPackage;
+};
+
+struct LOG_HEADER {
+    NSTimeInterval  createTime;
 };
 
 static NSString *kPeripheralInfoCharacteristicUUIDString = @"838D0104-C9B7-4B34-97B9-8213E24D5493";

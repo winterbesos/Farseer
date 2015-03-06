@@ -8,6 +8,7 @@
 
 #import "FSBLELog.h"
 #import "FSBLEUtilities.h"
+#import "FSDebugCentral.h"
 
 static UInt32 logNumber = 0;
 
@@ -23,14 +24,17 @@ static UInt32 logNumber = 0;
 }
 
 + (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content {
-    FSBLELog *log = [[FSBLELog alloc] init];
-    log->_log_number = logNumber;
-    log->_log_date = [NSDate date];
-    log->_log_level = level;
-    log->_log_content = content;
-    
-    logNumber ++;
-    return log;
+    @synchronized([FSDebugCentral getInstance]) {
+        FSBLELog *log = [[FSBLELog alloc] init];
+        log->_log_number = logNumber;
+        log->_log_date = [NSDate date];
+        log->_log_level = level;
+        log->_log_content = content;
+        
+        logNumber ++;
+        
+        return log;
+    }
 }
 
 - (NSData *)dataValue {

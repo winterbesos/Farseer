@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Qeekers. All rights reserved.
 //
 
-#import "OCViewController.h"
+#import "MainViewController.h"
 #import "FSLog.h"
 #import "FSBLEDefine.h"
 #import "LogViewController.h"
@@ -14,10 +14,12 @@
 #import "PeripheralTableViewController.h"
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
-
+#import "TracksView.h"
 #import "FSLogManager.h"
+#import "FSDebugCentral.h"
+#import "DirViewController.h"
 
-@interface OCViewController ()
+@interface MainViewController ()
 
 @property (strong, nonatomic) PeripheralTableViewController *leftViewController;
 @property (strong, nonatomic) UIView *childControllerContainerView;
@@ -26,11 +28,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *deviceTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deviceNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bundleNameLabel;
-@property (weak, nonatomic) IBOutlet UITextView *installedLogTextView;
+
+@property (weak, nonatomic) IBOutlet UISwitch *displayLogTimeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *displayLogNumberSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *displayLogColorSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *savePercentageLabel;
+
+@property (weak, nonatomic) IBOutlet TracksView *tracksView;
 
 @end
 
-@implementation OCViewController {
+@implementation MainViewController {
     LogViewController *_logViewController;
     
     BOOL leftVCIsOpen;
@@ -39,6 +47,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Farseer";
+    
+    [self.tracksView setItemNames:@[@"upload log", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
+    
+    self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
+    self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_NUMBER_KEY];
+    self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
     
     _logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
     
@@ -61,6 +77,8 @@
         return;
     }
     leftVCIsAnimating = YES;
+    
+    [self.view addSubview:_childControllerContainerView];
     
     CGRect newFrame = CGRectMake(0, 0, 200, [UIScreen mainScreen].bounds.size.height - 64);
     [self.childControllerContainerView addSubview:self.leftViewController.view];
@@ -93,7 +111,7 @@
          [self.leftViewController.view setFrame:newFrame];
      }
      completion:^(BOOL finished) {
-         [self.leftViewController.view removeFromSuperview];
+         [_childControllerContainerView removeFromSuperview];
          leftVCIsAnimating = NO;
      }];
     leftVCIsOpen = NO;
@@ -127,17 +145,56 @@
     self.bundleNameLabel.text = bundleName;
 }
 
+- (void)crash {
+    
+}
+
+- (void)deleteLog {
+    
+}
+
+- (void)uploadLog {
+    
+}
+
+- (void)pushToDirVC {
+    DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
+    [dirVC setPath:[FSLogManager FS_Path]];
+    [self.navigationController pushViewController:dirVC animated:YES];
+}
+
+- (void)saveLog {
+    NSArray *logs = [_logViewController displayLogs];
+    [FSLogManager saveLog:logs peripheral:[_logViewController selectedPeripheral] bundleName:self.bundleNameLabel.text callback:^(float percentage) {
+        if (percentage == 1) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存日志完成" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+            self.savePercentageLabel.text = @"";
+        } else {
+            self.savePercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", percentage * 100];
+        }
+    }];
+}
+
+- (void)clearLog {
+    [_logViewController clearLog];
+}
+
+- (void)continueLog {
+    [FSBLECenteralService requLogWithLogNumber:([_logViewController lastLog] ? [_logViewController lastLog].log_number : 0)];
+}
+
 #pragma mark - BLE Client
 
-- (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName {
+- (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral {
     FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName];
     [self displayLogInfo:logInfo];
     [FSBLECenteralService requLogWithLogNumber:0];
 }
 
-- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content {
+- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content peripheral:(CBPeripheral *)peripheral {
     FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content];
-    [_logViewController insertLogWithLog:log];
+    [_logViewController insertLogWithLog:log peripheral:peripheral];
     [FSBLECenteralService requLogWithLogNumber:(logNumber + 1)];
 }
 
@@ -155,8 +212,16 @@
     [self.navigationController pushViewController:_logViewController animated:YES];
 }
 
-- (IBAction)installLogButtonAction:(id)sender {
-    [FSLogManager installLogFile:logFilePath()];
+- (IBAction)displayLogTimeSwitchAction:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:DISPLAY_LOG_TIME_KEY];
+}
+
+- (IBAction)displayLogNumberSwitchAction:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:DISPLAY_LOG_NUMBER_KEY];
+}
+
+- (IBAction)displayLogColorSwitchAction:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:DISPLAY_LOG_COLOR_KEY];
 }
 
 #pragma mark - Property
@@ -174,6 +239,36 @@
         
     }
     return _childControllerContainerView;
+}
+
+#pragma mark - Logo Label Delegate
+
+- (void)tracksView:(TracksView *)tracksView didSelectItemAtIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            [self uploadLog];
+            break;
+        case 1:
+            [self deleteLog];
+            break;
+        case 2:
+            [self clearLog];
+            break;
+        case 3:
+            [self saveLog];
+            break;
+        case 4:
+            [self pushToDirVC];
+            break;
+        case 5:
+            [self crash];
+            break;
+        case 6:
+            [self continueLog];
+            break;
+        default:
+            break;
+    }
 }
 
 @end

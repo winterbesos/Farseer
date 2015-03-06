@@ -14,6 +14,7 @@
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
 #import "FSLogManager.h"
+#import "FSLog.h"
 
 static FSBLEPerpheralService *kBLEService = nil;
 
@@ -42,8 +43,10 @@ static FSBLEPerpheralService *kBLEService = nil;
 }
 
 + (void)uninstall {
-    kBLEService->installCallback = nil;
-    kBLEService = nil;
+    if (kBLEService) {
+        kBLEService->installCallback = nil;
+        kBLEService = nil;        
+    }
 }
 
 #pragma mark - Business Logic

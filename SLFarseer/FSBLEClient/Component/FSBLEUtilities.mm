@@ -11,7 +11,12 @@
 #if TARGET_OS_IPHONE
 #import <UIKit/UIDevice.h>
 #elif TARGET_OS_MAC
+#import <Cocoa/Cocoa.h>
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 #endif
 
 @implementation FSBLEUtilities
@@ -30,7 +35,20 @@
     deviceType = device.model;
     deviceName = device.name;
 #elif TARGET_OS_MAC
+    NSDictionary *systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+    OSVersion = systemVersionDictionary[@"ProductVersion"];
+
+    deviceName = [NSHost currentHost].localizedName;
+    OSType = BLEOSTypeOSX;
     
+    size_t len = 0;
+    sysctlbyname("hw.model", NULL, &len, NULL, 0);
+    if (len) {
+        char *model = (char *)malloc(len*sizeof(char));
+        sysctlbyname("hw.model", model, &len, NULL, 0);
+        deviceType = [NSString stringWithCString:model encoding:NSUTF8StringEncoding];
+        free(model);
+    }
 #endif
     bundleName = [[NSBundle mainBundle] bundleIdentifier];
     

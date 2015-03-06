@@ -12,6 +12,8 @@
 #import <objc/runtime.h>
 #import <CoreBluetooth/CBPeripheral.h>
 
+#import "FSBLEUtilities.h"
+
 static void *AssociatedObjectHandle;
 
 @interface OCViewController () <NSTableViewDataSource, NSTableViewDelegate>
@@ -31,6 +33,8 @@ static void *AssociatedObjectHandle;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [FSBLEUtilities getPeripheralInfoData];
+    
     FSFatal(@"this is a fatal error [OC]");
     FSError(@"this is a error [OC]");
     FSWarning(@"this is a warning [OC]");
@@ -39,9 +43,10 @@ static void *AssociatedObjectHandle;
     
     [FSBLECenteralService install];
     _peripheralsDataList = [NSMutableArray array];
-    [FSBLECenteralService setConnectPerpheralCallback:^(CBPeripheral *perpheral, BOOL success) {
+    [FSBLECenteralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
         [self.peripheralTableView reloadData];
     }];
+
     [FSBLECenteralService scanDidDisconvered:^(CBPeripheral *perpheral, NSNumber *RSSI) {
         NSInteger index = [_peripheralsDataList indexOfObject:perpheral];
         if (index == NSNotFound) {
@@ -90,7 +95,7 @@ static void *AssociatedObjectHandle;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-    [FSBLECenteralService connectToPerpheral:_peripheralsDataList[row]];
+    [FSBLECenteralService connectToPeripheral:_peripheralsDataList[row]];
     return YES;
 }
 

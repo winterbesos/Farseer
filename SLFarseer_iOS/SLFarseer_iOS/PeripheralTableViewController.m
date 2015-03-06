@@ -44,7 +44,15 @@ static void *AssociatedObjectHandle;
 #pragma mark - Private Method
 
 - (void)scanPeripheral {
-    [FSBLECenteralService setConnectPeripheralCallback:^(CBPeripheral *perpheral) {
+    [FSBLECenteralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
+        switch (peripheral.state) {
+            case CBPeripheralStateDisconnected:
+                break;
+            case CBPeripheralStateConnected:
+                break;
+            case CBPeripheralStateConnecting:
+                break;
+        }
         [self.tableView reloadData];
     }];
     [FSBLECenteralService scanDidDisconvered:^(CBPeripheral *perpheral, NSNumber *RSSI) {

@@ -15,8 +15,10 @@
 		398DDFDE1A80C63D0019BB12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDD1A80C63D0019BB12 /* Images.xcassets */; };
 		398DDFE11A80C63D0019BB12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDF1A80C63D0019BB12 /* LaunchScreen.xib */; };
 		398DDFED1A80C63D0019BB12 /* SLFarseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */; };
-		398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* OCViewController.m */; };
+		398DE0201A80C7F10019BB12 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* MainViewController.m */; };
+		39A6170A1AA841780058574E /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
 		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
+		39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CF61BC1AA2CDC800C51434 /* TracksView.m */; };
 		39EC515A1A9EF253004D5484 /* SLFarseer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39EC51591A9EF253004D5484 /* SLFarseer.h */; };
 		39EC515C1A9EF253004D5484 /* SLFarseer.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EC515B1A9EF253004D5484 /* SLFarseer.m */; };
 		39EC51621A9EF253004D5484 /* libSLFarseer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EC51571A9EF253004D5484 /* libSLFarseer.a */; };
@@ -114,11 +116,16 @@
 		398DE0141A80C7760019BB12 /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLog.m; path = ../../SLFarseer/FSLog.m; sourceTree = "<group>"; };
 		398DE0151A80C7760019BB12 /* FSLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLogManager.h; path = ../../SLFarseer/FSLogManager.h; sourceTree = "<group>"; };
 		398DE0161A80C7760019BB12 /* FSLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLogManager.m; path = ../../SLFarseer/FSLogManager.m; sourceTree = "<group>"; };
-		398DE01E1A80C7F10019BB12 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
-		398DE01F1A80C7F10019BB12 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
+		398DE01E1A80C7F10019BB12 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		398DE01F1A80C7F10019BB12 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		39A617081AA841780058574E /* DirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirViewController.h; sourceTree = "<group>"; };
+		39A617091AA841780058574E /* DirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirViewController.m; sourceTree = "<group>"; };
 		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
 		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
+		39CF61BA1AA2C21A00C51434 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		39CF61BB1AA2CDC800C51434 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
+		39CF61BC1AA2CDC800C51434 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		39EC51351A9EC454004D5484 /* FSBLELogInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLELogInfo.h; sourceTree = "<group>"; };
 		39EC51361A9EC454004D5484 /* FSBLELogInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLELogInfo.m; sourceTree = "<group>"; };
 		39EC51571A9EF253004D5484 /* libSLFarseer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSLFarseer.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,14 +272,19 @@
 			children = (
 				398DDFD11A80C63D0019BB12 /* AppDelegate.h */,
 				398DDFD21A80C63D0019BB12 /* AppDelegate.m */,
-				398DE01E1A80C7F10019BB12 /* OCViewController.h */,
-				398DE01F1A80C7F10019BB12 /* OCViewController.m */,
+				398DE01E1A80C7F10019BB12 /* MainViewController.h */,
+				398DE01F1A80C7F10019BB12 /* MainViewController.m */,
 				394AD6561A9D62F4007FD2D2 /* PeripheralTableViewController.h */,
 				394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */,
 				3987802C1A9DAD7000D7397F /* LogViewController.h */,
 				3987802D1A9DAD7000D7397F /* LogViewController.m */,
 				39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */,
 				39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */,
+				39A617081AA841780058574E /* DirViewController.h */,
+				39A617091AA841780058574E /* DirViewController.m */,
+				39CF61BB1AA2CDC800C51434 /* TracksView.h */,
+				39CF61BC1AA2CDC800C51434 /* TracksView.m */,
+				39CF61BA1AA2C21A00C51434 /* Define.h */,
 				398DDFDA1A80C63D0019BB12 /* Main.storyboard */,
 				398DDFDD1A80C63D0019BB12 /* Images.xcassets */,
 				398DDFDF1A80C63D0019BB12 /* LaunchScreen.xib */,
@@ -508,11 +520,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */,
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
+				39A6170A1AA841780058574E /* DirViewController.m in Sources */,
 				3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */,
-				398DE0201A80C7F10019BB12 /* OCViewController.m in Sources */,
+				398DE0201A80C7F10019BB12 /* MainViewController.m in Sources */,
 				394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,10 +686,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -687,10 +703,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
