@@ -11,6 +11,7 @@
 #import "FSBLELog.h"
 #import <CoreBluetooth/CBPeripheral.h>
 #import <objc/runtime.h>
+#import "FSPackageIn.h"
 
 static void *kHandleAssociatedKey;
 
@@ -118,6 +119,31 @@ static void *kHandleAssociatedKey;
 
 - (CBPeripheral *)selectedPeripheral {
     return _displayPeripheral;
+}
+
+- (void)setFile:(NSString *)path {
+    
+    NSMutableArray *logList = [NSMutableArray array];
+    
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    FSPackageIn *packageIn = [[FSPackageIn alloc] initWithLogData:data];
+    
+    while (1) {
+        UInt32 number = [packageIn readUInt32];
+        NSDate *date = [packageIn readDate];
+        Byte level = [packageIn readByte];
+        NSString *content = [packageIn readString];
+        if (!content) {
+            break;
+        }
+        [logList addObject:[FSBLELog logWithNumber:number date:date level:level content:content]];
+    }
+    
+    NSObject *peripheral = [[NSObject alloc] init];
+    objc_setAssociatedObject(peripheral, &kHandleAssociatedKey, logList, OBJC_ASSOCIATION_RETAIN);
+    _displayPeripheral = (CBPeripheral *)peripheral;
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Actions

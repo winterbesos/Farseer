@@ -11,6 +11,7 @@
 #import "FSPackageIn.h"
 #import "FSBLEPerpheralService.h"
 #import <CoreBluetooth/CBPeripheral.h>
+#import "FSDebugCentral.h"
 
 static dispatch_queue_t logFileOperationQueue;
 static NSMutableArray   *cacheLogs;
@@ -108,28 +109,30 @@ static NSString         *kLifeCircleLogPath; // 当前生命周期log文件路�
 #pragma mark - Peripheral
 
 + (NSString *)FS_CreateLogFileIfNeed {
-    static NSString *fileName = nil;
-    if (!fileName) {
-        fileName = [NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]];
-    }
-    
-    NSString *filePath = [[self FS_LogPath] stringByAppendingPathComponent:fileName];
-    if (![self filePathExists:filePath]) {
-        [self FS_CreateLogFileIfNeed:filePath];
-    }
-    
-    return filePath;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+            
+        NSString *fileName = [NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]];
+        NSString *filePath = [[self FS_LogPath] stringByAppendingPathComponent:fileName];
+        if (![self filePathExists:filePath]) {
+            [self FS_CreateLogFileIfNeed:filePath];
+        }
+        kLifeCircleLogPath = filePath;
+        
+    });
+    return kLifeCircleLogPath;
 }
 
 + (void)inputLog:(FSBLELog *)log {
-    kLifeCircleLogPath = [self FS_CreateLogFileIfNeed];
+    [self FS_CreateLogFileIfNeed];
 
     if (!logFileOperationQueue) {
         logFileOperationQueue = dispatch_queue_create("logFileOperationQueue", NULL);
     }
     
     dispatch_async(logFileOperationQueue, ^{
-        [self writeLog:log ToFile:[kLifeCircleLogPath UTF8String]];
+        const char *filePath = [kLifeCircleLogPath cStringUsingEncoding:NSUTF8StringEncoding];
+        [self writeLog:log ToFile:filePath];
         [self cacheLogIfNeed:log];
         [FSBLEPerpheralService inputLogToCacheWithLog:log];
     });

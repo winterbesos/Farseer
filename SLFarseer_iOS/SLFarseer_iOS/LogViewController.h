@@ -17,6 +17,8 @@
 
 @interface LogViewController : UITableViewController
 
+- (void)setFile:(NSString *)path;
+
 - (void)insertLogWithLog:(FSBLELog *)log peripheral:(CBPeripheral *)peripheral;
 - (void)clearLog;
 - (void)switchLogNumber;

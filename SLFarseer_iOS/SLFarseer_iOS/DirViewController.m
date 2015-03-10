@@ -8,6 +8,7 @@
 
 #import "DirViewController.h"
 #import "FSLogManager.h"
+#import "LogViewController.h"
 
 @interface DirViewController ()
 
@@ -43,9 +44,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
-    [dirVC setPath:[_path stringByAppendingPathComponent:_contents[indexPath.row]]];
-    [self.navigationController pushViewController:dirVC animated:YES];
+    NSString *path = [_path stringByAppendingPathComponent:_contents[indexPath.row]];
+    BOOL isDir;
+    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+    
+    if (isDir) {
+        DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
+        [dirVC setPath:[_path stringByAppendingPathComponent:_contents[indexPath.row]]];
+        [self.navigationController pushViewController:dirVC animated:YES];
+    } else {
+        LogViewController *logVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
+        [logVC setFile:path];
+        [self.navigationController pushViewController:logVC animated:YES];
+    }
+    
 }
 
 @end
