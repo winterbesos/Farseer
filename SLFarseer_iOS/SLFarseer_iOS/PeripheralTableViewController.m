@@ -8,7 +8,7 @@
 
 #import "PeripheralTableViewController.h"
 #import "FSBLECenteralService.h"
-#import "FSBLEPerpheralService.h"
+#import "FSBLEPeripheralService.h"
 #import "FSBLECenteralService.h"
 #import <objc/runtime.h>
 #import <CoreBluetooth/CBPeripheral.h>
@@ -55,15 +55,15 @@ static void *AssociatedObjectHandle;
         }
         [self.tableView reloadData];
     }];
-    [FSBLECenteralService scanDidDisconvered:^(CBPeripheral *perpheral, NSNumber *RSSI) {
-        NSInteger index = [_peripheralsDataList indexOfObject:perpheral];
+    [FSBLECenteralService scanDidDisconvered:^(CBPeripheral *peripheral, NSNumber *RSSI) {
+        NSInteger index = [_peripheralsDataList indexOfObject:peripheral];
         if (index == NSNotFound) {
-            [_peripheralsDataList addObject:perpheral];
+            [_peripheralsDataList addObject:peripheral];
         } else {
-            [_peripheralsDataList replaceObjectAtIndex:index withObject:perpheral];
+            [_peripheralsDataList replaceObjectAtIndex:index withObject:peripheral];
         }
         
-        objc_setAssociatedObject(perpheral, &AssociatedObjectHandle, RSSI, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(peripheral, &AssociatedObjectHandle, RSSI, OBJC_ASSOCIATION_RETAIN);
         [self.tableView reloadData];
     }];
 }

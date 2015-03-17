@@ -9,8 +9,11 @@
 #import "FSPackerFactory.h"
 
 #import "FSInitBLEPacker.h"
-#import "FSBLEResSyncLogPacker.h"
+
 #import "FSBLEReqSyncLogPacker.h"
+#import "FSBLEResSyncLogPacker.h"
+
+#import "FSBLEResSyncDataPacker.h"
 
 @implementation FSPackerFactory
 
@@ -20,11 +23,26 @@
         case CMDCPInit:
             packerObj = [[FSInitBLEPacker alloc] init];
             break;
-        case CMDRecLogging:
+        case CMDResLogging:
             packerObj = [[FSBLEResSyncLogPacker alloc] init];
             break;
+        case CMDResData:
+            packerObj = [[FSBLEResSyncDataPacker alloc] init];
+            break;
+        default:
+            break;
+    }
+    
+    return packerObj;
+}
+
++ (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd request:(CBATTRequest *)request {
+    id packerObj = nil;
+    switch (cmd) {
         case CMDReqLogging:
-            packerObj = [[FSBLEReqSyncLogPacker alloc] init];
+            packerObj = [[FSBLEReqSyncLogPacker alloc] initWithRequest:request];
+            break;
+        case CMDReqData:
             break;
         default:
             break;

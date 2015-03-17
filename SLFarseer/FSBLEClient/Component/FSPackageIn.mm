@@ -7,7 +7,7 @@
 //
 
 #import "FSPackageIn.h"
-#import "FSBLEPerpheralService.h"
+#import "FSBLEPeripheralService.h"
 
 #define READTYPE(a, b) if (_readPos + sizeof(b) + sizeof(a) <= _pkg.length) {     \
                            a value;                                                  \

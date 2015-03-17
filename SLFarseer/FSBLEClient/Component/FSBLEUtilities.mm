@@ -89,7 +89,7 @@
 
 + (NSData *)getLogDataWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
     struct PKG_HEADER header;
-    header.cmd = CMDRecLogging;
+    header.cmd = CMDResLogging;
     header.currentPackage = 1;
     header.totalPackage = 1;
     header.sequId = 0;

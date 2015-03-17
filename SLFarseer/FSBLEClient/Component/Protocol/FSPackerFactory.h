@@ -10,8 +10,11 @@
 #import "FSBLEDefine.h"
 #import "FSPackerProtocol.h"
 
+@class CBATTRequest;
+
 @interface FSPackerFactory : NSObject
 
 + (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd;
++ (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd request:(CBATTRequest *)request;
 
 @end

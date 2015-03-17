@@ -17,6 +17,9 @@
 		398DDFED1A80C63D0019BB12 /* SLFarseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */; };
 		398DE0201A80C7F10019BB12 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* MainViewController.m */; };
 		39A6170A1AA841780058574E /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
+		39A7D3851AB7C12300D727A5 /* FSBLEResSyncDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A7D3841AB7C12300D727A5 /* FSBLEResSyncDataPacker.m */; };
+		39A7D3881AB7CE4500D727A5 /* FSBLEBaseReqPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A7D3871AB7CE4500D727A5 /* FSBLEBaseReqPacker.m */; };
+		39A7D38B1AB7DB1500D727A5 /* FSTransportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A7D38A1AB7DB1500D727A5 /* FSTransportManager.m */; };
 		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
 		39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CF61BC1AA2CDC800C51434 /* TracksView.m */; };
 		39EC515A1A9EF253004D5484 /* SLFarseer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39EC51591A9EF253004D5484 /* SLFarseer.h */; };
@@ -33,8 +36,8 @@
 		39EC51761A9EF2FD004D5484 /* FSBLEResSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 392A9CE51A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m */; };
 		39EC51771A9EF2FD004D5484 /* FSBLEReqSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3912EAC31A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m */; };
 		39EC51781A9EF2FD004D5484 /* FSPackerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86DC1A9B4E5A00B9F32A /* FSPackerFactory.m */; };
-		39EC51791A9EF2FD004D5484 /* FSBLEPerpheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E11A9B4E6800B9F32A /* FSBLEPerpheralService.m */; };
-		39EC517A1A9EF2FD004D5484 /* FSPerpheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E31A9B4E6800B9F32A /* FSPerpheralClient.m */; };
+		39EC51791A9EF2FD004D5484 /* FSBLEPeripheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E11A9B4E6800B9F32A /* FSBLEPeripheralService.m */; };
+		39EC517A1A9EF2FD004D5484 /* FSPeripheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E31A9B4E6800B9F32A /* FSPeripheralClient.m */; };
 		39EC517B1A9EF2FD004D5484 /* FSBLECenteralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E71A9B4E7200B9F32A /* FSBLECenteralService.m */; };
 		39EC517C1A9EF2FD004D5484 /* FSCentralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B86E91A9B4E7200B9F32A /* FSCentralClient.m */; };
 		39EC517D1A9EF340004D5484 /* libSLFarseer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EC51571A9EF253004D5484 /* libSLFarseer.a */; };
@@ -87,10 +90,10 @@
 		392B86DB1A9B4E5A00B9F32A /* FSPackerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSPackerFactory.h; path = ../../../../../SLFarseer/FSBLEClient/Component/Protocol/FSPackerFactory.h; sourceTree = "<group>"; };
 		392B86DC1A9B4E5A00B9F32A /* FSPackerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSPackerFactory.m; path = ../../../../../SLFarseer/FSBLEClient/Component/Protocol/FSPackerFactory.m; sourceTree = "<group>"; };
 		392B86DD1A9B4E5A00B9F32A /* FSPackerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSPackerProtocol.h; path = ../../../../../SLFarseer/FSBLEClient/Component/Protocol/FSPackerProtocol.h; sourceTree = "<group>"; };
-		392B86E01A9B4E6800B9F32A /* FSBLEPerpheralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLEPerpheralService.h; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSBLEPerpheralService.h; sourceTree = "<group>"; };
-		392B86E11A9B4E6800B9F32A /* FSBLEPerpheralService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBLEPerpheralService.m; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSBLEPerpheralService.m; sourceTree = "<group>"; };
-		392B86E21A9B4E6800B9F32A /* FSPerpheralClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSPerpheralClient.h; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSPerpheralClient.h; sourceTree = "<group>"; };
-		392B86E31A9B4E6800B9F32A /* FSPerpheralClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSPerpheralClient.m; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSPerpheralClient.m; sourceTree = "<group>"; };
+		392B86E01A9B4E6800B9F32A /* FSBLEPeripheralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLEPeripheralService.h; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSBLEPeripheralService.h; sourceTree = "<group>"; };
+		392B86E11A9B4E6800B9F32A /* FSBLEPeripheralService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBLEPeripheralService.m; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSBLEPeripheralService.m; sourceTree = "<group>"; };
+		392B86E21A9B4E6800B9F32A /* FSPeripheralClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSPeripheralClient.h; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSPeripheralClient.h; sourceTree = "<group>"; };
+		392B86E31A9B4E6800B9F32A /* FSPeripheralClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSPeripheralClient.m; path = ../../../../SLFarseer/FSBLEClient/FSBLEPerpheral/FSPeripheralClient.m; sourceTree = "<group>"; };
 		392B86E61A9B4E7200B9F32A /* FSBLECenteralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLECenteralService.h; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSBLECenteralService.h; sourceTree = "<group>"; };
 		392B86E71A9B4E7200B9F32A /* FSBLECenteralService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBLECenteralService.m; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSBLECenteralService.m; sourceTree = "<group>"; };
 		392B86E81A9B4E7200B9F32A /* FSCentralClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCentralClient.h; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSCentralClient.h; sourceTree = "<group>"; };
@@ -121,6 +124,12 @@
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		39A617081AA841780058574E /* DirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirViewController.h; sourceTree = "<group>"; };
 		39A617091AA841780058574E /* DirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirViewController.m; sourceTree = "<group>"; };
+		39A7D3831AB7C12300D727A5 /* FSBLEResSyncDataPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEResSyncDataPacker.h; sourceTree = "<group>"; };
+		39A7D3841AB7C12300D727A5 /* FSBLEResSyncDataPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEResSyncDataPacker.m; sourceTree = "<group>"; };
+		39A7D3861AB7CE4500D727A5 /* FSBLEBaseReqPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEBaseReqPacker.h; sourceTree = "<group>"; };
+		39A7D3871AB7CE4500D727A5 /* FSBLEBaseReqPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEBaseReqPacker.m; sourceTree = "<group>"; };
+		39A7D3891AB7DB1500D727A5 /* FSTransportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTransportManager.h; sourceTree = "<group>"; };
+		39A7D38A1AB7DB1500D727A5 /* FSTransportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTransportManager.m; sourceTree = "<group>"; };
 		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
 		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
 		39CF61BA1AA2C21A00C51434 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -219,10 +228,10 @@
 		39436F161A9AB419006B0E70 /* FSBLEPerpheral */ = {
 			isa = PBXGroup;
 			children = (
-				392B86E01A9B4E6800B9F32A /* FSBLEPerpheralService.h */,
-				392B86E11A9B4E6800B9F32A /* FSBLEPerpheralService.m */,
-				392B86E21A9B4E6800B9F32A /* FSPerpheralClient.h */,
-				392B86E31A9B4E6800B9F32A /* FSPerpheralClient.m */,
+				392B86E01A9B4E6800B9F32A /* FSBLEPeripheralService.h */,
+				392B86E11A9B4E6800B9F32A /* FSBLEPeripheralService.m */,
+				392B86E21A9B4E6800B9F32A /* FSPeripheralClient.h */,
+				392B86E31A9B4E6800B9F32A /* FSPeripheralClient.m */,
 			);
 			name = FSBLEPerpheral;
 			path = FSBLEPerpheralCentral;
@@ -233,13 +242,17 @@
 			children = (
 				392B86D91A9B4E5A00B9F32A /* FSInitBLEPacker.h */,
 				392B86DA1A9B4E5A00B9F32A /* FSInitBLEPacker.m */,
-				392A9CE41A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.h */,
-				392A9CE51A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m */,
 				3912EAC21A9DC4C200718F9A /* FSBLEReqSyncLogPacker.h */,
 				3912EAC31A9DC4C200718F9A /* FSBLEReqSyncLogPacker.m */,
+				392A9CE41A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.h */,
+				392A9CE51A9C521B00F3C8F8 /* FSBLEResSyncLogPacker.m */,
+				39A7D3831AB7C12300D727A5 /* FSBLEResSyncDataPacker.h */,
+				39A7D3841AB7C12300D727A5 /* FSBLEResSyncDataPacker.m */,
 				392B86DB1A9B4E5A00B9F32A /* FSPackerFactory.h */,
 				392B86DC1A9B4E5A00B9F32A /* FSPackerFactory.m */,
 				392B86DD1A9B4E5A00B9F32A /* FSPackerProtocol.h */,
+				39A7D3861AB7CE4500D727A5 /* FSBLEBaseReqPacker.h */,
+				39A7D3871AB7CE4500D727A5 /* FSBLEBaseReqPacker.m */,
 			);
 			name = Protocol;
 			path = FSBLEPerpheralCentral/Protocol;
@@ -331,6 +344,8 @@
 				398DE0141A80C7760019BB12 /* FSLog.m */,
 				398DE0151A80C7760019BB12 /* FSLogManager.h */,
 				398DE0161A80C7760019BB12 /* FSLogManager.m */,
+				39A7D3891AB7DB1500D727A5 /* FSTransportManager.h */,
+				39A7D38A1AB7DB1500D727A5 /* FSTransportManager.m */,
 				39436F131A9AB419006B0E70 /* SLBluetoothService */,
 			);
 			path = SLFarseer;
@@ -544,7 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39EC516F1A9EF2DE004D5484 /* FSLog.m in Sources */,
-				39EC517A1A9EF2FD004D5484 /* FSPerpheralClient.m in Sources */,
+				39EC517A1A9EF2FD004D5484 /* FSPeripheralClient.m in Sources */,
 				39EC516E1A9EF2DE004D5484 /* FSDebugCentral.m in Sources */,
 				39EC51741A9EF2FD004D5484 /* FSPackageIn.mm in Sources */,
 				39EC51761A9EF2FD004D5484 /* FSBLEResSyncLogPacker.m in Sources */,
@@ -552,10 +567,13 @@
 				39EC51771A9EF2FD004D5484 /* FSBLEReqSyncLogPacker.m in Sources */,
 				39EC517B1A9EF2FD004D5484 /* FSBLECenteralService.m in Sources */,
 				39EC515C1A9EF253004D5484 /* SLFarseer.m in Sources */,
+				39A7D3851AB7C12300D727A5 /* FSBLEResSyncDataPacker.m in Sources */,
 				39EC51731A9EF2FD004D5484 /* FSBLEUtilities.mm in Sources */,
 				39EC51711A9EF2FD004D5484 /* FSBLELog.m in Sources */,
+				39A7D38B1AB7DB1500D727A5 /* FSTransportManager.m in Sources */,
+				39A7D3881AB7CE4500D727A5 /* FSBLEBaseReqPacker.m in Sources */,
 				39EC51701A9EF2DE004D5484 /* FSLogManager.m in Sources */,
-				39EC51791A9EF2FD004D5484 /* FSBLEPerpheralService.m in Sources */,
+				39EC51791A9EF2FD004D5484 /* FSBLEPeripheralService.m in Sources */,
 				39EC517C1A9EF2FD004D5484 /* FSCentralClient.m in Sources */,
 				39EC51721A9EF2FD004D5484 /* FSBLELogInfo.m in Sources */,
 				39EC51781A9EF2FD004D5484 /* FSPackerFactory.m in Sources */,

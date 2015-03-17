@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class FSLogManager;
+@class FSTransportManager;
+
 @interface FSDebugCentral : NSObject
 
-+ (void)setup;
+@property (nonatomic, readonly)FSLogManager *logManager;
+@property (nonatomic, readonly)FSTransportManager *transportManager;
+
 + (FSDebugCentral *)getInstance;
 
 + (void)closeBLEDebug;

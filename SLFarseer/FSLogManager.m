@@ -9,9 +9,12 @@
 #import "FSLogManager.h"
 #import "FSBLELog.h"
 #import "FSPackageIn.h"
-#import "FSBLEPerpheralService.h"
+#import "FSBLEPeripheralService.h"
 #import <CoreBluetooth/CBPeripheral.h>
 #import "FSDebugCentral.h"
+#import "FSPeripheralClient.h"
+
+#import "FSTransportManager.h"
 
 #define OUTPUT_CONSOLE
 
@@ -141,7 +144,7 @@ static NSString         *kLifeCircleLogPath; // 当前生命周期log文件路�
         const char *filePath = [kLifeCircleLogPath cStringUsingEncoding:NSUTF8StringEncoding];
         [self writeLog:log ToFile:filePath];
         [self cacheLogIfNeed:log];
-        [FSBLEPerpheralService inputLogToCacheWithLog:log];
+        [[FSDebugCentral getInstance].transportManager.peripheralClient inputLogToCacheWithLog:log];
     });
 }
 

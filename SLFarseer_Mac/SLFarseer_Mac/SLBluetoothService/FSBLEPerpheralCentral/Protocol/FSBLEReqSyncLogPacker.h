@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Qeekers. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "FSBLEBaseReqPacker.h"
 
-@interface FSBLEReqSyncLogPacker : NSObject
+@interface FSBLEReqSyncLogPacker : FSBLEBaseReqPacker
 
 @end

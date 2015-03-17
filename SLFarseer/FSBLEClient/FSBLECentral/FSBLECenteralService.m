@@ -24,8 +24,8 @@ static FSBLECenteralService *service = nil;
     id                  _client;
     NSTimer             *_bleConnectTimer;
     
-    void(^didDisconveredCallback)(CBPeripheral *perpheral, NSNumber *RSSI);
-    void(^connectionStatusChangedCallback)(CBPeripheral *perpheral);
+    void(^didDisconveredCallback)(CBPeripheral *peripheral, NSNumber *RSSI);
+    void(^connectionStatusChangedCallback)(CBPeripheral *peripheral);
     void(^stateChangedCallback)(CBCentralManagerState state);
     
     CBPeripheral *_peripheral;
@@ -59,7 +59,7 @@ static FSBLECenteralService *service = nil;
     service = nil;
 }
 
-+ (void)scanDidDisconvered:(void(^)(CBPeripheral *perpheral, NSNumber *RSSI))callback {
++ (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback {
     service->didDisconveredCallback = callback;
     CBUUID *serviceUUID = [CBUUID UUIDWithString:kServiceUUIDString];
     [service->_manager scanForPeripheralsWithServices:@[serviceUUID] options:@{}];
@@ -69,7 +69,7 @@ static FSBLECenteralService *service = nil;
     [service->_manager stopScan];
 }
 
-+ (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *perpheral))callback {
++ (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback {
     service->connectionStatusChangedCallback = callback;
 }
 
@@ -97,17 +97,17 @@ static FSBLECenteralService *service = nil;
 
 #pragma mark - Instance Method
 
-- (void)connectToPeripheral:(CBPeripheral *)perpheral {
-    if (perpheral.state == CBPeripheralStateConnecting) {
-        [service->_manager cancelPeripheralConnection:perpheral];
+- (void)connectToPeripheral:(CBPeripheral *)peripheral {
+    if (peripheral.state == CBPeripheralStateConnecting) {
+        [service->_manager cancelPeripheralConnection:peripheral];
         return;
-    } else if (perpheral.state == CBPeripheralStateDisconnected) {
-        service->_bleConnectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(connectTimeout:) userInfo:perpheral repeats:NO];
-        [service->_manager connectPeripheral:perpheral options:nil];
+    } else if (peripheral.state == CBPeripheralStateDisconnected) {
+        service->_bleConnectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(connectTimeout:) userInfo:peripheral repeats:NO];
+        [service->_manager connectPeripheral:peripheral options:nil];
     } else {
         return;
     }
-    connectionStatusChangedCallback(perpheral);
+    connectionStatusChangedCallback(peripheral);
 //    NSLog(@"%s", __FUNCTION__);
 }
 

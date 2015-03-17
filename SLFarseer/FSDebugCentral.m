@@ -8,49 +8,30 @@
 
 #import "FSDebugCentral.h"
 
-#import "FSBLEPerpheralService.h"
 #import "FSLogManager.h"
-#import "FSLog.h"
+#import "FSTransportManager.h"
 
-static FSDebugCentral *instance = nil;
-
-@implementation FSDebugCentral {
-    void(^openBLEDebugCallback)(NSError *error);
-}
-
-+ (void)setup {
-    if (!instance) {
-        instance = [[FSDebugCentral alloc] init];
-    }
-}
+@implementation FSDebugCentral
 
 + (FSDebugCentral *)getInstance {
-    [self setup];
+    static FSDebugCentral *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[FSDebugCentral alloc] init];
+        instance->_logManager = [[FSLogManager alloc] init];
+        instance->_transportManager = [[FSTransportManager alloc] init];
+    });
     return instance;
 }
 
-#pragma mark - BLE Debug
+#pragma mark - Public Method
 
 + (void)openBLEDebug:(void(^)(NSError *error))callback {
-    NSParameterAssert(callback != nil);
-#if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
-    callback([NSError errorWithDomain:@"You can't open BLE Debug on iPhone Simulator" code:999 userInfo:nil]);
-#else
-    instance->openBLEDebugCallback = callback;
-    [FSBLEPerpheralService install:^(NSError *error) {
-        if (error) {
-            callback(error);
-        } else {
-            BOOL installed = [FSLogManager installLogFile];
-            callback(installed ? nil : [NSError errorWithDomain:@"FSLogManager has installed" code:999 userInfo:nil]);
-        }
-    }];
-#endif
+    [[FSDebugCentral getInstance].transportManager openBLEDebug:callback];
 }
 
 + (void)closeBLEDebug {
-    [FSLogManager uninstallLogFile];
-    [FSBLEPerpheralService uninstall];
+    [[FSDebugCentral getInstance].transportManager closeBLEDebug];
 }
 
 @end
