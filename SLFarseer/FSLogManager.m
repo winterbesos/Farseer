@@ -13,6 +13,8 @@
 #import <CoreBluetooth/CBPeripheral.h>
 #import "FSDebugCentral.h"
 
+#define OUTPUT_CONSOLE
+
 static dispatch_queue_t logFileOperationQueue;
 static NSMutableArray   *cacheLogs;
 static NSString         *kLifeCircleLogPath; // 当前生命周期log文件路径
@@ -24,13 +26,16 @@ static NSString         *kLifeCircleLogPath; // 当前生命周期log文件路�
 + (NSString *)FS_Path {
 #if TARGET_OS_IPHONE
     NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *dataPath = [[pathList objectAtIndex:0] stringByAppendingPathComponent:@"Farseer"];
+    NSString *dataPath = [pathList objectAtIndex:0];
 #elif TARGET_OS_MAC
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
     NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
-    NSString *dataPath = [[path stringByAppendingPathComponent:bundleId] stringByAppendingPathComponent:@"Farseer"]; // 相当于IOS的 documentpath
+    NSString *dataPath = [path stringByAppendingPathComponent:bundleId]; // 相当于IOS的 documentpath
+    #ifndef IMO_CONNECT_OFFICIAL_SERVER
+        dataPath = [dataPath stringByAppendingString:@"DEV"];
+    #endif
 #endif
-    return dataPath;
+    return [dataPath stringByAppendingPathComponent:@"Farseer"];
 }
 
 + (NSString *)FS_LogPath {
@@ -66,6 +71,8 @@ static NSString         *kLifeCircleLogPath; // 当前生命周期log文件路�
     struct LOG_HEADER header;
     header.createTime = [NSDate timeIntervalSinceReferenceDate];
     NSData *contentData = [NSData dataWithBytes:&header length:sizeof(header)];
+    NSError *err = nil;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[path stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:&err];
     [[NSFileManager defaultManager] createFileAtPath:path contents:contentData attributes:nil];
 }
 
@@ -153,6 +160,49 @@ static NSString         *kLifeCircleLogPath; // 当前生命周期log文件路�
     const void *bytes = [dataValue bytes];
     fwrite(bytes, sizeof(Byte), dataValue.length, fp);
     fclose(fp);
+
+#ifdef OUTPUT_CONSOLE
+    static NSString *currentPath = nil;
+    if (!currentPath) {
+        currentPath = [[FSLogManager FS_LogPath] stringByAppendingPathComponent:@"current.log"];
+        
+        fp = fopen(currentPath.UTF8String, "w");
+        fprintf(fp, "\33[2J");
+        fclose(fp);
+    }
+    
+    fp = fopen(currentPath.UTF8String, "a");
+    if (fp != NULL) {
+        char *format = NULL;
+        switch (log.log_level) {
+            case 0:
+                format = "\033[37m%s %s \033[0m\n";
+                break;
+            case 1:
+                format = "\033[32m%s %s \033[0m\n";
+                break;
+            case 2:
+                format = "\033[33m%s %s \033[0m\n";
+                break;
+            case 3:
+                format = "\033[31m%s %s \033[0m\n";
+                break;
+            case 4:
+                format = "\033[41;37m%s %s \033[0m\n";
+                break;
+        }
+        
+        static NSDateFormatter *kLogDateFormatter = nil;
+        if (!kLogDateFormatter) {
+            kLogDateFormatter = [[NSDateFormatter alloc] init];
+            [kLogDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            [kLogDateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+        }
+        
+        fprintf(fp, format, [kLogDateFormatter stringFromDate:log.log_date].UTF8String, log.log_content.UTF8String);
+        fclose(fp);
+    }
+#endif
 }
 
 // Memory

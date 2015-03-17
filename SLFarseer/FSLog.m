@@ -57,7 +57,8 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
         printf("%s:%s\n", prefix, cLog);
     }
     
-    if (level == Fatal) {
+    if (level == Fatal)
+    {
         printf("fatal error");
         assert(false);
     }
@@ -83,4 +84,25 @@ void FSPLog(NSString *log) {
 
 void FSPMinor(NSString *log) {
     FS_DebugLog(log, Minor);
+}
+
+#include <objc/runtime.h>
+
+static dispatch_once_t onceToken;
+
+#define FSRegister(obj) dispatch_once(&onceToken, ^{ \
+                            Register(obj);           \
+                        });
+
+void Register(id obj) {
+    FSRegister([NSObject new]);
+    static char kRegisterAssociatedhandleKey;
+    static NSMutableArray *objs = nil;
+    if (!objs) {
+        objs = [NSMutableArray array];
+    }
+    
+    NSObject *baseObj = [NSObject new];
+    objc_setAssociatedObject(baseObj, &kRegisterAssociatedhandleKey, obj, OBJC_ASSOCIATION_ASSIGN);
+    [objs addObject:baseObj];
 }
