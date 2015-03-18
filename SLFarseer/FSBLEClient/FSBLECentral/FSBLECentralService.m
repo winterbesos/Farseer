@@ -1,25 +1,25 @@
 //
-//  FSBLECenteralService.m
+//  FSBLECentralService.m
 //  SLFarseer_Mac
 //
 //  Created by Go Salo on 2/22/15.
 //  Copyright (c) 2015 Qeekers. All rights reserved.
 //
 
-#import "FSBLECenteralService.h"
+#import "FSBLECentralService.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "FSPackageIn.h"
-#import "FSPackerFactory.h"
+#import "FSBLECentralPackerFactory.h"
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
 
-static FSBLECenteralService *service = nil;
+static FSBLECentralService *service = nil;
 
-@interface FSBLECenteralService () <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface FSBLECentralService () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @end
 
-@implementation FSBLECenteralService {
+@implementation FSBLECentralService {
     CBCentralManager    *_manager;
     id                  _client;
     NSTimer             *_bleConnectTimer;
@@ -35,7 +35,7 @@ static FSBLECenteralService *service = nil;
 
 + (void)install {
     if (!service) {
-        service = [[FSBLECenteralService alloc] init];
+        service = [[FSBLECentralService alloc] init];
         service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
         service->_client = [[FSCentralClient alloc] init];
     }
@@ -43,7 +43,7 @@ static FSBLECenteralService *service = nil;
 
 + (void)installWithClient:(id)client stateChangedCallback:(void(^)(CBCentralManagerState state))callback {
     if (!service) {
-        service = [[FSBLECenteralService alloc] init];
+        service = [[FSBLECentralService alloc] init];
         service->stateChangedCallback = callback;
         service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
         service->_client = client;
@@ -145,7 +145,7 @@ static FSBLECenteralService *service = nil;
     [characteristic.value getBytes:&cmd length:sizeof(cmd)];
     
     FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
-    [[FSPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
+    [[FSBLECentralPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {

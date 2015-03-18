@@ -109,6 +109,7 @@
 		3912EACF1A9DD1AF00718F9A /* FSBLEResSyncLogPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEResSyncLogPacker.m; sourceTree = "<group>"; };
 		3912EAD01A9DD1AF00718F9A /* FSBLEReqSyncLogPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEReqSyncLogPacker.h; sourceTree = "<group>"; };
 		3912EAD11A9DD1AF00718F9A /* FSBLEReqSyncLogPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEReqSyncLogPacker.m; sourceTree = "<group>"; };
+		39193BEC1AB9268D00617804 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		391C23251A8661430032EED5 /* FSBTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBTProtocol.h; sourceTree = "<group>"; };
 		391C23261A8661430032EED5 /* FSBTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBTProtocol.m; sourceTree = "<group>"; };
 		392B86AE1A9B4DEF00B9F32A /* FSBLECenteralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBLECenteralService.h; path = ../../../SLFarseer/FSBLEClient/FSBLECentral/FSBLECenteralService.h; sourceTree = "<group>"; };
@@ -603,6 +604,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				398DDFAB1A80C6250019BB12 /* Base */,
+				39193BEC1AB9268D00617804 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

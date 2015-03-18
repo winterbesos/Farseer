@@ -8,6 +8,7 @@
 
 #import <Foundation/NSObjCRuntime.h>
 
+@class NSError;
 @class NSString;
 
 typedef enum {
@@ -31,3 +32,6 @@ void FSPLog(NSString *log);
 void FSPMinor(NSString *log);
 
 void FS_DebugLog(NSString *log, FSLogLevel level);
+
+void closeBLEDebug();
+void openBLEDebug(void(^callback)(NSError *error));

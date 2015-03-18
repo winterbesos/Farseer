@@ -1,21 +1,17 @@
 //
-//  FSPackerFactory.m
-//  SLBTServiceDemo
+//  FSBLECentralPackerFactory.m
+//  SLFarseer_iOS
 //
-//  Created by Go Salo on 2/15/15.
-//  Copyright (c) 2015 Go Salo. All rights reserved.
+//  Created by Go Salo on 15/3/18.
+//  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#import "FSPackerFactory.h"
-
+#import "FSBLECentralPackerFactory.h"
 #import "FSInitBLEPacker.h"
-
-#import "FSBLEReqSyncLogPacker.h"
 #import "FSBLEResSyncLogPacker.h"
-
 #import "FSBLEResSyncDataPacker.h"
 
-@implementation FSPackerFactory
+@implementation FSBLECentralPackerFactory
 
 + (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd {
     id packerObj = nil;
@@ -36,19 +32,5 @@
     return packerObj;
 }
 
-+ (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd request:(CBATTRequest *)request {
-    id packerObj = nil;
-    switch (cmd) {
-        case CMDReqLogging:
-            packerObj = [[FSBLEReqSyncLogPacker alloc] initWithRequest:request];
-            break;
-        case CMDReqData:
-            break;
-        default:
-            break;
-    }
-    
-    return packerObj;
-}
 
 @end

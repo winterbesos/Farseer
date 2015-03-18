@@ -9,12 +9,11 @@
 #import "FSBLEPeripheralService.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "FSPackageIn.h"
-#import "FSPackerFactory.h"
+#import "FSBLEPeripheralPackerFactory.h"
 #import "FSPeripheralClient.h"
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
 #import "FSLogManager.h"
-#import "FSLog.h"
 #import <objc/runtime.h>
 
 #define MAX_PACKAGE_SIZE 100
@@ -204,7 +203,7 @@ static FSBLEPeripheralService *kBLEService = nil;
             Byte cmd;
             [request.value getBytes:&cmd length:sizeof(cmd)];
             FSPackageIn *packageIn = [FSPackageIn decode:request.value];
-            [[FSPackerFactory getObjectWithCMD:cmd request:request] unpack:packageIn client:_client];
+            [[FSBLEPeripheralPackerFactory getObjectWithCMD:cmd request:request] unpack:packageIn client:_client];
         }
     }
 }

@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FSBLEDefine.h"
-#import "FSPackerProtocol.h"
+#import "FSBLEPeripheralPackerProtocol.h"
 
 @class CBATTRequest;
 
-@interface FSPackerFactory : NSObject
+@interface FSBLEPeripheralPackerFactory : NSObject
 
-+ (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd;
 + (id<FSPackerDelegate>)getObjectWithCMD:(CMD)cmd request:(CBATTRequest *)request;
 
 @end

@@ -11,18 +11,12 @@
 @class FSBLELog;
 @class CBPeripheral;
 
-@interface FSLogManager : NSObject
+@interface FSLogManager : NSObject {
+    NSString         *kLifeCircleLogPath; // 当前生命周期log文件路径
+    dispatch_queue_t logFileOperationQueue;
+    NSMutableArray   *cacheLogs;
+}
 
-+ (NSArray *)logList;
-+ (void)inputLog:(FSBLELog *)log;
-
-+ (void)uninstallLogFile;
-+ (BOOL)installLogFile;
-
-#pragma mark - Central
-
-+ (void)saveLog:(NSArray *)logs peripheral:(CBPeripheral *)peripheral bundleName:(NSString *)bundleName callback:(void(^)(float percentage))callback;
-
-+ (NSString *)FS_Path;
+- (void)writeLog:(FSBLELog *)log ToFile:(const char *)filePath;
 
 @end

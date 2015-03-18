@@ -8,7 +8,7 @@
 
 #import "LogTableViewCell.h"
 #import "FSBLELog.h"
-#import "FSLog.h"
+#import <Farseer_iOS/Farseer_iOS.h>
 #import "Define.h"
 
 #define MINOR_LOG_COLOR     [UIColor grayColor]

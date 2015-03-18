@@ -7,7 +7,7 @@
 //
 
 #import "FSInitBLEPacker.h"
-#import "FSPackerProtocol.h"
+#import "FSBLECentralPackerProtocol.h"
 #import "FSPackageIn.h"
 #import "FSCentralClient.h"
 

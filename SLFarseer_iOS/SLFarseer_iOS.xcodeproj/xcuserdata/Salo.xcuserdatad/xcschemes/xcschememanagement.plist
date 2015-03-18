@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SLFarseer.xcscheme</key>
+		<key>Farseer_Remote_iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>7</integer>
+		</dict>
+		<key>Farseer_iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>SLFarseer_iOS.xcscheme</key>
 		<dict>
@@ -17,12 +22,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>39193BFD1AB9955400617804</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39193C071AB9955400617804</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39193C2A1AB9969800617804</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39193C341AB9969800617804</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39193C4E1AB996DD00617804</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39193C581AB996DD00617804</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>398DDFC91A80C63D0019BB12</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>398DDFE51A80C63D0019BB12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39D0349B1AB998DD00132F0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39D034A51AB998DE00132F0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39D034E81AB9A44F00132F0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39D034F21AB9A44F00132F0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39D0350C1AB9A4A600132F0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39D035161AB9A4A600132F0F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

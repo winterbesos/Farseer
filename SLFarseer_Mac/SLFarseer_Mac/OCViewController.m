@@ -8,7 +8,7 @@
 
 #import "OCViewController.h"
 #import <SLFarseer/FSLog.h>
-#import "FSBLECenteralService.h"
+#import "FSBLECentralService.h"
 #import <objc/runtime.h>
 #import <CoreBluetooth/CBPeripheral.h>
 
@@ -27,7 +27,7 @@ static void *AssociatedObjectHandle;
 }
 
 - (void)dealloc {
-    [FSBLECenteralService uninstall];
+    [FSBLECentralService uninstall];
 }
 
 - (void)viewDidLoad {
@@ -41,13 +41,13 @@ static void *AssociatedObjectHandle;
     FSLog(@"this is a log [OC]");
     FSMinor(@"this is a minor log [OC]");
     
-    [FSBLECenteralService install];
+    [FSBLECentralService install];
     _peripheralsDataList = [NSMutableArray array];
-    [FSBLECenteralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
+    [FSBLECentralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
         [self.peripheralTableView reloadData];
     }];
 
-    [FSBLECenteralService scanDidDisconvered:^(CBPeripheral *perpheral, NSNumber *RSSI) {
+    [FSBLECentralService scanDidDisconvered:^(CBPeripheral *perpheral, NSNumber *RSSI) {
         NSInteger index = [_peripheralsDataList indexOfObject:perpheral];
         if (index == NSNotFound) {
             [_peripheralsDataList addObject:perpheral];
@@ -95,7 +95,7 @@ static void *AssociatedObjectHandle;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-    [FSBLECenteralService connectToPeripheral:_peripheralsDataList[row]];
+    [FSBLECentralService connectToPeripheral:_peripheralsDataList[row]];
     return YES;
 }
 

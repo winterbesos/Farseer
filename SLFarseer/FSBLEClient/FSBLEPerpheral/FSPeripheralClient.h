@@ -19,6 +19,6 @@
                      dataCharacteristic:(CBMutableCharacteristic *)dataCharacteristic
                       cmdCharacteristic:(CBMutableCharacteristic *)cmdCharacteristic;
 
-- (void)inputLogToCacheWithLog:(FSBLELog *)log;
+- (void)inputLogToCacheIfOpenBLEDebugWithLog:(FSBLELog *)log;
 
 @end

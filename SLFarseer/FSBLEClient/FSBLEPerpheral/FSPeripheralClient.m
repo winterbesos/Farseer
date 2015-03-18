@@ -8,9 +8,10 @@
 
 #import "FSPeripheralClient.h"
 #import "FSBLEPeripheralService.h"
-#import "FSLogManager.h"
+#import "FSLogManager+Peripheral.h"
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
+#import "FSDebugCentral.h"
 
 @interface FSPeripheralClient ()
 
@@ -39,7 +40,7 @@
 #pragma mark - Business Logic
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNum {
-    NSArray *logList = [FSLogManager logList];
+    NSArray *logList = [[FSDebugCentral getInstance].logManager logList];
     if (logList.count > logNum) {
         FSBLELog *log = logList[logNum];
         NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
@@ -54,11 +55,18 @@
     }
 }
 
-- (void)inputLogToCacheWithLog:(FSBLELog *)log {
+- (void)inputLogToCacheIfOpenBLEDebugWithLog:(FSBLELog *)log {
+    
 //    if (kBLEService) {
+//    NSArray *logList = [FSLogManager logList];
+//    if (logList.count > log) {
+//        <#statements#>
+//    }
 //        if (kBLEService->_waitingLogNumber == log.log_number) {
 //            [kBLEService updateLogCharacteristicWithLogNum:kBLEService->_waitingLogNumber];
 //        }
+//        
+//        [FSBLEPeripheralService updateCharacteristic:<#(CBMutableCharacteristic *)#> withData:<#(NSData *)#>]
 //    }
 }
 

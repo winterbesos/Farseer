@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39106C831A8353C00076CD07"
-               BuildableName = "SLFarseer.framework"
-               BlueprintName = "SLFarseer"
-               ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+               BlueprintIdentifier = "39D0349B1AB998DD00132F0F"
+               BuildableName = "Farseer_Remote_iOS.framework"
+               BlueprintName = "Farseer_Remote_iOS"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,10 +42,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39106C831A8353C00076CD07"
-            BuildableName = "SLFarseer.framework"
-            BlueprintName = "SLFarseer"
-            ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+            BlueprintIdentifier = "39D0349B1AB998DD00132F0F"
+            BuildableName = "Farseer_Remote_iOS.framework"
+            BlueprintName = "Farseer_Remote_iOS"
+            ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39106C831A8353C00076CD07"
-            BuildableName = "SLFarseer.framework"
-            BlueprintName = "SLFarseer"
-            ReferencedContainer = "container:SLFarseer_Mac.xcodeproj">
+            BlueprintIdentifier = "39D0349B1AB998DD00132F0F"
+            BuildableName = "Farseer_Remote_iOS.framework"
+            BlueprintName = "Farseer_Remote_iOS"
+            ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

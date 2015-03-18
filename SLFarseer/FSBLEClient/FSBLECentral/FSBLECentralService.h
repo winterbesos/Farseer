@@ -1,5 +1,5 @@
 //
-//  FSBLECenteralService.h
+//  FSBLECentralService.h
 //  SLFarseer_Mac
 //
 //  Created by Go Salo on 2/22/15.
@@ -11,7 +11,7 @@
 
 @class CBPeripheral;
 
-@interface FSBLECenteralService : NSObject
+@interface FSBLECentralService : NSObject
 
 + (void)install;
 + (void)installWithClient:(id)client stateChangedCallback:(void(^)(CBCentralManagerState state))callback;

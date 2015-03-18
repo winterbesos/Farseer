@@ -1,5 +1,5 @@
 //
-//  FSPackerProtocol.h
+//  FSBLEPeripheralPackerProtocol.h
 //  SLBTServiceDemo
 //
 //  Created by Go Salo on 2/15/15.

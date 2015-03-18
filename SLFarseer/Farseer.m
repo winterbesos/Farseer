@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 imo. All rights reserved.
 //
 
-#include "FSLog.h"
+#include "Farseer.h"
 #include <Foundation/NSString.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -18,15 +18,16 @@
 #include <pwd.h>
 #include <sys/types.h>
 #include <dirent.h>
-#import "FSLogManager.h"
+#import "FSLogManager+Peripheral.h"
 #import "FSBLELog.h"
 #import "FSBLEDefine.h"
+#import "FSDebugCentral.h"
 
 #define SLCONSOLE_LEVEL Warning
 
 void FS_DebugLog(NSString *log, FSLogLevel level)
 {   
-    [FSLogManager inputLog:[FSBLELog createLogWithLevel:level content:log]];
+    [[FSDebugCentral getInstance].logManager inputLog:[FSBLELog createLogWithLevel:level content:log]];
     
 #ifdef DEBUG
     const char *cLog = [log cStringUsingEncoding:NSUTF8StringEncoding];
@@ -84,6 +85,14 @@ void FSPLog(NSString *log) {
 
 void FSPMinor(NSString *log) {
     FS_DebugLog(log, Minor);
+}
+
+void closeBLEDebug() {
+    [FSDebugCentral closeBLEDebug];
+}
+
+void openBLEDebug(void(^callback)(NSError *error)) {
+    [FSDebugCentral openBLEDebug:callback];
 }
 
 // TODO: doing

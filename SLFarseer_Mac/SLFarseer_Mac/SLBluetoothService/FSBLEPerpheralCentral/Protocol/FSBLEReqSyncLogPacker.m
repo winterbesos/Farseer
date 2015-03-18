@@ -8,7 +8,7 @@
 
 #import "FSBLEReqSyncLogPacker.h"
 #import "FSPackageIn.h"
-#import "FSPackerProtocol.h"
+#import "FSBLEPeripheralPackerProtocol.h"
 
 @implementation FSBLEReqSyncLogPacker
 

@@ -34,6 +34,62 @@
                ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39193C071AB9955400617804"
+               BuildableName = "Farseer_RemoteTests.xctest"
+               BlueprintName = "Farseer_RemoteTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39193C341AB9969800617804"
+               BuildableName = "Farseer_iOSTests.xctest"
+               BlueprintName = "Farseer_iOSTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39193C581AB996DD00617804"
+               BuildableName = "Farseer_MacTests.xctest"
+               BlueprintName = "Farseer_MacTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39D034A51AB998DE00132F0F"
+               BuildableName = "Farseer_Remote_iOSTests.xctest"
+               BlueprintName = "Farseer_Remote_iOSTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +105,46 @@
                BlueprintIdentifier = "398DDFE51A80C63D0019BB12"
                BuildableName = "SLFarseer_iOSTests.xctest"
                BlueprintName = "SLFarseer_iOSTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39193C071AB9955400617804"
+               BuildableName = "Farseer_RemoteTests.xctest"
+               BlueprintName = "Farseer_RemoteTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39193C341AB9969800617804"
+               BuildableName = "Farseer_iOSTests.xctest"
+               BlueprintName = "Farseer_iOSTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39193C581AB996DD00617804"
+               BuildableName = "Farseer_MacTests.xctest"
+               BlueprintName = "Farseer_MacTests"
+               ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39D034A51AB998DE00132F0F"
+               BuildableName = "Farseer_Remote_iOSTests.xctest"
+               BlueprintName = "Farseer_Remote_iOSTests"
                ReferencedContainer = "container:SLFarseer_iOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,7 +168,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "398DDFC91A80C63D0019BB12"
@@ -90,7 +187,8 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "398DDFC91A80C63D0019BB12"

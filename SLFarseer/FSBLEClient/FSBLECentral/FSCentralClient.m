@@ -8,7 +8,7 @@
 
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
-#import "FSBLECenteralService.h"
+#import "FSBLECentralService.h"
 
 @implementation FSCentralClient
 

@@ -10,6 +10,10 @@
 	<string>SLFarseer_iOS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>61ca3955-56c0-fb4b-b48d-5f91258ccc2c++5132</key>
+		<string>svn://192.168.16.246/client/IMOMobile_iphone/trunk/imoffice_2.6</string>
+		<key>693203B42B954A162B496FC752E42DD9AC69DB3F</key>
+		<string>ssh://101.86.233.73/Users/Salo/Production/imoffice_for_mac.git</string>
 		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
 		<string>ssh://116.233.27.246/git/SLFarseer.git</string>
 	</dict>
@@ -17,8 +21,17 @@
 	<string>SLFarseer_iOS/SLFarseer_iOS.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>61ca3955-56c0-fb4b-b48d-5f91258ccc2c++5132</key>
+		<string>../../../../imoffice</string>
+		<key>693203B42B954A162B496FC752E42DD9AC69DB3F</key>
+		<string>../../../../imoffice_for_mac</string>
 		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
 		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>61ca3955-56c0-fb4b-b48d-5f91258ccc2c++5132</key>
+		<string>svn://192.168.16.246/client/IMOMobile_iphone</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://116.233.27.246/git/SLFarseer.git</string>
@@ -28,6 +41,22 @@
 	<string>81E1390765E1C30640CE099E674188AB815B761E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>61ca3955-56c0-fb4b-b48d-5f91258ccc2c++5132</string>
+			<key>IDESourceControlWCCName</key>
+			<string>imoffice</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>693203B42B954A162B496FC752E42DD9AC69DB3F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>imoffice_for_mac</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

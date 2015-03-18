@@ -7,9 +7,8 @@
 //
 
 #import "PeripheralTableViewController.h"
-#import "FSBLECenteralService.h"
+#import "FSBLECentralService.h"
 #import "FSBLEPeripheralService.h"
-#import "FSBLECenteralService.h"
 #import <objc/runtime.h>
 #import <CoreBluetooth/CBPeripheral.h>
 
@@ -44,7 +43,7 @@ static void *AssociatedObjectHandle;
 #pragma mark - Private Method
 
 - (void)scanPeripheral {
-    [FSBLECenteralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
+    [FSBLECentralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
         switch (peripheral.state) {
             case CBPeripheralStateDisconnected:
                 break;
@@ -55,7 +54,7 @@ static void *AssociatedObjectHandle;
         }
         [self.tableView reloadData];
     }];
-    [FSBLECenteralService scanDidDisconvered:^(CBPeripheral *peripheral, NSNumber *RSSI) {
+    [FSBLECentralService scanDidDisconvered:^(CBPeripheral *peripheral, NSNumber *RSSI) {
         NSInteger index = [_peripheralsDataList indexOfObject:peripheral];
         if (index == NSNotFound) {
             [_peripheralsDataList addObject:peripheral];
@@ -69,7 +68,7 @@ static void *AssociatedObjectHandle;
 }
 
 - (void)stopScanAndClearPeripheral {
-    [FSBLECenteralService stopScan];
+    [FSBLECentralService stopScan];
     [self resetRSSI];
 }
 
@@ -126,6 +125,6 @@ static void *AssociatedObjectHandle;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CBPeripheral *peripheral = _peripheralsDataList[indexPath.row];
-    [FSBLECenteralService connectToPeripheral:peripheral];
+    [FSBLECentralService connectToPeripheral:peripheral];
 }
 @end

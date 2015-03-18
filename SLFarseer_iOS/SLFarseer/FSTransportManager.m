@@ -9,7 +9,7 @@
 #import "FSTransportManager.h"
 #import "FSPeripheralClient.h"
 #import "FSBLEPeripheralService.h"
-#import "FSLogManager.h"
+#import "FSLogManager+Peripheral.h"
 #import "FSDebugCentral.h"
 
 @implementation FSTransportManager
@@ -34,7 +34,7 @@
             callback(error);
         } else {
             [self.peripheralClient setPeripheralInfoCharacteristic:peripheralInfoCharacteristic logCharacteristic:logCharacteristic dataCharacteristic:dataCharacteristic cmdCharacteristic:cmdCharacteristic];
-            BOOL installed = [FSLogManager installLogFile];
+            BOOL installed = [[FSDebugCentral getInstance].logManager installLogFile];
             callback(installed ? nil : [NSError errorWithDomain:@"FSLogManager has installed" code:999 userInfo:nil]);
         }
     }];
@@ -42,7 +42,7 @@
 }
 
 - (void)closeBLEDebug {
-    [FSLogManager uninstallLogFile];
+    [[FSDebugCentral getInstance].logManager uninstallLogFile];
     [FSBLEPeripheralService uninstall];
 }
 

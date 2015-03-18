@@ -7,17 +7,18 @@
 //
 
 #import "MainViewController.h"
-#import "FSLog.h"
+#import <Farseer_iOS/Farseer_iOS.h>
 #import "FSBLEDefine.h"
 #import "LogViewController.h"
-#import "FSBLECenteralService.h"
+#import "FSBLECentralService.h"
 #import "PeripheralTableViewController.h"
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
 #import "TracksView.h"
-#import "FSLogManager.h"
+#import "FSUtilities.h"
 #import "FSDebugCentral.h"
 #import "DirViewController.h"
+#import "FSLogManager+Central.h"
 
 @interface MainViewController ()
 
@@ -58,7 +59,7 @@
     
     _logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
     
-    [FSBLECenteralService installWithClient:self stateChangedCallback:nil];
+    [FSBLECentralService installWithClient:self stateChangedCallback:nil];
     
     PeripheralTableViewController *leftVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PeripheralTableViewController"];
     self.leftViewController = leftVC;
@@ -159,13 +160,13 @@
 
 - (void)pushToDirVC {
     DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
-    [dirVC setPath:[FSLogManager FS_Path]];
+    [dirVC setPath:[FSUtilities FS_Path]];
     [self.navigationController pushViewController:dirVC animated:YES];
 }
 
 - (void)saveLog {
     NSArray *logs = [_logViewController displayLogs];
-    [FSLogManager saveLog:logs peripheral:[_logViewController selectedPeripheral] bundleName:self.bundleNameLabel.text callback:^(float percentage) {
+    [[FSDebugCentral getInstance].logManager saveLog:logs peripheral:[_logViewController selectedPeripheral] bundleName:self.bundleNameLabel.text callback:^(float percentage) {
         if (percentage == 1) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存日志完成" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
@@ -181,7 +182,7 @@
 }
 
 - (void)continueLog {
-    [FSBLECenteralService requLogWithLogNumber:([_logViewController lastLog] ? [_logViewController lastLog].log_number : 0)];
+    [FSBLECentralService requLogWithLogNumber:([_logViewController lastLog] ? [_logViewController lastLog].log_number : 0)];
 }
 
 #pragma mark - BLE Client
@@ -189,13 +190,13 @@
 - (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral {
     FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName];
     [self displayLogInfo:logInfo];
-    [FSBLECenteralService requLogWithLogNumber:0];
+    [FSBLECentralService requLogWithLogNumber:0];
 }
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content peripheral:(CBPeripheral *)peripheral {
     FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content];
     [_logViewController insertLogWithLog:log peripheral:peripheral];
-    [FSBLECenteralService requLogWithLogNumber:(logNumber + 1)];
+    [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
 }
 
 #pragma mark - Actions
