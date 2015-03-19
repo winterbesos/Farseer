@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F99D5BC0-B05C-443B-92B2-DD251B3BCA7A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SLFarseer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
+		<string>ssh://116.233.27.246/git/SLFarseer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Farseer_Project/SLFarseer.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://116.233.27.246/git/SLFarseer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>81E1390765E1C30640CE099E674188AB815B761E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>81E1390765E1C30640CE099E674188AB815B761E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SLFarseer</string>
+		</dict>
+	</array>
+</dict>
+</plist>
