@@ -8,6 +8,7 @@
 
 #import "FSBLEUtilities.h"
 #import "FSBLEDefine.h"
+#import "FSDefine.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIDevice.h>
 #elif TARGET_OS_MAC

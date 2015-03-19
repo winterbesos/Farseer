@@ -9,20 +9,13 @@
 /* Begin PBXBuildFile section */
 		39193C361AB9969800617804 /* Farseer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39193C2B1AB9969800617804 /* Farseer_iOS.framework */; };
 		39193C3F1AB9969800617804 /* Farseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39193C3E1AB9969800617804 /* Farseer_iOSTests.m */; };
-		39193C421AB9969800617804 /* Farseer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39193C2B1AB9969800617804 /* Farseer_iOS.framework */; };
-		39193C431AB9969800617804 /* Farseer_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39193C2B1AB9969800617804 /* Farseer_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */; };
 		397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* AppDelegate.m */; };
 		397F5BE51ABA5D4100720D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE41ABA5D4100720D32 /* main.m */; };
-		397F5BE81ABA5D4100720D32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE71ABA5D4100720D32 /* ViewController.m */; };
 		397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397F5BE91ABA5D4100720D32 /* Images.xcassets */; };
 		397F5BF91ABA5D4100720D32 /* SLFarseer_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BF81ABA5D4100720D32 /* SLFarseer_MacTests.m */; };
 		397F5C0A1ABA5DE500720D32 /* Farseer_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C091ABA5DE500720D32 /* Farseer_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		397F5C1C1ABA5DE600720D32 /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
-		397F5C1D1ABA5DE600720D32 /* Farseer_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		397F5C2F1ABA5E4C00720D32 /* Farseer_Remote_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		397F5C411ABA5E4D00720D32 /* Farseer_Remote_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; };
-		397F5C421ABA5E4D00720D32 /* Farseer_Remote_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		397F5C4B1ABA63E200720D32 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C4A1ABA63E200720D32 /* OCViewController.m */; };
 		397F5C4D1ABA63F300720D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 397F5C4C1ABA63F300720D32 /* Main.storyboard */; };
 		397F5C981ABA6B5A00720D32 /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
@@ -90,6 +83,34 @@
 		399463EF1AB9A624009F927D /* Farseer_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39193C2F1AB9969800617804 /* Farseer_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		399463F91AB9A83F009F927D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D034E21AB9A3EE00132F0F /* UIKit.framework */; };
 		39A6170A1AA841780058574E /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
+		39C68D8F1ABA738D00BCDA4F /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
+		39C68D901ABA738D00BCDA4F /* Farseer_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		39C68D941ABA742300BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D951ABA742300BCDA4F /* FSBLELogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C761ABA6B5A00720D32 /* FSBLELogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D961ABA742400BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D971ABA742400BCDA4F /* FSBLELogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C761ABA6B5A00720D32 /* FSBLELogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D981ABA742500BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D991ABA742500BCDA4F /* FSBLELogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C761ABA6B5A00720D32 /* FSBLELogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D9A1ABA742500BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D9B1ABA742500BCDA4F /* FSBLELogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C761ABA6B5A00720D32 /* FSBLELogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D9D1ABA74F600BCDA4F /* FSDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C68D9C1ABA74B600BCDA4F /* FSDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D9E1ABA74F700BCDA4F /* FSDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C68D9C1ABA74B600BCDA4F /* FSDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68D9F1ABA74F700BCDA4F /* FSDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C68D9C1ABA74B600BCDA4F /* FSDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DA01ABA74F800BCDA4F /* FSDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C68D9C1ABA74B600BCDA4F /* FSDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DA41ABA77E100BCDA4F /* Farseer_Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */; };
+		39C68DA51ABA77E200BCDA4F /* Farseer_Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */; };
+		39C68DA61ABA77E500BCDA4F /* Farseer_Remote.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C68DA11ABA77C200BCDA4F /* Farseer_Remote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DA71ABA77E600BCDA4F /* Farseer_Remote.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C68DA11ABA77C200BCDA4F /* Farseer_Remote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DAC1ABA7D5B00BCDA4F /* FSDebugCentral_Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */; };
+		39C68DAD1ABA7D5B00BCDA4F /* FSDebugCentral_Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */; };
+		39C68DAE1ABA7DC800BCDA4F /* FSUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C811ABA6B5A00720D32 /* FSUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DAF1ABA7DC900BCDA4F /* FSUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C811ABA6B5A00720D32 /* FSUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DB01ABA7E3700BCDA4F /* FSBLECentralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5CE31ABA6EC600720D32 /* FSBLECentralService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DB11ABA7E3700BCDA4F /* FSBLECentralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5CE31ABA6EC600720D32 /* FSBLECentralService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39C68DB21ABA7FB100BCDA4F /* FSBLELogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C771ABA6B5A00720D32 /* FSBLELogInfo.m */; };
+		39C68DB31ABA7FB200BCDA4F /* FSBLELogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C771ABA6B5A00720D32 /* FSBLELogInfo.m */; };
+		39C68DB41ABA7FB500BCDA4F /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
+		39C68DB51ABA7FB600BCDA4F /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
 		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
 		39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CF61BC1AA2CDC800C51434 /* TracksView.m */; };
 		39D034E31AB9A3EE00132F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D034E21AB9A3EE00132F0F /* UIKit.framework */; };
@@ -115,13 +136,6 @@
 			remoteGlobalIDString = 398DDFC91A80C63D0019BB12;
 			remoteInfo = SLFarseer_iOS;
 		};
-		39193C401AB9969800617804 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39193C2A1AB9969800617804;
-			remoteInfo = Farseer_iOS;
-		};
 		397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
@@ -129,26 +143,19 @@
 			remoteGlobalIDString = 397F5BDC1ABA5D4100720D32;
 			remoteInfo = SLFarseer_Mac;
 		};
-		397F5C1A1ABA5DE600720D32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 397F5C041ABA5DE500720D32;
-			remoteInfo = Farseer_Mac;
-		};
-		397F5C3F1ABA5E4D00720D32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 397F5C291ABA5E4C00720D32;
-			remoteInfo = Farseer_Remote_Mac;
-		};
 		398DDFE71A80C63D0019BB12 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 398DDFC91A80C63D0019BB12;
 			remoteInfo = SLFarseer_iOS;
+		};
+		39C68D911ABA738D00BCDA4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397F5C041ABA5DE500720D32;
+			remoteInfo = Farseer_Mac;
 		};
 		39D035191AB9A4A600132F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -180,20 +187,18 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				39193C431AB9969800617804 /* Farseer_iOS.framework in Embed Frameworks */,
 				39D035251AB9A4A600132F0F /* Farseer_Remote_iOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		397F5C211ABA5DE600720D32 /* Embed Frameworks */ = {
+		39C68D931ABA738D00BCDA4F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				397F5C1D1ABA5DE600720D32 /* Farseer_Mac.framework in Embed Frameworks */,
-				397F5C421ABA5E4D00720D32 /* Farseer_Remote_Mac.framework in Embed Frameworks */,
+				39C68D901ABA738D00BCDA4F /* Farseer_Mac.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,7 +209,7 @@
 		39193C2B1AB9969800617804 /* Farseer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39193C2E1AB9969800617804 /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_iOS.plist; sourceTree = "<group>"; };
 		39193C2F1AB9969800617804 /* Farseer_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_iOS.h; path = Farseer_iOS/Farseer_iOS.h; sourceTree = SOURCE_ROOT; };
-		39193C351AB9969800617804 /* Farseer_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Farseer_iOSTests.xctest; path = Farseer_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39193C351AB9969800617804 /* Farseer_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Farseer_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39193C3D1AB9969800617804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39193C3E1AB9969800617804 /* Farseer_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Farseer_iOSTests.m; sourceTree = "<group>"; };
 		394AD6561A9D62F4007FD2D2 /* PeripheralTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralTableViewController.h; sourceTree = "<group>"; };
@@ -214,8 +219,6 @@
 		397F5BE11ABA5D4100720D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		397F5BE21ABA5D4100720D32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		397F5BE41ABA5D4100720D32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		397F5BE61ABA5D4100720D32 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		397F5BE71ABA5D4100720D32 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		397F5BE91ABA5D4100720D32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		397F5BF21ABA5D4100720D32 /* SLFarseer_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseer_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5BF71ABA5D4100720D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -294,6 +297,11 @@
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		39A617081AA841780058574E /* DirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirViewController.h; sourceTree = "<group>"; };
 		39A617091AA841780058574E /* DirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirViewController.m; sourceTree = "<group>"; };
+		39C68D9C1ABA74B600BCDA4F /* FSDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSDefine.h; sourceTree = "<group>"; };
+		39C68DA11ABA77C200BCDA4F /* Farseer_Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Farseer_Remote.h; sourceTree = "<group>"; };
+		39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Farseer_Remote.m; sourceTree = "<group>"; };
+		39C68DA91ABA7B2100BCDA4F /* FSDebugCentral_Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDebugCentral_Remote.h; sourceTree = "<group>"; };
+		39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDebugCentral_Remote.m; sourceTree = "<group>"; };
 		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
 		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
 		39CF61BA1AA2C21A00C51434 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -303,7 +311,7 @@
 		39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_Remote_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D035101AB9A4A600132F0F /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_iOS.plist; sourceTree = "<group>"; };
 		39D035111AB9A4A600132F0F /* Farseer_Remote_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_Remote_iOS.h; path = Farseer_Remote_iOS/Farseer_Remote_iOS.h; sourceTree = SOURCE_ROOT; };
-		39D035171AB9A4A600132F0F /* Farseer_Remote_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Farseer_Remote_iOSTests.xctest; path = Farseer_Remote_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39D035171AB9A4A600132F0F /* Farseer_Remote_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Farseer_Remote_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D0351F1AB9A4A600132F0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39D035201AB9A4A600132F0F /* Farseer_Remote_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Farseer_Remote_iOSTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,8 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				397F5C1C1ABA5DE600720D32 /* Farseer_Mac.framework in Frameworks */,
-				397F5C411ABA5E4D00720D32 /* Farseer_Remote_Mac.framework in Frameworks */,
+				39C68D8F1ABA738D00BCDA4F /* Farseer_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +366,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39193C421AB9969800617804 /* Farseer_iOS.framework in Frameworks */,
 				39D035241AB9A4A600132F0F /* Farseer_Remote_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,8 +429,6 @@
 			children = (
 				397F5BE11ABA5D4100720D32 /* AppDelegate.h */,
 				397F5BE21ABA5D4100720D32 /* AppDelegate.m */,
-				397F5BE61ABA5D4100720D32 /* ViewController.h */,
-				397F5BE71ABA5D4100720D32 /* ViewController.m */,
 				397F5C491ABA63E200720D32 /* OCViewController.h */,
 				397F5C4A1ABA63E200720D32 /* OCViewController.m */,
 				397F5BE91ABA5D4100720D32 /* Images.xcassets */,
@@ -478,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				397F5C731ABA6B5A00720D32 /* Object */,
+				39C68D9C1ABA74B600BCDA4F /* FSDefine.h */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -563,6 +568,8 @@
 			children = (
 				39D035111AB9A4A600132F0F /* Farseer_Remote_iOS.h */,
 				397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */,
+				39C68DA11ABA77C200BCDA4F /* Farseer_Remote.h */,
+				39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */,
 				397F5CDE1ABA6EC600720D32 /* Manager */,
 				39D0350F1AB9A4A600132F0F /* Supporting Files */,
 			);
@@ -572,6 +579,8 @@
 		397F5CDE1ABA6EC600720D32 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				39C68DA91ABA7B2100BCDA4F /* FSDebugCentral_Remote.h */,
+				39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */,
 				397F5CDF1ABA6EC600720D32 /* FSLogManager+Central.h */,
 				397F5CE01ABA6EC600720D32 /* FSLogManager+Central.m */,
 				397F5CE11ABA6EC600720D32 /* Transport */,
@@ -636,9 +645,9 @@
 				398DDFCA1A80C63D0019BB12 /* SLFarseer.app */,
 				398DDFE61A80C63D0019BB12 /* SLFarseerTests.xctest */,
 				39193C2B1AB9969800617804 /* Farseer_iOS.framework */,
-				39193C351AB9969800617804 /* Farseer_iOSTests.xctest */,
+				39193C351AB9969800617804 /* Farseer_Tests.xctest */,
 				39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */,
-				39D035171AB9A4A600132F0F /* Farseer_Remote_iOSTests.xctest */,
+				39D035171AB9A4A600132F0F /* Farseer_Remote_Tests.xctest */,
 				397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */,
 				397F5BF21ABA5D4100720D32 /* SLFarseer_MacTests.xctest */,
 				397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */,
@@ -737,6 +746,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				399463EF1AB9A624009F927D /* Farseer_iOS.h in Headers */,
+				39C68D941ABA742300BCDA4F /* FSBLELog.h in Headers */,
+				39C68D951ABA742300BCDA4F /* FSBLELogInfo.h in Headers */,
+				39C68D9D1ABA74F600BCDA4F /* FSDefine.h in Headers */,
 				397F5C9E1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,6 +758,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				397F5C0A1ABA5DE500720D32 /* Farseer_Mac.h in Headers */,
+				39C68D961ABA742400BCDA4F /* FSBLELog.h in Headers */,
+				39C68D971ABA742400BCDA4F /* FSBLELogInfo.h in Headers */,
+				39C68D9E1ABA74F700BCDA4F /* FSDefine.h in Headers */,
 				397F5C9F1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,6 +769,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C68DA01ABA74F800BCDA4F /* FSDefine.h in Headers */,
+				39C68D9A1ABA742500BCDA4F /* FSBLELog.h in Headers */,
+				39C68DA71ABA77E600BCDA4F /* Farseer_Remote.h in Headers */,
+				39C68D9B1ABA742500BCDA4F /* FSBLELogInfo.h in Headers */,
+				39C68DAF1ABA7DC900BCDA4F /* FSUtilities.h in Headers */,
+				39C68DB11ABA7E3700BCDA4F /* FSBLECentralService.h in Headers */,
 				397F5C2F1ABA5E4C00720D32 /* Farseer_Remote_Mac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +783,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C68D9F1ABA74F700BCDA4F /* FSDefine.h in Headers */,
+				39C68D981ABA742500BCDA4F /* FSBLELog.h in Headers */,
+				39C68DA61ABA77E500BCDA4F /* Farseer_Remote.h in Headers */,
+				39C68D991ABA742500BCDA4F /* FSBLELogInfo.h in Headers */,
+				39C68DAE1ABA7DC800BCDA4F /* FSUtilities.h in Headers */,
+				39C68DB01ABA7E3700BCDA4F /* FSBLECentralService.h in Headers */,
 				39D035121AB9A4A600132F0F /* Farseer_Remote_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,7 +830,7 @@
 			);
 			name = Farseer_Tests;
 			productName = Farseer_iOSTests;
-			productReference = 39193C351AB9969800617804 /* Farseer_iOSTests.xctest */;
+			productReference = 39193C351AB9969800617804 /* Farseer_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */ = {
@@ -813,13 +840,12 @@
 				397F5BD91ABA5D4100720D32 /* Sources */,
 				397F5BDA1ABA5D4100720D32 /* Frameworks */,
 				397F5BDB1ABA5D4100720D32 /* Resources */,
-				397F5C211ABA5DE600720D32 /* Embed Frameworks */,
+				39C68D931ABA738D00BCDA4F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				397F5C1B1ABA5DE600720D32 /* PBXTargetDependency */,
-				397F5C401ABA5E4D00720D32 /* PBXTargetDependency */,
+				39C68D921ABA738D00BCDA4F /* PBXTargetDependency */,
 			);
 			name = SLFarseer_Mac;
 			productName = SLFarseer_Mac;
@@ -893,7 +919,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				39193C411AB9969800617804 /* PBXTargetDependency */,
 				39D035231AB9A4A600132F0F /* PBXTargetDependency */,
 			);
 			name = SLFarseer_iOS;
@@ -953,7 +978,7 @@
 			);
 			name = Farseer_Remote_Tests;
 			productName = Farseer_Remote_iOSTests;
-			productReference = 39D035171AB9A4A600132F0F /* Farseer_Remote_iOSTests.xctest */;
+			productReference = 39D035171AB9A4A600132F0F /* Farseer_Remote_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1160,7 +1185,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				397F5BE81ABA5D4100720D32 /* ViewController.m in Sources */,
 				397F5BE51ABA5D4100720D32 /* main.m in Sources */,
 				397F5C4B1ABA63E200720D32 /* OCViewController.m in Sources */,
 				397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */,
@@ -1202,15 +1226,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				397F5CF81ABA6EC600720D32 /* FSBLECentralService.m in Sources */,
+				39C68DB31ABA7FB200BCDA4F /* FSBLELogInfo.m in Sources */,
 				397F5D121ABA6F4800720D32 /* FSLogManager.m in Sources */,
+				39C68DA51ABA77E200BCDA4F /* Farseer_Remote.m in Sources */,
 				397F5D101ABA6F4200720D32 /* FSBLEUtilities.mm in Sources */,
 				397F5D0E1ABA6EC600720D32 /* FSInitBLEPacker.m in Sources */,
 				397F5D0A1ABA6EC600720D32 /* FSBLEResSyncLogPacker.m in Sources */,
 				397F5D001ABA6EC600720D32 /* FSBLECentralPackerFactory.m in Sources */,
+				39C68DB51ABA7FB600BCDA4F /* FSBLELog.m in Sources */,
 				397F5D141ABA6F5B00720D32 /* FSPackageIn.mm in Sources */,
 				397F5CF41ABA6EC600720D32 /* FSLogManager+Central.m in Sources */,
 				397F5CFC1ABA6EC600720D32 /* FSCentralClient.m in Sources */,
 				397F5D161ABA6F6000720D32 /* FSUtilities.m in Sources */,
+				39C68DAD1ABA7D5B00BCDA4F /* FSDebugCentral_Remote.m in Sources */,
 				397F5D061ABA6EC600720D32 /* FSBLEResSyncDataPacker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1243,15 +1271,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				397F5CF71ABA6EC600720D32 /* FSBLECentralService.m in Sources */,
+				39C68DB21ABA7FB100BCDA4F /* FSBLELogInfo.m in Sources */,
 				397F5D111ABA6F4700720D32 /* FSLogManager.m in Sources */,
+				39C68DA41ABA77E100BCDA4F /* Farseer_Remote.m in Sources */,
 				397F5D0F1ABA6F4200720D32 /* FSBLEUtilities.mm in Sources */,
 				397F5D0D1ABA6EC600720D32 /* FSInitBLEPacker.m in Sources */,
 				397F5D091ABA6EC600720D32 /* FSBLEResSyncLogPacker.m in Sources */,
 				397F5CFF1ABA6EC600720D32 /* FSBLECentralPackerFactory.m in Sources */,
+				39C68DB41ABA7FB500BCDA4F /* FSBLELog.m in Sources */,
 				397F5D131ABA6F5B00720D32 /* FSPackageIn.mm in Sources */,
 				397F5CF31ABA6EC600720D32 /* FSLogManager+Central.m in Sources */,
 				397F5CFB1ABA6EC600720D32 /* FSCentralClient.m in Sources */,
 				397F5D151ABA6F6000720D32 /* FSUtilities.m in Sources */,
+				39C68DAC1ABA7D5B00BCDA4F /* FSDebugCentral_Remote.m in Sources */,
 				397F5D051ABA6EC600720D32 /* FSBLEResSyncDataPacker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1277,30 +1309,20 @@
 			target = 398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */;
 			targetProxy = 39193C391AB9969800617804 /* PBXContainerItemProxy */;
 		};
-		39193C411AB9969800617804 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39193C2A1AB9969800617804 /* Farseer_iOS */;
-			targetProxy = 39193C401AB9969800617804 /* PBXContainerItemProxy */;
-		};
 		397F5BF41ABA5D4100720D32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */;
 			targetProxy = 397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */;
 		};
-		397F5C1B1ABA5DE600720D32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 397F5C041ABA5DE500720D32 /* Farseer_Mac */;
-			targetProxy = 397F5C1A1ABA5DE600720D32 /* PBXContainerItemProxy */;
-		};
-		397F5C401ABA5E4D00720D32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 397F5C291ABA5E4C00720D32 /* Farseer_Remote_Mac */;
-			targetProxy = 397F5C3F1ABA5E4D00720D32 /* PBXContainerItemProxy */;
-		};
 		398DDFE81A80C63D0019BB12 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */;
 			targetProxy = 398DDFE71A80C63D0019BB12 /* PBXContainerItemProxy */;
+		};
+		39C68D921ABA738D00BCDA4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397F5C041ABA5DE500720D32 /* Farseer_Mac */;
+			targetProxy = 39C68D911ABA738D00BCDA4F /* PBXContainerItemProxy */;
 		};
 		39D0351A1AB9A4A600132F0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1502,7 +1524,7 @@
 		397F5C1F1ABA5DE600720D32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1529,7 +1551,7 @@
 		397F5C201ABA5DE600720D32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;

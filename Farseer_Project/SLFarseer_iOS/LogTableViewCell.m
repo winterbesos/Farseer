@@ -7,9 +7,7 @@
 //
 
 #import "LogTableViewCell.h"
-#import "FSBLELog.h"
-#import <Farseer_iOS/Farseer_iOS.h>
-#import "Define.h"
+#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 #define MINOR_LOG_COLOR     [UIColor grayColor]
 #define LOG_LOG_COLOR       [UIColor greenColor]
@@ -87,7 +85,7 @@ static NSDateFormatter *kLogDateFormatter;
             }
                 break;
             default:
-                FSFatal(@"错误");
+                NSAssert(false, @"错误");
                 break;
         }
     } else {

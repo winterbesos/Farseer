@@ -8,9 +8,10 @@
 
 #import "LogViewController.h"
 #import "LogTableViewCell.h"
-#import "FSBLELog.h"
 #import <CoreBluetooth/CBPeripheral.h>
 #import <objc/runtime.h>
+
+#import <Farseer_Remote_iOS/FSBLELog.h>
 #import "FSPackageIn.h"
 
 static void *kHandleAssociatedKey;

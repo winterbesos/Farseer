@@ -7,18 +7,12 @@
 //
 
 #import "MainViewController.h"
-#import <Farseer_iOS/Farseer_iOS.h>
-#import "FSBLEDefine.h"
 #import "LogViewController.h"
-#import "FSBLECentralService.h"
 #import "PeripheralTableViewController.h"
-#import "FSBLELog.h"
-#import "FSBLELogInfo.h"
 #import "TracksView.h"
-#import "FSUtilities.h"
-#import "FSDebugCentral.h"
 #import "DirViewController.h"
-#import "FSLogManager+Central.h"
+
+#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 @interface MainViewController ()
 
@@ -166,7 +160,8 @@
 
 - (void)saveLog {
     NSArray *logs = [_logViewController displayLogs];
-    [[FSDebugCentral getInstance].logManager saveLog:logs peripheral:[_logViewController selectedPeripheral] bundleName:self.bundleNameLabel.text callback:^(float percentage) {
+    
+    saveLog(logs, [_logViewController selectedPeripheral], self.bundleNameLabel.text, ^(float percentage) {
         if (percentage == 1) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存日志完成" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
@@ -174,7 +169,7 @@
         } else {
             self.savePercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", percentage * 100];
         }
-    }];
+    });
 }
 
 - (void)clearLog {

@@ -7,10 +7,10 @@
 //
 
 #import "PeripheralTableViewController.h"
-#import "FSBLECentralService.h"
-#import "FSBLEPeripheralService.h"
 #import <objc/runtime.h>
 #import <CoreBluetooth/CBPeripheral.h>
+
+#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 static void *AssociatedObjectHandle;
 

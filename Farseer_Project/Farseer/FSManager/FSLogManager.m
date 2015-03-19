@@ -20,7 +20,7 @@
 
 @implementation FSLogManager 
 
-- (instancetype)initPeripheral
+- (instancetype)init
 {
     self = [super init];
     if (self) {

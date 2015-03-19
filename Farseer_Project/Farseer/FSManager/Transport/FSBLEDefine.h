@@ -19,19 +19,6 @@ typedef NS_ENUM(Byte, CMD) {
     CMDResData              = 0xd1
 };
 
-typedef NS_ENUM(Byte, BLEOSType) {
-    BLEOSTypeIOS,
-    BLEOSTypeOSX
-};
-
-typedef NS_ENUM(Byte, BLEDeviceType) {
-    BLEDeviceTypeIPod,
-    BLEDeviceTypeIPhone,
-    BLEDeviceTypeIPad,
-    BLEDeviceTypeMac,
-    BLEDeviceTypeAppleWatch
-};
-
 struct PKG_HEADER {
     Byte cmd;
     Byte sequId;

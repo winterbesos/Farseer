@@ -8,7 +8,6 @@
 
 #import "OCViewController.h"
 #import <Farseer_Mac/Farseer.h>
-#import "FSBLECentralService.h"
 #import <objc/runtime.h>
 #import <CoreBluetooth/CBPeripheral.h>
 
@@ -27,37 +26,12 @@ static void *AssociatedObjectHandle;
 }
 
 - (void)dealloc {
-    [FSBLECentralService uninstall];
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [FSBLEUtilities getPeripheralInfoData];
-    
-    FSFatal(@"this is a fatal error [OC]");
-    FSError(@"this is a error [OC]");
-    FSWarning(@"this is a warning [OC]");
-    FSLog(@"this is a log [OC]");
-    FSMinor(@"this is a minor log [OC]");
-    
-    [FSBLECentralService install];
-    _peripheralsDataList = [NSMutableArray array];
-    [FSBLECentralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
-        [self.peripheralTableView reloadData];
-    }];
-
-    [FSBLECentralService scanDidDisconvered:^(CBPeripheral *perpheral, NSNumber *RSSI) {
-        NSInteger index = [_peripheralsDataList indexOfObject:perpheral];
-        if (index == NSNotFound) {
-            [_peripheralsDataList addObject:perpheral];
-        } else {
-            [_peripheralsDataList replaceObjectAtIndex:index withObject:perpheral];
-        }
-        
-        objc_setAssociatedObject(perpheral, &AssociatedObjectHandle, RSSI, OBJC_ASSOCIATION_RETAIN);
-        [self.peripheralTableView reloadData];
-    }];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -95,7 +69,7 @@ static void *AssociatedObjectHandle;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-    [FSBLECentralService connectToPeripheral:_peripheralsDataList[row]];
+//    [FSBLECentralService connectToPeripheral:_peripheralsDataList[row]];
     return YES;
 }
 

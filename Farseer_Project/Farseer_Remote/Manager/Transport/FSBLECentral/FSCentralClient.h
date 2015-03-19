@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FSBLEDefine.h"
+#import "FSDefine.h"
 
 @class CBPeripheral;
 

@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Farseer_Remote_iOS/Farseer_Remote.h>
+#import <Farseer_Remote_iOS/FSBLELog.h>
+#import <Farseer_Remote_iOS/FSBLELogInfo.h>
+#import <Farseer_Remote_iOS/FSDefine.h>
+#import <Farseer_Remote_iOS/FSUtilities.h>
+
+#import <Farseer_Remote_iOS/FSBLECentralService.h> // TODO: unexpose
 
 //! Project version number for Farseer_Remote_iOS.
 FOUNDATION_EXPORT double Farseer_Remote_iOSVersionNumber;

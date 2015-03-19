@@ -7,17 +7,10 @@
 //
 
 #import <Foundation/NSObjCRuntime.h>
+#import "FSDefine.h"
 
 @class NSError;
 @class NSString;
-
-typedef enum {
-    Minor = 0,
-    Log,
-    Warning,
-    Error,
-    Fatal,
-} FSLogLevel;
 
 #define FSFatal(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], Fatal)
 #define FSError(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], Error)
