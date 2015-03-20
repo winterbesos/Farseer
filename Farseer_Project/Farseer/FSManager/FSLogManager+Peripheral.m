@@ -38,7 +38,7 @@
         const char *filePath = [kLifeCircleLogPath cStringUsingEncoding:NSUTF8StringEncoding];
         [self writeLog:log ToFile:filePath];
         [self cacheLogIfNeed:log];
-        [[FSDebugCentral getInstance].transportManager.peripheralClient inputLogToCacheIfOpenBLEDebugWithLog:log];
+        [[FSDebugCentral getInstance].transportManager.peripheralClient writeLogToCharacteristicIfWaitingWithLog:log];
     });
 }
 
@@ -53,10 +53,6 @@
 - (BOOL)installLogFile {
     if (cacheLogs) {
         return NO;
-    }
-    
-    if (!logFileOperationQueue) {
-        logFileOperationQueue = dispatch_queue_create("logFileOperationQueue", NULL);
     }
     
     dispatch_async(logFileOperationQueue, ^{

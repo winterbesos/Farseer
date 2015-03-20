@@ -171,7 +171,7 @@ static FSBLEPeripheralService *kBLEService = nil;
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error {
-    NSLog(@"%s: %@ %@", __FUNCTION__, service, error);
+//    NSLog(@"%s: %@ %@", __FUNCTION__, service, error);
     
     if (!error) {
         [kBLEService->_manager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"SLFarseer",

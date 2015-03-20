@@ -26,6 +26,15 @@
     UInt32                      _waitingLogNumber;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _waitingLogNumber = -1;
+    }
+    return self;
+}
+
 - (void)setPeripheralInfoCharacteristic:(CBMutableCharacteristic *)infoCharacteristic
                       logCharacteristic:(CBMutableCharacteristic *)logCharacteristic
                      dataCharacteristic:(CBMutableCharacteristic *)dataCharacteristic
@@ -55,19 +64,11 @@
     }
 }
 
-- (void)inputLogToCacheIfOpenBLEDebugWithLog:(FSBLELog *)log {
-    
-//    if (kBLEService) {
-//    NSArray *logList = [FSLogManager logList];
-//    if (logList.count > log) {
-//        <#statements#>
-//    }
-//        if (kBLEService->_waitingLogNumber == log.log_number) {
-//            [kBLEService updateLogCharacteristicWithLogNum:kBLEService->_waitingLogNumber];
-//        }
-//        
-//        [FSBLEPeripheralService updateCharacteristic:<#(CBMutableCharacteristic *)#> withData:<#(NSData *)#>]
-//    }
+- (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log {
+    if (_waitingLogNumber == log.log_number) {
+        NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:logData];
+    }
 }
 
 - (void)uploadLogZipWithZipPath:(NSString *)zipPath {

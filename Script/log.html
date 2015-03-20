@@ -1,0 +1,22 @@
+<html>
+	<head>
+
+	</head>
+	<body>
+		<div id="log">
+			
+		</div>
+		
+		
+		<script>
+			function newline(content) {
+				var para=document.createElement("p");
+				var node=document.createTextNode(content);
+				para.appendChild(node);
+				
+				var element=document.getElementById("log");
+				element.appendChild(para);
+			}
+		</script>
+	</body>
+</html>
