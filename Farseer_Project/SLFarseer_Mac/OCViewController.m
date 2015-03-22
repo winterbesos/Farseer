@@ -32,6 +32,13 @@ static void *AssociatedObjectHandle;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    NSDictionary *responseDictionary = @{
+                                         @"NextUploadDate": @([NSDate timeIntervalSinceReferenceDate])
+                                         };
+    NSData *data = [NSJSONSerialization dataWithJSONObject:responseDictionary options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
 }
 
 - (void)setRepresentedObject:(id)representedObject {
