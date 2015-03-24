@@ -24,7 +24,7 @@ void FSPWarning(NSString *log);
 void FSPLog(NSString *log);
 void FSPMinor(NSString *log);
 
-void FS_DebugLog(NSString *log, FSLogLevel level);
+FOUNDATION_EXTERN void FS_DebugLog(NSString *log, FSLogLevel level);
 
 void closeBLEDebug();
 void openBLEDebug(void(^callback)(NSError *error));
