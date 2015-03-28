@@ -23,9 +23,6 @@
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
     NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
     NSString *dataPath = [path stringByAppendingPathComponent:bundleId]; // 相当于IOS的 documentpath
-#ifndef IMO_CONNECT_OFFICIAL_SERVER
-    dataPath = [dataPath stringByAppendingString:@"DEV"];
-#endif
 #endif
     return [dataPath stringByAppendingPathComponent:@"Farseer"];
 }
