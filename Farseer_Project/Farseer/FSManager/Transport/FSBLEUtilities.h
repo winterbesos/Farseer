@@ -11,7 +11,6 @@
 @interface FSBLEUtilities : NSObject
 
 + (NSData *)getPeripheralInfoData;
-+ (NSData *)getLogDataWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
 + (NSData *)getReqLogWithNumber:(UInt32)number;
 + (NSData *)getDataWithPkgString:(NSString *)string;
 

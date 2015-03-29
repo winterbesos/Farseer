@@ -43,7 +43,6 @@ static UInt32 logNumber = 0;
 
 - (NSData *)dataValue {
     NSTimeInterval logTimeInterval = [_log_date timeIntervalSinceReferenceDate];
-    
     NSMutableData *data = [NSMutableData data];
     [data appendBytes:&_log_number length:sizeof(_log_number)];
     [data appendBytes:&logTimeInterval length:sizeof(logTimeInterval)];

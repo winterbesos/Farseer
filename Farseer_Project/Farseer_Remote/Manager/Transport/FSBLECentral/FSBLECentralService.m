@@ -12,10 +12,11 @@
 #import "FSBLECentralPackerFactory.h"
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
+#import "FSPackageDecoder.h"
 
 static FSBLECentralService *service = nil;
 
-@interface FSBLECentralService () <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface FSBLECentralService () <CBCentralManagerDelegate, CBPeripheralDelegate, FSPackageDecoderDelegate>
 
 @end
 
@@ -29,6 +30,7 @@ static FSBLECentralService *service = nil;
     void(^stateChangedCallback)(CBCentralManagerState state);
     
     CBPeripheral *_peripheral;
+    FSPackageDecoder *_packageDecoder;
 }
 
 #pragma mark - Class Method
@@ -38,6 +40,7 @@ static FSBLECentralService *service = nil;
         service = [[FSBLECentralService alloc] init];
         service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
         service->_client = [[FSCentralClient alloc] init];
+        service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:service];
     }
 }
 
@@ -47,6 +50,7 @@ static FSBLECentralService *service = nil;
         service->stateChangedCallback = callback;
         service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
         service->_client = client;
+        service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:service];
     }
 }
 
@@ -86,6 +90,7 @@ static FSBLECentralService *service = nil;
             for (CBCharacteristic *characteristic in ser.characteristics) {
                 if ([characteristic.UUID.UUIDString isEqualToString:kWriteLogCharacteristicUUIDString]) {
                     [service->_peripheral writeValue:reqLogData forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+                    NSLog(@"C SEND: %@", reqLogData);
                     break;
                 }
             }
@@ -93,6 +98,27 @@ static FSBLECentralService *service = nil;
             break;
         }
     }
+}
+
+- (void)writeACKWithHeader:(struct PKG_HEADER)header {
+    header.cmd = CMDAck;
+    
+    for (CBService *ser in [service->_peripheral services]) {
+        if ([ser.UUID.UUIDString isEqualToString:kServiceUUIDString]) {
+            for (CBCharacteristic *characteristic in ser.characteristics) {
+                if ([characteristic.UUID.UUIDString isEqualToString:kWriteLogCharacteristicUUIDString]) {
+
+                    NSData *data = [NSData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+                    [_peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+                    NSLog(@"C SEND ACK: %@", data);
+                    break;
+                }
+            }
+            
+            break;
+        }
+    }
+    
 }
 
 #pragma mark - Instance Method
@@ -108,12 +134,19 @@ static FSBLECentralService *service = nil;
         return;
     }
     connectionStatusChangedCallback(peripheral);
-//    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)connectTimeout:(NSTimer *)timer {
     [_manager cancelPeripheralConnection:timer.userInfo];
     [self performSelector:@selector(connectToPeripheral:) withObject:timer.userInfo afterDelay:1];
+}
+
+#pragma mark - Package Decoder Delegate
+
+- (void)packageDecoder:(FSPackageDecoder *)packageDecoder didDecodePackageData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral cmd:(CMD)cmd {
+    
+    FSPackageIn *packageIn = [FSPackageIn decode:data];
+    [[FSBLECentralPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
 }
 
 #pragma mark - CBPeripheral Delegate
@@ -141,11 +174,15 @@ static FSBLECentralService *service = nil;
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
-    Byte cmd;
-    [characteristic.value getBytes:&cmd length:sizeof(cmd)];
     
-    FSPackageIn *packageIn = [FSPackageIn decode:characteristic.value];
-    [[FSBLECentralPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
+    NSLog(@"C RECV: %@", characteristic.value);
+    struct PKG_HEADER header;
+    [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
+    
+    if (header.cmd != CMDCPInit) {
+        [self writeACKWithHeader:header];
+    }
+    [_packageDecoder pushReceiveData:characteristic.value fromPeripheral:peripheral];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {

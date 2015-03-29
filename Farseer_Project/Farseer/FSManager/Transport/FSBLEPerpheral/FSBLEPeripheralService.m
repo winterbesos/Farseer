@@ -14,14 +14,14 @@
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
 #import "FSLogManager.h"
+#import "FSPackageCoder.h"
 #import <objc/runtime.h>
 
 #define MAX_PACKAGE_SIZE 100
-static char cacheAssociatedHandle;
 
 static FSBLEPeripheralService *kBLEService = nil;
 
-@interface FSBLEPeripheralService () <CBPeripheralManagerDelegate>
+@interface FSBLEPeripheralService () <CBPeripheralManagerDelegate, FSPackageCoderDelegate>
 
 @end
 
@@ -34,13 +34,16 @@ static FSBLEPeripheralService *kBLEService = nil;
     CBMutableCharacteristic     *_dataCharacteristic;
     CBMutableCharacteristic     *_cmdCharacteristic;
     
-    __weak id                          _client;
+    __weak id                   _client;
     
     void(^installCallback)(CBMutableCharacteristic *peripheralInfoCharacteristic,
                            CBMutableCharacteristic *logCharacteristic,
                            CBMutableCharacteristic *dataCharacteristic,
                            CBMutableCharacteristic *cmdCharacteristic,
                            NSError *error);
+    
+    FSPackageCoder *    _packageCoder;
+    dispatch_queue_t    _bleQueue;
 }
 
 + (void)installWithClient:(id)client callback:(void(^)(CBMutableCharacteristic *peripheralInfoCharacteristic,
@@ -50,9 +53,12 @@ static FSBLEPeripheralService *kBLEService = nil;
                                                        NSError *error))callback {
     if (!kBLEService) {
         kBLEService = [[FSBLEPeripheralService alloc] init];
-        kBLEService->_manager = [[CBPeripheralManager alloc] initWithDelegate:kBLEService queue:nil];
+        dispatch_queue_t bleQueue = dispatch_queue_create("FSBLEQueue", NULL);
+        kBLEService->_bleQueue = bleQueue;
+        kBLEService->_manager = [[CBPeripheralManager alloc] initWithDelegate:kBLEService queue:bleQueue];
         kBLEService->_client = client;
         kBLEService->installCallback = callback;
+        kBLEService->_packageCoder = [[FSPackageCoder alloc] initWithDelegate:kBLEService];
     }
 }
 
@@ -97,56 +103,36 @@ static FSBLEPeripheralService *kBLEService = nil;
 #pragma mark - Public Method
 
 + (void)updateCharacteristic:(CBMutableCharacteristic *)characteristic withData:(NSData *)data {
-    [kBLEService->_manager updateValue:data forCharacteristic:characteristic onSubscribedCentrals:@[kBLEService->_central]];
+    dispatch_async(kBLEService->_bleQueue, ^{
+        [kBLEService->_packageCoder pushDataToSendQueue:data characteristic:characteristic];        
+    });
+    /*
+    // origin logic
+    struct PKG_HEADER header;
+    header.cmd = CMDResLogging;
+    header.currentPackage = 1;
+    header.totalPackage = 1;
+    header.sequId = 0;
+    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+    [logData appendData:data];
+
+    [kBLEService->_manager updateValue:logData forCharacteristic:characteristic onSubscribedCentrals:@[kBLEService->_central]];
+     */
 }
 
 #pragma mark - Private Method
 
-- (NSArray *)dividePackage:(NSData *)data {
-    NSMutableArray *packages = [NSMutableArray array];
-    NSMutableData *originData = [data mutableCopy];
-    
-    NSUInteger loc = 0;
-    while (loc < originData.length) {
-        NSUInteger pkgSize = 0;
-        if (originData.length > MAX_PACKAGE_SIZE) {
-            pkgSize = MAX_PACKAGE_SIZE;
-        } else {
-            pkgSize = originData.length;
-        }
-        NSData *package = [originData subdataWithRange:NSMakeRange(loc, pkgSize)];
-        loc += pkgSize;
-        
-        [packages addObject:package];
-    }
-    return packages;
+- (void)runSendLoop {
+    [_packageCoder getPackageToSendWithBlock:^(NSData *data, CBMutableCharacteristic *characteristic) {
+        NSLog(@"P SEND: %@", data);
+        [_manager updateValue:data forCharacteristic:characteristic onSubscribedCentrals:@[_central]];
+    }];
 }
 
-- (BOOL)writeData:(NSData *)data toCharacteristic:(CBMutableCharacteristic *)characteristic {
-    NSMutableArray *cachePackages = objc_getAssociatedObject(characteristic, &cacheAssociatedHandle);
-    if (cachePackages) {
-        cachePackages = [NSMutableArray array];
-        objc_setAssociatedObject(characteristic, &cacheAssociatedHandle, cachePackages, OBJC_ASSOCIATION_RETAIN);
-    }
-    
-    if (cachePackages.count > 0) {
-        return NO;
-    }
-    [cachePackages addObjectsFromArray:[self dividePackage:data]];
-    [kBLEService->_manager updateValue:cachePackages.firstObject forCharacteristic:_dataCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
-    
-    return YES;
-}
+#pragma mark - Package Coder Delegate
 
-- (void)recvACK:(NSData *)ack {
-    // TODO: 通过ACK获取相应的特征，然后写入新数据
-    CBMutableCharacteristic *characteristic = nil;
-    NSMutableArray *cachePackages = objc_getAssociatedObject(characteristic, &cacheAssociatedHandle);
-    
-    // TODO: varify packge sequence -> true remove false return
-    [cachePackages removeObject:0];
-    
-    [kBLEService->_manager updateValue:cachePackages.firstObject forCharacteristic:_dataCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
+- (void)didPushPackageToEmptyPackageLoopPackageCoder:(FSPackageCoder *)packageCoder {
+    [self runSendLoop];
 }
 
 #pragma mark - CBPeripheralManager Delegate
@@ -200,10 +186,22 @@ static FSBLEPeripheralService *kBLEService = nil;
     
     for (CBATTRequest *request in requests) {
         if (request.value) {
+            
+            NSLog(@"P RECV: %@", request.value);
             Byte cmd;
-            [request.value getBytes:&cmd length:sizeof(cmd)];
-            FSPackageIn *packageIn = [FSPackageIn decode:request.value];
-            [[FSBLEPeripheralPackerFactory getObjectWithCMD:cmd request:request] unpack:packageIn client:_client];
+            [request.value getBytes:&cmd length:1];
+            
+            if (cmd == CMDAck) {
+                [_packageCoder removeSendedPackage];
+                [self runSendLoop];
+            } else {
+                [request.value getBytes:&cmd length:sizeof(cmd)];
+                
+                NSData *recvData = [request.value subdataWithRange:NSMakeRange(sizeof(struct PKG_HEADER), request.value.length - sizeof(struct PKG_HEADER))];
+                
+                FSPackageIn *packageIn = [FSPackageIn decode:recvData];
+                [[FSBLEPeripheralPackerFactory getObjectWithCMD:cmd request:request] unpack:packageIn client:_client];
+            }
         }
     }
 }

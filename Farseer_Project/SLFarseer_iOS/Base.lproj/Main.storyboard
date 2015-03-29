@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -112,7 +112,7 @@
             </objects>
             <point key="canvasLocation" x="1404" y="494"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Farseer-->
         <scene sceneID="60y-Iy-lDe">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="baW-zA-c9E" customClass="MainViewController" sceneMemberID="viewController">
@@ -121,7 +121,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bnn-OO-WsM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BOV-Nx-LTx">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
                             <userLayoutGuide location="17" affinity="minX"/>
@@ -194,7 +194,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGO-NK-nhX">
-                                        <rect key="frame" x="228" y="0.0" width="1" height="353"/>
+                                        <rect key="frame" x="230" y="0.0" width="1" height="353"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="m9T-4v-hmf"/>
@@ -210,7 +210,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="vGO-NK-nhX" firstAttribute="leading" secondItem="HgG-nq-Ijl" secondAttribute="trailing" constant="14" id="0uA-A2-Jvm"/>
+                                    <constraint firstItem="vGO-NK-nhX" firstAttribute="leading" secondItem="HgG-nq-Ijl" secondAttribute="trailing" constant="16" id="0uA-A2-Jvm"/>
                                     <constraint firstItem="RcQ-VS-5Eh" firstAttribute="top" secondItem="u6k-FX-OMl" secondAttribute="top" id="3s0-46-yw7"/>
                                     <constraint firstItem="Cs5-6R-Uim" firstAttribute="top" secondItem="u6k-FX-OMl" secondAttribute="top" constant="14" id="6IV-fR-0Bk"/>
                                     <constraint firstItem="GBL-vp-snP" firstAttribute="top" secondItem="xGq-vf-BD5" secondAttribute="bottom" constant="22" id="6yF-Ri-PXN"/>
@@ -230,7 +230,7 @@
                                     <constraint firstItem="CRJ-hy-pdD" firstAttribute="leading" secondItem="xGq-vf-BD5" secondAttribute="trailing" constant="79" id="hPZ-RS-fO8"/>
                                     <constraint firstItem="fpK-rv-eTY" firstAttribute="top" secondItem="Cs5-6R-Uim" secondAttribute="bottom" constant="29" id="k6U-oi-jVn"/>
                                     <constraint firstItem="qlB-hm-nFW" firstAttribute="leading" secondItem="GBL-vp-snP" secondAttribute="trailing" constant="77" id="lQz-b6-2k6"/>
-                                    <constraint firstItem="vGO-NK-nhX" firstAttribute="leading" secondItem="u6k-FX-OMl" secondAttribute="leading" constant="228" id="m0c-WT-2KL"/>
+                                    <constraint firstItem="vGO-NK-nhX" firstAttribute="leading" secondItem="u6k-FX-OMl" secondAttribute="leading" constant="230" id="m0c-WT-2KL"/>
                                     <constraint firstItem="fpK-rv-eTY" firstAttribute="leading" secondItem="u6k-FX-OMl" secondAttribute="leading" constant="18" id="nLI-9R-FCD"/>
                                     <constraint firstItem="xGq-vf-BD5" firstAttribute="leading" secondItem="u6k-FX-OMl" secondAttribute="leading" constant="18" id="qQt-r5-W33"/>
                                     <constraint firstAttribute="bottom" secondItem="vGO-NK-nhX" secondAttribute="bottom" id="tfx-Pq-xBP"/>
@@ -340,14 +340,15 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="iU0-gN-9t9">
+                    <navigationItem key="navigationItem" title="Farseer" id="iU0-gN-9t9">
                         <barButtonItem key="leftBarButtonItem" id="7HY-Ty-DQs">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tuL-Eh-XYe">
                                 <rect key="frame" x="-23" y="-15" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="-95" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="搜索">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="titleShadowColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
                                     <action selector="peripheralListButtonAction:" destination="baW-zA-c9E" eventType="touchUpInside" id="4eQ-oL-6RN"/>
@@ -359,7 +360,8 @@
                                 <rect key="frame" x="466" y="187" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log &gt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="titleShadowColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
                                     <action selector="logButtonAction:" destination="baW-zA-c9E" eventType="touchUpInside" id="skt-yN-W87"/>
@@ -367,7 +369,6 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="bundleNameLabel" destination="Fuh-hQ-4mM" id="dUc-OJ-P9V"/>
                         <outlet property="deviceNameLabel" destination="bcr-Gk-hHn" id="RbY-hL-R2t"/>
@@ -395,6 +396,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jzr-36-2DH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.29803921570000003" green="0.76862745099999996" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

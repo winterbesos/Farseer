@@ -52,9 +52,8 @@
     NSArray *logList = [[FSDebugCentral getInstance].logManager logList];
     if (logList.count > logNum) {
         FSBLELog *log = logList[logNum];
-        NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
         
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:logData];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue];
         
         if (_waitingLogNumber != -1) {
             _waitingLogNumber = -1;
@@ -66,8 +65,7 @@
 
 - (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log {
     if (_waitingLogNumber == log.log_number) {
-        NSData *logData = [FSBLEUtilities getLogDataWithNumber:log.log_number date:log.log_date level:log.log_level content:log.log_content];
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:logData];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue];
     }
 }
 

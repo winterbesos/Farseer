@@ -16,7 +16,9 @@ typedef NS_ENUM(Byte, CMD) {
     CMDResLogging           = 0Xb1,
     
     CMDReqData              = 0xc1,
-    CMDResData              = 0xd1
+    CMDResData              = 0xd1,
+    
+    CMDAck                  = 0xFF,
 };
 
 struct PKG_HEADER {

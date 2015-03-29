@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		39193C361AB9969800617804 /* Farseer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39193C2B1AB9969800617804 /* Farseer_iOS.framework */; };
 		39193C3F1AB9969800617804 /* Farseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39193C3E1AB9969800617804 /* Farseer_iOSTests.m */; };
+		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
+		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */; };
+		395EF6781AC843E400AAB69A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 395EF6771AC843E400AAB69A /* InfoPlist.strings */; };
 		397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* AppDelegate.m */; };
 		397F5BE51ABA5D4100720D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE41ABA5D4100720D32 /* main.m */; };
 		397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397F5BE91ABA5D4100720D32 /* Images.xcassets */; };
@@ -32,14 +35,14 @@
 		397F5CAD1ABA6B5A00720D32 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C801ABA6B5A00720D32 /* FSLogManager.m */; };
 		397F5CB01ABA6B5A00720D32 /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		397F5CB11ABA6B5A00720D32 /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
-		397F5CB41ABA6B5A00720D32 /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.mm */; };
-		397F5CB51ABA6B5A00720D32 /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.mm */; };
+		397F5CB41ABA6B5A00720D32 /* FSPackageIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.m */; };
+		397F5CB51ABA6B5A00720D32 /* FSPackageIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.m */; };
 		397F5CBA1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8A1ABA6B5A00720D32 /* FSBLEPeripheralService.m */; };
 		397F5CBB1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8A1ABA6B5A00720D32 /* FSBLEPeripheralService.m */; };
 		397F5CBE1ABA6B5A00720D32 /* FSPeripheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8C1ABA6B5A00720D32 /* FSPeripheralClient.m */; };
 		397F5CBF1ABA6B5A00720D32 /* FSPeripheralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8C1ABA6B5A00720D32 /* FSPeripheralClient.m */; };
-		397F5CC21ABA6B5A00720D32 /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.mm */; };
-		397F5CC31ABA6B5A00720D32 /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.mm */; };
+		397F5CC21ABA6B5A00720D32 /* FSBLEUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.m */; };
+		397F5CC31ABA6B5A00720D32 /* FSBLEUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.m */; };
 		397F5CC61ABA6B5A00720D32 /* FSTransportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C901ABA6B5A00720D32 /* FSTransportManager.m */; };
 		397F5CC71ABA6B5A00720D32 /* FSTransportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C901ABA6B5A00720D32 /* FSTransportManager.m */; };
 		397F5CCA1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C931ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m */; };
@@ -62,12 +65,12 @@
 		397F5D0A1ABA6EC600720D32 /* FSBLEResSyncLogPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5CEE1ABA6EC600720D32 /* FSBLEResSyncLogPacker.m */; };
 		397F5D0D1ABA6EC600720D32 /* FSInitBLEPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5CF01ABA6EC600720D32 /* FSInitBLEPacker.m */; };
 		397F5D0E1ABA6EC600720D32 /* FSInitBLEPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5CF01ABA6EC600720D32 /* FSInitBLEPacker.m */; };
-		397F5D0F1ABA6F4200720D32 /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.mm */; };
-		397F5D101ABA6F4200720D32 /* FSBLEUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.mm */; };
+		397F5D0F1ABA6F4200720D32 /* FSBLEUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.m */; };
+		397F5D101ABA6F4200720D32 /* FSBLEUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.m */; };
 		397F5D111ABA6F4700720D32 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C801ABA6B5A00720D32 /* FSLogManager.m */; };
 		397F5D121ABA6F4800720D32 /* FSLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C801ABA6B5A00720D32 /* FSLogManager.m */; };
-		397F5D131ABA6F5B00720D32 /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.mm */; };
-		397F5D141ABA6F5B00720D32 /* FSPackageIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.mm */; };
+		397F5D131ABA6F5B00720D32 /* FSPackageIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.m */; };
+		397F5D141ABA6F5B00720D32 /* FSPackageIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C861ABA6B5A00720D32 /* FSPackageIn.m */; };
 		397F5D151ABA6F6000720D32 /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		397F5D161ABA6F6000720D32 /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		397F5D171ABA6FD900720D32 /* Farseer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C791ABA6B5A00720D32 /* Farseer.m */; };
@@ -83,6 +86,8 @@
 		399463EF1AB9A624009F927D /* Farseer_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39193C2F1AB9969800617804 /* Farseer_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		399463F91AB9A83F009F927D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D034E21AB9A3EE00132F0F /* UIKit.framework */; };
 		39A6170A1AA841780058574E /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
+		39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
+		39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
 		39C68D8F1ABA738D00BCDA4F /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
 		39C68D901ABA738D00BCDA4F /* Farseer_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39C68D941ABA742300BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -214,6 +219,7 @@
 		39193C3E1AB9969800617804 /* Farseer_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Farseer_iOSTests.m; sourceTree = "<group>"; };
 		394AD6561A9D62F4007FD2D2 /* PeripheralTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralTableViewController.h; sourceTree = "<group>"; };
 		394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralTableViewController.m; sourceTree = "<group>"; };
+		395EF6771AC843E400AAB69A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5BE01ABA5D4100720D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		397F5BE11ABA5D4100720D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -247,14 +253,14 @@
 		397F5C811ABA6B5A00720D32 /* FSUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUtilities.h; sourceTree = "<group>"; };
 		397F5C821ABA6B5A00720D32 /* FSUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUtilities.m; sourceTree = "<group>"; };
 		397F5C851ABA6B5A00720D32 /* FSPackageIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPackageIn.h; sourceTree = "<group>"; };
-		397F5C861ABA6B5A00720D32 /* FSPackageIn.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FSPackageIn.mm; sourceTree = "<group>"; };
+		397F5C861ABA6B5A00720D32 /* FSPackageIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPackageIn.m; sourceTree = "<group>"; };
 		397F5C871ABA6B5A00720D32 /* FSBLEDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEDefine.h; sourceTree = "<group>"; };
 		397F5C891ABA6B5A00720D32 /* FSBLEPeripheralService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEPeripheralService.h; sourceTree = "<group>"; };
 		397F5C8A1ABA6B5A00720D32 /* FSBLEPeripheralService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEPeripheralService.m; sourceTree = "<group>"; };
 		397F5C8B1ABA6B5A00720D32 /* FSPeripheralClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPeripheralClient.h; sourceTree = "<group>"; };
 		397F5C8C1ABA6B5A00720D32 /* FSPeripheralClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPeripheralClient.m; sourceTree = "<group>"; };
 		397F5C8D1ABA6B5A00720D32 /* FSBLEUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEUtilities.h; sourceTree = "<group>"; };
-		397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FSBLEUtilities.mm; sourceTree = "<group>"; };
+		397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEUtilities.m; sourceTree = "<group>"; };
 		397F5C8F1ABA6B5A00720D32 /* FSTransportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTransportManager.h; sourceTree = "<group>"; };
 		397F5C901ABA6B5A00720D32 /* FSTransportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTransportManager.m; sourceTree = "<group>"; };
 		397F5C921ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEPeripheralPackerFactory.h; sourceTree = "<group>"; };
@@ -297,6 +303,10 @@
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		39A617081AA841780058574E /* DirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirViewController.h; sourceTree = "<group>"; };
 		39A617091AA841780058574E /* DirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirViewController.m; sourceTree = "<group>"; };
+		39C4924B1AC7A42D00EA3763 /* FSPackageCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPackageCoder.h; sourceTree = "<group>"; };
+		39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPackageCoder.m; sourceTree = "<group>"; };
+		39C492531AC7C6BA00EA3763 /* FSPackageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPackageDecoder.h; sourceTree = "<group>"; };
+		39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPackageDecoder.m; sourceTree = "<group>"; };
 		39C68D9C1ABA74B600BCDA4F /* FSDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSDefine.h; sourceTree = "<group>"; };
 		39C68DA11ABA77C200BCDA4F /* Farseer_Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Farseer_Remote.h; sourceTree = "<group>"; };
 		39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Farseer_Remote.m; sourceTree = "<group>"; };
@@ -523,7 +533,7 @@
 				397F5C871ABA6B5A00720D32 /* FSBLEDefine.h */,
 				397F5C881ABA6B5A00720D32 /* FSBLEPerpheral */,
 				397F5C8D1ABA6B5A00720D32 /* FSBLEUtilities.h */,
-				397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.mm */,
+				397F5C8E1ABA6B5A00720D32 /* FSBLEUtilities.m */,
 				397F5C911ABA6B5A00720D32 /* protocol */,
 			);
 			path = Transport;
@@ -533,7 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				397F5C851ABA6B5A00720D32 /* FSPackageIn.h */,
-				397F5C861ABA6B5A00720D32 /* FSPackageIn.mm */,
+				397F5C861ABA6B5A00720D32 /* FSPackageIn.m */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -543,6 +553,8 @@
 			children = (
 				397F5C891ABA6B5A00720D32 /* FSBLEPeripheralService.h */,
 				397F5C8A1ABA6B5A00720D32 /* FSBLEPeripheralService.m */,
+				39C4924B1AC7A42D00EA3763 /* FSPackageCoder.h */,
+				39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */,
 				397F5C8B1ABA6B5A00720D32 /* FSPeripheralClient.h */,
 				397F5C8C1ABA6B5A00720D32 /* FSPeripheralClient.m */,
 			);
@@ -602,6 +614,8 @@
 			children = (
 				397F5CE31ABA6EC600720D32 /* FSBLECentralService.h */,
 				397F5CE41ABA6EC600720D32 /* FSBLECentralService.m */,
+				39C492531AC7C6BA00EA3763 /* FSPackageDecoder.h */,
+				39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */,
 				397F5CE51ABA6EC600720D32 /* FSCentralClient.h */,
 				397F5CE61ABA6EC600720D32 /* FSCentralClient.m */,
 			);
@@ -689,6 +703,7 @@
 				398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */,
 				398DDFCE1A80C63D0019BB12 /* Info.plist */,
 				398DDFCF1A80C63D0019BB12 /* main.m */,
+				395EF6771AC843E400AAB69A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1106,6 +1121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				398DDFDC1A80C63D0019BB12 /* Main.storyboard in Resources */,
+				395EF6781AC843E400AAB69A /* InfoPlist.strings in Resources */,
 				398DDFE11A80C63D0019BB12 /* LaunchScreen.xib in Resources */,
 				398DDFDE1A80C63D0019BB12 /* Images.xcassets in Resources */,
 			);
@@ -1157,7 +1173,7 @@
 			files = (
 				397F5CA41ABA6B5A00720D32 /* FSDebugCentral.m in Sources */,
 				397F5CAC1ABA6B5A00720D32 /* FSLogManager.m in Sources */,
-				397F5CB41ABA6B5A00720D32 /* FSPackageIn.mm in Sources */,
+				397F5CB41ABA6B5A00720D32 /* FSPackageIn.m in Sources */,
 				397F5C981ABA6B5A00720D32 /* FSBLELog.m in Sources */,
 				397F5D171ABA6FD900720D32 /* Farseer.m in Sources */,
 				397F5CC61ABA6B5A00720D32 /* FSTransportManager.m in Sources */,
@@ -1168,7 +1184,8 @@
 				397F5CA81ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
 				397F5CBA1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
 				397F5CCA1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */,
-				397F5CC21ABA6B5A00720D32 /* FSBLEUtilities.mm in Sources */,
+				39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */,
+				397F5CC21ABA6B5A00720D32 /* FSBLEUtilities.m in Sources */,
 				397F5CB01ABA6B5A00720D32 /* FSUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1205,7 +1222,7 @@
 			files = (
 				397F5CA51ABA6B5A00720D32 /* FSDebugCentral.m in Sources */,
 				397F5CAD1ABA6B5A00720D32 /* FSLogManager.m in Sources */,
-				397F5CB51ABA6B5A00720D32 /* FSPackageIn.mm in Sources */,
+				397F5CB51ABA6B5A00720D32 /* FSPackageIn.m in Sources */,
 				397F5C991ABA6B5A00720D32 /* FSBLELog.m in Sources */,
 				397F5D181ABA6FD900720D32 /* Farseer.m in Sources */,
 				397F5CC71ABA6B5A00720D32 /* FSTransportManager.m in Sources */,
@@ -1216,7 +1233,8 @@
 				397F5CA91ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
 				397F5CBB1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
 				397F5CCB1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */,
-				397F5CC31ABA6B5A00720D32 /* FSBLEUtilities.mm in Sources */,
+				39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */,
+				397F5CC31ABA6B5A00720D32 /* FSBLEUtilities.m in Sources */,
 				397F5CB11ABA6B5A00720D32 /* FSUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1229,12 +1247,13 @@
 				39C68DB31ABA7FB200BCDA4F /* FSBLELogInfo.m in Sources */,
 				397F5D121ABA6F4800720D32 /* FSLogManager.m in Sources */,
 				39C68DA51ABA77E200BCDA4F /* Farseer_Remote.m in Sources */,
-				397F5D101ABA6F4200720D32 /* FSBLEUtilities.mm in Sources */,
+				397F5D101ABA6F4200720D32 /* FSBLEUtilities.m in Sources */,
 				397F5D0E1ABA6EC600720D32 /* FSInitBLEPacker.m in Sources */,
 				397F5D0A1ABA6EC600720D32 /* FSBLEResSyncLogPacker.m in Sources */,
 				397F5D001ABA6EC600720D32 /* FSBLECentralPackerFactory.m in Sources */,
+				3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */,
 				39C68DB51ABA7FB600BCDA4F /* FSBLELog.m in Sources */,
-				397F5D141ABA6F5B00720D32 /* FSPackageIn.mm in Sources */,
+				397F5D141ABA6F5B00720D32 /* FSPackageIn.m in Sources */,
 				397F5CF41ABA6EC600720D32 /* FSLogManager+Central.m in Sources */,
 				397F5CFC1ABA6EC600720D32 /* FSCentralClient.m in Sources */,
 				397F5D161ABA6F6000720D32 /* FSUtilities.m in Sources */,
@@ -1274,12 +1293,13 @@
 				39C68DB21ABA7FB100BCDA4F /* FSBLELogInfo.m in Sources */,
 				397F5D111ABA6F4700720D32 /* FSLogManager.m in Sources */,
 				39C68DA41ABA77E100BCDA4F /* Farseer_Remote.m in Sources */,
-				397F5D0F1ABA6F4200720D32 /* FSBLEUtilities.mm in Sources */,
+				397F5D0F1ABA6F4200720D32 /* FSBLEUtilities.m in Sources */,
 				397F5D0D1ABA6EC600720D32 /* FSInitBLEPacker.m in Sources */,
 				397F5D091ABA6EC600720D32 /* FSBLEResSyncLogPacker.m in Sources */,
 				397F5CFF1ABA6EC600720D32 /* FSBLECentralPackerFactory.m in Sources */,
+				3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */,
 				39C68DB41ABA7FB500BCDA4F /* FSBLELog.m in Sources */,
-				397F5D131ABA6F5B00720D32 /* FSPackageIn.mm in Sources */,
+				397F5D131ABA6F5B00720D32 /* FSPackageIn.m in Sources */,
 				397F5CF31ABA6EC600720D32 /* FSLogManager+Central.m in Sources */,
 				397F5CFB1ABA6EC600720D32 /* FSCentralClient.m in Sources */,
 				397F5D151ABA6F6000720D32 /* FSUtilities.m in Sources */,

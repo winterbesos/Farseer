@@ -60,7 +60,7 @@
     header.totalPackage = 1;
     header.sequId = 0;
     
-    NSMutableData *infoData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
+    NSMutableData *infoData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
     [infoData appendBytes:&OSType length:sizeof(OSType)];
     [infoData appendData:[self getDataWithPkgString:OSVersion]];
     [infoData appendData:[self getDataWithPkgString:deviceType]];
@@ -71,38 +71,13 @@
 }
 
 + (NSData *)getDataWithPkgString:(NSString *)string {
-    if (string.length > 90) {
-        NSData *bodyData = [@"消息过长，暂不支持" dataUsingEncoding:NSUTF8StringEncoding];
-        
-        Byte len = bodyData.length;
-        NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
-        [pkgData appendData:bodyData];
-        return pkgData;
-    } else {
-        NSData *bodyData = [string dataUsingEncoding:NSUTF8StringEncoding];
-        
-        Byte len = bodyData.length;
-        NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
-        [pkgData appendData:bodyData];
-        return pkgData;
-    }
-}
-
-+ (NSData *)getLogDataWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
-    struct PKG_HEADER header;
-    header.cmd = CMDResLogging;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
-    header.sequId = 0;
-
-    NSTimeInterval timeInterval = [date timeIntervalSinceReferenceDate];
-    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
-    [logData appendBytes:&number length:sizeof(number)];
-    [logData appendBytes:&timeInterval length:sizeof(NSTimeInterval)];
-    [logData appendBytes:&level length:sizeof(Byte)];
-    [logData appendData:[self getDataWithPkgString:content]];
+    NSData *bodyData = [string dataUsingEncoding:NSUTF8StringEncoding];
     
-    return logData;
+    UInt32 len = (UInt32)bodyData.length;
+    NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
+    [pkgData appendData:bodyData];
+    
+    return pkgData;
 }
 
 + (NSData *)getReqLogWithNumber:(UInt32)number {
@@ -112,9 +87,9 @@
     header.totalPackage = 1;
     header.sequId = 0;
     
-    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(PKG_HEADER)];
+    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
     [logData appendBytes:&number length:sizeof(number)];
-
+    
     return logData;
 }
 
