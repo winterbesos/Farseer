@@ -13,10 +13,11 @@
 
 #import <Farseer_Remote_iOS/FSBLELog.h>
 #import "FSPackageIn.h"
+#import "TracksView.h"
 
 static void *kHandleAssociatedKey;
 
-@interface LogViewController ()
+@interface LogViewController () <TracksViewDelegate>
 
 @end
 
@@ -27,6 +28,9 @@ static void *kHandleAssociatedKey;
     
     NSMutableArray *_peripheralList;
     CBPeripheral *_displayPeripheral;
+    
+    TracksView *_tracksView;
+    
 }
 
 - (void)awakeFromNib {
@@ -51,13 +55,31 @@ static void *kHandleAssociatedKey;
     _showLogDate = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
     _showLogColor = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
     [self.tableView reloadData];
+    
+    [self addTracksView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    [self removeTracksView];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)removeTracksView {
+    [_tracksView removeFromSuperview];
+}
+
+- (void)addTracksView {
+    if (!_tracksView) {
+        CGRect screenBounds = [UIScreen mainScreen].bounds;
+        _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width - 300, screenBounds.size.height)];
+        _tracksView.backgroundColor = [UIColor clearColor];
+        _tracksView.delegate = self;
+        [_tracksView setItemNames:@[@"upload log", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
+    }
+    [[UIApplication sharedApplication].keyWindow addSubview:_tracksView];
 }
 
 #pragma mark - Public Method
@@ -151,6 +173,38 @@ static void *kHandleAssociatedKey;
 
 - (void)tapTableView:(UITapGestureRecognizer *)tap {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Logo Label Delegate
+
+- (void)tracksView:(TracksView *)tracksView didSelectItemAtIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+//            [self uploadLog];
+            break;
+        case 1:
+//            [self deleteLog];
+            break;
+        case 2:
+//            [self clearLog];
+            break;
+        case 3:
+//            [self saveLog];
+            break;
+        case 4:
+//            [self pushToDirVC];
+            break;
+        case 5:
+//            [self crash];
+            break;
+        case 6:
+//            [self continueLog];
+            break;
+        default:
+            break;
+    }
+    
+    NSLog(@"%ld", (long)index);
 }
 
 #pragma mark - UITableView Delegate and DataSource

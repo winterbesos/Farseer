@@ -41,6 +41,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="15" id="I7U-vA-bXm" customClass="LogTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -54,7 +55,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="nK1-3C-P2W" secondAttribute="centerY" id="SUM-ox-nbn"/>
                                         <constraint firstAttribute="trailing" secondItem="nK1-3C-P2W" secondAttribute="trailing" constant="15" id="VFz-Ax-d5P"/>
@@ -62,7 +63,7 @@
                                         <constraint firstItem="nK1-3C-P2W" firstAttribute="leading" secondItem="n7o-ob-m33" secondAttribute="leading" constant="15" id="n6k-Qb-2UX"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textLabel.textColor">
                                         <color key="value" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

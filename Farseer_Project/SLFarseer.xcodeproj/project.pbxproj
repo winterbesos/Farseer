@@ -116,6 +116,9 @@
 		39C68DB31ABA7FB200BCDA4F /* FSBLELogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C771ABA6B5A00720D32 /* FSBLELogInfo.m */; };
 		39C68DB41ABA7FB500BCDA4F /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
 		39C68DB51ABA7FB600BCDA4F /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
+		39CCD1E71ACABCD1009A618D /* Farseer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; };
+		39CCD1E81ACABCD4009A618D /* Farseer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; };
+		39CCD1ED1ACABD43009A618D /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */; };
 		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
 		39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CF61BC1AA2CDC800C51434 /* TracksView.m */; };
 		39D034E31AB9A3EE00132F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D034E21AB9A3EE00132F0F /* UIKit.framework */; };
@@ -312,6 +315,9 @@
 		39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Farseer_Remote.m; sourceTree = "<group>"; };
 		39C68DA91ABA7B2100BCDA4F /* FSDebugCentral_Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDebugCentral_Remote.h; sourceTree = "<group>"; };
 		39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDebugCentral_Remote.m; sourceTree = "<group>"; };
+		39CCD1E61ACABCD1009A618D /* Farseer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farseer.swift; sourceTree = "<group>"; };
+		39CCD1E91ACABD1E009A618D /* SLFarseer_Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_Mac-Bridging-Header.h"; sourceTree = "<group>"; };
+		39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
 		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
 		39CF61BA1AA2C21A00C51434 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -441,9 +447,11 @@
 				397F5BE21ABA5D4100720D32 /* AppDelegate.m */,
 				397F5C491ABA63E200720D32 /* OCViewController.h */,
 				397F5C4A1ABA63E200720D32 /* OCViewController.m */,
+				39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */,
 				397F5BE91ABA5D4100720D32 /* Images.xcassets */,
 				397F5C4C1ABA63F300720D32 /* Main.storyboard */,
 				397F5BDF1ABA5D4100720D32 /* Supporting Files */,
+				39CCD1E91ACABD1E009A618D /* SLFarseer_Mac-Bridging-Header.h */,
 			);
 			path = SLFarseer_Mac;
 			sourceTree = "<group>";
@@ -479,6 +487,7 @@
 			children = (
 				39193C2F1AB9969800617804 /* Farseer_iOS.h */,
 				397F5C091ABA5DE500720D32 /* Farseer_Mac.h */,
+				39CCD1E61ACABCD1009A618D /* Farseer.swift */,
 				397F5C781ABA6B5A00720D32 /* Farseer.h */,
 				397F5C791ABA6B5A00720D32 /* Farseer.m */,
 				397F5C721ABA6B5A00720D32 /* Component */,
@@ -1182,6 +1191,7 @@
 				397F5CD51ABA6D3000720D32 /* FSBLEReqSyncLogPacker.m in Sources */,
 				397F5C9C1ABA6B5A00720D32 /* FSBLELogInfo.m in Sources */,
 				397F5CA81ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
+				39CCD1E71ACABCD1009A618D /* Farseer.swift in Sources */,
 				397F5CBA1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
 				397F5CCA1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */,
 				39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */,
@@ -1202,6 +1212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CCD1ED1ACABD43009A618D /* SwiftViewController.swift in Sources */,
 				397F5BE51ABA5D4100720D32 /* main.m in Sources */,
 				397F5C4B1ABA63E200720D32 /* OCViewController.m in Sources */,
 				397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */,
@@ -1231,6 +1242,7 @@
 				397F5CD61ABA6D3000720D32 /* FSBLEReqSyncLogPacker.m in Sources */,
 				397F5C9D1ABA6B5A00720D32 /* FSBLELogInfo.m in Sources */,
 				397F5CA91ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
+				39CCD1E81ACABCD4009A618D /* Farseer.swift in Sources */,
 				397F5CBB1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
 				397F5CCB1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */,
 				39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */,
@@ -1384,6 +1396,7 @@
 		39193C451AB9969800617804 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1401,6 +1414,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1410,6 +1424,7 @@
 		39193C461AB9969800617804 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1469,6 +1484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1480,6 +1496,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_Mac/SLFarseer_Mac-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1487,6 +1505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1496,6 +1515,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_Mac/SLFarseer_Mac-Bridging-Header.h";
 			};
 			name = Release;
 		};
