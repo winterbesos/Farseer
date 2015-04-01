@@ -19,8 +19,11 @@
     NSDate *logDate = [packageIn readDate];
     Byte logLevel = [packageIn readByte];
     NSString *content = [packageIn readString];
+    NSString *fileName = [packageIn readString];
+    NSString *functionName = [packageIn readString];
+    UInt32 line = [packageIn readUInt32];
     
-    [client recvSyncLogWithLogNumber:logNum logDate:logDate logLevel:logLevel content:content peripheral:peripheral];
+    [client recvSyncLogWithLogNumber:logNum logDate:logDate logLevel:logLevel content:content fileName:fileName functionName:functionName line:line peripheral:peripheral];
 }
 
 @end

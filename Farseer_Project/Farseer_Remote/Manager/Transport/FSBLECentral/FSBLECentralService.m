@@ -90,7 +90,7 @@ static FSBLECentralService *service = nil;
             for (CBCharacteristic *characteristic in ser.characteristics) {
                 if ([characteristic.UUID.UUIDString isEqualToString:kWriteLogCharacteristicUUIDString]) {
                     [service->_peripheral writeValue:reqLogData forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-                    NSLog(@"C SEND: %@", reqLogData);
+//                    NSLog(@"C SEND: %@", reqLogData);
                     break;
                 }
             }
@@ -110,7 +110,7 @@ static FSBLECentralService *service = nil;
 
                     NSData *data = [NSData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
                     [_peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-                    NSLog(@"C SEND ACK: %@", data);
+//                    NSLog(@"C SEND ACK: %@", data);
                     break;
                 }
             }
@@ -175,7 +175,7 @@ static FSBLECentralService *service = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     
-    NSLog(@"C RECV: %@", characteristic.value);
+//    NSLog(@"C RECV: %@", characteristic.value);
     struct PKG_HEADER header;
     [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
     
@@ -274,6 +274,7 @@ static FSBLECentralService *service = nil;
 //    NSLog(@"%s: %@ %@ %@", __FUNCTION__, central, peripheral, error);
     _peripheral = nil;
     connectionStatusChangedCallback(peripheral);
+    [_packageDecoder clearCache];
 }
 
 @end

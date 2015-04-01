@@ -113,6 +113,32 @@
             </objects>
             <point key="canvasLocation" x="1404" y="494"/>
         </scene>
+        <!--Log Explorer View Controller-->
+        <scene sceneID="NkE-yR-Sih">
+            <objects>
+                <tableViewController storyboardIdentifier="LogExplorerViewController" id="cLo-AB-LS4" customClass="LogExplorerViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bw5-jD-rDx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExplorerCell" id="7RE-2y-pJY">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7RE-2y-pJY" id="zUe-XG-sY2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cLo-AB-LS4" id="975-0h-s5W"/>
+                            <outlet property="delegate" destination="cLo-AB-LS4" id="BWd-OI-dEI"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uQ2-FT-S1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1404" y="1169"/>
+        </scene>
         <!--Farseer-->
         <scene sceneID="60y-Iy-lDe">
             <objects>

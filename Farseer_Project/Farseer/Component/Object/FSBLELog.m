@@ -13,16 +13,19 @@ static UInt32 logNumber = 0;
 
 @implementation FSBLELog
 
-+ (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content {
++ (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content file:(NSString *)file function:(NSString *)function line:(UInt32)line {
     FSBLELog *log = [[FSBLELog alloc] init];
     log->_log_number = number;
     log->_log_date = date;
     log->_log_level = level;
     log->_log_content = content;
+    log->_log_fileName = file;
+    log->_log_functionName = function;
+    log->_log_line = line;
     return log;
 }
 
-+ (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content {
++ (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content file:(const char *)file function:(const char *)function line:(unsigned int)line {
     static dispatch_once_t token;
     static NSObject *handleObject = nil;
     dispatch_once(&token, ^{
@@ -34,6 +37,9 @@ static UInt32 logNumber = 0;
         log->_log_date = [NSDate date];
         log->_log_level = level;
         log->_log_content = content;
+        log->_log_fileName = [NSString stringWithUTF8String:file];
+        log->_log_functionName = [NSString stringWithUTF8String:function];
+        log->_log_line = line;
         
         logNumber ++;
         
@@ -48,6 +54,9 @@ static UInt32 logNumber = 0;
     [data appendBytes:&logTimeInterval length:sizeof(logTimeInterval)];
     [data appendBytes:&_log_level length:sizeof(_log_level)];
     [data appendData:[FSBLEUtilities getDataWithPkgString:_log_content]];
+    [data appendData:[FSBLEUtilities getDataWithPkgString:_log_fileName]];
+    [data appendData:[FSBLEUtilities getDataWithPkgString:_log_functionName]];
+    [data appendBytes:&_log_line length:sizeof(_log_line)];
     
     return data;
 }

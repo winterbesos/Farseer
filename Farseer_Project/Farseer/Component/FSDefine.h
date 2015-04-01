@@ -10,11 +10,11 @@
 #define SLFarseer_FSDefine_h
 
 typedef NS_ENUM(unsigned char, FSLogLevel) {
-    Minor = 0,
-    Log,
-    Warning,
-    Error,
-    Fatal,
+    FSLogLevelMinor = 0,
+    FSLogLevelLog,
+    FSLogLevelWarning,
+    FSLogLevelError,
+    FSLogLevelFatal,
 };
 
 typedef NS_ENUM(unsigned char, BLEOSType) {

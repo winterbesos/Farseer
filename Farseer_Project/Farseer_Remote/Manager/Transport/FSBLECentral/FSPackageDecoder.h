@@ -22,5 +22,6 @@
 
 - (instancetype)initWithDelegate:(id<FSPackageDecoderDelegate>)delegate;
 - (void)pushReceiveData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral;
+- (void)clearCache;
 
 @end

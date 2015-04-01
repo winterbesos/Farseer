@@ -33,54 +33,46 @@ static NSDateFormatter *kLogDateFormatter;
 
 - (UIColor *)getLogColorWithLevel:(FSLogLevel)level {
     switch (level) {
-        case Fatal:
+        case FSLogLevelFatal:
             return FATAL_LOG_COLOR;
             break;
-        case Error:
+        case FSLogLevelError:
             return ERROR_LOG_COLOR;
             break;
-        case Warning:
+        case FSLogLevelWarning:
             return WARNING_LOG_COLOR;
             break;
-        case Log:
+        case FSLogLevelLog:
             return LOG_LOG_COLOR;
             break;
-        case Minor:
+        case FSLogLevelMinor:
             return MINOR_LOG_COLOR;
             break;
     }
 }
 
 - (void)setLog:(FSBLELog *)log showLogNumber:(BOOL)showLogNumber showLogDate:(BOOL)showLogDate showLogColor:(BOOL)showLogColor {
-    NSMutableString *contentString = [NSMutableString string];
-    if (showLogNumber) {
-        [contentString appendString:[NSString stringWithFormat:@"%05d ", (unsigned int)log.log_number]];
-    }
-    
-    if (showLogDate) {
-        [contentString appendFormat:@"%@ ", [LogTableViewCell getDateStringWithDate:log.log_date]];
-    }
     
     UIColor *logColor = nil;
     if (showLogColor) {
         switch ((FSLogLevel)log.log_level) {
-            case Fatal: {
+            case FSLogLevelFatal: {
                 logColor = [UIColor redColor];
             }
                 break;
-            case Error: {
+            case FSLogLevelError: {
                 logColor = [UIColor orangeColor];
             }
                 break;
-            case Warning: {
+            case FSLogLevelWarning: {
                 logColor = [UIColor yellowColor];
             }
                 break;
-            case Log: {
+            case FSLogLevelLog: {
                 logColor = [UIColor greenColor];
             }
                 break;
-            case Minor: {
+            case FSLogLevelMinor: {
                 logColor = [UIColor grayColor];
             }
                 break;
@@ -92,17 +84,32 @@ static NSDateFormatter *kLogDateFormatter;
         logColor = [UIColor greenColor];
     }
     
-    [contentString appendString:log.log_content];
-    logLabel.text = contentString;
-    
+    logLabel.text = [LogTableViewCell getContentStringWithLog:log showLogNumber:showLogNumber showLogDate:showLogDate];
     logLabel.textColor = [self getLogColorWithLevel:log.log_level];
 }
 
-+ (CGFloat)calculateCellHeightWithLog:(FSBLELog *)log {
-    NSString *content = [NSString stringWithFormat:@"%@", log];
-    
-    CGRect rect = [content boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
++ (CGFloat)calculateCellHeightWithLog:(FSBLELog *)log showLogNumber:(BOOL)showLogNumber showLogDate:(BOOL)showLogDate {
+    CGRect rect = [[self getContentStringWithLog:log showLogNumber:showLogNumber showLogDate:showLogDate] boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
     return rect.size.height;
+}
+
++ (NSString *)getContentStringWithLog:(FSBLELog *)log showLogNumber:(BOOL)showLogNumber showLogDate:(BOOL)showLogDate {
+    NSMutableString *contentString = [NSMutableString string];
+    
+    if (showLogNumber) {
+        [contentString appendString:[NSString stringWithFormat:@"%05d ", (unsigned int)log.log_number]];
+    }
+    
+    if (showLogDate) {
+        [contentString appendFormat:@"%@ ", [LogTableViewCell getDateStringWithDate:log.log_date]];
+    }
+    
+    [contentString appendString:log.log_content];
+    
+    // TESTING:
+    [contentString appendFormat:@"\nfile: %@ function: %@ line: %d", log.log_fileName, log.log_functionName, log.log_line];
+    // END TESTING
+    return contentString;
 }
 
 @end

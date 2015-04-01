@@ -66,10 +66,13 @@
             NSDate *date = [packageIn readDate];
             Byte level = [packageIn readByte];
             NSString *content = [packageIn readString];
+            NSString *fileName = [packageIn readString];
+            NSString *functionName = [packageIn readString];
+            UInt32 line = [packageIn readUInt32];
             if (!content) {
                 break;
             }
-            [cacheLogs addObject:[FSBLELog logWithNumber:number date:date level:level content:content]];
+            [cacheLogs addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
         }
     });
     

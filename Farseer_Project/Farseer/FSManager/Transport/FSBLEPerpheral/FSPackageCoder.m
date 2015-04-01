@@ -76,6 +76,10 @@ static char characteristicAssociatedHandle;
     [_packageLoop removeObjectAtIndex:0];
 }
 
+- (void)clearCache {
+    [_packageLoop removeAllObjects];
+}
+
 #pragma mark - Private Method
 
 - (UInt32)getSeqId {

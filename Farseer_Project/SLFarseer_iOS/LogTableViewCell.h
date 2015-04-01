@@ -13,6 +13,6 @@
 @interface LogTableViewCell : UITableViewCell
 
 - (void)setLog:(FSBLELog *)log showLogNumber:(BOOL)showLogNumber showLogDate:(BOOL)showLogDate showLogColor:(BOOL)showLogColor;
-+ (CGFloat)calculateCellHeightWithLog:(FSBLELog *)log;
++ (CGFloat)calculateCellHeightWithLog:(FSBLELog *)log showLogNumber:(BOOL)showLogNumber showLogDate:(BOOL)showLogDate;
 
 @end

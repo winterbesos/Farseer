@@ -23,29 +23,29 @@
 #import "FSBLEDefine.h"
 #import "FSDebugCentral.h"
 
-#define SLCONSOLE_LEVEL Warning
+#define SLCONSOLE_LEVEL FSLogLevelWarning
 
-void FS_DebugLog(NSString *log, FSLogLevel level)
+void FS_DebugLog(NSString *log, FSLogLevel level, const char *file, const char *function, unsigned int line)
 {   
-    [[FSDebugCentral getInstance].logManager inputLog:[FSBLELog createLogWithLevel:level content:log]];
+    [[FSDebugCentral getInstance].logManager inputLog:[FSBLELog createLogWithLevel:level content:log file:file function: function line: line]];
     
 #ifdef DEBUG
     const char *cLog = [log cStringUsingEncoding:NSUTF8StringEncoding];
     char *prefix = NULL;
     switch (level) {
-        case Fatal:
+        case FSLogLevelFatal:
             prefix = "[FATAL]";
             break;
-        case Error:
+        case FSLogLevelError:
             prefix = "[ERROR]";
             break;
-        case Warning:
+        case FSLogLevelWarning:
             prefix = "[WARNING]";
             break;
-        case Log:
+        case FSLogLevelLog:
             prefix = "[LOG]";
             break;
-        case Minor:
+        case FSLogLevelMinor:
             prefix = "[MINOR]";
             break;
         default:
@@ -58,33 +58,13 @@ void FS_DebugLog(NSString *log, FSLogLevel level)
         printf("%s:%s\n", prefix, cLog);
     }
     
-    if (level == Fatal)
+    if (level == FSLogLevelFatal)
     {
         printf("fatal error");
         assert(false);
     }
     
 #endif
-}
-
-void FSPFatal(NSString *log) {
-    FS_DebugLog(log, Fatal);
-}
-
-void FSPError(NSString *log) {
-    FS_DebugLog(log, Error);
-}
-
-void FSPWarning(NSString *log) {
-    FS_DebugLog(log, Warning);
-}
-
-void FSPLog(NSString *log) {
-    FS_DebugLog(log, Log);
-}
-
-void FSPMinor(NSString *log) {
-    FS_DebugLog(log, Minor);
 }
 
 void closeBLEDebug() {

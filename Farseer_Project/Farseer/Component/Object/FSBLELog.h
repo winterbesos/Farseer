@@ -15,9 +15,12 @@
 @property (nonatomic, strong, readonly)NSDate       *log_date;
 @property (nonatomic, assign, readonly)FSLogLevel   log_level;
 @property (nonatomic, copy, readonly)NSString       *log_content;
+@property (nonatomic, copy, readonly)NSString       *log_fileName;
+@property (nonatomic, copy, readonly)NSString       *log_functionName;
+@property (nonatomic, assign, readonly)UInt32       log_line;
 
-+ (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content;
-+ (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content;
++ (FSBLELog *)createLogWithLevel:(Byte)level content:(NSString *)content file:(const char *)file function:(const char *)function line:(unsigned int)line;
++ (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content file:(NSString *)file function:(NSString *)function line:(UInt32)line;
 
 - (NSData *)dataValue;
 

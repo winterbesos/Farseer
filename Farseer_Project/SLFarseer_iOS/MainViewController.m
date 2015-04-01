@@ -188,8 +188,8 @@
     [FSBLECentralService requLogWithLogNumber:0];
 }
 
-- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content peripheral:(CBPeripheral *)peripheral {
-    FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content];
+- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral {
+    FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content file:fileName function:functionName line:line];
     [_logViewController insertLogWithLog:log peripheral:peripheral];
     [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
 }

@@ -14,6 +14,7 @@
 #import <Farseer_Remote_iOS/FSBLELog.h>
 #import "FSPackageIn.h"
 #import "TracksView.h"
+#import "LogExplorerViewController.h"
 
 static void *kHandleAssociatedKey;
 
@@ -30,7 +31,7 @@ static void *kHandleAssociatedKey;
     CBPeripheral *_displayPeripheral;
     
     TracksView *_tracksView;
-    
+    LogExplorerViewController *_logExplorerVC;
 }
 
 - (void)awakeFromNib {
@@ -43,6 +44,8 @@ static void *kHandleAssociatedKey;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTableView:)];
     [tapGesture setNumberOfTapsRequired:2];
     [self.tableView addGestureRecognizer:tapGesture];
+    
+    _logExplorerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogExplorerViewController"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,7 +80,7 @@ static void *kHandleAssociatedKey;
         _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width - 300, screenBounds.size.height)];
         _tracksView.backgroundColor = [UIColor clearColor];
         _tracksView.delegate = self;
-        [_tracksView setItemNames:@[@"upload log", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
+        [_tracksView setItemNames:@[@"Log Explorer", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
     }
     [[UIApplication sharedApplication].keyWindow addSubview:_tracksView];
 }
@@ -104,6 +107,8 @@ static void *kHandleAssociatedKey;
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:logList.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         }
     }
+    
+    [_logExplorerVC insertLog:log];
 }
 
 - (void)clearLog {
@@ -152,14 +157,18 @@ static void *kHandleAssociatedKey;
     FSPackageIn *packageIn = [[FSPackageIn alloc] initWithLogData:data];
     
     while (1) {
+        // TODO: add read LOG
         UInt32 number = [packageIn readUInt32];
         NSDate *date = [packageIn readDate];
         Byte level = [packageIn readByte];
         NSString *content = [packageIn readString];
+        NSString *fileName = [packageIn readString];
+        NSString *functionName = [packageIn readString];
+        UInt32 line = [packageIn readUInt32];
         if (!content) {
             break;
         }
-        [logList addObject:[FSBLELog logWithNumber:number date:date level:level content:content]];
+        [logList addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
     }
     
     NSObject *peripheral = [[NSObject alloc] init];
@@ -175,12 +184,16 @@ static void *kHandleAssociatedKey;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)showExplorerLogViewController {
+    [self.navigationController pushViewController:_logExplorerVC animated:YES];
+}
+
 #pragma mark - Logo Label Delegate
 
 - (void)tracksView:(TracksView *)tracksView didSelectItemAtIndex:(NSInteger)index {
     switch (index) {
         case 0:
-//            [self uploadLog];
+            [self showExplorerLogViewController];
             break;
         case 1:
 //            [self deleteLog];
@@ -204,7 +217,7 @@ static void *kHandleAssociatedKey;
             break;
     }
     
-    NSLog(@"%ld", (long)index);
+//    NSLog(@"%ld", (long)index);
 }
 
 #pragma mark - UITableView Delegate and DataSource
@@ -223,7 +236,7 @@ static void *kHandleAssociatedKey;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *logList = objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-    return [LogTableViewCell calculateCellHeightWithLog:logList[indexPath.row]];
+    return [LogTableViewCell calculateCellHeightWithLog:logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate];
 }
 
 @end

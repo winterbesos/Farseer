@@ -106,18 +106,6 @@ static FSBLEPeripheralService *kBLEService = nil;
     dispatch_async(kBLEService->_bleQueue, ^{
         [kBLEService->_packageCoder pushDataToSendQueue:data characteristic:characteristic];        
     });
-    /*
-    // origin logic
-    struct PKG_HEADER header;
-    header.cmd = CMDResLogging;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
-    header.sequId = 0;
-    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    [logData appendData:data];
-
-    [kBLEService->_manager updateValue:logData forCharacteristic:characteristic onSubscribedCentrals:@[kBLEService->_central]];
-     */
 }
 
 #pragma mark - Private Method
@@ -175,6 +163,9 @@ static FSBLEPeripheralService *kBLEService = nil;
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
 //    NSLog(@"%s: %@ %@", __FUNCTION__, central, characteristic);
+    
+    _central = nil;
+    [_packageCoder clearCache];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request {

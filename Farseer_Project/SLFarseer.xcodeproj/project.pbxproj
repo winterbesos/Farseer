@@ -116,6 +116,7 @@
 		39C68DB31ABA7FB200BCDA4F /* FSBLELogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C771ABA6B5A00720D32 /* FSBLELogInfo.m */; };
 		39C68DB41ABA7FB500BCDA4F /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
 		39C68DB51ABA7FB600BCDA4F /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
+		39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */; };
 		39CCD1E71ACABCD1009A618D /* Farseer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; };
 		39CCD1E81ACABCD4009A618D /* Farseer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; };
 		39CCD1ED1ACABD43009A618D /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */; };
@@ -315,6 +316,8 @@
 		39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Farseer_Remote.m; sourceTree = "<group>"; };
 		39C68DA91ABA7B2100BCDA4F /* FSDebugCentral_Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDebugCentral_Remote.h; sourceTree = "<group>"; };
 		39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDebugCentral_Remote.m; sourceTree = "<group>"; };
+		39C6F5DC1ACBEA9A003E4C36 /* LogExplorerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogExplorerViewController.h; sourceTree = "<group>"; };
+		39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogExplorerViewController.m; sourceTree = "<group>"; };
 		39CCD1E61ACABCD1009A618D /* Farseer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farseer.swift; sourceTree = "<group>"; };
 		39CCD1E91ACABD1E009A618D /* SLFarseer_Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_Mac-Bridging-Header.h"; sourceTree = "<group>"; };
 		39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
@@ -694,6 +697,8 @@
 				39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */,
 				39A617081AA841780058574E /* DirViewController.h */,
 				39A617091AA841780058574E /* DirViewController.m */,
+				39C6F5DC1ACBEA9A003E4C36 /* LogExplorerViewController.h */,
+				39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */,
 				39CF61BB1AA2CDC800C51434 /* TracksView.h */,
 				39CF61BC1AA2CDC800C51434 /* TracksView.m */,
 				39CF61BA1AA2C21A00C51434 /* Define.h */,
@@ -1281,6 +1286,7 @@
 				39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */,
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
+				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
 				39A6170A1AA841780058574E /* DirViewController.m in Sources */,
 				3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */,

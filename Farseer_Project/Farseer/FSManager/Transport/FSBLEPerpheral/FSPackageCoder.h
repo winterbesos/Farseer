@@ -25,6 +25,8 @@ typedef void(^FSPackageCorderGetPackageBlock)(NSData *data, CBMutableCharacteris
 
 - (void)pushDataToSendQueue:(NSData *)data characteristic:(CBMutableCharacteristic *)characteristic;
 - (void)getPackageToSendWithBlock:(FSPackageCorderGetPackageBlock)block;
-- (void)removeSendedPackage;
+- (void)removeSendedPackage; // 接收到Ack时Remove
+
+- (void)clearCache;
 
 @end

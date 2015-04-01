@@ -39,4 +39,8 @@
     }
 }
 
+- (void)clearCache {
+    _packageLoop = [NSMutableData data];
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Farseer_Mac
 
 class SwiftViewController: NSViewController {
 
@@ -14,7 +15,7 @@ class SwiftViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         
-        FSLog("aaa")
+        FSWarning("aaa")
     }
     
 }
