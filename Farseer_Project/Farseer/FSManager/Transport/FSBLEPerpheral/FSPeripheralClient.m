@@ -12,6 +12,7 @@
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
 #import "FSDebugCentral.h"
+#import "FSFileManager.h"
 
 @interface FSPeripheralClient ()
 
@@ -61,6 +62,11 @@
     } else {
         _waitingLogNumber = logNum;
     }
+}
+
+- (void)recvGetSendBoxInfoWithPath:(NSString *)path {
+    NSData *JSONData = [[FSDebugCentral getInstance].fileManager getDirectoryContentsWithPath:path];
+    [FSBLEPeripheralService updateCharacteristic:_cmdCharacteristic withData:JSONData];
 }
 
 - (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log {

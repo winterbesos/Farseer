@@ -20,4 +20,8 @@
 //    NSLog(@"%u %@ %d %@", (unsigned int)logNumber, logDate, logLevel, content);
 }
 
+- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
+//    NSLog(@"%@", sendBoxInfo);
+}
+
 @end

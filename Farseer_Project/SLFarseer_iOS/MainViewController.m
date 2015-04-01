@@ -149,7 +149,7 @@
 }
 
 - (void)uploadLog {
-    
+    [FSBLECentralService getSendBoxInfoWithPath:@""];
 }
 
 - (void)pushToDirVC {
@@ -192,6 +192,9 @@
     FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content file:fileName function:functionName line:line];
     [_logViewController insertLogWithLog:log peripheral:peripheral];
     [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
+}
+- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
+    NSLog(@"%@", sendBoxInfo);
 }
 
 #pragma mark - Actions

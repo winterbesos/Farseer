@@ -80,6 +80,18 @@
     return pkgData;
 }
 
++ (NSData *)getReqSendBoxInfoWithData:(NSData *)data {
+    struct PKG_HEADER header;
+    header.cmd = CMDReqSandBoxInfo;
+    header.currentPackage = 1;
+    header.totalPackage = 1;
+    header.sequId = 0;
+    
+    NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+    [sendData appendData:data];
+    return sendData;
+}
+
 + (NSData *)getReqLogWithNumber:(UInt32)number {
     struct PKG_HEADER header;
     header.cmd = CMDReqLogging;

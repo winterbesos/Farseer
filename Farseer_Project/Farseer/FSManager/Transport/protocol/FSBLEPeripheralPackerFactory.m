@@ -9,6 +9,7 @@
 #import "FSBLEPeripheralPackerFactory.h"
 
 #import "FSBLEReqSyncLogPacker.h"
+#import "FSBLEReqSandBoxInfoPacker.h"
 
 @implementation FSBLEPeripheralPackerFactory
 
@@ -19,6 +20,9 @@
             packerObj = [[FSBLEReqSyncLogPacker alloc] initWithRequest:request];
             break;
         case CMDReqData:
+            break;
+        case CMDReqSandBoxInfo:
+            packerObj = [[FSBLEReqSandBoxInfoPacker alloc] initWithRequest:request];
             break;
         default:
             break;

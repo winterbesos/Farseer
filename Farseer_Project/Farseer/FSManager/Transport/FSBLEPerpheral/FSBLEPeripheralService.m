@@ -96,7 +96,7 @@ static FSBLEPeripheralService *kBLEService = nil;
     
     CBUUID *sUUID = [CBUUID UUIDWithString:kServiceUUIDString];
     CBMutableService *bService = [[CBMutableService alloc] initWithType:sUUID primary:true];
-    [bService setCharacteristics:@[peripheralInfoCharacteristic, writeLogCharacteristic, writeDataCharacteristic]];
+    [bService setCharacteristics:@[peripheralInfoCharacteristic, writeLogCharacteristic, writeDataCharacteristic, cmdCharacteristic]];
     [kBLEService->_manager addService:bService];
 }
 
@@ -182,6 +182,7 @@ static FSBLEPeripheralService *kBLEService = nil;
             Byte cmd;
             [request.value getBytes:&cmd length:1];
             
+            // REFECTOR:
             if (cmd == CMDAck) {
                 [_packageCoder removeSendedPackage];
                 [self runSendLoop];

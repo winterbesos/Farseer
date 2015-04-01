@@ -23,5 +23,6 @@
 - (UInt16)readUInt16;
 - (UInt32)readUInt32;
 - (UInt64)readUInt64;
+- (NSData *)readData;
 
 @end

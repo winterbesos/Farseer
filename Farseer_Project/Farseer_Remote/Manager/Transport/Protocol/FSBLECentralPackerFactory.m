@@ -10,6 +10,7 @@
 #import "FSInitBLEPacker.h"
 #import "FSBLEResSyncLogPacker.h"
 #import "FSBLEResSyncDataPacker.h"
+#import "FSBLEResSandInfoPacker.h"
 
 @implementation FSBLECentralPackerFactory
 
@@ -24,6 +25,9 @@
             break;
         case CMDResData:
             packerObj = [[FSBLEResSyncDataPacker alloc] init];
+            break;
+        case CMDResSandBoxInfo:
+            packerObj = [[FSBLEResSandInfoPacker alloc] init];
             break;
         default:
             break;

@@ -20,6 +20,7 @@
 + (void)stopScan;
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback;
 + (void)connectToPeripheral:(CBPeripheral *)peripheral;
++ (void)getSendBoxInfoWithPath:(NSString *)path;
 
 + (void)requLogWithLogNumber:(UInt32)logNum;
 

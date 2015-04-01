@@ -13,6 +13,8 @@
 
 @interface FSUtilities : NSObject
 
++ (NSString *)RootPath;
+
 + (NSString *)FS_Path;
 + (NSString *)FS_LogPath;
 + (NSString *)FS_LogBundleNamePath:(NSString *)bundleName;

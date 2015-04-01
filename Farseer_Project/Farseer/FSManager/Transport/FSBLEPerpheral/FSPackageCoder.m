@@ -45,7 +45,7 @@ static char characteristicAssociatedHandle;
         
         // add header
         struct PKG_HEADER pkg_header;
-        pkg_header.cmd = CMDResLogging; // reserver value
+        pkg_header.cmd = CMDResLogging; // TODO: reserver value
         pkg_header.sequId = [self getSeqId];
         pkg_header.totalPackage = pkgCount;
         pkg_header.currentPackage = index + 1;

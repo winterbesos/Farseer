@@ -21,6 +21,7 @@
 @protocol FSBLEResDelegate <NSObject>
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNum;
+- (void)recvGetSendBoxInfoWithPath:(NSString *)path;
 
 @end
 

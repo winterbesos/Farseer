@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FSBLEDefine.h"
+#import "FSBLEPeripheralPackerProtocol.h"
 
 @class FSBLELog;
 @class CBMutableCharacteristic;
 
-@interface FSPeripheralClient : NSObject
+@interface FSPeripheralClient : NSObject <FSBLEResDelegate>
 
 - (void)setPeripheralInfoCharacteristic:(CBMutableCharacteristic *)infoCharacteristic
                       logCharacteristic:(CBMutableCharacteristic *)logCharacteristic

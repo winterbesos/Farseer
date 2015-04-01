@@ -13,24 +13,30 @@
 @end
 
 @implementation LogExplorerViewController {
-    NSMutableDictionary *_fileDictionary;
+    NSMutableDictionary *_contentDictionary;
+    NSArray *_keyPath;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _fileDictionary = [NSMutableDictionary dictionary];
+    _contentDictionary = [NSMutableDictionary dictionary];
 }
 
 #pragma mark - Public Method
 
+- (void)loadWithLogKeyPath:(NSArray *)keyPath dictionary:(NSDictionary *)dictionary {
+    _keyPath = keyPath;
+    _contentDictionary = [dictionary mutableCopy];
+}
+
 - (void)insertLog:(FSBLELog *)log {
     BOOL newFile = NO;
-    if (!_fileDictionary[log.log_fileName]) {
-        [_fileDictionary setObject:[NSMutableDictionary dictionary] forKey:log.log_fileName];
+    if (!_contentDictionary[log.log_fileName]) {
+        [_contentDictionary setObject:[NSMutableDictionary dictionary] forKey:log.log_fileName];
         newFile = YES;
     }
     
-    NSMutableDictionary *logDictionary = _fileDictionary[log.log_fileName];
+    NSMutableDictionary *logDictionary = _contentDictionary[log.log_fileName];
     [logDictionary setObject:log forKey:log.log_fileName];
     
     if (newFile) {
@@ -39,13 +45,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _fileDictionary.count;
+    return _contentDictionary.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExplorerCell" forIndexPath:indexPath];
-    cell.textLabel.text = [_fileDictionary allKeys][indexPath.row];
+    cell.textLabel.text = [_contentDictionary allKeys][indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    LogExplorerViewController *logExplorerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogExplorerViewController"];
+    [logExplorerVC loadWithLogKeyPath:[_keyPath subarrayWithRange:NSMakeRange(1, _keyPath.count - 1)] dictionary:[_contentDictionary allKeys][indexPath.row]];
+    [self.navigationController pushViewController:logExplorerVC animated:YES];
 }
 
 @end

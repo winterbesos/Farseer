@@ -81,6 +81,23 @@ static FSBLECentralService *service = nil;
     [service connectToPeripheral:peripheral];
 }
 
++ (void)getSendBoxInfoWithPath:(NSString *)path {
+    NSData *reqSendBoxInfoData = [FSBLEUtilities getReqSendBoxInfoWithData:[FSBLEUtilities getDataWithPkgString:path]];
+    for (CBService *ser in [service->_peripheral services]) {
+        if ([ser.UUID.UUIDString isEqualToString:kServiceUUIDString]) {
+            for (CBCharacteristic *characteristic in ser.characteristics) {
+                if ([characteristic.UUID.UUIDString isEqualToString:kWriteCMDCharacteristicUUIDString]) {
+                    [service->_peripheral writeValue:reqSendBoxInfoData forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+//                    NSLog(@"C SEND: %@", reqLogData);
+                    break;
+                }
+            }
+            
+            break;
+        }
+    }
+}
+
 #pragma mark - 
 
 + (void)requLogWithLogNumber:(UInt32)logNum {
@@ -219,6 +236,11 @@ static FSBLECentralService *service = nil;
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteLogCharacteristicUUIDString]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
 //            NSLog(@"discovered log characteristic");
+        }
+        
+        if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteCMDCharacteristicUUIDString]) {
+            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+//            NSLog(@"discovered cmd characteristic");
         }
         
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kPeripheralInfoCharacteristicUUIDString]) {

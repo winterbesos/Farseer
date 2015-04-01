@@ -18,6 +18,9 @@ typedef NS_ENUM(Byte, CMD) {
     CMDReqData              = 0xc1,
     CMDResData              = 0xd1,
     
+    CMDReqSandBoxInfo       = 0xc4,
+    CMDResSandBoxInfo       = 0xd4,
+    
     CMDAck                  = 0xFF,
 };
 

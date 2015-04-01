@@ -10,6 +10,7 @@
 
 #import "FSLogManager.h"
 #import "FSTransportManager.h"
+#import "FSFileManager.h"
 
 @implementation FSDebugCentral
 
@@ -20,6 +21,7 @@
         instance = [[FSDebugCentral alloc] init];
         instance->_logManager = [[FSLogManager alloc] init];
         instance->_transportManager = [[FSTransportManager alloc] init];
+        instance->_fileManager = [[FSFileManager alloc] init];
     });
     return instance;
 }

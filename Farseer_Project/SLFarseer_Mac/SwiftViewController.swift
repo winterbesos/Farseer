@@ -16,6 +16,8 @@ class SwiftViewController: NSViewController {
         // Do view setup here.
         
         FSWarning("aaa")
+        
+        
     }
     
 }

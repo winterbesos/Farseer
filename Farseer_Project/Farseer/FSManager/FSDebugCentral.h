@@ -10,11 +10,13 @@
 
 @class FSLogManager;
 @class FSTransportManager;
+@class FSFileManager;
 
 @interface FSDebugCentral : NSObject
 
 @property (nonatomic, readonly)FSLogManager *logManager;
 @property (nonatomic, readonly)FSTransportManager *transportManager;
+@property (nonatomic, readonly)FSFileManager *fileManager;
 
 + (FSDebugCentral *)getInstance;
 

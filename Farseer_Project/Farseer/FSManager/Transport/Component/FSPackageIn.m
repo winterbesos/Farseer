@@ -127,4 +127,8 @@
     }
 }
 
+- (NSData *)readData {
+    return _pkg;
+}
+
 @end

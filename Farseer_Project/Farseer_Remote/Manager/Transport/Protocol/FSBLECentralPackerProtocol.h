@@ -20,6 +20,7 @@
 @protocol FSBLEResDelegate <NSObject>
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNum;
+- (void)recvSendBoxInfoWithJSON:(NSString *)json;
 
 @end
 

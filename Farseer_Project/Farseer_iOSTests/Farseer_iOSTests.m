@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
+#import "FSFileManager.h"
+
 @interface Farseer_iOSTests : XCTestCase
 
 @end
@@ -35,6 +37,11 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (void)testFileManager {
+    FSFileManager *fileManager = [[FSFileManager alloc] init];
+    [fileManager getDirectoryContentsWithPath:@""];
 }
 
 @end
