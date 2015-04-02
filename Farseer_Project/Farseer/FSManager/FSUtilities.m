@@ -28,15 +28,7 @@
 }
 
 + (NSString *)FS_Path {
-#if TARGET_OS_IPHONE
-    NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *dataPath = [pathList objectAtIndex:0];
-#elif TARGET_OS_MAC
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
-    NSString *dataPath = [path stringByAppendingPathComponent:bundleId]; // 相当于IOS的 documentpath
-#endif
-    return [dataPath stringByAppendingPathComponent:@"Farseer"];
+    return [[self RootPath] stringByAppendingPathComponent:@"Farseer"];
 }
 
 + (NSString *)FS_LogPath {

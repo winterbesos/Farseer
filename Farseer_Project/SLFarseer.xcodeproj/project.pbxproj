@@ -10,6 +10,8 @@
 		39193C3F1AB9969800617804 /* Farseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39193C3E1AB9969800617804 /* Farseer_iOSTests.m */; };
 		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
+		393F7DE91ACD5860002E62A8 /* FSUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C811ABA6B5A00720D32 /* FSUtilities.h */; };
+		393F7DEA1ACD5860002E62A8 /* FSUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C811ABA6B5A00720D32 /* FSUtilities.h */; };
 		3941A9761ACC15F0008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		3941A9771ACC15F1008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */; };
@@ -788,6 +790,7 @@
 				39C68D941ABA742300BCDA4F /* FSBLELog.h in Headers */,
 				39C68D951ABA742300BCDA4F /* FSBLELogInfo.h in Headers */,
 				39C68D9D1ABA74F600BCDA4F /* FSDefine.h in Headers */,
+				393F7DE91ACD5860002E62A8 /* FSUtilities.h in Headers */,
 				397F5C9E1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,6 +803,7 @@
 				39C68D961ABA742400BCDA4F /* FSBLELog.h in Headers */,
 				39C68D971ABA742400BCDA4F /* FSBLELogInfo.h in Headers */,
 				39C68D9E1ABA74F700BCDA4F /* FSDefine.h in Headers */,
+				393F7DEA1ACD5860002E62A8 /* FSUtilities.h in Headers */,
 				397F5C9F1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
