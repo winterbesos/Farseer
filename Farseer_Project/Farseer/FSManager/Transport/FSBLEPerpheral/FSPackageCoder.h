@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSBLEDefine.h"
 
 @class CBMutableCharacteristic;
 @class FSPackageCoder;
@@ -23,7 +24,7 @@ typedef void(^FSPackageCorderGetPackageBlock)(NSData *data, CBMutableCharacteris
 
 - (instancetype)initWithDelegate:(id<FSPackageCoderDelegate>)delegate;
 
-- (void)pushDataToSendQueue:(NSData *)data characteristic:(CBMutableCharacteristic *)characteristic;
+- (void)pushDataToSendQueue:(NSData *)data characteristic:(CBMutableCharacteristic *)characteristic cmd:(CMD)cmd;
 - (void)getPackageToSendWithBlock:(FSPackageCorderGetPackageBlock)block;
 - (void)removeSendedPackage; // 接收到Ack时Remove
 

@@ -70,6 +70,8 @@ static FSBLEPeripheralService *kBLEService = nil;
     }
 }
 
+#pragma mark - BLE Control
+
 - (void)setupService {
     // main log service
     
@@ -100,11 +102,20 @@ static FSBLEPeripheralService *kBLEService = nil;
     [kBLEService->_manager addService:bService];
 }
 
+- (void)startAdvertising {
+    [kBLEService->_manager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"SLFarseer",
+                                              CBAdvertisementDataServiceUUIDsKey: @[[CBUUID UUIDWithString:kServiceUUIDString]]}];
+}
+
+- (void)stopAdvertising {
+    [_manager stopAdvertising];
+}
+
 #pragma mark - Public Method
 
-+ (void)updateCharacteristic:(CBMutableCharacteristic *)characteristic withData:(NSData *)data {
++ (void)updateCharacteristic:(CBMutableCharacteristic *)characteristic withData:(NSData *)data cmd:(CMD)cmd {
     dispatch_async(kBLEService->_bleQueue, ^{
-        [kBLEService->_packageCoder pushDataToSendQueue:data characteristic:characteristic];        
+        [kBLEService->_packageCoder pushDataToSendQueue:data characteristic:characteristic cmd:cmd];
     });
 }
 
@@ -112,7 +123,7 @@ static FSBLEPeripheralService *kBLEService = nil;
 
 - (void)runSendLoop {
     [_packageCoder getPackageToSendWithBlock:^(NSData *data, CBMutableCharacteristic *characteristic) {
-        NSLog(@"P SEND: %@", data);
+//        NSLog(@"P SEND: %@", data);
         [_manager updateValue:data forCharacteristic:characteristic onSubscribedCentrals:@[_central]];
     }];
 }
@@ -126,8 +137,6 @@ static FSBLEPeripheralService *kBLEService = nil;
 #pragma mark - CBPeripheralManager Delegate
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
-//    NSLog(@"%s: %ld", __FUNCTION__, (long)peripheral.state);
-
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         [self setupService];
     } else {
@@ -148,24 +157,21 @@ static FSBLEPeripheralService *kBLEService = nil;
 //    NSLog(@"%s: %@ %@", __FUNCTION__, service, error);
     
     if (!error) {
-        [kBLEService->_manager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"SLFarseer",
-                                    CBAdvertisementDataServiceUUIDsKey: @[[CBUUID UUIDWithString:kServiceUUIDString]]}];
+        [self startAdvertising];
     } else {
         installCallback(_infoCharacteristic, _logCharacteristic, _dataCharacteristic, _cmdCharacteristic, error);
     }
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-//    NSLog(@"%s: %@ %@", __FUNCTION__, central, characteristic);
-    
     _central = central;
+    [self stopAdvertising];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
-//    NSLog(@"%s: %@ %@", __FUNCTION__, central, characteristic);
-    
     _central = nil;
     [_packageCoder clearCache];
+    [self startAdvertising];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request {
@@ -173,26 +179,27 @@ static FSBLEPeripheralService *kBLEService = nil;
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests {
-//    NSLog(@"%s: %@", __FUNCTION__, requests);
     
     for (CBATTRequest *request in requests) {
         if (request.value) {
+//            NSLog(@"P RECV: %@", request.value);
             
-            NSLog(@"P RECV: %@", request.value);
-            Byte cmd;
-            [request.value getBytes:&cmd length:1];
+            struct PKG_HEADER header;
+            [request.value getBytes:&header length:sizeof(struct PKG_HEADER)];
+
+            NSData *recvData = [request.value subdataWithRange:NSMakeRange(sizeof(struct PKG_HEADER), request.value.length - sizeof(struct PKG_HEADER))];
             
-            // REFECTOR:
-            if (cmd == CMDAck) {
-                [_packageCoder removeSendedPackage];
-                [self runSendLoop];
-            } else {
-                [request.value getBytes:&cmd length:sizeof(cmd)];
-                
-                NSData *recvData = [request.value subdataWithRange:NSMakeRange(sizeof(struct PKG_HEADER), request.value.length - sizeof(struct PKG_HEADER))];
-                
-                FSPackageIn *packageIn = [FSPackageIn decode:recvData];
-                [[FSBLEPeripheralPackerFactory getObjectWithCMD:cmd request:request] unpack:packageIn client:_client];
+            // distribute cmd
+            switch (header.cmd) {
+                case CMDAck:
+                    [_packageCoder removeSendedPackage];
+                    [self runSendLoop];
+                    break;
+                default: {
+                    FSPackageIn *packageIn = [FSPackageIn decode:recvData];
+                    [[FSBLEPeripheralPackerFactory getObjectWithCMD:header.cmd request:request] unpack:packageIn client:_client];
+                }
+                    break;
             }
         }
     }

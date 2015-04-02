@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSBLEDefine.h"
 
 @class CBMutableCharacteristic;
 @class FSBLELog;
@@ -23,6 +24,6 @@
                                                        CBMutableCharacteristic *cmdCharacteristic,
                                                        NSError *error))callback;
 + (void)uninstall;
-+ (void)updateCharacteristic:(CBMutableCharacteristic *)characteristic withData:(NSData *)data;
++ (void)updateCharacteristic:(CBMutableCharacteristic *)characteristic withData:(NSData *)data cmd:(CMD)cmd;
 
 @end

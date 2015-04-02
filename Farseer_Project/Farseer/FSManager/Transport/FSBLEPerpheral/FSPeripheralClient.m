@@ -54,7 +54,7 @@
     if (logList.count > logNum) {
         FSBLELog *log = logList[logNum];
         
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue cmd:CMDResLogging];
         
         if (_waitingLogNumber != -1) {
             _waitingLogNumber = -1;
@@ -64,24 +64,20 @@
     }
 }
 
-- (void)recvGetSendBoxInfoWithPath:(NSString *)path {
-    NSData *JSONData = [[FSDebugCentral getInstance].fileManager getDirectoryContentsWithPath:path];
-    [FSBLEPeripheralService updateCharacteristic:_cmdCharacteristic withData:JSONData];
-}
-
 - (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log {
     if (_waitingLogNumber == log.log_number) {
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue cmd:CMDResLogging];
     }
 }
 
-- (void)uploadLogZipWithZipPath:(NSString *)zipPath {
-//    NSError *err = nil;
-//    NSData *data = [[NSData alloc] initWithContentsOfFile:zipPath options:NSDataReadingUncached error:&err];
-//    NSAssert(err == nil, @"read file error: %@", err);
-//    
-//    NSData *subData = data;
-//    [kBLEService->_manager updateValue:subData forCharacteristic:_dataCharacteristic onSubscribedCentrals:@[kBLEService->_central]];
+- (void)recvGetSendBoxInfoWithPath:(NSString *)path {
+    NSData *JSONData = [[FSDebugCentral getInstance].fileManager getDirectoryContentsWithPath:path];
+    [FSBLEPeripheralService updateCharacteristic:_cmdCharacteristic withData:JSONData cmd:CMDResSandBoxInfo];
+}
+
+- (void)recvGetFileWithPath:(NSString *)path {
+    NSData *fileData = [[FSDebugCentral getInstance].fileManager getFileWithPath:path];
+    [FSBLEPeripheralService updateCharacteristic:_dataCharacteristic withData:fileData cmd:CMDResData];
 }
 
 @end

@@ -29,7 +29,7 @@ static char characteristicAssociatedHandle;
     return self;
 }
 
-- (void)pushDataToSendQueue:(NSData *)data characteristic:(CBMutableCharacteristic *)characteristic {
+- (void)pushDataToSendQueue:(NSData *)data characteristic:(CBMutableCharacteristic *)characteristic cmd:(CMD)cmd {
     
     NSMutableArray *pkgs = [NSMutableArray array];
     NSUInteger pkgCount = data.length / MAX_PACKAGE_LENGTH + (data.length % MAX_PACKAGE_LENGTH == 0 ? 0 : 1);
@@ -45,7 +45,7 @@ static char characteristicAssociatedHandle;
         
         // add header
         struct PKG_HEADER pkg_header;
-        pkg_header.cmd = CMDResLogging; // TODO: reserver value
+        pkg_header.cmd = cmd; // TODO: reserver value
         pkg_header.sequId = [self getSeqId];
         pkg_header.totalPackage = pkgCount;
         pkg_header.currentPackage = index + 1;

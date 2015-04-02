@@ -10,6 +10,12 @@
 
 @interface DirViewController : UITableViewController
 
+// local
 - (void)setPath:(NSString *)path;
+
+// remote
+- (void)setRemotePath:(NSString *)path;
+- (void)recvSandBoxInfo:(NSDictionary *)sandBoxInfo;
+- (void)recvSandBoxFile:(NSData *)sandBoxData;
 
 @end

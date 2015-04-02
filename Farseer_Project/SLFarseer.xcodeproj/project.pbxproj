@@ -14,6 +14,9 @@
 		3941A9771ACC15F1008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */; };
 		395EF6781AC843E400AAB69A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 395EF6771AC843E400AAB69A /* InfoPlist.strings */; };
+		396578901ACCDAB800CEA918 /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
+		396578A01ACCEB3C00CEA918 /* FSBLEReqDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */; };
+		396578A11ACCEB3D00CEA918 /* FSBLEReqDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */; };
 		397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* AppDelegate.m */; };
 		397F5BE51ABA5D4100720D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE41ABA5D4100720D32 /* main.m */; };
 		397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397F5BE91ABA5D4100720D32 /* Images.xcassets */; };
@@ -84,7 +87,6 @@
 		398DE0201A80C7F10019BB12 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DE01F1A80C7F10019BB12 /* MainViewController.m */; };
 		399463EF1AB9A624009F927D /* Farseer_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39193C2F1AB9969800617804 /* Farseer_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		399463F91AB9A83F009F927D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D034E21AB9A3EE00132F0F /* UIKit.framework */; };
-		39A6170A1AA841780058574E /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
 		39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
 		39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
 		39C68D8F1ABA738D00BCDA4F /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
@@ -128,8 +130,6 @@
 		39D035241AB9A4A600132F0F /* Farseer_Remote_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */; };
 		39D035251AB9A4A600132F0F /* Farseer_Remote_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39DF7D8A1ACC1B06008B52FC /* Farseer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39193C2B1AB9969800617804 /* Farseer_iOS.framework */; };
-		39DF7D8C1ACC1C6F008B52FC /* FSUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C811ABA6B5A00720D32 /* FSUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39DF7D8D1ACC1C70008B52FC /* FSUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C811ABA6B5A00720D32 /* FSUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39DF7D901ACC1CDB008B52FC /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		39DF7D911ACC1CDC008B52FC /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		39DF7D951ACC26B0008B52FC /* FSBLEReqSandBoxInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */; };
@@ -220,6 +220,8 @@
 		394AD6561A9D62F4007FD2D2 /* PeripheralTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralTableViewController.h; sourceTree = "<group>"; };
 		394AD6571A9D62F4007FD2D2 /* PeripheralTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralTableViewController.m; sourceTree = "<group>"; };
 		395EF6771AC843E400AAB69A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		3965789D1ACCEB3800CEA918 /* FSBLEReqDataPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEReqDataPacker.h; sourceTree = "<group>"; };
+		3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEReqDataPacker.m; sourceTree = "<group>"; };
 		397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5BE01ABA5D4100720D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		397F5BE11ABA5D4100720D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -587,6 +589,8 @@
 				397F5CD21ABA6D3000720D32 /* FSBLEReqSyncLogPacker.m */,
 				39DF7D921ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.h */,
 				39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */,
+				3965789D1ACCEB3800CEA918 /* FSBLEReqDataPacker.h */,
+				3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -784,7 +788,6 @@
 				39C68D941ABA742300BCDA4F /* FSBLELog.h in Headers */,
 				39C68D951ABA742300BCDA4F /* FSBLELogInfo.h in Headers */,
 				39C68D9D1ABA74F600BCDA4F /* FSDefine.h in Headers */,
-				39DF7D8D1ACC1C70008B52FC /* FSUtilities.h in Headers */,
 				397F5C9E1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -797,7 +800,6 @@
 				39C68D961ABA742400BCDA4F /* FSBLELog.h in Headers */,
 				39C68D971ABA742400BCDA4F /* FSBLELogInfo.h in Headers */,
 				39C68D9E1ABA74F700BCDA4F /* FSDefine.h in Headers */,
-				39DF7D8C1ACC1C6F008B52FC /* FSUtilities.h in Headers */,
 				397F5C9F1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1205,6 +1207,7 @@
 				397F5CA81ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
 				39CCD1E71ACABCD1009A618D /* Farseer.swift in Sources */,
 				397F5CBA1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
+				396578A01ACCEB3C00CEA918 /* FSBLEReqDataPacker.m in Sources */,
 				397F5CCA1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */,
 				39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */,
 				397F5CC21ABA6B5A00720D32 /* FSBLEUtilities.m in Sources */,
@@ -1258,6 +1261,7 @@
 				397F5CA91ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
 				39CCD1E81ACABCD4009A618D /* Farseer.swift in Sources */,
 				397F5CBB1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
+				396578A11ACCEB3D00CEA918 /* FSBLEReqDataPacker.m in Sources */,
 				397F5CCB1ABA6B5A00720D32 /* FSBLEPeripheralPackerFactory.m in Sources */,
 				39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */,
 				397F5CC31ABA6B5A00720D32 /* FSBLEUtilities.m in Sources */,
@@ -1295,10 +1299,10 @@
 			files = (
 				39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */,
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
+				396578901ACCDAB800CEA918 /* DirViewController.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
-				39A6170A1AA841780058574E /* DirViewController.m in Sources */,
 				3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */,
 				398DE0201A80C7F10019BB12 /* MainViewController.m in Sources */,
 				394AD6581A9D62F4007FD2D2 /* PeripheralTableViewController.m in Sources */,

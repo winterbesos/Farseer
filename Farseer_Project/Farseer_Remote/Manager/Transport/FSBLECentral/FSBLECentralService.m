@@ -31,6 +31,11 @@ static FSBLECentralService *service = nil;
     
     CBPeripheral *_peripheral;
     FSPackageDecoder *_packageDecoder;
+    
+    CBCharacteristic *_peripheralInfoCharacteristic;
+    CBCharacteristic *_writeLogCharacteristic;
+    CBCharacteristic *_writeDataCharacteristic;
+    CBCharacteristic *_writeCMDCharacteristic;
 }
 
 #pragma mark - Class Method
@@ -81,61 +86,27 @@ static FSBLECentralService *service = nil;
     [service connectToPeripheral:peripheral];
 }
 
-+ (void)getSendBoxInfoWithPath:(NSString *)path {
+#pragma mark -
+
++ (void)getSandBoxInfoWithPath:(NSString *)path {
     NSData *reqSendBoxInfoData = [FSBLEUtilities getReqSendBoxInfoWithData:[FSBLEUtilities getDataWithPkgString:path]];
-    for (CBService *ser in [service->_peripheral services]) {
-        if ([ser.UUID.UUIDString isEqualToString:kServiceUUIDString]) {
-            for (CBCharacteristic *characteristic in ser.characteristics) {
-                if ([characteristic.UUID.UUIDString isEqualToString:kWriteCMDCharacteristicUUIDString]) {
-                    [service->_peripheral writeValue:reqSendBoxInfoData forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-//                    NSLog(@"C SEND: %@", reqLogData);
-                    break;
-                }
-            }
-            
-            break;
-        }
-    }
+    [service writeValue:reqSendBoxInfoData toCharacteristic:service->_writeCMDCharacteristic];
 }
 
-#pragma mark - 
++ (void)getSandBoxFileWithPath:(NSString *)path {
+    NSData *reqSandBoxFileData = [FSBLEUtilities getReqSendBoxFileWithData:[FSBLEUtilities getDataWithPkgString:path]];
+    [service writeValue:reqSandBoxFileData toCharacteristic:service->_writeDataCharacteristic];
+}
 
 + (void)requLogWithLogNumber:(UInt32)logNum {
     NSData *reqLogData = [FSBLEUtilities getReqLogWithNumber:logNum];
-    for (CBService *ser in [service->_peripheral services]) {
-        if ([ser.UUID.UUIDString isEqualToString:kServiceUUIDString]) {
-            for (CBCharacteristic *characteristic in ser.characteristics) {
-                if ([characteristic.UUID.UUIDString isEqualToString:kWriteLogCharacteristicUUIDString]) {
-                    [service->_peripheral writeValue:reqLogData forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-//                    NSLog(@"C SEND: %@", reqLogData);
-                    break;
-                }
-            }
-            
-            break;
-        }
-    }
+    [service writeValue:reqLogData toCharacteristic:service->_writeLogCharacteristic];
 }
 
 - (void)writeACKWithHeader:(struct PKG_HEADER)header {
     header.cmd = CMDAck;
-    
-    for (CBService *ser in [service->_peripheral services]) {
-        if ([ser.UUID.UUIDString isEqualToString:kServiceUUIDString]) {
-            for (CBCharacteristic *characteristic in ser.characteristics) {
-                if ([characteristic.UUID.UUIDString isEqualToString:kWriteLogCharacteristicUUIDString]) {
-
-                    NSData *data = [NSData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-                    [_peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-//                    NSLog(@"C SEND ACK: %@", data);
-                    break;
-                }
-            }
-            
-            break;
-        }
-    }
-    
+    NSData *data = [NSData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+    [self writeValue:data toCharacteristic:_writeCMDCharacteristic];
 }
 
 #pragma mark - Instance Method
@@ -156,6 +127,13 @@ static FSBLECentralService *service = nil;
 - (void)connectTimeout:(NSTimer *)timer {
     [_manager cancelPeripheralConnection:timer.userInfo];
     [self performSelector:@selector(connectToPeripheral:) withObject:timer.userInfo afterDelay:1];
+}
+
+- (void)writeValue:(NSData *)value toCharacteristic:(CBCharacteristic *)characteristic {
+    if (characteristic) {
+        NSLog(@"C SEND: %@", value);
+        [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+    }
 }
 
 #pragma mark - Package Decoder Delegate
@@ -192,7 +170,7 @@ static FSBLECentralService *service = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     
-//    NSLog(@"C RECV: %@", characteristic.value);
+    NSLog(@"C RECV: %@", characteristic.value);
     struct PKG_HEADER header;
     [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
     
@@ -231,21 +209,23 @@ static FSBLECentralService *service = nil;
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     for (CBCharacteristic *characteristic in service.characteristics) {
-//        NSLog(@"disconverd in service: %@ characteristic: %@", service.UUID, characteristic.UUID);
-        
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteLogCharacteristicUUIDString]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-//            NSLog(@"discovered log characteristic");
+            _writeLogCharacteristic = characteristic;
         }
         
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteCMDCharacteristicUUIDString]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-//            NSLog(@"discovered cmd characteristic");
+            _writeCMDCharacteristic = characteristic;
+        }
+        
+        if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteDataCharacteristicUUIDString]) {
+            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+            _writeDataCharacteristic = characteristic;
         }
         
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kPeripheralInfoCharacteristicUUIDString]) {
             [peripheral readValueForCharacteristic:characteristic];
-//            NSLog(@"read value in char: %@", characteristic.UUID.UUIDString);
         }
     }
 }

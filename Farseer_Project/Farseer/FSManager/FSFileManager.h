@@ -10,6 +10,7 @@
 
 @interface FSFileManager : NSObject
 
+- (NSData *)getFileWithPath:(NSString *)path;
 - (NSData *)getDirectoryContentsWithPath:(NSString *)path;
 
 @end

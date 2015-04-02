@@ -22,6 +22,7 @@
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNum;
 - (void)recvGetSendBoxInfoWithPath:(NSString *)path;
+- (void)recvGetFileWithPath:(NSString *)path;
 
 @end
 

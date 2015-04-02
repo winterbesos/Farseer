@@ -33,4 +33,9 @@
     return [NSJSONSerialization dataWithJSONObject:directoryContents options:NSJSONWritingPrettyPrinted error:nil];
 }
 
+- (NSData *)getFileWithPath:(NSString *)path {
+    NSString *targetPath = [[FSUtilities RootPath] stringByAppendingPathComponent:path];
+    return [[NSFileManager defaultManager] contentsAtPath:targetPath];
+}
+
 @end

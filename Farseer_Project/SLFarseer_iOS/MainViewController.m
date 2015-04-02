@@ -35,7 +35,7 @@
 
 @implementation MainViewController {
     LogViewController *_logViewController;
-    
+    DirViewController *_remoteDirVC;
     BOOL leftVCIsOpen;
     BOOL leftVCIsAnimating;
 }
@@ -45,7 +45,7 @@
     
     self.title = @"Farseer";
     
-    [self.tracksView setItemNames:@[@"upload log", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
+    [self.tracksView setItemNames:@[@"SandBox", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
     
     self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
     self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_NUMBER_KEY];
@@ -148,8 +148,10 @@
     
 }
 
-- (void)uploadLog {
-    [FSBLECentralService getSendBoxInfoWithPath:@""];
+- (void)getSendBoxInfo {
+    _remoteDirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
+    [_remoteDirVC setRemotePath:@""];
+    [self.navigationController pushViewController:_remoteDirVC animated:YES];
 }
 
 - (void)pushToDirVC {
@@ -185,7 +187,7 @@
 - (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral {
     FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName];
     [self displayLogInfo:logInfo];
-    [FSBLECentralService requLogWithLogNumber:0];
+//    [FSBLECentralService requLogWithLogNumber:0];
 }
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral {
@@ -194,7 +196,11 @@
     [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
 }
 - (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
-    NSLog(@"%@", sendBoxInfo);
+    [_remoteDirVC recvSandBoxInfo:sendBoxInfo];
+}
+
+- (void)recvSandBoxFile:(NSData *)sandBoxData {
+    [_remoteDirVC recvSandBoxFile:sandBoxData];
 }
 
 #pragma mark - Actions
@@ -245,7 +251,7 @@
 - (void)tracksView:(TracksView *)tracksView didSelectItemAtIndex:(NSInteger)index {
     switch (index) {
         case 0:
-            [self uploadLog];
+            [self getSendBoxInfo];
             break;
         case 1:
             [self deleteLog];
