@@ -7,6 +7,10 @@
 //
 
 #import "LogExplorerViewController.h"
+#import <objc/runtime.h>
+#import "LogViewController.h"
+
+static char AssociateLogArrayHandel;
 
 @interface LogExplorerViewController ()
 
@@ -15,11 +19,22 @@
 @implementation LogExplorerViewController {
     NSMutableDictionary *_contentDictionary;
     NSArray *_keyPath;
+    LogExplorerViewController *_sublogExplorerVC;
+    LogViewController *_logViewController;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     _contentDictionary = [NSMutableDictionary dictionary];
+    objc_setAssociatedObject(_contentDictionary, &AssociateLogArrayHandel, [NSMutableArray array], OBJC_ASSOCIATION_RETAIN);
+    _keyPath = @[@"log_fileName", @"log_functionName", @"log_content"];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _logViewController = nil;
 }
 
 #pragma mark - Public Method
@@ -30,18 +45,45 @@
 }
 
 - (void)insertLog:(FSBLELog *)log {
-    BOOL newFile = NO;
-    if (!_contentDictionary[log.log_fileName]) {
-        [_contentDictionary setObject:[NSMutableDictionary dictionary] forKey:log.log_fileName];
-        newFile = YES;
+    NSMutableArray *logArray = objc_getAssociatedObject(_contentDictionary, &AssociateLogArrayHandel);
+    [logArray addObject:log];
+    
+    if ([self insertLog:log toContentDictionary:_contentDictionary keyPath:_keyPath]) {
+        [self.tableView reloadData];
+    };
+    
+    NSString *pathValue = [log valueForKey:_keyPath.firstObject];
+    if ([_sublogExplorerVC.pathValue isEqualToString:pathValue]) {
+        [_sublogExplorerVC insertLog:log];
     }
     
-    NSMutableDictionary *logDictionary = _contentDictionary[log.log_fileName];
-    [logDictionary setObject:log forKey:log.log_fileName];
-    
-    if (newFile) {
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    if ([_logViewController.pathValue isEqualToString:pathValue]) {
+        [_logViewController insertLogWithLog:log];
     }
+    
+}
+
+- (BOOL)insertLog:(FSBLELog *)log toContentDictionary:(NSMutableDictionary *)dictionary keyPath:(NSArray *)keyPath {
+    NSString *subPath = [log valueForKey:keyPath[0]];
+    
+    BOOL hasNewData = NO;
+    if (!dictionary[subPath]) {
+        [dictionary setObject:[NSMutableDictionary dictionary] forKey:subPath];
+        hasNewData = YES;
+    }
+    
+    NSMutableDictionary *logDictionary = dictionary[subPath];
+    if (keyPath.count >= 2) {
+        [self insertLog:log toContentDictionary:logDictionary keyPath:[keyPath subarrayWithRange:NSMakeRange(1, keyPath.count - 1)]];
+    }
+    
+    NSMutableArray *logArray = objc_getAssociatedObject(logDictionary, &AssociateLogArrayHandel);
+    if (!logArray) {
+        logArray = [NSMutableArray array];
+        objc_setAssociatedObject(logDictionary, &AssociateLogArrayHandel, logArray, OBJC_ASSOCIATION_RETAIN);
+    }
+    
+    return hasNewData;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -55,9 +97,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    LogExplorerViewController *logExplorerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogExplorerViewController"];
-    [logExplorerVC loadWithLogKeyPath:[_keyPath subarrayWithRange:NSMakeRange(1, _keyPath.count - 1)] dictionary:[_contentDictionary allKeys][indexPath.row]];
-    [self.navigationController pushViewController:logExplorerVC animated:YES];
+//    if (_keyPath.count >= 2) {
+//        _sublogExplorerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogExplorerViewController"];
+//        [_sublogExplorerVC loadWithLogKeyPath:[_keyPath subarrayWithRange:NSMakeRange(1, _keyPath.count - 1)] dictionary:_contentDictionary[[_contentDictionary allKeys][indexPath.row]]];
+//        [self.navigationController pushViewController:_sublogExplorerVC animated:YES];
+//    }
+    
+    _logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
+    NSDictionary *subDictionary = _contentDictionary[[_contentDictionary allKeys][indexPath.row]];
+    [_logViewController loagWithLogs:objc_getAssociatedObject(subDictionary, &AssociateLogArrayHandel) pathValue:[_contentDictionary allKeys][indexPath.row]];
+    [self.navigationController pushViewController:_logViewController animated:YES];
 }
 
 @end

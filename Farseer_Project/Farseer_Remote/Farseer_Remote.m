@@ -7,9 +7,13 @@
 //
 
 #import "Farseer_Remote.h"
-#import "FSLogManager+Central.h"
+#import "FSCentralLogManager.h"
 #import "FSDebugCentral_Remote.h"
 
-void saveLog(NSArray *logList, CBPeripheral *peripheral, NSString *bundleName, void(^callback)(float percentage)) {
-    [[FSDebugCentral_Remote getInstance].logManager saveLog:logList peripheral:peripheral bundleName:bundleName callback:callback];
+void requestLog() {
+    [[FSDebugCentral_Remote getInstance].logManager requestLog];
+}
+
+void saveLog(void(^callback)(float percentage)) {
+    [[FSDebugCentral_Remote getInstance].logManager saveLogCallback:callback];
 }

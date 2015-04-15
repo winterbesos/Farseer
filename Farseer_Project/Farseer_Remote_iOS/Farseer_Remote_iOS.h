@@ -6,14 +6,12 @@
 //  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <Farseer_Remote_iOS/Farseer_Remote.h>
+#import <Farseer_Remote_iOS/FSDefine.h>
 #import <Farseer_Remote_iOS/FSBLELog.h>
 #import <Farseer_Remote_iOS/FSBLELogInfo.h>
-#import <Farseer_Remote_iOS/FSDefine.h>
-#import <Farseer_Remote_iOS/FSUtilities.h>
-
-#import <Farseer_Remote_iOS/FSBLECentralService.h> // TODO: unexpose
+#import <Farseer_Remote_iOS/FSCentralClientDelegate.H>
 
 //! Project version number for Farseer_Remote_iOS.
 FOUNDATION_EXPORT double Farseer_Remote_iOSVersionNumber;

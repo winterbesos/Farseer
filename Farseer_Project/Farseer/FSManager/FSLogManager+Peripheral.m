@@ -36,7 +36,7 @@
     
     dispatch_async(logFileOperationQueue, ^{
         const char *filePath = [kLifeCircleLogPath cStringUsingEncoding:NSUTF8StringEncoding];
-        [self writeLog:log ToFile:filePath];
+        [FSUtilities writeLog:log ToFile:filePath];
         [self cacheLogIfNeed:log];
         [[FSDebugCentral getInstance].transportManager.peripheralClient writeLogToCharacteristicIfWaitingWithLog:log];
     });

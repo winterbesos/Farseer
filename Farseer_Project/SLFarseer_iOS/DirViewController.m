@@ -9,7 +9,6 @@
 #import "DirViewController.h"
 #import "FSLogManager.h"
 #import "LogViewController.h"
-#import "FSBLECentralService.h"
 
 typedef NS_ENUM(NSInteger, DirType) {
     DirTypeRemote,
@@ -59,7 +58,7 @@ typedef NS_ENUM(NSInteger, DirType) {
 - (void)setRemotePath:(NSString *)path {
     _path = path;
     _type = DirTypeRemote;
-    [FSBLECentralService getSandBoxInfoWithPath:path];
+//    [FSBLECentralService getSandBoxInfoWithPath:path];
 }
 
 - (void)recvSandBoxInfo:(NSDictionary *)sandBoxInfo {
@@ -75,7 +74,7 @@ typedef NS_ENUM(NSInteger, DirType) {
     if (_subRemoteVC) {
         [_subRemoteVC recvSandBoxFile:sandBoxData];
     } else {
-        NSLog(@"recv file size: %lu", sandBoxData.length);
+        NSLog(@"recv file size: %lu", (unsigned long)sandBoxData.length);
     }
 }
 

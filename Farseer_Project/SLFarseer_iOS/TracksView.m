@@ -92,7 +92,13 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
     
+    if (lastHighlight != -1) {
+        [items[lastHighlight] setHighlighted:NO];
+        lastHighlight = -1;
+    }
+    
     for (UITouch *touch in touches) {
+        /*
         CGPoint touchLocation = [touch locationInView:self];
         if (touchLocation.x < RADIUS + 50
             ||
@@ -103,6 +109,7 @@
             touchLocation.y < RADIUS + 50) {
             return;
         }
+         */
         
         
         [self.achor setCenter:[touch locationInView:self]];

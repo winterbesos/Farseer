@@ -10,8 +10,5 @@
 
 @class CBPeripheral;
 
-@interface Farseer_Remote : NSObject
-
-void saveLog(NSArray *logList, CBPeripheral *peripheral, NSString *bundleName, void(^callback)(float percentage));
-
-@end
+void requestLog();
+void saveLog();

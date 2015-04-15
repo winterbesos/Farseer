@@ -17,6 +17,4 @@
     NSMutableArray   *cacheLogs;
 }
 
-- (void)writeLog:(FSBLELog *)log ToFile:(const char *)filePath;
-
 @end

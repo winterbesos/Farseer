@@ -10,16 +10,17 @@
 #import <CoreBluetooth/CBCentralManager.h>
 
 @class CBPeripheral;
+@protocol FSCentralClientDelegate;
 
 @interface FSBLECentralService : NSObject
 
-+ (void)install;
-+ (void)installWithClient:(id)client stateChangedCallback:(void(^)(CBCentralManagerState state))callback;
++ (void)installWithDelegate:(id<FSCentralClientDelegate>)delegate stateChangedCallback:(void(^)(CBCentralManagerState state))callback;
 + (void)uninstall;
 + (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback;
 + (void)stopScan;
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback;
 + (void)connectToPeripheral:(CBPeripheral *)peripheral;
++ (void)disconnectPeripheral:(CBPeripheral *)peripheral;
 + (void)getSandBoxInfoWithPath:(NSString *)path;
 + (void)getSandBoxFileWithPath:(NSString *)path;
 

@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FSDefine.h"
+#import "FSCentralClientDelegate.h"
 
 @class CBPeripheral;
 
 @interface FSCentralClient : NSObject
 
-- (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral;
-
-- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral;
-
-- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo;
+- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate;
 
 @end

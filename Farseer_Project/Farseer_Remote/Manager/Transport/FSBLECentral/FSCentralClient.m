@@ -9,19 +9,38 @@
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
 #import "FSBLECentralService.h"
+#import "FSBLELogInfo.h"
+#import "FSBLELog.h"
 
-@implementation FSCentralClient
+@implementation FSCentralClient {
+    id<FSCentralClientDelegate> _delegate;
+}
+
+- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate
+{
+    self = [super init];
+    if (self) {
+        _delegate = delegate;
+    }
+    return self;
+}
 
 - (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral {
-//    NSLog(@"%s: %d %@ %@ %@ %@", __FUNCTION__, osType, osVersion, deviceType, deviceName, bundleName);
+    FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName];
+    [_delegate client:self didReceiveLogInfo:logInfo];
 }
 
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral {
-//    NSLog(@"%u %@ %d %@", (unsigned int)logNumber, logDate, logLevel, content);
+    FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content file:fileName function:functionName line:line];
+    [_delegate client:self didReceiveLog:log];
+    [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
+}
+- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
+//    [_remoteDirVC recvSandBoxInfo:sendBoxInfo];
 }
 
-- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
-//    NSLog(@"%@", sendBoxInfo);
+- (void)recvSandBoxFile:(NSData *)sandBoxData {
+//    [_remoteDirVC recvSandBoxFile:sandBoxData];
 }
 
 @end

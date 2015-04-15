@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class FSLogManager;
+@class FSCentralLogManager;
 
 @interface FSDebugCentral_Remote : NSObject
 
-@property (nonatomic, readonly)FSLogManager *logManager;
+@property (nonatomic, readonly)FSCentralLogManager *logManager;
 
 + (FSDebugCentral_Remote *)getInstance;
 

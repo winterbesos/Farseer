@@ -11,6 +11,8 @@
 
 @interface LogExplorerViewController : UITableViewController
 
+@property (nonatomic, readonly)NSString *pathValue;
+
 - (void)insertLog:(FSBLELog *)log;
 
 @end

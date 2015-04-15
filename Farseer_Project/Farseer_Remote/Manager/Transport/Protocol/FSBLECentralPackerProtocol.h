@@ -7,6 +7,7 @@
 //
 
 #import "FSPackageIn.h"
+#import "FSDefine.h"
 
 @class CBPeripheral;
 
@@ -17,13 +18,11 @@
 
 @end
 
-@protocol FSBLEResDelegate <NSObject>
-
-- (void)recvSyncLogWithLogNumber:(UInt32)logNum;
-- (void)recvSendBoxInfoWithJSON:(NSString *)json;
-
-@end
-
 @protocol FSBLEReqDelegate <NSObject>
+
+- (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral;
+- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral;
+- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo;
+- (void)recvSandBoxFile:(NSData *)sandBoxData;
 
 @end

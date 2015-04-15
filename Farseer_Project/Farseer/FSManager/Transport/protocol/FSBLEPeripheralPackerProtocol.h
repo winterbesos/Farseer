@@ -25,7 +25,3 @@
 - (void)recvGetFileWithPath:(NSString *)path;
 
 @end
-
-@protocol FSBLEReqDelegate <NSObject>
-
-@end

@@ -17,16 +17,16 @@
 
 @interface LogViewController : UITableViewController
 
+@property (nonatomic, readonly)NSString *pathValue;
+
 - (void)setFile:(NSString *)path;
 
-- (void)insertLogWithLog:(FSBLELog *)log peripheral:(CBPeripheral *)peripheral;
+- (void)insertLogWithLog:(FSBLELog *)log;
+- (void)loagWithLogs:(NSArray *)logs pathValue:(NSString *)pathValue;
 - (void)clearLog;
 - (void)switchLogNumber;
 - (void)switchLogDate;
 - (FSBLELog *)lastLog;
-- (CBPeripheral *)selectedPeripheral;
 - (NSArray *)displayLogs;
-- (NSArray *)peripherals;
-- (void)selectPeripheral:(CBPeripheral *)peripheral;
 
 @end

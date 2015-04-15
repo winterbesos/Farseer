@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @class FSBLELog;
-@class CBPeripheral;
 
 @interface FSUtilities : NSObject
 
@@ -18,11 +17,13 @@
 + (NSString *)FS_Path;
 + (NSString *)FS_LogPath;
 + (NSString *)FS_LogBundleNamePath:(NSString *)bundleName;
-+ (NSString *)FS_LogPeripheralPath:(CBPeripheral *)peripheral bundleName:(NSString *)bundleName;
-+ (NSString *)FS_LogFilePathWithFileName:(NSString *)fileName peripheral:(CBPeripheral *)peripheral bundleName:(NSString *)bundleName;
++ (NSString *)FS_LogPeripheralPath:(NSString *)UUIDString bundleName:(NSString *)bundleName;
++ (NSString *)FS_LogFilePathWithFileName:(NSString *)fileName UUIDString:(NSString *)UUIDString bundleName:(NSString *)bundleName;
 + (BOOL)filePathExists:(NSString *)filePath;
 
 + (void)FS_CreatePathIfNeed:(NSString *)path;
 + (void)FS_CreateLogFileIfNeed:(NSString *)path;
+
++ (void)writeLog:(FSBLELog *)log ToFile:(const char *)filePath;
 
 @end

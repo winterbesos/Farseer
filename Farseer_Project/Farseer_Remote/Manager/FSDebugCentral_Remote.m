@@ -7,7 +7,7 @@
 //
 
 #import "FSDebugCentral_Remote.h"
-#import "FSLogManager+Central.h"
+#import "FSCentralLogManager.h"
 
 @implementation FSDebugCentral_Remote
 
@@ -16,7 +16,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[FSDebugCentral_Remote alloc] init];
-        instance->_logManager = [[FSLogManager alloc] init];
+        instance->_logManager = [[FSCentralLogManager alloc] init];
     });
     return instance;
 }

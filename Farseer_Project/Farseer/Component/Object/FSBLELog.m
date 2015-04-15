@@ -37,7 +37,7 @@ static UInt32 logNumber = 0;
         log->_log_date = [NSDate date];
         log->_log_level = level;
         log->_log_content = content;
-        log->_log_fileName = [NSString stringWithUTF8String:file];
+        log->_log_fileName = [NSString stringWithUTF8String:file].lastPathComponent;
         log->_log_functionName = [NSString stringWithUTF8String:function];
         log->_log_line = line;
         

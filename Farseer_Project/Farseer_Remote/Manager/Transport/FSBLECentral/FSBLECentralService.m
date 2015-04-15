@@ -29,32 +29,23 @@ static FSBLECentralService *service = nil;
     void(^connectionStatusChangedCallback)(CBPeripheral *peripheral);
     void(^stateChangedCallback)(CBCentralManagerState state);
     
-    CBPeripheral *_peripheral;
-    FSPackageDecoder *_packageDecoder;
+    CBPeripheral        *_peripheral;
+    FSPackageDecoder    *_packageDecoder;
     
-    CBCharacteristic *_peripheralInfoCharacteristic;
-    CBCharacteristic *_writeLogCharacteristic;
-    CBCharacteristic *_writeDataCharacteristic;
-    CBCharacteristic *_writeCMDCharacteristic;
+    CBCharacteristic    *_peripheralInfoCharacteristic;
+    CBCharacteristic    *_writeLogCharacteristic;
+    CBCharacteristic    *_writeDataCharacteristic;
+    CBCharacteristic    *_writeCMDCharacteristic;
 }
 
 #pragma mark - Class Method
 
-+ (void)install {
-    if (!service) {
-        service = [[FSBLECentralService alloc] init];
-        service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
-        service->_client = [[FSCentralClient alloc] init];
-        service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:service];
-    }
-}
-
-+ (void)installWithClient:(id)client stateChangedCallback:(void(^)(CBCentralManagerState state))callback {
++ (void)installWithDelegate:(id<FSCentralClientDelegate>)delegate stateChangedCallback:(void(^)(CBCentralManagerState state))callback {
     if (!service) {
         service = [[FSBLECentralService alloc] init];
         service->stateChangedCallback = callback;
         service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
-        service->_client = client;
+        service->_client = [[FSCentralClient alloc] initWithDelegate:delegate];;
         service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:service];
     }
 }
@@ -84,6 +75,12 @@ static FSBLECentralService *service = nil;
 
 + (void)connectToPeripheral:(CBPeripheral *)peripheral {
     [service connectToPeripheral:peripheral];
+}
+
++ (void)disconnectPeripheral:(CBPeripheral *)peripheral {
+    if (peripheral) {
+        [service->_manager cancelPeripheralConnection:peripheral];
+    }
 }
 
 #pragma mark -
@@ -131,7 +128,7 @@ static FSBLECentralService *service = nil;
 
 - (void)writeValue:(NSData *)value toCharacteristic:(CBCharacteristic *)characteristic {
     if (characteristic) {
-        NSLog(@"C SEND: %@", value);
+//        NSLog(@"C SEND: %@", value);
         [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
     }
 }
@@ -139,7 +136,6 @@ static FSBLECentralService *service = nil;
 #pragma mark - Package Decoder Delegate
 
 - (void)packageDecoder:(FSPackageDecoder *)packageDecoder didDecodePackageData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral cmd:(CMD)cmd {
-    
     FSPackageIn *packageIn = [FSPackageIn decode:data];
     [[FSBLECentralPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
 }
@@ -170,7 +166,7 @@ static FSBLECentralService *service = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     
-    NSLog(@"C RECV: %@", characteristic.value);
+//    NSLog(@"C RECV: %@", characteristic.value);
     struct PKG_HEADER header;
     [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
     

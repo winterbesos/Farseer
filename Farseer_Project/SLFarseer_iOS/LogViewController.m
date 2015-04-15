@@ -10,13 +10,11 @@
 #import "LogTableViewCell.h"
 #import <CoreBluetooth/CBPeripheral.h>
 #import <objc/runtime.h>
-
-#import <Farseer_Remote_iOS/FSBLELog.h>
 #import "FSPackageIn.h"
 #import "TracksView.h"
 #import "LogExplorerViewController.h"
 
-static void *kHandleAssociatedKey;
+#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 @interface LogViewController () <TracksViewDelegate>
 
@@ -27,15 +25,13 @@ static void *kHandleAssociatedKey;
     BOOL _showLogDate;
     BOOL _showLogColor;
     
-    NSMutableArray *_peripheralList;
-    CBPeripheral *_displayPeripheral;
-    
     TracksView *_tracksView;
     LogExplorerViewController *_logExplorerVC;
+    NSMutableArray  *_logList;
 }
 
 - (void)awakeFromNib {
-    _peripheralList = [NSMutableArray array];
+    _logList = [NSMutableArray array];
 }
 
 - (void)viewDidLoad {
@@ -70,51 +66,38 @@ static void *kHandleAssociatedKey;
     self.navigationController.navigationBarHidden = NO;
 }
 
-- (void)removeTracksView {
-    [_tracksView removeFromSuperview];
-}
-
 - (void)addTracksView {
     if (!_tracksView) {
         CGRect screenBounds = [UIScreen mainScreen].bounds;
-        _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width - 300, screenBounds.size.height)];
+        _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width * 0.8, screenBounds.size.height)];
         _tracksView.backgroundColor = [UIColor clearColor];
         _tracksView.delegate = self;
-        [_tracksView setItemNames:@[@"Log Explorer", @"delete log", @"clear log", @"Save Log", @"Dir", @"crash", @"continue", @"N/A"]];
+        [_tracksView setItemNames:@[@"Log Explorer", @"N/A", @"clear log", @"Save Log", @"N/A", @"crash", @"continue", @"N/A"]];
     }
     [[UIApplication sharedApplication].keyWindow addSubview:_tracksView];
 }
 
+- (void)removeTracksView {
+    [_tracksView removeFromSuperview];
+}
+
 #pragma mark - Public Method
 
-- (void)insertLogWithLog:(FSBLELog *)log peripheral:(CBPeripheral *)peripheral {
-    if (![_peripheralList containsObject:peripheral]) {
-        [_peripheralList addObject:peripheral];
-        objc_setAssociatedObject(peripheral, &kHandleAssociatedKey, [NSMutableArray array], OBJC_ASSOCIATION_RETAIN);
-    }
+- (void)insertLogWithLog:(FSBLELog *)log {
+    [_logList addObject:log];
     
-    if (_displayPeripheral == nil) {
-        _displayPeripheral = peripheral;
-    }
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     
-    NSMutableArray *logList = objc_getAssociatedObject(peripheral, &kHandleAssociatedKey);
-    [logList addObject:log];
-    
-    if (_displayPeripheral == peripheral) {
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:logList.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-        
-        if (self.tableView.contentOffset.y >= self.tableView.contentSize.height - self.tableView.frame.size.height - 30) {
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:logList.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-        }
+    if (self.tableView.contentOffset.y >= self.tableView.contentSize.height - self.tableView.frame.size.height - 30) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     }
     
     [_logExplorerVC insertLog:log];
 }
 
-- (void)clearLog {
-    NSMutableArray *logList = objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-    [logList removeAllObjects];
-    [self.tableView reloadData];
+- (void)loagWithLogs:(NSArray *)logs pathValue:(NSString *)pathValue {
+    _pathValue = pathValue;
+    _logList = [logs mutableCopy];
 }
 
 - (void)switchLogNumber {
@@ -128,25 +111,11 @@ static void *kHandleAssociatedKey;
 }
 
 - (FSBLELog *)lastLog {
-    NSMutableArray *logList = objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-    return [logList lastObject];
-}
-
-- (NSArray *)peripherals {
-    return _peripheralList;
-}
-
-- (void)selectPeripheral:(CBPeripheral *)peripheral {
-    _displayPeripheral = peripheral;
-    [self.tableView reloadData];
+    return [_logList lastObject];
 }
 
 - (NSArray *)displayLogs {
-    return objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-}
-
-- (CBPeripheral *)selectedPeripheral {
-    return _displayPeripheral;
+    return _logList;
 }
 
 - (void)setFile:(NSString *)path {
@@ -171,10 +140,6 @@ static void *kHandleAssociatedKey;
         [logList addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
     }
     
-    NSObject *peripheral = [[NSObject alloc] init];
-    objc_setAssociatedObject(peripheral, &kHandleAssociatedKey, logList, OBJC_ASSOCIATION_RETAIN);
-    _displayPeripheral = (CBPeripheral *)peripheral;
-    
     [self.tableView reloadData];
 }
 
@@ -188,6 +153,29 @@ static void *kHandleAssociatedKey;
     [self.navigationController pushViewController:_logExplorerVC animated:YES];
 }
 
+- (void)continueLog {
+    requestLog();
+}
+
+- (void)saveLog {
+    saveLog(^(float percentage) {
+        if (percentage == 1) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存日志完成" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    });
+}
+
+- (void)clearLog {
+    [_logList removeAllObjects];
+    [self.tableView reloadData];
+}
+
+- (void)crash {
+    // TODO: remote control peripheral crash
+}
+
+
 #pragma mark - Logo Label Delegate
 
 - (void)tracksView:(TracksView *)tracksView didSelectItemAtIndex:(NSInteger)index {
@@ -196,47 +184,40 @@ static void *kHandleAssociatedKey;
             [self showExplorerLogViewController];
             break;
         case 1:
-//            [self deleteLog];
             break;
         case 2:
-//            [self clearLog];
+            [self clearLog];
             break;
         case 3:
-//            [self saveLog];
+            [self saveLog];
             break;
         case 4:
-//            [self pushToDirVC];
             break;
         case 5:
-//            [self crash];
+            [self crash];
             break;
         case 6:
-//            [self continueLog];
+            [self continueLog];
             break;
         default:
             break;
     }
-    
-//    NSLog(@"%ld", (long)index);
 }
 
 #pragma mark - UITableView Delegate and DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSMutableArray *logList = objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-    return logList.count;
+    return _logList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogCell" forIndexPath:indexPath];
-    NSMutableArray *logList = objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-    [cell setLog:logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate showLogColor:_showLogColor];
+    [cell setLog:_logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate showLogColor:_showLogColor];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *logList = objc_getAssociatedObject(_displayPeripheral, &kHandleAssociatedKey);
-    return [LogTableViewCell calculateCellHeightWithLog:logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate];
+    return [LogTableViewCell calculateCellHeightWithLog:_logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate];
 }
 
 @end

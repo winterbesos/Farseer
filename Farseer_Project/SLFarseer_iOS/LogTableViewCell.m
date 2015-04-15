@@ -52,38 +52,6 @@ static NSDateFormatter *kLogDateFormatter;
 }
 
 - (void)setLog:(FSBLELog *)log showLogNumber:(BOOL)showLogNumber showLogDate:(BOOL)showLogDate showLogColor:(BOOL)showLogColor {
-    
-    UIColor *logColor = nil;
-    if (showLogColor) {
-        switch ((FSLogLevel)log.log_level) {
-            case FSLogLevelFatal: {
-                logColor = [UIColor redColor];
-            }
-                break;
-            case FSLogLevelError: {
-                logColor = [UIColor orangeColor];
-            }
-                break;
-            case FSLogLevelWarning: {
-                logColor = [UIColor yellowColor];
-            }
-                break;
-            case FSLogLevelLog: {
-                logColor = [UIColor greenColor];
-            }
-                break;
-            case FSLogLevelMinor: {
-                logColor = [UIColor grayColor];
-            }
-                break;
-            default:
-                NSAssert(false, @"错误");
-                break;
-        }
-    } else {
-        logColor = [UIColor greenColor];
-    }
-    
     logLabel.text = [LogTableViewCell getContentStringWithLog:log showLogNumber:showLogNumber showLogDate:showLogDate];
     logLabel.textColor = [self getLogColorWithLevel:log.log_level];
 }
@@ -106,9 +74,6 @@ static NSDateFormatter *kLogDateFormatter;
     
     [contentString appendString:log.log_content];
     
-    // TESTING:
-    [contentString appendFormat:@"\nfile: %@ function: %@ line: %d", log.log_fileName, log.log_functionName, log.log_line];
-    // END TESTING
     return contentString;
 }
 

@@ -6,7 +6,12 @@
 //  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <Farseer_Remote_Mac/Farseer_Remote.h>
+#import <Farseer_Remote_Mac/FSDefine.h>
+#import <Farseer_Remote_Mac/FSBLELog.h>
+#import <Farseer_Remote_Mac/FSBLELogInfo.h>
+#import <Farseer_Remote_Mac/FSCentralClientDelegate.H>
 
 //! Project version number for Farseer_Remote_Mac.
 FOUNDATION_EXPORT double Farseer_Remote_MacVersionNumber;
