@@ -27,8 +27,8 @@ Try it yourself, Farseer will give you a different debugging experience.
 
 #####License
 
-Farseer is released under the MIT license. See LICENSE.md.
+Farseer is released under the MIT license. See [LICENSE.md](https://github.com/winterbesos/Farseer/blob/master/LICENSE.md).
 
 #####More Info
 
-Have any questions? Please open an issue!
+Have any questions? Please [open an issue](https://github.com/winterbesos/Farseer/issues)!
