@@ -1076,7 +1076,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "../Script/farseer.sh -m";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
