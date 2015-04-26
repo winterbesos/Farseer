@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3916B6BF1AEBC8FF00C5FBFC /* SLLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3916B6BE1AEBC8FF00C5FBFC /* SLLogWrapper.m */; };
 		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3941A9761ACC15F0008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
@@ -190,6 +191,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3916B6BD1AEBC8FF00C5FBFC /* SLLogWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLogWrapper.h; sourceTree = "<group>"; };
+		3916B6BE1AEBC8FF00C5FBFC /* SLLogWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLogWrapper.m; sourceTree = "<group>"; };
 		39193C2B1AB9969800617804 /* Farseer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39193C2E1AB9969800617804 /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_iOS.plist; sourceTree = "<group>"; };
 		39193C2F1AB9969800617804 /* Farseer_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_iOS.h; path = Farseer_iOS/Farseer_iOS.h; sourceTree = SOURCE_ROOT; };
@@ -615,6 +618,8 @@
 				3987802D1A9DAD7000D7397F /* LogViewController.m */,
 				39C6F5DC1ACBEA9A003E4C36 /* LogExplorerViewController.h */,
 				39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */,
+				3916B6BD1AEBC8FF00C5FBFC /* SLLogWrapper.h */,
+				3916B6BE1AEBC8FF00C5FBFC /* SLLogWrapper.m */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -1187,6 +1192,7 @@
 				396578901ACCDAB800CEA918 /* DirViewController.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
+				3916B6BF1AEBC8FF00C5FBFC /* SLLogWrapper.m in Sources */,
 				394CDCAA1AD0131F002DB63B /* DocumentTableViewController.m in Sources */,
 				394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */,
 				39850E061AD168EB003D1742 /* FSCentralFileManager.m in Sources */,

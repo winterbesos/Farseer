@@ -11,12 +11,14 @@
 
 @interface FSBLELogInfo : NSObject
 
-@property (nonatomic, readonly)BLEOSType      log_type;
-@property (nonatomic, readonly)NSString       *log_OSVersion;
-@property (nonatomic, readonly)NSString       *log_deviceType;
-@property (nonatomic, readonly)NSString       *log_deviceName;
-@property (nonatomic, readonly)NSString       *log_bundleName;
+@property (nonatomic, readonly)BLEOSType        log_OSType;
+@property (nonatomic, readonly)NSString         *log_OSVersion;
+@property (nonatomic, readonly)NSString         *log_deviceType;
+@property (nonatomic, readonly)NSString         *log_deviceName;
+@property (nonatomic, readonly)NSString         *log_bundleName;
+@property (nonatomic, readonly)NSString         *log_deviceUUID;
+@property (nonatomic, readonly)NSDate           *log_appLaunchDate;
 
-+ (FSBLELogInfo *)infoWithType:(BLEOSType)type osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName;
++ (FSBLELogInfo *)infoWithType:(BLEOSType)type osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName deviceUUID:(NSString *)deviceUUID launchDate:(NSDate *)launchDate;
 
 @end

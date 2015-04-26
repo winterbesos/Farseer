@@ -13,10 +13,10 @@
 #import "FSPackageIn.h"
 #import "TracksView.h"
 #import "LogExplorerViewController.h"
-
+#import "SLLogWrapper.h"
 #import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
-@interface LogViewController () <TracksViewDelegate>
+@interface LogViewController () <TracksViewDelegate, SLLogWrapperDelegate>
 
 @end
 
@@ -26,8 +26,10 @@
     BOOL _showLogColor;
     
     TracksView *_tracksView;
-    LogExplorerViewController *_logExplorerVC;
     NSMutableArray  *_logList;
+    SLLogWrapper *_logWrapper;
+    NSString *_registerFileName;
+    NSString *_registerFunctionName;
 }
 
 - (void)awakeFromNib {
@@ -40,8 +42,6 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTableView:)];
     [tapGesture setNumberOfTapsRequired:2];
     [self.tableView addGestureRecognizer:tapGesture];
-    
-    _logExplorerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogExplorerViewController"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,9 +53,12 @@
     _showLogNumber = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_NUMBER_KEY];
     _showLogDate = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
     _showLogColor = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
-    [self.tableView reloadData];
     
-    [self addTracksView];
+    if (!_registerFileName) {
+        [self addTracksView];
+    }
+    _logList = [[_logWrapper registerLogWithDelegate:self fileName:_registerFileName functionName:_registerFunctionName] mutableCopy];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -83,16 +86,10 @@
 
 #pragma mark - Public Method
 
-- (void)insertLogWithLog:(FSBLELog *)log {
-    [_logList addObject:log];
-    
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    
-    if (self.tableView.contentOffset.y >= self.tableView.contentSize.height - self.tableView.frame.size.height - 30) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    }
-    
-    [_logExplorerVC insertLog:log];
+- (void)setWrapper:(SLLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName {
+    _logWrapper = logWrapper;
+    _registerFileName = fileName;
+    _registerFunctionName = functionName;
 }
 
 - (void)loagWithLogs:(NSArray *)logs pathValue:(NSString *)pathValue {
@@ -150,7 +147,9 @@
 }
 
 - (void)showExplorerLogViewController {
-    [self.navigationController pushViewController:_logExplorerVC animated:YES];
+    LogExplorerViewController *logExplorerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogExplorerViewController"];
+    [logExplorerVC setWrapper:_logWrapper FileName:nil functionName:nil];
+    [self.navigationController pushViewController:logExplorerVC animated:YES];
 }
 
 - (void)continueLog {
@@ -175,6 +174,17 @@
     // TODO: remote control peripheral crash
 }
 
+#pragma mark - LogWrapper Delegate
+
+- (void)wrapper:(SLLogWrapper *)wrapper didInsertLog:(FSBLELog *)log {
+    [_logList addObject:log];
+    
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    
+    if (self.tableView.contentOffset.y >= self.tableView.contentSize.height - self.tableView.frame.size.height - 30) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+}
 
 #pragma mark - Logo Label Delegate
 

@@ -52,7 +52,17 @@
 
 - (void)saveLogCallback:(void(^)(float percentage))callback {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSString *fileName = [NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        NSString *fileName = [[formatter stringFromDate:_logInfo.log_appLaunchDate] stringByAppendingPathExtension:@"fsl"];
+        
+        NSString *fileFullPath = [FSUtilities FS_LogFilePathWithFileName:fileName UUIDString:_logInfo.log_deviceUUID bundleName:_logInfo.log_bundleName];
+        if (![FSUtilities filePathExists:fileFullPath]) {
+            [FSUtilities FS_CreatePathIfNeed:[FSUtilities FS_LogPeripheralPath:_logInfo.log_deviceUUID bundleName:_logInfo.log_bundleName]];
+            [FSUtilities FS_CreateLogFileIfNeed:fileFullPath];
+        }
+        
         for (FSBLELog *log in _logList) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSUInteger index = [_logList indexOfObject:log];
@@ -60,9 +70,8 @@
                     callback(1.0 * index / _logList.count);
                 }
             });
-            
-            // TODO: UUID
-            [self inputLog:log UUIDString:@"UUID" bundleName:_logInfo.log_bundleName fileName:fileName];
+        
+            [FSUtilities writeLog:log ToFile:[fileFullPath UTF8String]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

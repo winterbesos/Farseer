@@ -15,6 +15,7 @@
 #import "LogViewController.h"
 #import "DocumentTableViewController.h"
 #import "DirViewController.h"
+#import "SLLogWrapper.h"
 
 static char AssociatedObjectHandle;
 
@@ -36,14 +37,13 @@ static char AssociatedObjectHandle;
     
     NSMutableArray                  *_peripheralsDataList;
     CBPeripheral                    *_activePeripheral;
-    LogViewController               *_logViewController;
     DirViewController               *_remoteDirVC;
+    SLLogWrapper                    *_logWrapper;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
     _remoteDirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
     
     _peripheralsDataList = [NSMutableArray array];
@@ -119,7 +119,7 @@ static char AssociatedObjectHandle;
     NSString *deviceType = @"N/A";
     NSString *bundleName = @"N/A";
     if (logInfo) {
-        switch (logInfo.log_type) {
+        switch (logInfo.log_OSType) {
             case BLEOSTypeIOS:
                 osType = @"iOS";
                 break;
@@ -142,10 +142,11 @@ static char AssociatedObjectHandle;
 
 - (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo; {
     [self displayLogInfo:logInfo];
+    _logWrapper = [[SLLogWrapper alloc] initWithLogInfo:logInfo];
 }
 
 - (void)client:(FSCentralClient *)client didReceiveLog:(FSBLELog *)log {
-    [_logViewController insertLogWithLog:log];
+    [_logWrapper insertLog:log];
 }
 
 /*
@@ -174,10 +175,6 @@ static char AssociatedObjectHandle;
 
 - (IBAction)displayLogColorSwitchAction:(UISwitch *)sender {
     [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:DISPLAY_LOG_COLOR_KEY];
-}
-
-- (IBAction)logButtonAction:(id)sender {
-    [self.navigationController pushViewController:_logViewController animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -272,6 +269,8 @@ static char AssociatedObjectHandle;
     if ([targetViewController isKindOfClass:[DocumentTableViewController class]]) {
         [_remoteDirVC setRemotePath:@""];
         [targetViewController setRemoteDirVC:(DirViewController *)_remoteDirVC];
+    } else if ([targetViewController isKindOfClass:[LogViewController class]]) {
+        [((LogViewController *)targetViewController) setWrapper:_logWrapper FileName:nil functionName:nil];
     }
 }
 

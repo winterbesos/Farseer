@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSBLELog.h"
+
+@class SLLogWrapper;
 
 @interface LogExplorerViewController : UITableViewController
 
-@property (nonatomic, readonly)NSString *pathValue;
-
-- (void)insertLog:(FSBLELog *)log;
+- (void)setWrapper:(SLLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName;
 
 @end

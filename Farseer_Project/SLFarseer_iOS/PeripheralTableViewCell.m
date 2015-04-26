@@ -45,7 +45,7 @@
     }
 
     self.textLabel.adjustsFontSizeToFitWidth = YES;
-    self.textLabel.text = [NSString stringWithFormat:@"%@ RSSI:%@", peripheral.name, RSSI];
+    self.textLabel.text = [NSString stringWithFormat:@"   %@ RSSI:%@", peripheral.name, RSSI];
 }
 
 @end
