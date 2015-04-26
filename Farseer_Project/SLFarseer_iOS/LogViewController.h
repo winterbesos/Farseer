@@ -12,7 +12,7 @@
 #define DISPLAY_LOG_NUMBER_KEY @"DISPLAY_LOG_NUMBER_KEY"
 #define DISPLAY_LOG_COLOR_KEY @"DISPLAY_LOG_COLOR_KEY"
 
-@class SLLogWrapper;
+@class FSLogWrapper;
 @class FSBLELog;
 @class CBPeripheral;
 
@@ -20,7 +20,7 @@
 
 @property (nonatomic, readonly)NSString *pathValue;
 
-- (void)setWrapper:(SLLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName;
+- (void)setWrapper:(FSLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName;
 
 - (void)setFile:(NSString *)path;
 - (void)loagWithLogs:(NSArray *)logs pathValue:(NSString *)pathValue;

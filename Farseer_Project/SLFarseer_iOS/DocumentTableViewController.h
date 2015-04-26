@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class DirViewController;
+@class FSDirectoryWrapper;
 
-@interface DocumentTableViewController : UITableViewController
+@interface DocumentTableViewController : UITableViewController;
 
-- (void)setRemoteDirVC:(DirViewController *)dirVC;
+- (void)setRemoteDirectoryWrapper:(FSDirectoryWrapper *)remoteDirectoryWrapper;
 
 @end

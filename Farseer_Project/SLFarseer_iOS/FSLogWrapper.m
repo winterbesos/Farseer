@@ -1,20 +1,21 @@
 //
-//  SLLogWrapper.m
+//  FSLogWrapper.m
 //  SLFarseer
 //
 //  Created by Go Salo on 15/4/25.
 //  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#import "SLLogWrapper.h"
+#import "FSLogWrapper.h"
+#import "FSUtilities.h"
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
 
 #define kCONTENT_KEY @"kCONTENT_KEY"
 #define kSUBNODE_KEY @"kSUBNODE_KEY"
 
-@implementation SLLogWrapper {
-    /* ******************************************************************************************************************
+@implementation FSLogWrapper {
+    /* **************************************************************************************************************** *
      * [                                                                                                                *
      *  key: content value: [logs]                                                                                      *
      *  key: subNode value: [                                                                                           *
@@ -23,12 +24,12 @@
      *                                             key: subNode value: [                                                *
      *                                                                  functionName value: [                           *
      *                                                                                       key: content value: [logs] *
-     *                                                                                      }                           *
+     *                                                                                      ]                           *
      *                                            ]                                                                     *
      * ]                                                                                                                *
-     * ******************************************************************************************************************/
+     * **************************************************************************************************************** */
     NSMutableDictionary *_logDictionary;
-    id<SLLogWrapperDelegate> _delegate;
+    id<FSLogWrapperDelegate> _delegate;
     NSString *_registerFileName;
     NSString *_registerFunctionName;
     FSBLELogInfo *_logInfo;
@@ -77,7 +78,7 @@
     }
 }
 
-- (NSArray *)registerLogWithDelegate:(id<SLLogWrapperDelegate>)delegate fileName:(NSString *)fileName functionName:(NSString *)functionName {
+- (NSArray *)registerLogWithDelegate:(id<FSLogWrapperDelegate>)delegate fileName:(NSString *)fileName functionName:(NSString *)functionName {
     NSAssert(!(!fileName && functionName), @"function name is not nil, file name cannot be nil");
     _delegate = delegate;
     _registerFileName = fileName;
@@ -94,7 +95,7 @@
 }
 
 
-- (NSArray *)registerKeyWithDelegate:(id<SLLogWrapperDelegate>)delegate fileName:(NSString *)fileName functionName:(NSString *)functionName {
+- (NSArray *)registerKeyWithDelegate:(id<FSLogWrapperDelegate>)delegate fileName:(NSString *)fileName functionName:(NSString *)functionName {
     NSAssert(!(!fileName && functionName), @"function name is not nil, file name cannot be nil");
     _delegate = delegate;
     _registerFileName = fileName;
@@ -112,19 +113,28 @@
 
 - (void)writeToFileCallback:(void(^)(float percentage))callback {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSString *fileName = [NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]];
         
-        NSArray *totalLogs = _logDictionary[kCONTENT_KEY];
-        for (FSBLELog *log in totalLogs) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        NSString *fileName = [[formatter stringFromDate:_logInfo.log_saveLogDate] stringByAppendingPathExtension:@"fsl"];
+        
+        NSString *fileFullPath = [FSUtilities FS_LogFilePathWithFileName:fileName UUIDString:_logInfo.log_deviceUUID bundleName:_logInfo.log_bundleName];
+        if (![FSUtilities filePathExists:fileFullPath]) {
+            [FSUtilities FS_CreatePathIfNeed:[FSUtilities FS_LogPeripheralPath:_logInfo.log_deviceUUID bundleName:_logInfo.log_bundleName]];
+            [FSUtilities FS_CreateLogFileIfNeed:fileFullPath];
+        }
+        
+        NSArray *logList = _logDictionary[kCONTENT_KEY];
+        
+        for (FSBLELog *log in logList) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSUInteger index = [totalLogs indexOfObject:log];
+                NSUInteger index = [logList indexOfObject:log];
                 if (index % 50 == 0) {
-                    callback(1.0 * index / totalLogs.count);
+                    callback(1.0 * index / logList.count);
                 }
             });
             
-            // TODO: UUID
-//            [self inputLog:log UUIDString:@"UUID" bundleName:_logInfo.log_bundleName fileName:fileName];
+            [FSUtilities writeLog:log ToFile:[fileFullPath UTF8String]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -13,10 +13,9 @@
 #import "FSPackageIn.h"
 #import "TracksView.h"
 #import "LogExplorerViewController.h"
-#import "SLLogWrapper.h"
 #import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
-@interface LogViewController () <TracksViewDelegate, SLLogWrapperDelegate>
+@interface LogViewController () <TracksViewDelegate, FSLogWrapperDelegate>
 
 @end
 
@@ -27,7 +26,7 @@
     
     TracksView *_tracksView;
     NSMutableArray  *_logList;
-    SLLogWrapper *_logWrapper;
+    FSLogWrapper *_logWrapper;
     NSString *_registerFileName;
     NSString *_registerFunctionName;
 }
@@ -77,6 +76,7 @@
         _tracksView.delegate = self;
         [_tracksView setItemNames:@[@"Log Explorer", @"N/A", @"clear log", @"Save Log", @"N/A", @"crash", @"continue", @"N/A"]];
     }
+    
     [[UIApplication sharedApplication].keyWindow addSubview:_tracksView];
 }
 
@@ -86,7 +86,7 @@
 
 #pragma mark - Public Method
 
-- (void)setWrapper:(SLLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName {
+- (void)setWrapper:(FSLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName {
     _logWrapper = logWrapper;
     _registerFileName = fileName;
     _registerFunctionName = functionName;
@@ -176,7 +176,7 @@
 
 #pragma mark - LogWrapper Delegate
 
-- (void)wrapper:(SLLogWrapper *)wrapper didInsertLog:(FSBLELog *)log {
+- (void)wrapper:(FSLogWrapper *)wrapper didInsertLog:(FSBLELog *)log {
     [_logList addObject:log];
     
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_logList.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];

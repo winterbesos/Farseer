@@ -11,7 +11,10 @@
 #import <Farseer_Remote_iOS/FSDefine.h>
 #import <Farseer_Remote_iOS/FSBLELog.h>
 #import <Farseer_Remote_iOS/FSBLELogInfo.h>
-#import <Farseer_Remote_iOS/FSCentralClientDelegate.H>
+#import <Farseer_Remote_iOS/FSCentralClientDelegate.h>
+#import <Farseer_Remote_iOS/FSLogWrapper.h>
+#import <Farseer_Remote_iOS/FSBLECentralService.h>
+#import <Farseer_Remote_iOS/FSDirectoryWrapper.h>
 
 //! Project version number for Farseer_Remote_iOS.
 FOUNDATION_EXPORT double Farseer_Remote_iOSVersionNumber;

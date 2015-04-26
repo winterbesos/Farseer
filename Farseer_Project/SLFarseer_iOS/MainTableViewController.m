@@ -15,7 +15,6 @@
 #import "LogViewController.h"
 #import "DocumentTableViewController.h"
 #import "DirViewController.h"
-#import "SLLogWrapper.h"
 
 static char AssociatedObjectHandle;
 
@@ -37,14 +36,12 @@ static char AssociatedObjectHandle;
     
     NSMutableArray                  *_peripheralsDataList;
     CBPeripheral                    *_activePeripheral;
-    DirViewController               *_remoteDirVC;
-    SLLogWrapper                    *_logWrapper;
+    FSLogWrapper                    *_logWrapper;
+    FSDirectoryWrapper              *_directoryWrapper;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _remoteDirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
     
     _peripheralsDataList = [NSMutableArray array];
     
@@ -142,22 +139,21 @@ static char AssociatedObjectHandle;
 
 - (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo; {
     [self displayLogInfo:logInfo];
-    _logWrapper = [[SLLogWrapper alloc] initWithLogInfo:logInfo];
+    _logWrapper = [[FSLogWrapper alloc] initWithLogInfo:logInfo];
+    _directoryWrapper = [[FSDirectoryWrapper alloc] init];
 }
 
 - (void)client:(FSCentralClient *)client didReceiveLog:(FSBLELog *)log {
     [_logWrapper insertLog:log];
 }
 
-/*
-- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
-    [_remoteDirVC recvSandBoxInfo:sendBoxInfo];
+- (void)client:(FSCentralClient *)client didReceiveSandBoxInfo:(NSDictionary *)sandBoxInfo {
+    [_directoryWrapper insertSandBoxInfo:sandBoxInfo];
 }
 
 - (void)recvSandBoxFile:(NSData *)sandBoxData {
-    [_remoteDirVC recvSandBoxFile:sandBoxData];
+//    [_remoteDirVC recvSandBoxFile:sandBoxData];
 }
- */
 
 #pragma mark - Actions
 
@@ -266,11 +262,10 @@ static char AssociatedObjectHandle;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     id targetViewController = [segue destinationViewController];
-    if ([targetViewController isKindOfClass:[DocumentTableViewController class]]) {
-        [_remoteDirVC setRemotePath:@""];
-        [targetViewController setRemoteDirVC:(DirViewController *)_remoteDirVC];
-    } else if ([targetViewController isKindOfClass:[LogViewController class]]) {
+    if ([targetViewController isKindOfClass:[LogViewController class]]) {
         [((LogViewController *)targetViewController) setWrapper:_logWrapper FileName:nil functionName:nil];
+    } else if ([targetViewController isKindOfClass:[DocumentTableViewController class]]) {
+        [(DocumentTableViewController *)targetViewController setRemoteDirectoryWrapper:_directoryWrapper];
     }
 }
 

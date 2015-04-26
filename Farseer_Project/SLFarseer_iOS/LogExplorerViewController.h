@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class SLLogWrapper;
+@class FSLogWrapper;
 
 @interface LogExplorerViewController : UITableViewController
 
-- (void)setWrapper:(SLLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName;
+- (void)setWrapper:(FSLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName;
 
 @end

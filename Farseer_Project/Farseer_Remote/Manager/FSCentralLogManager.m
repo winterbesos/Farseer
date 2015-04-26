@@ -55,7 +55,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-        NSString *fileName = [[formatter stringFromDate:_logInfo.log_appLaunchDate] stringByAppendingPathExtension:@"fsl"];
+        NSString *fileName = [[formatter stringFromDate:_logInfo.log_saveLogDate] stringByAppendingPathExtension:@"fsl"];
         
         NSString *fileFullPath = [FSUtilities FS_LogFilePathWithFileName:fileName UUIDString:_logInfo.log_deviceUUID bundleName:_logInfo.log_bundleName];
         if (![FSUtilities filePathExists:fileFullPath]) {

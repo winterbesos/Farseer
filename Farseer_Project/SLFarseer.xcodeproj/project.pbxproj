@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3916B6BF1AEBC8FF00C5FBFC /* SLLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3916B6BE1AEBC8FF00C5FBFC /* SLLogWrapper.m */; };
 		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
+		3940CBC81AECB46D002D7F95 /* FSLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */; };
+		3940CBC91AECB46D002D7F95 /* FSLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */; };
+		3940CBCA1AECB55B002D7F95 /* FSLogWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3916B6BD1AEBC8FF00C5FBFC /* FSLogWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3940CBCB1AECB55C002D7F95 /* FSLogWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3916B6BD1AEBC8FF00C5FBFC /* FSLogWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3940CBCD1AECB990002D7F95 /* FSBLECentralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5CE31ABA6EC600720D32 /* FSBLECentralService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3940CBD11AECBDDF002D7F95 /* FSDirectoryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */; };
+		3940CBD21AECBDE6002D7F95 /* FSDirectoryWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3941A9761ACC15F0008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		3941A9771ACC15F1008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		394CDCA01ACFC0D8002DB63B /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394CDC9F1ACFC0D8002DB63B /* MainTableViewController.m */; };
@@ -191,11 +197,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3916B6BD1AEBC8FF00C5FBFC /* SLLogWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLogWrapper.h; sourceTree = "<group>"; };
-		3916B6BE1AEBC8FF00C5FBFC /* SLLogWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLLogWrapper.m; sourceTree = "<group>"; };
+		3916B6BD1AEBC8FF00C5FBFC /* FSLogWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLogWrapper.h; path = ../../SLFarseer_iOS/FSLogWrapper.h; sourceTree = "<group>"; };
+		3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLogWrapper.m; path = ../../SLFarseer_iOS/FSLogWrapper.m; sourceTree = "<group>"; };
 		39193C2B1AB9969800617804 /* Farseer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39193C2E1AB9969800617804 /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_iOS.plist; sourceTree = "<group>"; };
 		39193C2F1AB9969800617804 /* Farseer_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_iOS.h; path = Farseer_iOS/Farseer_iOS.h; sourceTree = SOURCE_ROOT; };
+		3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDirectoryWrapper.h; sourceTree = "<group>"; };
+		3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDirectoryWrapper.m; sourceTree = "<group>"; };
 		3941A9731ACC1529008B8E80 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
 		3941A9741ACC1529008B8E80 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
 		394CDC9E1ACFC0D8002DB63B /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
@@ -563,6 +571,10 @@
 				39C68DAA1ABA7B2100BCDA4F /* FSDebugCentral_Remote.m */,
 				397F5CDF1ABA6EC600720D32 /* FSCentralLogManager.h */,
 				397F5CE01ABA6EC600720D32 /* FSCentralLogManager.m */,
+				3916B6BD1AEBC8FF00C5FBFC /* FSLogWrapper.h */,
+				3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */,
+				3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */,
+				3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */,
 				39850E041AD168EB003D1742 /* FSCentralFileManager.h */,
 				39850E051AD168EB003D1742 /* FSCentralFileManager.m */,
 				397F5CE11ABA6EC600720D32 /* Transport */,
@@ -618,8 +630,6 @@
 				3987802D1A9DAD7000D7397F /* LogViewController.m */,
 				39C6F5DC1ACBEA9A003E4C36 /* LogExplorerViewController.h */,
 				39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */,
-				3916B6BD1AEBC8FF00C5FBFC /* SLLogWrapper.h */,
-				3916B6BE1AEBC8FF00C5FBFC /* SLLogWrapper.m */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -630,6 +640,7 @@
 				394CDCA81AD0131F002DB63B /* DocumentTableViewController.h */,
 				394CDCA91AD0131F002DB63B /* DocumentTableViewController.m */,
 				39A617081AA841780058574E /* DirViewController.h */,
+				39A617091AA841780058574E /* DirViewController.m */,
 			);
 			name = Document;
 			sourceTree = "<group>";
@@ -685,7 +696,6 @@
 				394CDC9F1ACFC0D8002DB63B /* MainTableViewController.m */,
 				39850DFE1AD10F8F003D1742 /* Log */,
 				39850DFF1AD10FA0003D1742 /* Document */,
-				39A617091AA841780058574E /* DirViewController.m */,
 				39850E001AD10FAA003D1742 /* View */,
 				39CF61BA1AA2C21A00C51434 /* Define.h */,
 				398DDFDA1A80C63D0019BB12 /* Main.storyboard */,
@@ -767,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C68DA01ABA74F800BCDA4F /* FSDefine.h in Headers */,
+				3940CBCB1AECB55C002D7F95 /* FSLogWrapper.h in Headers */,
 				39C68D9A1ABA742500BCDA4F /* FSBLELog.h in Headers */,
 				39C68DA71ABA77E600BCDA4F /* Farseer_Remote.h in Headers */,
 				39850E031AD16509003D1742 /* FSCentralClientDelegate.h in Headers */,
@@ -780,10 +791,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C68D9F1ABA74F700BCDA4F /* FSDefine.h in Headers */,
+				3940CBCD1AECB990002D7F95 /* FSBLECentralService.h in Headers */,
+				3940CBCA1AECB55B002D7F95 /* FSLogWrapper.h in Headers */,
 				39C68D981ABA742500BCDA4F /* FSBLELog.h in Headers */,
 				39C68DA61ABA77E500BCDA4F /* Farseer_Remote.h in Headers */,
 				39850E021AD16509003D1742 /* FSCentralClientDelegate.h in Headers */,
 				39C68D991ABA742500BCDA4F /* FSBLELogInfo.h in Headers */,
+				3940CBD21AECBDE6002D7F95 /* FSDirectoryWrapper.h in Headers */,
 				39D035121AB9A4A600132F0F /* Farseer_Remote_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1180,6 +1194,7 @@
 				39C68DAD1ABA7D5B00BCDA4F /* FSDebugCentral_Remote.m in Sources */,
 				397F5D061ABA6EC600720D32 /* FSBLEResSyncDataPacker.m in Sources */,
 				39DF7D9B1ACC2A96008B52FC /* FSBLEResSandInfoPacker.m in Sources */,
+				3940CBC91AECB46D002D7F95 /* FSLogWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,7 +1207,6 @@
 				396578901ACCDAB800CEA918 /* DirViewController.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
-				3916B6BF1AEBC8FF00C5FBFC /* SLLogWrapper.m in Sources */,
 				394CDCAA1AD0131F002DB63B /* DocumentTableViewController.m in Sources */,
 				394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */,
 				39850E061AD168EB003D1742 /* FSCentralFileManager.m in Sources */,
@@ -1215,6 +1229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				397F5CF71ABA6EC600720D32 /* FSBLECentralService.m in Sources */,
+				3940CBD11AECBDDF002D7F95 /* FSDirectoryWrapper.m in Sources */,
 				39C68DB21ABA7FB100BCDA4F /* FSBLELogInfo.m in Sources */,
 				397F5D111ABA6F4700720D32 /* FSLogManager.m in Sources */,
 				39C68DA41ABA77E100BCDA4F /* Farseer_Remote.m in Sources */,
@@ -1231,6 +1246,7 @@
 				39C68DAC1ABA7D5B00BCDA4F /* FSDebugCentral_Remote.m in Sources */,
 				397F5D051ABA6EC600720D32 /* FSBLEResSyncDataPacker.m in Sources */,
 				39DF7D9A1ACC2A94008B52FC /* FSBLEResSandInfoPacker.m in Sources */,
+				3940CBC81AECB46D002D7F95 /* FSLogWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

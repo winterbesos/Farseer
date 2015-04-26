@@ -9,13 +9,14 @@
 #import "DirViewController.h"
 #import "FSLogManager.h"
 #import "LogViewController.h"
+#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 typedef NS_ENUM(NSInteger, DirType) {
     DirTypeRemote,
     DirTypeLocal,
 };
 
-@interface DirViewController ()
+@interface DirViewController () <FSDirectoryWrapperDelegate>
 
 @end
 
@@ -24,9 +25,9 @@ typedef NS_ENUM(NSInteger, DirType) {
     NSString *_path;
     
     // remote
-    DirViewController *_subRemoteVC;
     DirType _type;
     NSDictionary *_remotePathInfo;
+    FSDirectoryWrapper *_directoryWrapper;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -37,7 +38,7 @@ typedef NS_ENUM(NSInteger, DirType) {
     } else {
         switch (_type) {
             case DirTypeRemote:
-                _subRemoteVC = nil;
+//                _subRemoteVC = nil;
                 break;
             case DirTypeLocal:
                 _contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:_path error:nil];
@@ -55,27 +56,24 @@ typedef NS_ENUM(NSInteger, DirType) {
     _type = DirTypeLocal;
 }
 
-- (void)setRemotePath:(NSString *)path {
+- (void)setRemotePath:(NSString *)path directoryWrapper:(FSDirectoryWrapper *)directoryWrapper {
     _path = path;
+    if ([_path isEqualToString:@""]) {
+        self.title = @"Documents";
+    } else {
+        self.title = _path.lastPathComponent;
+    }
     _type = DirTypeRemote;
-//    [FSBLECentralService getSandBoxInfoWithPath:path];
+    _directoryWrapper = directoryWrapper;
+    [FSBLECentralService getSandBoxInfoWithPath:path];
+    _contents = [_directoryWrapper registerWithDelegate:self path:path];
 }
 
-- (void)recvSandBoxInfo:(NSDictionary *)sandBoxInfo {
-    if (_subRemoteVC) {
-        [_subRemoteVC recvSandBoxInfo:sandBoxInfo];
-    } else {
-        _contents = sandBoxInfo[@"contents"];
-        [self.tableView reloadData];
-    }
-}
+#pragma mark - FSDirectoryWrapper Delegate
 
-- (void)recvSandBoxFile:(NSData *)sandBoxData {
-    if (_subRemoteVC) {
-        [_subRemoteVC recvSandBoxFile:sandBoxData];
-    } else {
-        NSLog(@"recv file size: %lu", (unsigned long)sandBoxData.length);
-    }
+- (void)wrapper:(FSDirectoryWrapper *)wrapper didUpdateSubDirectoryInfo:(NSArray *)subDirectoryInfo {
+    _contents = subDirectoryInfo;
+    [self.tableView reloadData];
 }
 
 #pragma mark - TableView Delegate and DataSource
@@ -86,7 +84,20 @@ typedef NS_ENUM(NSInteger, DirType) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = _contents[indexPath.row][@"name"];
+    NSString *fileName = _contents[indexPath.row][@"name"];
+    NSString *fileType = _contents[indexPath.row][@"fileType"];
+    cell.textLabel.text = fileName;
+    if ([fileType isEqualToString:NSFileTypeDirectory]) {
+        cell.imageView.image = [UIImage imageNamed:@"folder"];
+    } else if ([fileName.pathExtension.lowercaseString isEqualToString:@"png"] || [fileName.pathExtension.lowercaseString isEqualToString:@"jpg"]) {
+        cell.imageView.image = [UIImage imageNamed:@"image"];
+    } else if ([fileName.pathExtension.lowercaseString isEqualToString:@"mp3"] || [fileName.pathExtension.lowercaseString isEqualToString:@"amr"] || [fileName.pathExtension.lowercaseString isEqualToString:@"wav"]) {
+        cell.imageView.image = [UIImage imageNamed:@"music"];
+    } else if ([fileName.pathExtension.lowercaseString isEqualToString:@"db"]) {
+        cell.imageView.image = [UIImage imageNamed:@"database"];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"file"];
+    }
     return cell;
 }
 
@@ -109,8 +120,7 @@ typedef NS_ENUM(NSInteger, DirType) {
         NSString *filePath = [_path stringByAppendingPathComponent:_contents[indexPath.row][@"name"]];
         if ([_contents[indexPath.row][@"fileType"] isEqualToString:NSFileTypeDirectory]) {
             DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
-            [dirVC setRemotePath:filePath];
-            _subRemoteVC = dirVC;
+            [dirVC setRemotePath:filePath directoryWrapper:_directoryWrapper];
             [self.navigationController pushViewController:dirVC animated:YES];
         } else {
             // TODO: 当前用notif传输文件效率过低

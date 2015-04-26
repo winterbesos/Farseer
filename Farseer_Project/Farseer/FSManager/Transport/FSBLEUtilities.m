@@ -29,9 +29,6 @@
     NSString *deviceName;
     NSString *bundleName;
     
-####
-    NSString *appLaunchDate;
-    
 #if TARGET_OS_IPHONE
     UIDevice *device = [UIDevice currentDevice];
     OSType = BLEOSTypeIOS;

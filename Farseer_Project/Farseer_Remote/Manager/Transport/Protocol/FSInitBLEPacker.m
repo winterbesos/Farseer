@@ -24,9 +24,8 @@
     NSString *deviceType = [packageIn readString];
     NSString *deviceName = [packageIn readString];
     NSString *bundleName = [packageIn readString];
-    NSDate *launchDate = [packageIn readDate];
     
-    [client recvInitBLEWithOSType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName peripheral:peripheral deviceUUID:peripheral.identifier.UUIDString launchDate:launchDate];
+    [client recvInitBLEWithOSType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName peripheral:peripheral deviceUUID:peripheral.identifier.UUIDString];
 }
 
 @end

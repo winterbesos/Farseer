@@ -15,7 +15,7 @@
 @end
 
 @implementation DocumentTableViewController {
-    DirViewController *_remoteDirVC;
+    FSDirectoryWrapper *_remoteDirectoryWrapper;
 }
 
 - (void)pushToDirVC {
@@ -24,21 +24,16 @@
     [self.navigationController pushViewController:dirVC animated:YES];
 }
 
-- (void)pushToRemoteDirVC {
-    [self.navigationController pushViewController:_remoteDirVC animated:YES];
+- (void)setRemoteDirectoryWrapper:(FSDirectoryWrapper *)remoteDirectoryWrapper {
+    _remoteDirectoryWrapper = remoteDirectoryWrapper;
 }
 
-- (void)setRemoteDirVC:(DirViewController *)dirVC {
-    _remoteDirVC = dirVC;
-}
+#pragma mark - Navigation
 
-#pragma mark - Table view data source
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        [self pushToRemoteDirVC];
-    } else if (indexPath.row == 1) {
-        [self pushToDirVC];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id targetViewController = [segue destinationViewController];
+    if ([targetViewController isKindOfClass:[DirViewController class]]) {
+        [(DirViewController *)targetViewController setRemotePath:@"" directoryWrapper:_remoteDirectoryWrapper];
     }
 }
 

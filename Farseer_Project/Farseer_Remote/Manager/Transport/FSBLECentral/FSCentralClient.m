@@ -25,8 +25,8 @@
     return self;
 }
 
-- (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral deviceUUID:(NSString *)deviceUUID launchDate:(NSDate *)launchDate {
-    FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName deviceUUID:deviceUUID launchDate:launchDate];
+- (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral deviceUUID:(NSString *)deviceUUID {
+    FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName deviceUUID:deviceUUID];
     [_delegate client:self didReceiveLogInfo:logInfo];
 }
 
@@ -35,8 +35,8 @@
     [_delegate client:self didReceiveLog:log];
     [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
 }
-- (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo {
-//    [_remoteDirVC recvSandBoxInfo:sendBoxInfo];
+- (void)recvSendBoxInfo:(NSDictionary *)sandBoxInfo {
+    [_delegate client:self didReceiveSandBoxInfo:sandBoxInfo];
 }
 
 - (void)recvSandBoxFile:(NSData *)sandBoxData {

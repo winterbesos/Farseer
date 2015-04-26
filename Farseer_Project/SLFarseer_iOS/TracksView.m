@@ -49,6 +49,7 @@
 @interface TracksView ()
 
 @property (strong, nonatomic)UIImageView *achor;
+@property (strong, nonatomic)UIVisualEffectView *effectView;
 
 @end
 
@@ -219,6 +220,10 @@
 
 - (void)showMenu:(BOOL)show {
     if (show) {
+        self.effectView.center = startPoint;
+        [self addSubview:self.effectView];
+        [self sendSubviewToBack:self.effectView];
+        
         for (int index = 0; index < items.count; index ++) {
             MenuItem *item = items[index];
             item.hidden = NO;
@@ -230,6 +235,7 @@
             MenuItem *item = items[index];
             item.hidden = YES;
         }
+        [self.effectView removeFromSuperview];
     }
 }
 
@@ -255,6 +261,20 @@
         
         CGContextStrokePath(ctx);
     }
+}
+
+#pragma mark - Properties 
+
+- (UIVisualEffectView *)effectView {
+    if (!_effectView) {
+        UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        _effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+        _effectView.frame = CGRectMake(0, 0, RADIUS * 2 * 0.8, RADIUS * 2 * 0.8);
+        _effectView.layer.cornerRadius = _effectView.bounds.size.width / 2;
+        _effectView.layer.masksToBounds = YES;
+    }
+    
+    return _effectView;
 }
 
 @end

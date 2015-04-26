@@ -16,5 +16,6 @@
 
 - (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo;
 - (void)client:(FSCentralClient *)client didReceiveLog:(FSBLELog *)log;
+- (void)client:(FSCentralClient *)client didReceiveSandBoxInfo:(NSDictionary *)sandBoxInfo;
 
 @end

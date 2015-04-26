@@ -7,17 +7,17 @@
 //
 
 #import "LogExplorerViewController.h"
-#import <objc/runtime.h>
 #import "LogViewController.h"
-#import "SLLogWrapper.h"
-#import "FSBLELog.h"
+#import <objc/runtime.h>
+#import <Farseer_Remote_iOS/FSLogWrapper.h>
+#import <Farseer_Remote_iOS/FSBLELog.h>
 
-@interface LogExplorerViewController () <SLLogWrapperDelegate>
+@interface LogExplorerViewController () <FSLogWrapperDelegate>
 
 @end
 
 @implementation LogExplorerViewController {
-    SLLogWrapper *_logWrapper;
+    FSLogWrapper *_logWrapper;
     NSString *_registerFileName;
     NSString *_registerFunctionName;
     
@@ -55,7 +55,7 @@
 
 #pragma mark - Public Method
 
-- (void)setWrapper:(SLLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName {
+- (void)setWrapper:(FSLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName {
     _logWrapper = logWrapper;
     _registerFileName = fileName;
     _registerFunctionName = functionName;
@@ -63,7 +63,7 @@
 
 #pragma mark - LogWrapper Delegate
 
-- (void)wrapper:(SLLogWrapper *)wrapper didInsertLog:(FSBLELog *)log {
+- (void)wrapper:(FSLogWrapper *)wrapper didInsertLog:(FSBLELog *)log {
     if (!_registerFunctionName && !_registerFileName) {
         if (![_dataList containsObject:log.log_fileName]) {
             [_dataList addObject:log.log_fileName];
@@ -86,6 +86,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExplorerCell" forIndexPath:indexPath];
     cell.textLabel.text = _dataList[indexPath.row];
+    if (!_registerFileName) {
+        NSString *ext = [_dataList[indexPath.row] pathExtension];
+        UIImage *image = [UIImage imageNamed:ext];
+        if (image) {
+            cell.imageView.image = image;
+        }
+    }
+
     return cell;
 }
 
