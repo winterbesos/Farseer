@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DVc-J1-U09">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -49,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfh-Wb-SsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-614" y="529"/>
+            <point key="canvasLocation" x="-604" y="1247"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="sZW-s4-oz7">
@@ -336,7 +336,7 @@
                         <outlet property="deviceTypeLabel" destination="PCA-D9-XNr" id="Utw-uJ-TqE"/>
                         <outlet property="displayLogColorSwitch" destination="imB-0M-VkJ" id="Y8O-AN-0BP"/>
                         <outlet property="displayLogNumberSwitch" destination="KEn-df-eGt" id="uhm-Dn-16H"/>
-                        <outlet property="displayLogTimeSwitch" destination="imB-0M-VkJ" id="A4G-79-0Hb"/>
+                        <outlet property="displayLogTimeSwitch" destination="Buj-0X-Dek" id="yPG-PQ-4Vz"/>
                         <outlet property="otherDeviceButton" destination="dDH-UN-y4v" id="TRl-d0-Y9M"/>
                     </connections>
                 </tableViewController>

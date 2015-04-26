@@ -50,6 +50,10 @@ static char AssociatedObjectHandle;
     self.displayLogColorSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
     
     [FSBLECentralService installWithDelegate:self stateChangedCallback:^(CBCentralManagerState state) {
+        _activePeripheral = nil;
+        otherDeviceButton.hidden = YES;
+        currentDeviceNameLabel.text = @"未连接";
+        [_peripheralsDataList removeAllObjects];
         if (state == CBCentralManagerStatePoweredOn) {
             [self scanPeripheral];
             otherDeviceButton.hidden = YES;
