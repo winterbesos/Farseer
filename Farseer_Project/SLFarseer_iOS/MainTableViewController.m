@@ -76,6 +76,9 @@ static char AssociatedObjectHandle;
                 if (_activePeripheral.state != CBPeripheralStateConnected) {
                     otherDeviceButton.hidden = NO;
                     currentDeviceNameLabel.text = @"未连接";
+                    _activePeripheral = nil;
+                    otherDeviceButton.hidden = YES;
+                    [self scanPeripheral];
                 }
             }
                 break;

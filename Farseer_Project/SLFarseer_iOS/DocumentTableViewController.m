@@ -18,22 +18,18 @@
     FSDirectoryWrapper *_remoteDirectoryWrapper;
 }
 
-- (void)pushToDirVC {
-    DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
-//    [dirVC setPath:[FSUtilities FS_Path]];
-    [self.navigationController pushViewController:dirVC animated:YES];
-}
-
 - (void)setRemoteDirectoryWrapper:(FSDirectoryWrapper *)remoteDirectoryWrapper {
     _remoteDirectoryWrapper = remoteDirectoryWrapper;
 }
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
     id targetViewController = [segue destinationViewController];
-    if ([targetViewController isKindOfClass:[DirViewController class]]) {
+    if ([sender.textLabel.text isEqualToString:@"目标沙盒"]) {
         [(DirViewController *)targetViewController setRemotePath:@"" directoryWrapper:_remoteDirectoryWrapper];
+    } else if ([sender.textLabel.text isEqualToString:@"本地文件"]) {
+        [(DirViewController *)targetViewController setPath:@""];
     }
 }
 

@@ -51,7 +51,6 @@
     _attentionPath = path;
     _delegate = delegate;
     
-//    _sandBoxDicrionary[@"contents"]
     return @[];
 }
 

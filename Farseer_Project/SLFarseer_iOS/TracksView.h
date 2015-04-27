@@ -21,5 +21,6 @@
 @property (nonatomic, weak)IBOutlet id<TracksViewDelegate> delegate;
 
 - (void)setItemNames:(NSArray *)itemNames;
+- (void)setImageItems:(NSArray *)imageItems;
 
 @end

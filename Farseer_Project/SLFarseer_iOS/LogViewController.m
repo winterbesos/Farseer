@@ -74,7 +74,8 @@
         _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width * 0.8, screenBounds.size.height)];
         _tracksView.backgroundColor = [UIColor clearColor];
         _tracksView.delegate = self;
-        [_tracksView setItemNames:@[@"Log Explorer", @"N/A", @"clear log", @"Save Log", @"N/A", @"crash", @"continue", @"N/A"]];
+//        [_tracksView setItemNames:@[@"Log Explorer", @"N/A", @"clear log", @"Save Log", @"N/A", @"crash", @"continue", @"N/A"]];
+        [_tracksView setImageItems:@[[UIImage imageNamed:@"filter"], [UIImage imageNamed:@"filter"], [UIImage imageNamed:@"clear"], [UIImage imageNamed:@"save"], [UIImage imageNamed:@"filter"], [UIImage imageNamed:@"crash"], [UIImage imageNamed:@"continue"], [UIImage imageNamed:@"filter"]]];
     }
     
     [[UIApplication sharedApplication].keyWindow addSubview:_tracksView];
@@ -116,7 +117,7 @@
 }
 
 - (void)setFile:(NSString *)path {
-    
+    // TODO: 解析fsl
     NSMutableArray *logList = [NSMutableArray array];
     
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];

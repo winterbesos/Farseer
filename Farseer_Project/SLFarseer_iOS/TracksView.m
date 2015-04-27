@@ -8,7 +8,7 @@
 
 #import "TracksView.h"
 
-#define RADIUS 120.0f
+#define RADIUS 80.0f
 
 @interface MenuItem : UILabel
 
@@ -27,21 +27,62 @@
     return self;
 }
 
-- (instancetype)initWithImage:(UIImage *)image highlightImage:(UIImage *)highlightImage {
-    self = [super initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    if (self) {
-        
-    }
-    
-    return self;
-}
-
 - (void)setHighlighted:(BOOL)highlighted {
     if (highlighted) {
         self.textColor = [UIColor greenColor];
     } else {
         self.textColor = [UIColor whiteColor];
     }
+}
+
+@end
+
+@interface ImageMenuItem : UIImageView
+
+@end
+
+@implementation ImageMenuItem
+
+- (instancetype)initWithImage:(UIImage *)image highlightImage:(UIImage *)highlightImage {
+    self = [super initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    if (self) {
+        self.image = image;
+    }
+    
+    return self;
+}
+
+@end
+
+@interface BackgroundView : UIView
+
+@end
+
+@implementation BackgroundView {
+    NSInteger _selectedIndex;
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    if (_selectedIndex != -1) {
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        
+        CGContextSetRGBFillColor(ctx, 0, 1, 0, 1);
+        CGContextSetStrokeColorWithColor(ctx, [UIColor blueColor].CGColor);
+        
+        CGContextMoveToPoint(ctx, self.bounds.size.width / 2, self.bounds.size.height / 2);
+        CGContextAddLineToPoint(ctx, RADIUS * sin(M_PI_4 * _selectedIndex), RADIUS * cos(M_PI_4 * _selectedIndex));
+        //    CGContextAddArc(ctx, self.frame.size.width / 2, self.frame.size.height / 2, RADIUS, M_PI_4, M_PI_4 * 3, YES);
+        //    CGContextFillPath(ctx);
+        CGContextStrokePath(ctx);
+        
+    }
+}
+
+- (void)selectIndex:(NSInteger)index {
+    _selectedIndex = index;
+    [self setNeedsDisplay];
 }
 
 @end
@@ -60,6 +101,7 @@
 
     NSInteger lastHighlight;
     NSMutableArray *items;
+    BackgroundView *_backgroundView;
 }
 
 - (instancetype)initWithItems:(NSArray *)its
@@ -80,6 +122,19 @@
     items = [NSMutableArray array];
     for (int index = 0; index < 8; index ++) {
         MenuItem *item = [[MenuItem alloc] initWithText:itemNames[index]];
+        item.hidden = YES;
+        [self addSubview:item];
+        [items addObject:item];
+    }
+}
+
+- (void)setImageItems:(NSArray *)imageItems {
+    _backgroundView = [[BackgroundView alloc] initWithFrame:self.effectView.bounds];
+    [self.effectView addSubview:_backgroundView];
+    
+    items = [NSMutableArray array];
+    for (int index = 0; index < 8; index ++) {
+        ImageMenuItem *item = [[ImageMenuItem alloc] initWithImage:imageItems[index] highlightImage:imageItems[index]];
         item.hidden = YES;
         [self addSubview:item];
         [items addObject:item];
@@ -111,7 +166,6 @@
             return;
         }
          */
-        
         
         [self.achor setCenter:[touch locationInView:self]];
         [self addSubview:self.achor];
@@ -199,6 +253,8 @@
                     }
                 }
                 
+                [_backgroundView selectIndex:index];
+                
                 if (lastHighlight != index) {
                     if (lastHighlight != -1) {
                         [items[lastHighlight] setHighlighted:NO];
@@ -207,6 +263,7 @@
                     lastHighlight = index;
                 }
             } else {
+                [_backgroundView selectIndex:-1];
                 if (lastHighlight != -1) {
                     [items[lastHighlight] setHighlighted:NO];
                 }
@@ -269,7 +326,7 @@
     if (!_effectView) {
         UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
         _effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-        _effectView.frame = CGRectMake(0, 0, RADIUS * 2 * 0.8, RADIUS * 2 * 0.8);
+        _effectView.frame = CGRectMake(0, 0, RADIUS * 2 * 1.4, RADIUS * 2 * 1.4);
         _effectView.layer.cornerRadius = _effectView.bounds.size.width / 2;
         _effectView.layer.masksToBounds = YES;
     }

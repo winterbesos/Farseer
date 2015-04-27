@@ -88,10 +88,7 @@
     cell.textLabel.text = _dataList[indexPath.row];
     if (!_registerFileName) {
         NSString *ext = [_dataList[indexPath.row] pathExtension];
-        UIImage *image = [UIImage imageNamed:ext];
-        if (image) {
-            cell.imageView.image = image;
-        }
+        cell.imageView.image = [UIImage imageNamed:ext];
     }
 
     return cell;

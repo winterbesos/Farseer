@@ -23,30 +23,11 @@ typedef NS_ENUM(NSInteger, DirType) {
 @implementation DirViewController {
     NSArray *_contents;
     NSString *_path;
+    DirType _type;
     
     // remote
-    DirType _type;
     NSDictionary *_remotePathInfo;
     FSDirectoryWrapper *_directoryWrapper;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (_path == nil) {
-        assert(false);
-    } else {
-        switch (_type) {
-            case DirTypeRemote:
-//                _subRemoteVC = nil;
-                break;
-            case DirTypeLocal:
-                _contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:_path error:nil];
-                break;
-            default:
-                break;
-        }
-    }
 }
 
 #pragma mark - Public Method
@@ -54,19 +35,50 @@ typedef NS_ENUM(NSInteger, DirType) {
 - (void)setPath:(NSString *)path {
     _path = path;
     _type = DirTypeLocal;
-}
-
-- (void)setRemotePath:(NSString *)path directoryWrapper:(FSDirectoryWrapper *)directoryWrapper {
-    _path = path;
+    
     if ([_path isEqualToString:@""]) {
         self.title = @"Documents";
     } else {
         self.title = _path.lastPathComponent;
     }
+    
+    NSString *contentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject stringByAppendingPathComponent:_path];
+    NSError *err;
+    _contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:contentPath error:&err];
+}
+
+- (void)setRemotePath:(NSString *)path directoryWrapper:(FSDirectoryWrapper *)directoryWrapper {
+    _path = path;
     _type = DirTypeRemote;
+    
+    if ([_path isEqualToString:@""]) {
+        self.title = @"Documents";
+    } else {
+        self.title = _path.lastPathComponent;
+    }
+    
     _directoryWrapper = directoryWrapper;
     [FSBLECentralService getSandBoxInfoWithPath:path];
     _contents = [_directoryWrapper registerWithDelegate:self path:path];
+}
+
+#pragma mark - Private Method
+
+- (UIImage *)getFileIconWithPath:(NSString *)path isDir:(BOOL)isDir {
+    UIImage *fileIcon = nil;
+    if (isDir) {
+        fileIcon = [UIImage imageNamed:@"folder"];
+    } else if ([path.pathExtension.lowercaseString isEqualToString:@"png"] || [path.pathExtension.lowercaseString isEqualToString:@"jpg"]) {
+        fileIcon = [UIImage imageNamed:@"image"];
+    } else if ([path.pathExtension.lowercaseString isEqualToString:@"mp3"] || [path.pathExtension.lowercaseString isEqualToString:@"amr"] || [path.pathExtension.lowercaseString isEqualToString:@"wav"]) {
+        fileIcon = [UIImage imageNamed:@"music"];
+    } else if ([path.pathExtension.lowercaseString isEqualToString:@"db"]) {
+        fileIcon = [UIImage imageNamed:@"database"];
+    } else {
+        fileIcon = [UIImage imageNamed:@"file"];
+    }
+    
+    return fileIcon;
 }
 
 #pragma mark - FSDirectoryWrapper Delegate
@@ -84,26 +96,36 @@ typedef NS_ENUM(NSInteger, DirType) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    NSString *fileName = _contents[indexPath.row][@"name"];
-    NSString *fileType = _contents[indexPath.row][@"fileType"];
-    cell.textLabel.text = fileName;
-    if ([fileType isEqualToString:NSFileTypeDirectory]) {
-        cell.imageView.image = [UIImage imageNamed:@"folder"];
-    } else if ([fileName.pathExtension.lowercaseString isEqualToString:@"png"] || [fileName.pathExtension.lowercaseString isEqualToString:@"jpg"]) {
-        cell.imageView.image = [UIImage imageNamed:@"image"];
-    } else if ([fileName.pathExtension.lowercaseString isEqualToString:@"mp3"] || [fileName.pathExtension.lowercaseString isEqualToString:@"amr"] || [fileName.pathExtension.lowercaseString isEqualToString:@"wav"]) {
-        cell.imageView.image = [UIImage imageNamed:@"music"];
-    } else if ([fileName.pathExtension.lowercaseString isEqualToString:@"db"]) {
-        cell.imageView.image = [UIImage imageNamed:@"database"];
+    BOOL isDir;
+    if (_type == DirTypeRemote) {
+        NSString *fileName = _contents[indexPath.row][@"name"];
+        isDir = [_contents[indexPath.row][@"fileType"] isEqualToString:NSFileTypeDirectory];
+        
+        cell.textLabel.text = fileName;
+        cell.imageView.image = [self getFileIconWithPath:fileName isDir:isDir];
     } else {
-        cell.imageView.image = [UIImage imageNamed:@"file"];
+        NSString *contentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject stringByAppendingPathComponent:_path];
+        NSString *path = [contentPath stringByAppendingPathComponent:_contents[indexPath.row]];
+        [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+        
+        NSString *fileName = _contents[indexPath.row];
+        cell.imageView.image = [self getFileIconWithPath:path isDir:isDir];
+        cell.textLabel.text = fileName;
     }
+    
+    if (isDir) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_type == DirTypeLocal) {
-        NSString *path = [_path stringByAppendingPathComponent:_contents[indexPath.row]];
+        NSString *contentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject stringByAppendingPathComponent:_path];
+        NSString *path = [contentPath stringByAppendingPathComponent:_contents[indexPath.row]];
         BOOL isDir;
         [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
         
@@ -111,10 +133,10 @@ typedef NS_ENUM(NSInteger, DirType) {
             DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
             [dirVC setPath:[_path stringByAppendingPathComponent:_contents[indexPath.row]]];
             [self.navigationController pushViewController:dirVC animated:YES];
-        } else {
+        } else if ([path.pathExtension isEqualToString:@"fsl"]) {
             LogViewController *logVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
             [logVC setFile:path];
-            [self.navigationController pushViewController:logVC animated:YES];
+            [self presentViewController:logVC animated:YES completion:nil];
         }
     } else {
         NSString *filePath = [_path stringByAppendingPathComponent:_contents[indexPath.row][@"name"]];
@@ -122,9 +144,6 @@ typedef NS_ENUM(NSInteger, DirType) {
             DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
             [dirVC setRemotePath:filePath directoryWrapper:_directoryWrapper];
             [self.navigationController pushViewController:dirVC animated:YES];
-        } else {
-            // TODO: 当前用notif传输文件效率过低
-//            [FSBLECentralService getSandBoxFileWithPath:filePath];
         }
     }
 }
