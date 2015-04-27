@@ -74,6 +74,8 @@ typedef NS_ENUM(NSInteger, DirType) {
         fileIcon = [UIImage imageNamed:@"music"];
     } else if ([path.pathExtension.lowercaseString isEqualToString:@"db"]) {
         fileIcon = [UIImage imageNamed:@"database"];
+    } else if ([path.pathExtension.lowercaseString isEqualToString:@"fsl"]) {
+        fileIcon = [UIImage imageNamed:@"fsl"];
     } else {
         fileIcon = [UIImage imageNamed:@"file"];
     }

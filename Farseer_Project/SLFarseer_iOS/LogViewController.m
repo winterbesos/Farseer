@@ -17,6 +17,8 @@
 
 @interface LogViewController () <TracksViewDelegate, FSLogWrapperDelegate>
 
+@property (strong, nonatomic)TracksView *tracksView;
+
 @end
 
 @implementation LogViewController {
@@ -24,7 +26,6 @@
     BOOL _showLogDate;
     BOOL _showLogColor;
     
-    TracksView *_tracksView;
     NSMutableArray  *_logList;
     FSLogWrapper *_logWrapper;
     NSString *_registerFileName;
@@ -38,9 +39,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTableView:)];
-    [tapGesture setNumberOfTapsRequired:2];
-    [self.tableView addGestureRecognizer:tapGesture];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapTableView:)];
+    [self.tableView addGestureRecognizer:longPress];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,9 +55,6 @@
     _showLogDate = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
     _showLogColor = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
     
-    if (!_registerFileName) {
-        [self addTracksView];
-    }
     _logList = [[_logWrapper registerLogWithDelegate:self fileName:_registerFileName functionName:_registerFunctionName] mutableCopy];
     [self.tableView reloadData];
 }
@@ -63,26 +62,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self removeTracksView];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     self.navigationController.navigationBarHidden = NO;
-}
-
-- (void)addTracksView {
-    if (!_tracksView) {
-        CGRect screenBounds = [UIScreen mainScreen].bounds;
-        _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.width * 0.8, screenBounds.size.height)];
-        _tracksView.backgroundColor = [UIColor clearColor];
-        _tracksView.delegate = self;
-//        [_tracksView setItemNames:@[@"Log Explorer", @"N/A", @"clear log", @"Save Log", @"N/A", @"crash", @"continue", @"N/A"]];
-        [_tracksView setImageItems:@[[UIImage imageNamed:@"filter"], [UIImage imageNamed:@"filter"], [UIImage imageNamed:@"clear"], [UIImage imageNamed:@"save"], [UIImage imageNamed:@"filter"], [UIImage imageNamed:@"crash"], [UIImage imageNamed:@"continue"], [UIImage imageNamed:@"filter"]]];
-    }
-    
-    [[UIApplication sharedApplication].keyWindow addSubview:_tracksView];
-}
-
-- (void)removeTracksView {
-    [_tracksView removeFromSuperview];
 }
 
 #pragma mark - Public Method
@@ -143,8 +124,27 @@
 
 #pragma mark - Actions
 
-- (void)tapTableView:(UITapGestureRecognizer *)tap {
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)longTapTableView:(UITapGestureRecognizer *)tap {
+    CGPoint location = [tap locationInView:self.view.superview];
+    location.x = location.x - 50;
+    location.y = location.y + 20;
+    if (tap.state == UIGestureRecognizerStateBegan) {
+        if (!_registerFileName) {
+            [self.tracksView displayWithLocation:location];
+            [[UIApplication sharedApplication].keyWindow addSubview:self.tracksView];
+        }
+    } else if (tap.state == UIGestureRecognizerStateChanged) {
+        [self.tracksView touchesMovedToLocation:location];
+    } else if (tap.state == UIGestureRecognizerStateCancelled) {
+        [self.tracksView touchesCancelled];
+        [self.tracksView removeFromSuperview];
+    } else if (tap.state == UIGestureRecognizerStateEnded) {
+        [self.tracksView touchesEnded];
+        [self.tracksView removeFromSuperview];
+    } else {
+        [self.tracksView touchesCancelled];
+        [self.tracksView removeFromSuperview];
+    }
 }
 
 - (void)showExplorerLogViewController {
@@ -229,6 +229,35 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [LogTableViewCell calculateCellHeightWithLog:_logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate];
+}
+
+#pragma mark - Properties
+
+- (TracksView *)tracksView {
+    if (!_tracksView) {
+        CGRect screenBounds = [UIScreen mainScreen].bounds;
+        _tracksView = [[TracksView alloc] initWithFrame:CGRectMake(50, 0, screenBounds.size.width - 50, screenBounds.size.height)];
+        _tracksView.backgroundColor = [UIColor clearColor];
+        _tracksView.delegate = self;
+        [_tracksView setImageItems:@[[UIImage imageNamed:@"filter-b"],
+                                     [UIImage imageNamed:@"filter-b"],
+                                     [UIImage imageNamed:@"clear-b"],
+                                     [UIImage imageNamed:@"save-b"],
+                                     [UIImage imageNamed:@"filter-b"],
+                                     [UIImage imageNamed:@"crash-b"],
+                                     [UIImage imageNamed:@"continue-b"],
+                                     [UIImage imageNamed:@"filter-b"]]
+               highlightItemImages:@[[UIImage imageNamed:@"filter"],
+                                     [UIImage imageNamed:@"filter"],
+                                     [UIImage imageNamed:@"clear"],
+                                     [UIImage imageNamed:@"save"],
+                                     [UIImage imageNamed:@"filter"],
+                                     [UIImage imageNamed:@"crash"],
+                                     [UIImage imageNamed:@"continue"],
+                                     [UIImage imageNamed:@"filter"]]];
+        
+    }
+    return _tracksView;
 }
 
 @end

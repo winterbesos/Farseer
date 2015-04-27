@@ -10,33 +10,6 @@
 
 #define RADIUS 80.0f
 
-@interface MenuItem : UILabel
-
-@end
-
-@implementation MenuItem
-
-- (instancetype)initWithText:(NSString *)text
-{
-    self = [super initWithFrame:CGRectMake(0, 0, 100, 20)];
-    if (self) {
-        self.textColor = [UIColor whiteColor];
-        self.textAlignment = NSTextAlignmentCenter;
-        self.text = text;
-    }
-    return self;
-}
-
-- (void)setHighlighted:(BOOL)highlighted {
-    if (highlighted) {
-        self.textColor = [UIColor greenColor];
-    } else {
-        self.textColor = [UIColor whiteColor];
-    }
-}
-
-@end
-
 @interface ImageMenuItem : UIImageView
 
 @end
@@ -44,9 +17,9 @@
 @implementation ImageMenuItem
 
 - (instancetype)initWithImage:(UIImage *)image highlightImage:(UIImage *)highlightImage {
-    self = [super initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    self = [super initWithImage:image highlightedImage:highlightImage];
     if (self) {
-        self.image = image;
+        self.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     }
     
     return self;
@@ -62,34 +35,44 @@
     NSInteger _selectedIndex;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
     if (_selectedIndex != -1) {
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGPoint centerPoint = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
         
-        CGContextSetRGBFillColor(ctx, 0, 1, 0, 1);
-        CGContextSetStrokeColorWithColor(ctx, [UIColor blueColor].CGColor);
+        CGFloat startAngle = _selectedIndex * M_PI_4 - M_PI / 8;
+        CGFloat endAngle = startAngle + M_PI_4;
         
-        CGContextMoveToPoint(ctx, self.bounds.size.width / 2, self.bounds.size.height / 2);
-        CGContextAddLineToPoint(ctx, RADIUS * sin(M_PI_4 * _selectedIndex), RADIUS * cos(M_PI_4 * _selectedIndex));
-        //    CGContextAddArc(ctx, self.frame.size.width / 2, self.frame.size.height / 2, RADIUS, M_PI_4, M_PI_4 * 3, YES);
-        //    CGContextFillPath(ctx);
-        CGContextStrokePath(ctx);
-        
+        CGContextSetFillColorWithColor(ctx, [UIColor colorWithWhite:38 / 255.0 alpha:1].CGColor);
+        CGContextMoveToPoint(ctx, centerPoint.x, centerPoint.y);
+        CGContextAddArc(ctx, centerPoint.x, centerPoint.y, RADIUS * 1.41, startAngle, endAngle, 0);
+        CGContextAddLineToPoint(ctx, centerPoint.x, centerPoint.y);
+        CGContextFillPath(ctx);
     }
 }
 
 - (void)selectIndex:(NSInteger)index {
-    _selectedIndex = index;
-    [self setNeedsDisplay];
+    if (_selectedIndex != index) {
+        _selectedIndex = index;
+        [self setNeedsDisplay];
+    }
 }
 
 @end
 
 @interface TracksView ()
 
-@property (strong, nonatomic)UIImageView *achor;
 @property (strong, nonatomic)UIVisualEffectView *effectView;
 
 @end
@@ -104,45 +87,29 @@
     BackgroundView *_backgroundView;
 }
 
-- (instancetype)initWithItems:(NSArray *)its
-{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
-- (void)awakeFromNib {
-    lastHighlight = -1;
-    self.backgroundColor = [UIColor clearColor];
-}
-
-- (void)setItemNames:(NSArray *)itemNames {
-    items = [NSMutableArray array];
-    for (int index = 0; index < 8; index ++) {
-        MenuItem *item = [[MenuItem alloc] initWithText:itemNames[index]];
-        item.hidden = YES;
-        [self addSubview:item];
-        [items addObject:item];
-    }
-}
-
-- (void)setImageItems:(NSArray *)imageItems {
+- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems {
     _backgroundView = [[BackgroundView alloc] initWithFrame:self.effectView.bounds];
     [self.effectView addSubview:_backgroundView];
     
     items = [NSMutableArray array];
     for (int index = 0; index < 8; index ++) {
-        ImageMenuItem *item = [[ImageMenuItem alloc] initWithImage:imageItems[index] highlightImage:imageItems[index]];
+        ImageMenuItem *item = [[ImageMenuItem alloc] initWithImage:imageItems[index] highlightImage:highlightImageItems[index]];
         item.hidden = YES;
         [self addSubview:item];
         [items addObject:item];
     }
 }
 
-- (void)setImage:(UIImage *)image asResponderPosition:(BOOL)as {
+- (void)displayWithLocation:(CGPoint)location {
+    if (lastHighlight != -1) {
+        [items[lastHighlight] setHighlighted:NO];
+        lastHighlight = -1;
+        [_backgroundView selectIndex:-1];
+    }
     
+    startPoint = location;
+    [self showMenu:YES];
+    touchMoving = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -151,6 +118,7 @@
     if (lastHighlight != -1) {
         [items[lastHighlight] setHighlighted:NO];
         lastHighlight = -1;
+        [_backgroundView selectIndex:-1];
     }
     
     for (UITouch *touch in touches) {
@@ -167,8 +135,6 @@
         }
          */
         
-        [self.achor setCenter:[touch locationInView:self]];
-        [self addSubview:self.achor];
         startPoint = [touch locationInView:self];
         [self showMenu:YES];
         touchMoving = YES;
@@ -176,11 +142,9 @@
     }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
-    
+
+- (void)touchesEnded {
     if (touchMoving) {
-        [self.achor removeFromSuperview];
         [self showMenu:NO];
         touchMoving = NO;
         
@@ -194,11 +158,8 @@
     }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    [super touchesCancelled:touches withEvent:event];
-    
+- (void)touchesCancelled {
     if (touchMoving) {
-        [self.achor removeFromSuperview];
         [self showMenu:NO];
         touchMoving = NO;
         lastHighlight = -1;
@@ -207,68 +168,65 @@
     }
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [super touchesMoved:touches withEvent:event];
+- (void)touchesMovedToLocation:(CGPoint)location {
     
     if (touchMoving) {
-        for (UITouch *touch in touches) {
-            currentPoint = [touch locationInView:self];
+        currentPoint = location;
+        
+        CGFloat distance = sqrt((currentPoint.x - startPoint.x) * (currentPoint.x - startPoint.x) + (currentPoint.y - startPoint.y) * (currentPoint.y - startPoint.y));
+        if (distance > RADIUS) {
+            int index = 0;
+            CGFloat cx = (currentPoint.x - startPoint.x), cy = (currentPoint.y - startPoint.y);
+            double radian = atan(cx / cy);
+            if (cy <= 0 && cx <= 0) {
+                if (radian < M_PI_4 / 2) {
+                    index = 6;
+                } else if (radian < M_PI_4 / 2 * 3) {
+                    index = 5;
+                } else {
+                    index = 4;
+                }
+            } else if (cy >= 0 && cx <= 0) {
+                if (-radian < M_PI_4 / 2) {
+                    index = 2;
+                } else if (-radian < M_PI_4 / 2 * 3) {
+                    index = 3;
+                } else {
+                    index = 4;
+                }
+            } else if (cy <= 0 && cx >= 0) {
+                if (-radian < M_PI_4 / 2) {
+                    index = 6;
+                } else if (-radian < M_PI_4 / 2 * 3) {
+                    index = 7;
+                } else {
+                    index = 0;
+                }
+            } else if (cy >= 0 && cx >= 0) {
+                if (radian < M_PI_4 / 2) {
+                    index = 2;
+                } else if (radian < M_PI_4 / 2 * 3) {
+                    index = 1;
+                } else {
+                    index = 0;
+                }
+            }
             
-            CGFloat distance = sqrt((currentPoint.x - startPoint.x) * (currentPoint.x - startPoint.x) + (currentPoint.y - startPoint.y) * (currentPoint.y - startPoint.y));
-            if (distance > RADIUS) {
-                int index = 0;
-                CGFloat cx = (currentPoint.x - startPoint.x), cy = (currentPoint.y - startPoint.y);
-                double radian = atan(cx / cy);
-                if (cy <= 0 && cx <= 0) {
-                    if (radian < M_PI_4 / 2) {
-                        index = 6;
-                    } else if (radian < M_PI_4 / 2 * 3) {
-                        index = 5;
-                    } else {
-                        index = 4;
-                    }
-                } else if (cy >= 0 && cx <= 0) {
-                    if (-radian < M_PI_4 / 2) {
-                        index = 2;
-                    } else if (-radian < M_PI_4 / 2 * 3) {
-                        index = 3;
-                    } else {
-                        index = 4;
-                    }
-                } else if (cy <= 0 && cx >= 0) {
-                    if (-radian < M_PI_4 / 2) {
-                        index = 6;
-                    } else if (-radian < M_PI_4 / 2 * 3) {
-                        index = 7;
-                    } else {
-                        index = 0;
-                    }
-                } else if (cy >= 0 && cx >= 0) {
-                    if (radian < M_PI_4 / 2) {
-                        index = 2;
-                    } else if (radian < M_PI_4 / 2 * 3) {
-                        index = 1;
-                    } else {
-                        index = 0;
-                    }
-                }
-                
-                [_backgroundView selectIndex:index];
-                
-                if (lastHighlight != index) {
-                    if (lastHighlight != -1) {
-                        [items[lastHighlight] setHighlighted:NO];
-                    }
-                    [items[index] setHighlighted:YES];
-                    lastHighlight = index;
-                }
-            } else {
-                [_backgroundView selectIndex:-1];
+            [_backgroundView selectIndex:index];
+            
+            if (lastHighlight != index) {
                 if (lastHighlight != -1) {
                     [items[lastHighlight] setHighlighted:NO];
                 }
-                lastHighlight = -1;
+                [items[index] setHighlighted:YES];
+                lastHighlight = index;
             }
+        } else {
+            [_backgroundView selectIndex:-1];
+            if (lastHighlight != -1) {
+                [items[lastHighlight] setHighlighted:NO];
+            }
+            lastHighlight = -1;
         }
         
         [self setNeedsDisplay];
@@ -282,43 +240,20 @@
         [self sendSubviewToBack:self.effectView];
         
         for (int index = 0; index < items.count; index ++) {
-            MenuItem *item = items[index];
+            ImageMenuItem *item = items[index];
             item.hidden = NO;
             
             [item setCenter:CGPointMake(startPoint.x + cos(index * M_PI / 4) * RADIUS, startPoint.y + sin(index * M_PI / 4) * RADIUS)];
         }
     } else {
         for (int index = 0; index < items.count; index ++) {
-            MenuItem *item = items[index];
+            ImageMenuItem *item = items[index];
             item.hidden = YES;
         }
         [self.effectView removeFromSuperview];
     }
 }
 
-- (UIView *)achor {
-    if (!_achor) {
-        _achor = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        _achor.image = [UIImage imageNamed:@"anchor"];
-    }
-    
-    return _achor;
-}
-
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    if (touchMoving) {
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        
-        CGContextSetLineWidth(ctx, 2);
-        CGContextSetRGBStrokeColor(ctx, 0.3, 0.3, 0.3, 1);
-        
-        CGContextMoveToPoint(ctx, startPoint.x, startPoint.y);
-        CGContextAddLineToPoint(ctx, currentPoint.x, currentPoint.y);
-        
-        CGContextStrokePath(ctx);
-    }
-}
 
 #pragma mark - Properties 
 
