@@ -138,7 +138,7 @@ typedef NS_ENUM(NSInteger, DirType) {
         } else if ([path.pathExtension isEqualToString:@"fsl"]) {
             LogViewController *logVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogViewController"];
             [logVC setFile:path];
-            [self presentViewController:logVC animated:YES completion:nil];
+            [self.navigationController pushViewController:logVC animated:YES];
         }
     } else {
         NSString *filePath = [_path stringByAppendingPathComponent:_contents[indexPath.row][@"name"]];

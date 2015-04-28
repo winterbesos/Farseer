@@ -19,6 +19,9 @@
 @property (nonatomic, readonly)NSString         *log_deviceUUID;
 @property (nonatomic, readonly)NSDate           *log_saveLogDate;
 
+@property (nonatomic, readonly)NSData           *logInfo_data;
+
 + (FSBLELogInfo *)infoWithType:(BLEOSType)type osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName deviceUUID:(NSString *)deviceUUID;
+- (instancetype)initWithData:(NSData *)data;
 
 @end

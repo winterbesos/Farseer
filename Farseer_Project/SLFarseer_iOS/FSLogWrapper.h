@@ -15,10 +15,11 @@
 @interface FSLogWrapper : NSObject
 
 - (instancetype)initWithLogInfo:(FSBLELogInfo *)info;
+- (instancetype)initWithFilePath:(NSString *)filePath;
 - (void)insertLog:(FSBLELog *)log;
 - (NSArray *)registerLogWithDelegate:(id<FSLogWrapperDelegate>)delegate fileName:(NSString *)fileName functionName:(NSString *)functionName;
 - (NSArray *)registerKeyWithDelegate:(id<FSLogWrapperDelegate>)delegate fileName:(NSString *)fileName functionName:(NSString *)functionName;
-- (void)writeToFileCallback:(void(^)(float percentage))callback;
+- (void)writeToFileCallback:(void(^)())callback;
 
 @end
 

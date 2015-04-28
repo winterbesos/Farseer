@@ -134,3 +134,17 @@
 }
 
 @end
+
+@implementation NSString (FSData)
+
+- (NSData *)dataValue {
+    NSData *bodyData = [self dataUsingEncoding:NSUTF8StringEncoding];
+    
+    UInt32 len = (UInt32)bodyData.length;
+    NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
+    [pkgData appendData:bodyData];
+    
+    return pkgData;
+}
+
+@end
