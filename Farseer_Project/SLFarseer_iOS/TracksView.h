@@ -20,7 +20,7 @@
 
 @property (nonatomic, weak)IBOutlet id<TracksViewDelegate> delegate;
 
-- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems;
+- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems itemNames:(NSArray *)itemNames;
 - (void)displayWithLocation:(CGPoint)location;
 - (void)touchesMovedToLocation:(CGPoint)location;
 - (void)touchesEnded;

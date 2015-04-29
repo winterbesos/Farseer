@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -19,16 +19,29 @@
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hhR-sU-EGc">
                         <rect key="frame" x="280" y="12" width="20" height="20"/>
                     </activityIndicatorView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="XR0-P8-iZy">
+                        <rect key="frame" x="280" y="12" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="PDJ-Cr-fxe"/>
+                            <constraint firstAttribute="width" constant="20" id="l7w-3x-U5G"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerY" secondItem="hhR-sU-EGc" secondAttribute="centerY" constant="-0.25" id="4UU-zc-nvS"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="XR0-P8-iZy" secondAttribute="trailing" constant="12" id="cWW-A2-kBv"/>
+                    <constraint firstAttribute="centerY" secondItem="XR0-P8-iZy" secondAttribute="centerY" constant="-0.5" id="k6R-IA-Wzm"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hhR-sU-EGc" secondAttribute="trailing" constant="12" id="sS9-1c-MhE"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="connectableImageView" destination="XR0-P8-iZy" id="i7Q-iE-MtJ"/>
                 <outlet property="connectingIndicator" destination="hhR-sU-EGc" id="kEN-AL-gX5"/>
             </connections>
             <point key="canvasLocation" x="446" y="324"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="link" width="20" height="20"/>
+    </resources>
 </document>
