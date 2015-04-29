@@ -7,7 +7,7 @@
 //
 
 #import "FSBLELog.h"
-#import "FSBLEUtilities.h"
+#import "FSUtilities.h"
 
 static UInt32 logNumber = 0;
 
@@ -53,9 +53,9 @@ static UInt32 logNumber = 0;
     [data appendBytes:&_log_number length:sizeof(_log_number)];
     [data appendBytes:&logTimeInterval length:sizeof(logTimeInterval)];
     [data appendBytes:&_log_level length:sizeof(_log_level)];
-    [data appendData:[FSBLEUtilities getDataWithPkgString:_log_content]];
-    [data appendData:[FSBLEUtilities getDataWithPkgString:_log_fileName]];
-    [data appendData:[FSBLEUtilities getDataWithPkgString:_log_functionName]];
+    [data appendData:_log_content.dataValue];
+    [data appendData:_log_fileName.dataValue];
+    [data appendData:_log_functionName.dataValue];
     [data appendBytes:&_log_line length:sizeof(_log_line)];
     
     return data;

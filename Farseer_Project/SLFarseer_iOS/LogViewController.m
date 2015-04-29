@@ -96,28 +96,7 @@
 }
 
 - (void)setFile:(NSString *)path {
-    // TODO: 解析fsl
-    NSMutableArray *logList = [NSMutableArray array];
-    
-    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-    FSPackageIn *packageIn = [[FSPackageIn alloc] initWithLogData:data];
-    
-    while (1) {
-        // TODO: add read LOG
-        UInt32 number = [packageIn readUInt32];
-        NSDate *date = [packageIn readDate];
-        Byte level = [packageIn readByte];
-        NSString *content = [packageIn readString];
-        NSString *fileName = [packageIn readString];
-        NSString *functionName = [packageIn readString];
-        UInt32 line = [packageIn readUInt32];
-        if (!content) {
-            break;
-        }
-        [logList addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
-    }
-    
-    [self.tableView reloadData];
+    _logWrapper = [[FSLogWrapper alloc] initWithFilePath:path];
 }
 
 #pragma mark - Actions
@@ -156,12 +135,10 @@
 }
 
 - (void)saveLog {
-    saveLog(^(float percentage) {
-        if (percentage == 1) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存日志完成" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
-        }
-    });
+    [_logWrapper writeToFileCallback:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }];
 }
 
 - (void)clearLog {

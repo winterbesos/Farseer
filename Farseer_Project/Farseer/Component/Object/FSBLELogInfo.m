@@ -7,6 +7,7 @@
 //
 
 #import "FSBLELogInfo.h"
+#import "FSUtilities.h"
 
 @implementation FSBLELogInfo
 
@@ -20,6 +21,27 @@
     logInfo->_log_deviceUUID = deviceUUID;
     logInfo->_log_saveLogDate = [NSDate date];
     return logInfo;
+}
+
+- (instancetype)initWithData:(NSData *)data
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (NSData *)logInfo_data {
+    NSMutableData *data = [NSMutableData data];
+    [data appendBytes:&_log_OSType length:sizeof(self.log_OSType)];
+    [data appendData:_log_OSVersion.dataValue];
+    [data appendData:_log_deviceType.dataValue];
+    [data appendData:_log_deviceName.dataValue];
+    [data appendData:_log_bundleName.dataValue];
+    [data appendData:_log_deviceUUID.dataValue];
+    
+    return data;
 }
 
 @end

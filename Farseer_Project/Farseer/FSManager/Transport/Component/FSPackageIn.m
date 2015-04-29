@@ -36,8 +36,6 @@
 @implementation FSPackageIn {
     NSInteger   _readPos;
     NSData      *_pkg;
-    
-    BOOL        _readLogFile;
 }
 
 #pragma mark - Initialization
@@ -49,21 +47,8 @@
 - (instancetype)initWithData:(NSData *)data {
     self = [super init];
     if (self) {
-//        [data getBytes:&_header length:sizeof(struct PKG_HEADER)];
         _pkg = data;
         _readPos = 0;
-        _readLogFile = NO;
-    }
-    return self;
-}
-
-- (instancetype)initWithLogData:(NSData *)data {
-    self = [super init];
-    if (self) {
-//        [data getBytes:&_logHeader length:sizeof(struct LOG_HEADER)];
-        _pkg = data;
-        _readPos = 0;
-        _readLogFile = YES;
     }
     return self;
 }
@@ -71,43 +56,23 @@
 #pragma mark - Read Method
 
 - (Byte)readByte {
-    if (_readLogFile) {
-        READTYPE(Byte, sizeof(struct LOG_HEADER))
-    } else {
-        READTYPE(Byte, 0)
-    }
+    READTYPE(Byte, 0)
 }
 
 - (UInt16)readUInt16 {
-    if (_readLogFile) {
-        READTYPE(UInt16, sizeof(struct LOG_HEADER))
-    } else {
-        READTYPE(UInt16, 0)
-    }
+    READTYPE(UInt16, 0)
 }
 
 - (UInt32)readUInt32 {
-    if (_readLogFile) {
-        READTYPE(UInt32, sizeof(struct LOG_HEADER))
-    } else {
-        READTYPE(UInt32, 0)
-    }
+    READTYPE(UInt32, 0)
 }
 
 - (UInt64)readUInt64 {
-    if (_readLogFile) {
-        READTYPE(UInt64, sizeof(struct LOG_HEADER))
-    } else {
-        READTYPE(UInt64, 0)
-    }
+    READTYPE(UInt64, 0)
 }
 
 - (double)readDouble {
-    if (_readLogFile) {
-        READTYPE(double, sizeof(struct LOG_HEADER))
-    } else {
-        READTYPE(double, 0)
-    }
+    READTYPE(double, 0)
 }
 
 - (NSDate *)readDate {
@@ -120,11 +85,7 @@
 }
 
 - (NSString *)readString {
-    if (_readLogFile) {
-        READSTRING(sizeof(struct LOG_HEADER))
-    } else {
-        READSTRING(0)
-    }
+    READSTRING(0)
 }
 
 - (NSData *)readData {

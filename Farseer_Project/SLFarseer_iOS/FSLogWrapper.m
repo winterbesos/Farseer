@@ -10,6 +10,7 @@
 #import "FSUtilities.h"
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
+#import "FSPackageIn.h"
 
 #define kCONTENT_KEY @"kCONTENT_KEY"
 #define kSUBNODE_KEY @"kSUBNODE_KEY"
@@ -47,6 +48,56 @@
     return self;
 }
 
+- (instancetype)initWithFilePath:(NSString *)filePath {
+    self = [super init];
+    if (self) {
+        _logDictionary = [self addSubNodeIfNeedToDictionary:nil key:nil];
+        
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        
+        NSUInteger pointer = 15;
+        
+        UInt64 comSize;
+        [data getBytes:&comSize range:NSMakeRange(pointer, sizeof(comSize))];
+        pointer += sizeof(comSize);
+        pointer += comSize;
+        
+        // header
+        UInt64 headSize;
+        [data getBytes:&headSize range:NSMakeRange(pointer, sizeof(headSize))];
+        pointer += sizeof(headSize);
+        
+        _logInfo = [[FSBLELogInfo alloc] initWithData:[data subdataWithRange:NSMakeRange(pointer, headSize)]];
+        pointer += headSize;
+        
+        
+        // body
+        UInt64 bodySize;
+        [data getBytes:&bodySize range:NSMakeRange(pointer, sizeof(bodySize))];
+        pointer += sizeof(bodySize);
+        NSData *logData = [data subdataWithRange:NSMakeRange(pointer, bodySize)];
+        
+        FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:logData];
+        
+        while (1) {
+            // TODO: add read LOG
+            UInt32 number = [packageIn readUInt32];
+            NSDate *date = [packageIn readDate];
+            Byte level = [packageIn readByte];
+            NSString *content = [packageIn readString];
+            NSString *fileName = [packageIn readString];
+            NSString *functionName = [packageIn readString];
+            UInt32 line = [packageIn readUInt32];
+            if (!content) {
+                break;
+            }
+            
+            [self insertLog:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
+        }
+    }
+    return self;
+}
+
 #pragma mark - Private Method
 
 - (NSMutableDictionary *)addSubNodeIfNeedToDictionary:(NSMutableDictionary *)dictionary key:(NSString *)key {
@@ -62,6 +113,7 @@
 #pragma mark - Public Method
 
 - (void)insertLog:(FSBLELog *)log {
+//    NSLog(@"filename: %@ functionName %@", log.log_fileName, log.log_functionName);
     [_logDictionary[kCONTENT_KEY] addObject:log];
     [self addSubNodeIfNeedToDictionary:_logDictionary key:log.log_fileName];
     [_logDictionary[kSUBNODE_KEY][log.log_fileName][kCONTENT_KEY] addObject:log];
@@ -111,8 +163,40 @@
     }
 }
 
-- (void)writeToFileCallback:(void(^)(float percentage))callback {
+- (void)writeToFileCallback:(void(^)())callback {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSMutableData *data = [NSMutableData data];
+        
+        // bump
+        const char bump[15] = {'f', 's', 'l'};
+        [data appendBytes:bump length:sizeof(bump)];
+        
+        // compoment
+        Float32 logVersion = 1.0;
+        Float64 generateId = [NSDate timeIntervalSinceReferenceDate];
+        UInt64 comSize = sizeof(logVersion) + sizeof(generateId);
+        
+        [data appendBytes:&comSize length:sizeof(comSize)];
+        [data appendBytes:&logVersion length:sizeof(logVersion)];
+        [data appendBytes:&generateId length:sizeof(generateId)];
+        
+        // header
+        NSData *headerData = [_logInfo logInfo_data];
+        UInt64 headSize = headerData.length;
+        [data appendBytes:&headSize length:sizeof(headSize)];
+        [data appendData:headerData];
+        
+        // body
+        NSMutableData *logData = [NSMutableData data];
+        NSArray *logList = _logDictionary[kCONTENT_KEY];
+        for (FSBLELog *log in logList) {
+            [logData appendData:log.dataValue];
+            NSLog(@"%@", log);
+        }
+        
+        UInt64 bodySize = logData.length;
+        [data appendBytes:&bodySize length:sizeof(bodySize)];
+        [data appendData:logData];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -124,21 +208,11 @@
             [FSUtilities FS_CreateLogFileIfNeed:fileFullPath];
         }
         
-        NSArray *logList = _logDictionary[kCONTENT_KEY];
-        
-        for (FSBLELog *log in logList) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSUInteger index = [logList indexOfObject:log];
-                if (index % 50 == 0) {
-                    callback(1.0 * index / logList.count);
-                }
-            });
-            
-            [FSUtilities writeLog:log ToFile:[fileFullPath UTF8String]];
-        }
+        // save data
+        [data writeToFile:fileFullPath atomically:YES];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(1);
+            callback();
         });
     });
 }
