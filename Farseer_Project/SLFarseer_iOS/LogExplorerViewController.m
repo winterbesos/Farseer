@@ -87,8 +87,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExplorerCell" forIndexPath:indexPath];
     cell.textLabel.text = _dataList[indexPath.row];
     if (!_registerFileName) {
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressCellGestureAction:)];
         NSString *ext = [_dataList[indexPath.row] pathExtension];
         cell.imageView.image = [UIImage imageNamed:ext];
+        [cell addGestureRecognizer:longPress];
     }
 
     return cell;

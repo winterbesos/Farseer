@@ -435,9 +435,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="V55-Sd-0mo" appends="YES" id="ZjP-JL-c10"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -449,18 +446,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQ2-FT-S1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="V55-Sd-0mo">
-                    <connections>
-                        <action selector="longPressCellGestureAction:" destination="cLo-AB-LS4" id="gMn-3S-ycL"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="729" y="1247"/>
         </scene>
         <!--OC-->
         <scene sceneID="Cqh-Zb-N9t">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DVc-J1-U09" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DVc-J1-U09" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="OC" id="Q3U-SM-6RU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jzr-36-2DH">

@@ -39,8 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
-    
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapTableView:)];
     [self.tableView addGestureRecognizer:longPress];
 }

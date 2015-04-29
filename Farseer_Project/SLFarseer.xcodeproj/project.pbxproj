@@ -26,6 +26,7 @@
 		396578901ACCDAB800CEA918 /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
 		396578A01ACCEB3C00CEA918 /* FSBLEReqDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */; };
 		396578A11ACCEB3D00CEA918 /* FSBLEReqDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */; };
+		39686C051AF065800008E362 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39686C041AF065800008E362 /* BaseNavigationController.m */; };
 		397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* AppDelegate.m */; };
 		397F5BE51ABA5D4100720D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE41ABA5D4100720D32 /* main.m */; };
 		397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397F5BE91ABA5D4100720D32 /* Images.xcassets */; };
@@ -216,6 +217,8 @@
 		395EF6771AC843E400AAB69A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		3965789D1ACCEB3800CEA918 /* FSBLEReqDataPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEReqDataPacker.h; sourceTree = "<group>"; };
 		3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEReqDataPacker.m; sourceTree = "<group>"; };
+		39686C031AF065800008E362 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		39686C041AF065800008E362 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5BE01ABA5D4100720D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		397F5BE11ABA5D4100720D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -694,6 +697,8 @@
 				398DDFD21A80C63D0019BB12 /* AppDelegate.m */,
 				394CDC9E1ACFC0D8002DB63B /* MainTableViewController.h */,
 				394CDC9F1ACFC0D8002DB63B /* MainTableViewController.m */,
+				39686C031AF065800008E362 /* BaseNavigationController.h */,
+				39686C041AF065800008E362 /* BaseNavigationController.m */,
 				39850DFE1AD10F8F003D1742 /* Log */,
 				39850DFF1AD10FA0003D1742 /* Document */,
 				39850E001AD10FAA003D1742 /* View */,
@@ -1210,6 +1215,7 @@
 				394CDCAA1AD0131F002DB63B /* DocumentTableViewController.m in Sources */,
 				394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */,
 				39850E061AD168EB003D1742 /* FSCentralFileManager.m in Sources */,
+				39686C051AF065800008E362 /* BaseNavigationController.m in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
 				3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */,
 				394CDCA01ACFC0D8002DB63B /* MainTableViewController.m in Sources */,
@@ -1630,13 +1636,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
+				COPY_PHASE_STRIP = YES;
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = SLFarseer;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "775af461-1916-4c48-8991-07c145a35125";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1705,8 +1712,8 @@
 		39D035281AB9A4A700132F0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1718,6 +1725,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
