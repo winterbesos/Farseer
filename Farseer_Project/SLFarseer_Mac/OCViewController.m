@@ -70,16 +70,16 @@ static void *AssociatedObjectHandle;
     NSString *connectStatusString = nil;
     switch (peripheral.state) {
         case CBPeripheralStateConnected:
-            connectStatusString = @"已连接";
+            connectStatusString = @"Connected";
             break;
         case CBPeripheralStateConnecting:
-            connectStatusString = @"连接中";
+            connectStatusString = @"Connecting";
             break;
         case CBPeripheralStateDisconnected:
-            connectStatusString = @"未连接";
+            connectStatusString = @"No connected";
             break;
         default:
-            NSAssert(NO, @"错误的连接类型");
+            NSAssert(NO, @"Error Type");
             break;
     }
     

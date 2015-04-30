@@ -50,7 +50,7 @@ static char AssociatedObjectHandle;
     [FSBLECentralService installWithDelegate:self stateChangedCallback:^(CBCentralManagerState state) {
         _activePeripheral = nil;
         otherDeviceButton.hidden = YES;
-        currentDeviceNameLabel.text = @"未连接";
+        currentDeviceNameLabel.text = @"No connected";
         [_peripheralsDataList removeAllObjects];
         if (state == CBCentralManagerStatePoweredOn) {
             [self scanPeripheral];
@@ -73,7 +73,7 @@ static char AssociatedObjectHandle;
             default: {
                 if (_activePeripheral.state != CBPeripheralStateConnected) {
                     otherDeviceButton.hidden = NO;
-                    currentDeviceNameLabel.text = @"未连接";
+                    currentDeviceNameLabel.text = @"No connected";
                     _activePeripheral = nil;
                     otherDeviceButton.hidden = YES;
                     [self scanPeripheral];

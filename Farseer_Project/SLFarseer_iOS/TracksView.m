@@ -33,13 +33,21 @@
 
 @implementation BackgroundView {
     NSInteger _selectedIndex;
+    UILabel *_selectedNameLabel;
+    NSArray *_itemNames;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame itemNames:(NSArray *)itemNames
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        _itemNames = itemNames;
+        _selectedNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, frame.size.height / 2 - 10, frame.size.width, 20)];
+        _selectedNameLabel.textAlignment = NSTextAlignmentCenter;
+        _selectedNameLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:_selectedNameLabel];
+        
     }
     return self;
 }
@@ -55,9 +63,11 @@
         CGFloat endAngle = startAngle + M_PI_4;
         
         CGContextSetFillColorWithColor(ctx, [UIColor colorWithWhite:38 / 255.0 alpha:1].CGColor);
-        CGContextMoveToPoint(ctx, centerPoint.x, centerPoint.y);
-        CGContextAddArc(ctx, centerPoint.x, centerPoint.y, RADIUS * 1.41, startAngle, endAngle, 0);
-        CGContextAddLineToPoint(ctx, centerPoint.x, centerPoint.y);
+
+        CGContextAddArc(ctx, centerPoint.x, centerPoint.y, RADIUS * 1.41, endAngle, startAngle, 1);
+        CGContextAddArc(ctx, centerPoint.x, centerPoint.y, RADIUS * 1.41 / 2, startAngle, endAngle, 0);
+        CGContextClosePath(ctx);
+        
         CGContextFillPath(ctx);
     }
 }
@@ -65,6 +75,12 @@
 - (void)selectIndex:(NSInteger)index {
     if (_selectedIndex != index) {
         _selectedIndex = index;
+        
+        if (index != -1) {
+            _selectedNameLabel.text = _itemNames[index];
+        } else {
+            _selectedNameLabel.text = @"";
+        }
         [self setNeedsDisplay];
     }
 }
@@ -87,8 +103,8 @@
     BackgroundView *_backgroundView;
 }
 
-- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems {
-    _backgroundView = [[BackgroundView alloc] initWithFrame:self.effectView.bounds];
+- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems itemNames:(NSArray *)itemNames {
+    _backgroundView = [[BackgroundView alloc] initWithFrame:self.effectView.bounds itemNames:itemNames];
     [self.effectView addSubview:_backgroundView];
     
     items = [NSMutableArray array];

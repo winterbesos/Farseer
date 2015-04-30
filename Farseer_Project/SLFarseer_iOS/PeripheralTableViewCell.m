@@ -11,6 +11,8 @@
 
 @implementation PeripheralTableViewCell {
     __weak IBOutlet UIActivityIndicatorView *connectingIndicator;
+    __weak IBOutlet UIImageView *connectableImageView;
+    
 }
 - (void)awakeFromNib {
     self.textLabel.font = [UIFont systemFontOfSize:15.0f];
@@ -33,8 +35,10 @@
             case CBPeripheralStateConnected:
             case CBPeripheralStateDisconnected:
                 connectingIndicator.hidden = YES;
+                connectableImageView.hidden = NO;
                 break;
             case CBPeripheralStateConnecting:
+                connectableImageView.hidden = YES;
                 connectingIndicator.hidden = NO;
                 [connectingIndicator startAnimating];
                 break;

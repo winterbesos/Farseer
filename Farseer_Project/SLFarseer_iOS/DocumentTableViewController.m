@@ -26,9 +26,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
     id targetViewController = [segue destinationViewController];
-    if ([sender.textLabel.text isEqualToString:@"目标沙盒"]) {
+    if ([sender.textLabel.text isEqualToString:@"Target Sandbox"]) {
         [(DirViewController *)targetViewController setRemotePath:@"" directoryWrapper:_remoteDirectoryWrapper];
-    } else if ([sender.textLabel.text isEqualToString:@"本地文件"]) {
+    } else if ([sender.textLabel.text isEqualToString:@"Local File"]) {
         [(DirViewController *)targetViewController setPath:@""];
     }
 }
