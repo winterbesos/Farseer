@@ -148,6 +148,16 @@
     // TODO: remote control peripheral crash
 }
 
+- (void)showOrHideTime {
+    _showLogDate = !_showLogDate;
+    [self.tableView reloadData];
+}
+
+- (void)showOrHideSequence {
+    _showLogNumber = !_showLogNumber;
+    [self.tableView reloadData];
+}
+
 #pragma mark - LogWrapper Delegate
 
 - (void)wrapper:(FSLogWrapper *)wrapper didInsertLog:(FSBLELog *)log {
@@ -168,6 +178,7 @@
             [self showExplorerLogViewController];
             break;
         case 1:
+            [self showOrHideTime];
             break;
         case 2:
             [self clearLog];
@@ -183,6 +194,9 @@
             break;
         case 6:
             [self continueLog];
+            break;
+        case 7:
+            [self showOrHideSequence];
             break;
         default:
             break;
@@ -214,21 +228,21 @@
         _tracksView.backgroundColor = [UIColor clearColor];
         _tracksView.delegate = self;
         [_tracksView setImageItems:@[[UIImage imageNamed:@"filter-b"],
-                                     [UIImage imageNamed:@"filter-b"],
+                                     [UIImage imageNamed:@"showtime-b"],
                                      [UIImage imageNamed:@"clear-b"],
                                      [UIImage imageNamed:@"save-b"],
                                      [UIImage imageNamed:@"back-b"],
                                      [UIImage imageNamed:@"crash-b"],
                                      [UIImage imageNamed:@"continue-b"],
-                                     [UIImage imageNamed:@"filter-b"]]
+                                     [UIImage imageNamed:@"showlineno-b"]]
                highlightItemImages:@[[UIImage imageNamed:@"filter"],
-                                     [UIImage imageNamed:@"filter"],
+                                     [UIImage imageNamed:@"showtime"],
                                      [UIImage imageNamed:@"clear"],
                                      [UIImage imageNamed:@"save"],
                                      [UIImage imageNamed:@"back"],
                                      [UIImage imageNamed:@"crash"],
                                      [UIImage imageNamed:@"continue"],
-                                     [UIImage imageNamed:@"filter"]]
+                                     [UIImage imageNamed:@"showlineno"]]
                          itemNames:@[@"Filter", @"S/H Time", @"Clear", @"Save", @"Back", @"Crash", @"Start", @"S/H Sequence"]];
         
     }

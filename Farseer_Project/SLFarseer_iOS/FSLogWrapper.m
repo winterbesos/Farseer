@@ -113,7 +113,7 @@
 #pragma mark - Public Method
 
 - (void)insertLog:(FSBLELog *)log {
-//    NSLog(@"filename: %@ functionName %@", log.log_fileName, log.log_functionName);
+    NSLog(@"filename: %@ functionName %@", log.log_fileName, log.log_functionName);
     [_logDictionary[kCONTENT_KEY] addObject:log];
     [self addSubNodeIfNeedToDictionary:_logDictionary key:log.log_fileName];
     [_logDictionary[kSUBNODE_KEY][log.log_fileName][kCONTENT_KEY] addObject:log];

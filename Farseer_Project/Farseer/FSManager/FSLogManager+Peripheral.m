@@ -59,6 +59,7 @@
         cacheLogs = [NSMutableArray array];
         
         NSData *data = [[NSData alloc] initWithContentsOfFile:kLifeCircleLogPath];
+        data = [data subdataWithRange:NSMakeRange(sizeof(struct LOG_HEADER), data.length - sizeof(struct LOG_HEADER))];
         FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
         
         while (1) {

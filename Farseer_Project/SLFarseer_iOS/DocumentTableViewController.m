@@ -28,7 +28,7 @@
     id targetViewController = [segue destinationViewController];
     if ([sender.textLabel.text isEqualToString:@"Target Sandbox"]) {
         [(DirViewController *)targetViewController setRemotePath:@"" directoryWrapper:_remoteDirectoryWrapper];
-    } else if ([sender.textLabel.text isEqualToString:@"Local File"]) {
+    } else if ([sender.textLabel.text isEqualToString:@"Local Document"]) {
         [(DirViewController *)targetViewController setPath:@""];
     }
 }

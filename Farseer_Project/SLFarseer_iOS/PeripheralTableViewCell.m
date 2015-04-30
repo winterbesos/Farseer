@@ -43,7 +43,7 @@
                 [connectingIndicator startAnimating];
                 break;
             default:
-                NSAssert(NO, @"错误的连接类型");
+                NSAssert(NO, @"Error Connect Type");
                 break;
         }
     }
