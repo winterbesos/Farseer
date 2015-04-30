@@ -26,7 +26,6 @@ static char AssociatedObjectHandle;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *displayLogTimeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *displayLogNumberSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *displayLogColorSwitch;
 
 @end
 
@@ -47,7 +46,6 @@ static char AssociatedObjectHandle;
     
     self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
     self.displayLogNumberSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_NUMBER_KEY];
-    self.displayLogColorSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
     
     [FSBLECentralService installWithDelegate:self stateChangedCallback:^(CBCentralManagerState state) {
         _activePeripheral = nil;
@@ -174,10 +172,6 @@ static char AssociatedObjectHandle;
 
 - (IBAction)displayLogNumberSwitchAction:(UISwitch *)sender {
     [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:DISPLAY_LOG_NUMBER_KEY];
-}
-
-- (IBAction)displayLogColorSwitchAction:(UISwitch *)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:DISPLAY_LOG_COLOR_KEY];
 }
 
 #pragma mark - Table view data source

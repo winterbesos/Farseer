@@ -243,36 +243,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="ho3-wP-sI8">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ho3-wP-sI8" id="7II-9c-E0z">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <userGuides>
-                                                <userLayoutGuide location="580" affinity="minX"/>
-                                                <userLayoutGuide location="20" affinity="minX"/>
-                                            </userGuides>
-                                            <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="imB-0M-VkJ">
-                                                    <rect key="frame" x="531" y="7" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="displayLogColorSwitchAction:" destination="rcU-wu-OJy" eventType="valueChanged" id="ZW6-Ss-dY5"/>
-                                                    </connections>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log染色" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6r-r9-pfU">
-                                                    <rect key="frame" x="20" y="13" width="57" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="R6r-r9-pfU" firstAttribute="leading" secondItem="7II-9c-E0z" secondAttribute="leadingMargin" constant="12" id="6CE-Yr-NRd"/>
-                                                <constraint firstAttribute="centerY" secondItem="imB-0M-VkJ" secondAttribute="centerY" constant="-0.75" id="PLM-xq-dF9"/>
-                                                <constraint firstAttribute="centerY" secondItem="R6r-r9-pfU" secondAttribute="centerY" constant="-0.25" id="S2q-AM-egd"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="imB-0M-VkJ" secondAttribute="trailing" constant="12" id="V4B-B0-4Lj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -330,7 +300,6 @@
                         <outlet property="appNameLabel" destination="FDw-Dc-5Hg" id="xn3-sx-lgH"/>
                         <outlet property="currentDeviceNameLabel" destination="xr2-gZ-fUb" id="8br-0m-PUQ"/>
                         <outlet property="deviceTypeLabel" destination="PCA-D9-XNr" id="Utw-uJ-TqE"/>
-                        <outlet property="displayLogColorSwitch" destination="imB-0M-VkJ" id="Y8O-AN-0BP"/>
                         <outlet property="displayLogNumberSwitch" destination="KEn-df-eGt" id="uhm-Dn-16H"/>
                         <outlet property="displayLogTimeSwitch" destination="Buj-0X-Dek" id="yPG-PQ-4Vz"/>
                         <outlet property="otherDeviceButton" destination="dDH-UN-y4v" id="TRl-d0-Y9M"/>

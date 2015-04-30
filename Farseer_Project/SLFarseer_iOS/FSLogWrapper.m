@@ -67,7 +67,7 @@
         [data getBytes:&headSize range:NSMakeRange(pointer, sizeof(headSize))];
         pointer += sizeof(headSize);
         
-        _logInfo = [[FSBLELogInfo alloc] initWithData:[data subdataWithRange:NSMakeRange(pointer, headSize)]];
+        _logInfo = [[FSBLELogInfo alloc] initWithData:[data subdataWithRange:NSMakeRange(pointer, (NSUInteger)headSize)]];
         pointer += headSize;
         
         
@@ -75,7 +75,7 @@
         UInt64 bodySize;
         [data getBytes:&bodySize range:NSMakeRange(pointer, sizeof(bodySize))];
         pointer += sizeof(bodySize);
-        NSData *logData = [data subdataWithRange:NSMakeRange(pointer, bodySize)];
+        NSData *logData = [data subdataWithRange:NSMakeRange(pointer, (NSUInteger)bodySize)];
         
         FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:logData];
         
@@ -191,7 +191,6 @@
         NSArray *logList = _logDictionary[kCONTENT_KEY];
         for (FSBLELog *log in logList) {
             [logData appendData:log.dataValue];
-            NSLog(@"%@", log);
         }
         
         UInt64 bodySize = logData.length;

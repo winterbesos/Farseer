@@ -59,7 +59,7 @@
         cacheLogs = [NSMutableArray array];
         
         NSData *data = [[NSData alloc] initWithContentsOfFile:kLifeCircleLogPath];
-        FSPackageIn *packageIn = [[FSPackageIn alloc] initWithLogData:data];
+        FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
         
         while (1) {
             UInt32 number = [packageIn readUInt32];

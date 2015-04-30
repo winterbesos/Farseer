@@ -24,7 +24,6 @@
 @implementation LogViewController {
     BOOL _showLogNumber;
     BOOL _showLogDate;
-    BOOL _showLogColor;
     
     NSMutableArray  *_logList;
     FSLogWrapper *_logWrapper;
@@ -51,7 +50,6 @@
 
     _showLogNumber = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_NUMBER_KEY];
     _showLogDate = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
-    _showLogColor = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_COLOR_KEY];
     
     _logList = [[_logWrapper registerLogWithDelegate:self fileName:_registerFileName functionName:_registerFunctionName] mutableCopy];
     [self.tableView reloadData];
@@ -178,6 +176,7 @@
             [self saveLog];
             break;
         case 4:
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         case 5:
             [self crash];
@@ -198,7 +197,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogCell" forIndexPath:indexPath];
-    [cell setLog:_logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate showLogColor:_showLogColor];
+    [cell setLog:_logList[indexPath.row] showLogNumber:_showLogNumber showLogDate:_showLogDate showLogColor:YES];
     return cell;
 }
 
@@ -218,7 +217,7 @@
                                      [UIImage imageNamed:@"filter-b"],
                                      [UIImage imageNamed:@"clear-b"],
                                      [UIImage imageNamed:@"save-b"],
-                                     [UIImage imageNamed:@"filter-b"],
+                                     [UIImage imageNamed:@"back-b"],
                                      [UIImage imageNamed:@"crash-b"],
                                      [UIImage imageNamed:@"continue-b"],
                                      [UIImage imageNamed:@"filter-b"]]
@@ -226,7 +225,7 @@
                                      [UIImage imageNamed:@"filter"],
                                      [UIImage imageNamed:@"clear"],
                                      [UIImage imageNamed:@"save"],
-                                     [UIImage imageNamed:@"filter"],
+                                     [UIImage imageNamed:@"back"],
                                      [UIImage imageNamed:@"crash"],
                                      [UIImage imageNamed:@"continue"],
                                      [UIImage imageNamed:@"filter"]]];
