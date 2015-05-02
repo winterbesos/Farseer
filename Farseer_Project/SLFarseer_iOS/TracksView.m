@@ -46,6 +46,7 @@
         _selectedNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, frame.size.height / 2 - 10, frame.size.width, 20)];
         _selectedNameLabel.textAlignment = NSTextAlignmentCenter;
         _selectedNameLabel.backgroundColor = [UIColor clearColor];
+        _selectedNameLabel.font = [UIFont systemFontOfSize:14.0f];
         [self addSubview:_selectedNameLabel];
         
     }
@@ -79,7 +80,7 @@
         if (index != -1) {
             _selectedNameLabel.text = _itemNames[index];
         } else {
-            _selectedNameLabel.text = @"";
+            _selectedNameLabel.text = @"Cancel";
         }
         [self setNeedsDisplay];
     }

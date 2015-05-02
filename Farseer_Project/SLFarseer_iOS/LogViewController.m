@@ -134,7 +134,7 @@
 
 - (void)saveLog {
     [_logWrapper writeToFileCallback:^{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tips" message:@"Save Success" delegate:nil cancelButtonTitle:@"Sure" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"The log has been saved" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }];
 }
@@ -243,7 +243,7 @@
                                      [UIImage imageNamed:@"crash"],
                                      [UIImage imageNamed:@"continue"],
                                      [UIImage imageNamed:@"showlineno"]]
-                         itemNames:@[@"Filter", @"S/H Time", @"Clear", @"Save", @"Back", @"Crash", @"Start", @"S/H Sequence"]];
+                         itemNames:@[@"Filter", @"Toggle Time", @"Clear", @"Save", @"Back", @"Crash", @"Start", @"Toggle Sequence"]];
         
     }
     return _tracksView;

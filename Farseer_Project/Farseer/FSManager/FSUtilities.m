@@ -10,6 +10,7 @@
 #import <CoreBluetooth/CBPeripheral.h>
 #import "FSBLEDefine.h"
 #import "FSBLELog.h"
+#import "FSBLELogInfo.h"
 
 #define OUTPUT_CONSOLE
 
@@ -72,6 +73,54 @@
 }
 
 #pragma mark - Write File
+
++ (NSData *)FSLDataWithLogInfo:(FSBLELogInfo *)logInfo logList:(NSArray *)logList {
+    NSMutableData *data = [NSMutableData data];
+    
+    // bump
+    const char bump[15] = {'f', 's', 'l'};
+    [data appendBytes:bump length:sizeof(bump)];
+    
+    // compoment
+    Float32 logVersion = 1.0;
+    Float64 generateId = [NSDate timeIntervalSinceReferenceDate];
+    UInt64 comSize = sizeof(logVersion) + sizeof(generateId);
+    
+    [data appendBytes:&comSize length:sizeof(comSize)];
+    [data appendBytes:&logVersion length:sizeof(logVersion)];
+    [data appendBytes:&generateId length:sizeof(generateId)];
+    
+    // header
+    NSData *headerData = [logInfo logInfo_data];
+    UInt64 headSize = headerData.length;
+    [data appendBytes:&headSize length:sizeof(headSize)];
+    [data appendData:headerData];
+    
+    // body
+    NSMutableData *logData = [NSMutableData data];
+    for (FSBLELog *log in logList) {
+        [logData appendData:log.dataValue];
+    }
+    
+    UInt64 bodySize = logData.length;
+    [data appendBytes:&bodySize length:sizeof(bodySize)];
+    [data appendData:logData];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *fileName = [[formatter stringFromDate:logInfo.log_saveLogDate] stringByAppendingPathExtension:@"fsl"];
+    
+    NSString *fileFullPath = [FSUtilities FS_LogFilePathWithFileName:fileName UUIDString:logInfo.log_deviceUUID bundleName:logInfo.log_bundleName];
+    if (![FSUtilities filePathExists:fileFullPath]) {
+        [FSUtilities FS_CreatePathIfNeed:[FSUtilities FS_LogPeripheralPath:logInfo.log_deviceUUID bundleName:logInfo.log_bundleName]];
+        [FSUtilities FS_CreateLogFileIfNeed:fileFullPath];
+    }
+    
+    // save data
+    [data writeToFile:fileFullPath atomically:YES];
+    
+    return data;
+}
 
 // File
 
