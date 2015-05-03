@@ -229,22 +229,26 @@
                 }
             }
             
-            [_backgroundView selectIndex:index];
-            
             if (lastHighlight != index) {
                 if (lastHighlight != -1) {
                     [items[lastHighlight] setHighlighted:NO];
                 }
-                [items[index] setHighlighted:YES];
-                lastHighlight = index;
+                
+                if ([self.delegate tracksView:self shouldSelectAtIndex:index]) {
+                    [items[index] setHighlighted:YES];
+                    lastHighlight = index;
+                } else {
+                    lastHighlight = -1;
+                }
             }
         } else {
-            [_backgroundView selectIndex:-1];
             if (lastHighlight != -1) {
                 [items[lastHighlight] setHighlighted:NO];
             }
             lastHighlight = -1;
         }
+        
+        [_backgroundView selectIndex:lastHighlight];
         
         [self setNeedsDisplay];
     }

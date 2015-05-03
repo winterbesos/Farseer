@@ -26,6 +26,7 @@ static char AssociatedObjectHandle;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *displayLogTimeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *displayLogNumberSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *logNavigationButton;
 
 @end
 
@@ -51,6 +52,7 @@ static char AssociatedObjectHandle;
         _activePeripheral = nil;
         otherDeviceButton.hidden = YES;
         currentDeviceNameLabel.text = @"No connected";
+        [self displayLogInfo:nil];
         [_peripheralsDataList removeAllObjects];
         if (state == CBCentralManagerStatePoweredOn) {
             [self scanPeripheral];
@@ -74,6 +76,7 @@ static char AssociatedObjectHandle;
                 if (_activePeripheral.state != CBPeripheralStateConnected) {
                     otherDeviceButton.hidden = NO;
                     currentDeviceNameLabel.text = @"No connected";
+                    [self displayLogInfo:nil];
                     _activePeripheral = nil;
                     otherDeviceButton.hidden = YES;
                     [self scanPeripheral];
@@ -120,6 +123,7 @@ static char AssociatedObjectHandle;
     NSString *osVersion = @"N/A";
     NSString *deviceType = @"N/A";
     NSString *bundleName = @"N/A";
+
     if (logInfo) {
         switch (logInfo.log_OSType) {
             case BLEOSTypeIOS:
@@ -133,6 +137,8 @@ static char AssociatedObjectHandle;
         deviceType = logInfo.log_deviceType;
         bundleName = logInfo.log_bundleName;
     }
+    
+    _logNavigationButton.enabled = logInfo != nil;
     
     _OSTypeLabel.text = osType;
     _OSVersionLabel.text = osVersion;

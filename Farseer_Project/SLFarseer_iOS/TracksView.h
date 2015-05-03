@@ -12,6 +12,7 @@
 
 @protocol TracksViewDelegate <NSObject>
 
+- (BOOL)tracksView:(TracksView *)TracksView shouldSelectAtIndex:(NSInteger)index;
 - (void)tracksView:(TracksView *)TracksView didSelectItemAtIndex:(NSInteger)index;
 
 @end

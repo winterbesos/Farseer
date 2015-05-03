@@ -62,7 +62,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Farseer v1.0 build 0503 Copyright eitdesign, 2015 / farseer.eitsh.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G77-9A-Gkt">
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Farseer v1.0 build 05032 Copyright eitdesign, 2015 / farseer.eitsh.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G77-9A-Gkt">
                             <rect key="frame" x="0.0" y="447" width="600" height="68"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -273,9 +273,9 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" id="Kzd-Ch-r8U">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8g0-Kc-kIi">
-                                <rect key="frame" x="16" y="7" width="79" height="30"/>
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Documents">
+                                <state key="normal" title="Document">
                                     <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="titleShadowColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
@@ -320,6 +320,7 @@
                         <outlet property="deviceTypeLabel" destination="PCA-D9-XNr" id="Utw-uJ-TqE"/>
                         <outlet property="displayLogNumberSwitch" destination="KEn-df-eGt" id="uhm-Dn-16H"/>
                         <outlet property="displayLogTimeSwitch" destination="Buj-0X-Dek" id="yPG-PQ-4Vz"/>
+                        <outlet property="logNavigationButton" destination="T1I-ml-4Ar" id="rUj-ED-p53"/>
                         <outlet property="otherDeviceButton" destination="dDH-UN-y4v" id="TRl-d0-Y9M"/>
                     </connections>
                 </tableViewController>
@@ -439,7 +440,7 @@
         <!--OC-->
         <scene sceneID="Cqh-Zb-N9t">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DVc-J1-U09" customClass="BaseNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DVc-J1-U09" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="OC" id="Q3U-SM-6RU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jzr-36-2DH">

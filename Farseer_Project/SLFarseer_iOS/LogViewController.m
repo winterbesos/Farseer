@@ -104,10 +104,8 @@
     location.x = location.x - 50;
     location.y = location.y + 20;
     if (tap.state == UIGestureRecognizerStateBegan) {
-        if (!_registerFileName) {
-            [self.tracksView displayWithLocation:location];
-            [[UIApplication sharedApplication].keyWindow addSubview:self.tracksView];
-        }
+        [self.tracksView displayWithLocation:location];
+        [[UIApplication sharedApplication].keyWindow addSubview:self.tracksView];
     } else if (tap.state == UIGestureRecognizerStateChanged) {
         [self.tracksView touchesMovedToLocation:location];
     } else if (tap.state == UIGestureRecognizerStateCancelled) {
@@ -171,6 +169,14 @@
 }
 
 #pragma mark - Logo Label Delegate
+
+- (BOOL)tracksView:(TracksView *)TracksView shouldSelectAtIndex:(NSInteger)index {
+    if (!_registerFileName) {
+        return YES;
+    } else {
+        return index == 4;
+    }
+}
 
 - (void)tracksView:(TracksView *)tracksView didSelectItemAtIndex:(NSInteger)index {
     switch (index) {
