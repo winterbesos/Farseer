@@ -12,6 +12,9 @@
 #import <Farseer_Remote_Mac/FSBLELog.h>
 #import <Farseer_Remote_Mac/FSBLELogInfo.h>
 #import <Farseer_Remote_Mac/FSCentralClientDelegate.H>
+#import <Farseer_Remote_Mac/FSLogWrapper.h>
+#import <Farseer_Remote_Mac/FSBLECentralService.h>
+#import <Farseer_Remote_Mac/FSDirectoryWrapper.h>
 
 //! Project version number for Farseer_Remote_Mac.
 FOUNDATION_EXPORT double Farseer_Remote_MacVersionNumber;

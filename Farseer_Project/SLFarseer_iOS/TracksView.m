@@ -104,13 +104,19 @@
     BackgroundView *_backgroundView;
 }
 
-- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems itemNames:(NSArray *)itemNames {
+- (void)setImageItems:(NSArray *)imageItems highlightItemImages:(NSArray *)highlightImageItems disableItems:(NSArray *)disableItems itemNames:(NSArray *)itemNames {
     _backgroundView = [[BackgroundView alloc] initWithFrame:self.effectView.bounds itemNames:itemNames];
     [self.effectView addSubview:_backgroundView];
     
     items = [NSMutableArray array];
+    
+    NSMutableArray *defaultItems = [NSMutableArray array];
     for (int index = 0; index < 8; index ++) {
-        ImageMenuItem *item = [[ImageMenuItem alloc] initWithImage:imageItems[index] highlightImage:highlightImageItems[index]];
+        [defaultItems addObject:[self.delegate tracksView:self shouldSelectAtIndex:index] ? imageItems[index] : disableItems[index]];
+    }
+    
+    for (int index = 0; index < 8; index ++) {
+        ImageMenuItem *item = [[ImageMenuItem alloc] initWithImage:defaultItems[index] highlightImage:highlightImageItems[index]];
         item.hidden = YES;
         [self addSubview:item];
         [items addObject:item];

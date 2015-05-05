@@ -80,4 +80,8 @@
     });
 }
 
+- (void)makePeripheralCrash {
+    [FSBLECentralService makePeripheralCrash];
+}
+
 @end

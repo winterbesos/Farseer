@@ -85,6 +85,17 @@ static FSBLECentralService *service = nil;
 
 #pragma mark -
 
++ (void)makePeripheralCrash {
+    struct PKG_HEADER header;
+    header.cmd = CMDReqMakeCrash;
+    header.currentPackage = 1;
+    header.totalPackage = 1;
+    header.sequId = 0;
+    NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+    
+    [service writeValue:sendData toCharacteristic:service->_writeCMDCharacteristic];
+}
+
 + (void)getSandBoxInfoWithPath:(NSString *)path {
     NSData *reqSendBoxInfoData = [FSBLEUtilities getReqSendBoxInfoWithData:[FSBLEUtilities getDataWithPkgString:path]];
     [service writeValue:reqSendBoxInfoData toCharacteristic:service->_writeCMDCharacteristic];

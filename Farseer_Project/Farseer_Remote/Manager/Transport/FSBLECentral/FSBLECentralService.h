@@ -25,5 +25,6 @@
 + (void)getSandBoxFileWithPath:(NSString *)path;
 
 + (void)requLogWithLogNumber:(UInt32)logNum;
++ (void)makePeripheralCrash;
 
 @end

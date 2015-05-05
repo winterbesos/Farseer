@@ -48,6 +48,29 @@
     return self;
 }
 
++ (NSArray *)logsWithOriginalFilePath:(NSURL *)fileURL {
+    NSMutableArray *logs = [NSMutableArray array];
+    NSData *data = [NSData dataWithContentsOfURL:fileURL];
+    data = [data subdataWithRange:NSMakeRange(sizeof(struct LOG_HEADER), data.length - sizeof(struct LOG_HEADER))];
+    FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
+    
+    while (1) {
+        UInt32 number = [packageIn readUInt32];
+        NSDate *date = [packageIn readDate];
+        Byte level = [packageIn readByte];
+        NSString *content = [packageIn readString];
+        NSString *fileName = [packageIn readString];
+        NSString *functionName = [packageIn readString];
+        UInt32 line = [packageIn readUInt32];
+        if (!content) {
+            break;
+        }
+        [logs addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
+    }
+    
+    return logs;
+}
+
 - (instancetype)initWithFilePath:(NSString *)filePath {
     self = [super init];
     if (self) {

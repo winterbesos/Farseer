@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
+		393E62671AF8E0730043750E /* FSBLEReqMakeCrashPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3987485B1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.m */; };
+		393E62681AF8E0730043750E /* FSBLEReqMakeCrashPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3987485B1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.m */; };
 		3940CBC81AECB46D002D7F95 /* FSLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */; };
 		3940CBC91AECB46D002D7F95 /* FSLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */; };
 		3940CBCA1AECB55B002D7F95 /* FSLogWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3916B6BD1AEBC8FF00C5FBFC /* FSLogWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,13 +28,18 @@
 		396578901ACCDAB800CEA918 /* DirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A617091AA841780058574E /* DirViewController.m */; };
 		396578A01ACCEB3C00CEA918 /* FSBLEReqDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */; };
 		396578A11ACCEB3D00CEA918 /* FSBLEReqDataPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */; };
+		397E5CEB1AF87874008004DC /* Farseer_Remote_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; };
+		397E5CEC1AF87874008004DC /* Farseer_Remote_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		397E5CF21AF87A9B008004DC /* FSBLECentralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5CE31ABA6EC600720D32 /* FSBLECentralService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		397E5CF31AF87AA7008004DC /* FSDirectoryWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		397E5CF41AF87CD1008004DC /* FSDirectoryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */; };
 		397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* AppDelegate.m */; };
 		397F5BE51ABA5D4100720D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE41ABA5D4100720D32 /* main.m */; };
 		397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397F5BE91ABA5D4100720D32 /* Images.xcassets */; };
 		397F5BF91ABA5D4100720D32 /* SLFarseer_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BF81ABA5D4100720D32 /* SLFarseer_MacTests.m */; };
 		397F5C0A1ABA5DE500720D32 /* Farseer_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C091ABA5DE500720D32 /* Farseer_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		397F5C2F1ABA5E4C00720D32 /* Farseer_Remote_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		397F5C4B1ABA63E200720D32 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C4A1ABA63E200720D32 /* OCViewController.m */; };
+		397F5C4B1ABA63E200720D32 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C4A1ABA63E200720D32 /* MainViewController.m */; };
 		397F5C4D1ABA63F300720D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 397F5C4C1ABA63F300720D32 /* Main.storyboard */; };
 		397F5C981ABA6B5A00720D32 /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
 		397F5C991ABA6B5A00720D32 /* FSBLELog.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C751ABA6B5A00720D32 /* FSBLELog.m */; };
@@ -88,7 +95,6 @@
 		397F5D181ABA6FD900720D32 /* Farseer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C791ABA6B5A00720D32 /* Farseer.m */; };
 		39850E021AD16509003D1742 /* FSCentralClientDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 39850E011AD164DC003D1742 /* FSCentralClientDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39850E031AD16509003D1742 /* FSCentralClientDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 39850E011AD164DC003D1742 /* FSCentralClientDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39850E061AD168EB003D1742 /* FSCentralFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39850E051AD168EB003D1742 /* FSCentralFileManager.m */; };
 		39850E071AD16F34003D1742 /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		39850E081AD16F35003D1742 /* FSUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C821ABA6B5A00720D32 /* FSUtilities.m */; };
 		3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3987802D1A9DAD7000D7397F /* LogViewController.m */; };
@@ -101,8 +107,6 @@
 		399463EF1AB9A624009F927D /* Farseer_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39193C2F1AB9969800617804 /* Farseer_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
 		39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
-		39C68D8F1ABA738D00BCDA4F /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
-		39C68D901ABA738D00BCDA4F /* Farseer_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39C68D941ABA742300BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39C68D951ABA742300BCDA4F /* FSBLELogInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C761ABA6B5A00720D32 /* FSBLELogInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39C68D961ABA742400BCDA4F /* FSBLELog.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C741ABA6B5A00720D32 /* FSBLELog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -128,7 +132,6 @@
 		39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */; };
 		39CCD1E71ACABCD1009A618D /* Farseer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; };
 		39CCD1E81ACABCD4009A618D /* Farseer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; };
-		39CCD1ED1ACABD43009A618D /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */; };
 		39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */; };
 		39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CF61BC1AA2CDC800C51434 /* TracksView.m */; };
 		39D035121AB9A4A600132F0F /* Farseer_Remote_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39D035111AB9A4A600132F0F /* Farseer_Remote_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,6 +144,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		397E5CED1AF87874008004DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397F5C291ABA5E4C00720D32;
+			remoteInfo = Farseer_Remote_Mac;
+		};
 		397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
@@ -154,13 +164,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 398DDFC91A80C63D0019BB12;
 			remoteInfo = SLFarseer_iOS;
-		};
-		39C68D911ABA738D00BCDA4F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 397F5C041ABA5DE500720D32;
-			remoteInfo = Farseer_Mac;
 		};
 		39D035221AB9A4A600132F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -183,13 +186,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39C68D931ABA738D00BCDA4F /* Embed Frameworks */ = {
+		397E5CEF1AF87874008004DC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				39C68D901ABA738D00BCDA4F /* Farseer_Mac.framework in Embed Frameworks */,
+				397E5CEC1AF87874008004DC /* Farseer_Remote_Mac.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,8 +232,8 @@
 		397F5C091ABA5DE500720D32 /* Farseer_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_Mac.h; path = Farseer_Mac/Farseer_Mac.h; sourceTree = SOURCE_ROOT; };
 		397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_Remote_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_Remote_Mac.h; path = Farseer_Remote_Mac/Farseer_Remote_Mac.h; sourceTree = SOURCE_ROOT; };
-		397F5C491ABA63E200720D32 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
-		397F5C4A1ABA63E200720D32 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
+		397F5C491ABA63E200720D32 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		397F5C4A1ABA63E200720D32 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		397F5C4C1ABA63F300720D32 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		397F5C521ABA665100720D32 /* Info_Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info_Mac.plist; path = Farseer_Mac/Info_Mac.plist; sourceTree = SOURCE_ROOT; };
 		397F5C541ABA667500720D32 /* Info_Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info_Mac.plist; path = Farseer_Remote_Mac/Info_Mac.plist; sourceTree = SOURCE_ROOT; };
@@ -282,8 +285,8 @@
 		397F5CEF1ABA6EC600720D32 /* FSInitBLEPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSInitBLEPacker.h; sourceTree = "<group>"; };
 		397F5CF01ABA6EC600720D32 /* FSInitBLEPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSInitBLEPacker.m; sourceTree = "<group>"; };
 		39850E011AD164DC003D1742 /* FSCentralClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCentralClientDelegate.h; sourceTree = "<group>"; };
-		39850E041AD168EB003D1742 /* FSCentralFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCentralFileManager.h; sourceTree = "<group>"; };
-		39850E051AD168EB003D1742 /* FSCentralFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCentralFileManager.m; sourceTree = "<group>"; };
+		3987485A1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEReqMakeCrashPacker.h; sourceTree = "<group>"; };
+		3987485B1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEReqMakeCrashPacker.m; sourceTree = "<group>"; };
 		3987802C1A9DAD7000D7397F /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
 		3987802D1A9DAD7000D7397F /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
 		398DDFCA1A80C63D0019BB12 /* SLFarseer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,7 +316,6 @@
 		39C6F5DD1ACBEA9A003E4C36 /* LogExplorerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogExplorerViewController.m; sourceTree = "<group>"; };
 		39CCD1E61ACABCD1009A618D /* Farseer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farseer.swift; sourceTree = "<group>"; };
 		39CCD1E91ACABD1E009A618D /* SLFarseer_Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_Mac-Bridging-Header.h"; sourceTree = "<group>"; };
-		39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		39CE6A3A1A9DF8A9005E626C /* LogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewCell.h; sourceTree = "<group>"; };
 		39CE6A3B1A9DF8A9005E626C /* LogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewCell.m; sourceTree = "<group>"; };
 		39CF61BA1AA2C21A00C51434 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -341,7 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39C68D8F1ABA738D00BCDA4F /* Farseer_Mac.framework in Frameworks */,
+				397E5CEB1AF87874008004DC /* Farseer_Remote_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,9 +408,8 @@
 			children = (
 				397F5BE11ABA5D4100720D32 /* AppDelegate.h */,
 				397F5BE21ABA5D4100720D32 /* AppDelegate.m */,
-				397F5C491ABA63E200720D32 /* OCViewController.h */,
-				397F5C4A1ABA63E200720D32 /* OCViewController.m */,
-				39CCD1EC1ACABD43009A618D /* SwiftViewController.swift */,
+				397F5C491ABA63E200720D32 /* MainViewController.h */,
+				397F5C4A1ABA63E200720D32 /* MainViewController.m */,
 				397F5BE91ABA5D4100720D32 /* Images.xcassets */,
 				397F5C4C1ABA63F300720D32 /* Main.storyboard */,
 				397F5BDF1ABA5D4100720D32 /* Supporting Files */,
@@ -547,6 +548,8 @@
 				39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */,
 				3965789D1ACCEB3800CEA918 /* FSBLEReqDataPacker.h */,
 				3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */,
+				3987485A1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.h */,
+				3987485B1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.m */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -575,8 +578,6 @@
 				3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */,
 				3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */,
 				3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */,
-				39850E041AD168EB003D1742 /* FSCentralFileManager.h */,
-				39850E051AD168EB003D1742 /* FSCentralFileManager.m */,
 				397F5CE11ABA6EC600720D32 /* Transport */,
 			);
 			path = Manager;
@@ -777,11 +778,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C68DA01ABA74F800BCDA4F /* FSDefine.h in Headers */,
+				397E5CF21AF87A9B008004DC /* FSBLECentralService.h in Headers */,
 				3940CBCB1AECB55C002D7F95 /* FSLogWrapper.h in Headers */,
 				39C68D9A1ABA742500BCDA4F /* FSBLELog.h in Headers */,
 				39C68DA71ABA77E600BCDA4F /* Farseer_Remote.h in Headers */,
 				39850E031AD16509003D1742 /* FSCentralClientDelegate.h in Headers */,
 				39C68D9B1ABA742500BCDA4F /* FSBLELogInfo.h in Headers */,
+				397E5CF31AF87AA7008004DC /* FSDirectoryWrapper.h in Headers */,
 				397F5C2F1ABA5E4C00720D32 /* Farseer_Remote_Mac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,12 +833,12 @@
 				397F5BD91ABA5D4100720D32 /* Sources */,
 				397F5BDA1ABA5D4100720D32 /* Frameworks */,
 				397F5BDB1ABA5D4100720D32 /* Resources */,
-				39C68D931ABA738D00BCDA4F /* Embed Frameworks */,
+				397E5CEF1AF87874008004DC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				39C68D921ABA738D00BCDA4F /* PBXTargetDependency */,
+				397E5CEE1AF87874008004DC /* PBXTargetDependency */,
 			);
 			name = SLFarseer_Mac;
 			productName = SLFarseer_Mac;
@@ -1116,6 +1119,7 @@
 				397F5CD51ABA6D3000720D32 /* FSBLEReqSyncLogPacker.m in Sources */,
 				397F5C9C1ABA6B5A00720D32 /* FSBLELogInfo.m in Sources */,
 				397F5CA81ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
+				393E62681AF8E0730043750E /* FSBLEReqMakeCrashPacker.m in Sources */,
 				39CCD1E71ACABCD1009A618D /* Farseer.swift in Sources */,
 				397F5CBA1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
 				396578A01ACCEB3C00CEA918 /* FSBLEReqDataPacker.m in Sources */,
@@ -1131,9 +1135,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39CCD1ED1ACABD43009A618D /* SwiftViewController.swift in Sources */,
 				397F5BE51ABA5D4100720D32 /* main.m in Sources */,
-				397F5C4B1ABA63E200720D32 /* OCViewController.m in Sources */,
+				397F5C4B1ABA63E200720D32 /* MainViewController.m in Sources */,
 				397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1162,6 +1165,7 @@
 				397F5CD61ABA6D3000720D32 /* FSBLEReqSyncLogPacker.m in Sources */,
 				397F5C9D1ABA6B5A00720D32 /* FSBLELogInfo.m in Sources */,
 				397F5CA91ABA6B5A00720D32 /* FSLogManager+Peripheral.m in Sources */,
+				393E62671AF8E0730043750E /* FSBLEReqMakeCrashPacker.m in Sources */,
 				39CCD1E81ACABCD4009A618D /* Farseer.swift in Sources */,
 				397F5CBB1ABA6B5A00720D32 /* FSBLEPeripheralService.m in Sources */,
 				396578A11ACCEB3D00CEA918 /* FSBLEReqDataPacker.m in Sources */,
@@ -1178,6 +1182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				397F5CF81ABA6EC600720D32 /* FSBLECentralService.m in Sources */,
+				397E5CF41AF87CD1008004DC /* FSDirectoryWrapper.m in Sources */,
 				39C68DB31ABA7FB200BCDA4F /* FSBLELogInfo.m in Sources */,
 				397F5D121ABA6F4800720D32 /* FSLogManager.m in Sources */,
 				39C68DA51ABA77E200BCDA4F /* Farseer_Remote.m in Sources */,
@@ -1209,7 +1214,6 @@
 				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
 				394CDCAA1AD0131F002DB63B /* DocumentTableViewController.m in Sources */,
 				394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */,
-				39850E061AD168EB003D1742 /* FSCentralFileManager.m in Sources */,
 				398DDFD01A80C63D0019BB12 /* main.m in Sources */,
 				3987802E1A9DAD7000D7397F /* LogViewController.m in Sources */,
 				394CDCA01ACFC0D8002DB63B /* MainTableViewController.m in Sources */,
@@ -1253,6 +1257,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		397E5CEE1AF87874008004DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397F5C291ABA5E4C00720D32 /* Farseer_Remote_Mac */;
+			targetProxy = 397E5CED1AF87874008004DC /* PBXContainerItemProxy */;
+		};
 		397F5BF41ABA5D4100720D32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */;
@@ -1262,11 +1271,6 @@
 			isa = PBXTargetDependency;
 			target = 398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */;
 			targetProxy = 398DDFE71A80C63D0019BB12 /* PBXContainerItemProxy */;
-		};
-		39C68D921ABA738D00BCDA4F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 397F5C041ABA5DE500720D32 /* Farseer_Mac */;
-			targetProxy = 39C68D911ABA738D00BCDA4F /* PBXContainerItemProxy */;
 		};
 		39D035231AB9A4A600132F0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1619,7 +1623,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = SLFarseer;
-				PROVISIONING_PROFILE = "7ea6a4e1-6b48-4484-b3f8-5aa2ec055d7c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

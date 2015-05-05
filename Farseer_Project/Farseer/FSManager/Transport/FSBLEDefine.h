@@ -20,7 +20,8 @@ typedef NS_ENUM(Byte, CMD) {
     
     CMDReqSandBoxInfo       = 0xc4,
     CMDResSandBoxInfo       = 0xd4,
-
+    
+    CMDReqMakeCrash         = 0xc7,
     
     CMDAck                  = 0xFF,
 };

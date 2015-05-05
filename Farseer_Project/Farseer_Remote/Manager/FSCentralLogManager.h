@@ -26,5 +26,6 @@ typedef NS_ENUM(NSInteger, FSLogCategory) {
 
 - (void)requestLog;
 - (void)saveLogCallback:(void(^)(float percentage))callback;
+- (void)makePeripheralCrash;
 
 @end

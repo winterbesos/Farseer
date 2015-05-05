@@ -29,6 +29,8 @@
     FSLogWrapper *_logWrapper;
     NSString *_registerFileName;
     NSString *_registerFunctionName;
+    BOOL _disableOtherItem;
+    BOOL _showExplorer;
 }
 
 - (void)awakeFromNib {
@@ -65,6 +67,7 @@
 #pragma mark - Public Method
 
 - (void)setWrapper:(FSLogWrapper *)logWrapper FileName:(NSString *)fileName functionName:(NSString *)functionName {
+    _disableOtherItem = (fileName != nil);
     _logWrapper = logWrapper;
     _registerFileName = fileName;
     _registerFunctionName = functionName;
@@ -95,6 +98,8 @@
 
 - (void)setFile:(NSString *)path {
     _logWrapper = [[FSLogWrapper alloc] initWithFilePath:path];
+    _disableOtherItem = YES;
+    _showExplorer = YES;
 }
 
 #pragma mark - Actions
@@ -143,7 +148,7 @@
 }
 
 - (void)crash {
-    // TODO: remote control peripheral crash
+    crash();
 }
 
 - (void)showOrHideTime {
@@ -171,10 +176,13 @@
 #pragma mark - Logo Label Delegate
 
 - (BOOL)tracksView:(TracksView *)TracksView shouldSelectAtIndex:(NSInteger)index {
-    if (!_registerFileName) {
+    if (!_disableOtherItem) {
         return YES;
     } else {
-        return index == 4;
+        if (_showExplorer) {
+            return index == 4 || index == 0 || index == 1 || index == 7;
+        }
+        return index == 4 || index == 1 || index == 7;
     }
 }
 
@@ -249,6 +257,14 @@
                                      [UIImage imageNamed:@"crash"],
                                      [UIImage imageNamed:@"continue"],
                                      [UIImage imageNamed:@"showlineno"]]
+                      disableItems:@[[UIImage imageNamed:@"filter-g"],
+                                     [UIImage imageNamed:@"showtime-g"],
+                                     [UIImage imageNamed:@"clear-g"],
+                                     [UIImage imageNamed:@"save-g"],
+                                     [UIImage imageNamed:@"back-g"],
+                                     [UIImage imageNamed:@"crash-g"],
+                                     [UIImage imageNamed:@"continue-g"],
+                                     [UIImage imageNamed:@"showlineno-g"]]
                          itemNames:@[@"Filter", @"Toggle Time", @"Clear", @"Save", @"Back", @"Crash", @"Start", @"Toggle Sequence"]];
         
     }

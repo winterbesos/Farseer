@@ -11,6 +11,7 @@
 #import "FSBLEReqSyncLogPacker.h"
 #import "FSBLEReqSandBoxInfoPacker.h"
 #import "FSBLEReqDataPacker.h"
+#import "FSBLEReqMakeCrashPacker.h"
 
 @implementation FSBLEPeripheralPackerFactory
 
@@ -26,6 +27,8 @@
         case CMDReqSandBoxInfo:
             packerObj = [[FSBLEReqSandBoxInfoPacker alloc] initWithRequest:request];
             break;
+        case CMDReqMakeCrash:
+            packerObj = [[FSBLEReqMakeCrashPacker alloc] initWithRequest:request];
         default:
             break;
     }
