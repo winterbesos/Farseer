@@ -18,6 +18,6 @@ void saveLog(void(^callback)(float percentage)) {
     [[FSDebugCentral_Remote getInstance].logManager saveLogCallback:callback];
 }
 
-void crash() {
+void makeCrash() {
     [[FSDebugCentral_Remote getInstance].logManager makePeripheralCrash];
 }

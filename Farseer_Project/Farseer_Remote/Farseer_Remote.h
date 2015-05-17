@@ -12,4 +12,4 @@
 
 void requestLog();
 void saveLog();
-void crash();
+void makeCrash();

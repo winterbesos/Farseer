@@ -15,7 +15,7 @@
 
 @property (weak) IBOutlet NSPathControl *pathControl;
 @property (weak) IBOutlet NSTableView *fileTableView;
-@property (weak) IBOutlet NSTableView *logTableView;
+@property (unsafe_unretained) IBOutlet NSTextView *logTextView;
 
 @end
 
@@ -34,12 +34,6 @@
         NSError *error;
         _fileArray = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:self.pathControl.URL includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
     }
-}
-
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-
-    // Update the view, if already loaded.
 }
 
 #pragma mark - Actions
@@ -64,30 +58,22 @@
 #pragma mark - NSTableView DataSource and Delegate
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    if (tableView == self.fileTableView) {
-        return _fileArray.count;
-    } else {
-        return _logs.count;
-    }
+    return _fileArray.count;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    if (tableView == self.fileTableView) {
-        NSError *error;
-        NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[_fileArray[row] path] error:&error];
-        return attributes[NSFileCreationDate];
-    } else {
-        return [_logs[row] description];
-    }
+    NSError *error;
+    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[_fileArray[row] path] error:&error];
+    return attributes[NSFileCreationDate];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-    if (tableView == self.fileTableView) {
-        _logs = [FSLogWrapper logsWithOriginalFilePath:_fileArray[row]];
-        [self.logTableView reloadData];
-        return YES;
+    _logs = [FSLogWrapper logsWithOriginalFilePath:_fileArray[row]];
+    NSMutableString *logString = [NSMutableString string];
+    for (FSBLELog *log in _logs) {
+        [logString appendFormat:@"%@\n", log];
     }
-    
+    self.logTextView.string = logString;
     return YES;
 }
 
