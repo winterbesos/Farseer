@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3922D1991B0AD612006E210C /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922D1981B0AD612006E210C /* ConfigurationViewController.m */; };
 		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		393E62671AF8E0730043750E /* FSBLEReqMakeCrashPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3987485B1AF8DFC300674C6E /* FSBLEReqMakeCrashPacker.m */; };
@@ -206,6 +207,8 @@
 		39193C2B1AB9969800617804 /* Farseer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39193C2E1AB9969800617804 /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_iOS.plist; sourceTree = "<group>"; };
 		39193C2F1AB9969800617804 /* Farseer_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_iOS.h; path = Farseer_iOS/Farseer_iOS.h; sourceTree = SOURCE_ROOT; };
+		3922D1971B0AD612006E210C /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
+		3922D1981B0AD612006E210C /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
 		3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDirectoryWrapper.h; sourceTree = "<group>"; };
 		3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDirectoryWrapper.m; sourceTree = "<group>"; };
 		3941A9731ACC1529008B8E80 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
@@ -411,6 +414,8 @@
 				397F5BE21ABA5D4100720D32 /* AppDelegate.m */,
 				397F5C491ABA63E200720D32 /* MainViewController.h */,
 				397F5C4A1ABA63E200720D32 /* MainViewController.m */,
+				3922D1971B0AD612006E210C /* ConfigurationViewController.h */,
+				3922D1981B0AD612006E210C /* ConfigurationViewController.m */,
 				397F5BE91ABA5D4100720D32 /* Images.xcassets */,
 				397F5C4C1ABA63F300720D32 /* Main.storyboard */,
 				397F5BDF1ABA5D4100720D32 /* Supporting Files */,
@@ -1140,6 +1145,7 @@
 				397F5BE51ABA5D4100720D32 /* main.m in Sources */,
 				397F5C4B1ABA63E200720D32 /* MainViewController.m in Sources */,
 				397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */,
+				3922D1991B0AD612006E210C /* ConfigurationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

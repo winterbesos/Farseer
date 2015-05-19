@@ -676,11 +676,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                                 <subviews>
                                     <customView id="g70-aW-MLy">
-                                        <rect key="frame" x="0.0" y="0.0" width="800" height="53"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="800" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <pathControl focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2hZ-by-PBa">
-                                                <rect key="frame" x="16" y="20" width="621" height="20"/>
+                                                <rect key="frame" x="16" y="40" width="621" height="20"/>
                                                 <pathCell key="cell" controlSize="small" selectable="YES" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="tGV-1e-SvV">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <url key="url" string="file://localhost/Applications/"/>
@@ -688,7 +688,7 @@
                                                 </pathCell>
                                             </pathControl>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dx0-Kf-BXe">
-                                                <rect key="frame" x="661" y="21" width="122" height="17"/>
+                                                <rect key="frame" x="661" y="41" width="122" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="122" id="sXg-jw-ZIQ"/>
                                                 </constraints>
@@ -700,22 +700,37 @@
                                                     <action selector="selectFileButtonAction:" target="Bsz-Ro-8UM" id="2ZH-qb-vCn"/>
                                                 </connections>
                                             </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="imu-jf-6S9">
+                                                <rect key="frame" x="661" y="13" width="122" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="122" id="v5A-Sf-hpe"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="roundRect" title="Filter" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o3k-Fz-2CJ">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="filterButtonAction:" target="Bsz-Ro-8UM" id="4ng-z1-hdx"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="imu-jf-6S9" firstAttribute="top" secondItem="Dx0-Kf-BXe" secondAttribute="bottom" constant="12" id="6Wp-bX-qBb"/>
                                             <constraint firstItem="Dx0-Kf-BXe" firstAttribute="leading" secondItem="2hZ-by-PBa" secondAttribute="trailing" constant="24" id="9Nh-A9-hSh"/>
                                             <constraint firstItem="Dx0-Kf-BXe" firstAttribute="baseline" secondItem="2hZ-by-PBa" secondAttribute="baseline" id="Eei-3m-O0p"/>
+                                            <constraint firstAttribute="bottom" secondItem="imu-jf-6S9" secondAttribute="bottom" constant="14" id="FAE-Sz-UEC"/>
                                             <constraint firstItem="2hZ-by-PBa" firstAttribute="leading" secondItem="g70-aW-MLy" secondAttribute="leading" constant="16" id="OjU-p2-xG0"/>
                                             <constraint firstAttribute="trailing" secondItem="Dx0-Kf-BXe" secondAttribute="trailing" constant="17" id="ZGO-fw-YAB"/>
+                                            <constraint firstAttribute="trailing" secondItem="imu-jf-6S9" secondAttribute="trailing" constant="17" id="auF-el-u7u"/>
                                             <constraint firstItem="Dx0-Kf-BXe" firstAttribute="top" secondItem="g70-aW-MLy" secondAttribute="top" constant="15" id="ePR-1l-OGA"/>
-                                            <constraint firstAttribute="height" constant="53" id="kvP-Z1-GPh"/>
                                         </constraints>
                                     </customView>
                                     <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" id="8vB-l1-dMd">
-                                        <rect key="frame" x="0.0" y="54" width="800" height="546"/>
+                                        <rect key="frame" x="0.0" y="74" width="800" height="526"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3VE-dg-UhQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="197" height="546"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="197" height="526"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <clipView key="contentView" id="Wtm-NF-pIZ">
                                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -760,7 +775,7 @@
                                                 </scroller>
                                             </scrollView>
                                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" id="G0i-yg-Yrj">
-                                                <rect key="frame" x="207" y="0.0" width="593" height="546"/>
+                                                <rect key="frame" x="207" y="0.0" width="593" height="526"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <clipView key="contentView" id="0jQ-ma-KEV">
                                                     <rect key="frame" x="1" y="1" width="223" height="133"/>
@@ -770,10 +785,10 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="223" height="544"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <size key="minSize" width="591" height="544"/>
+                                                            <size key="minSize" width="591" height="524"/>
                                                             <size key="maxSize" width="593" height="10000000"/>
                                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <size key="minSize" width="591" height="544"/>
+                                                            <size key="minSize" width="591" height="524"/>
                                                             <size key="maxSize" width="593" height="10000000"/>
                                                         </textView>
                                                     </subviews>
@@ -825,6 +840,128 @@
                 <customObject id="8yj-g9-2Hs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="833"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="JeG-Ra-k2z">
+            <objects>
+                <windowController storyboardIdentifier="ConfigurationWindowController" id="DbR-O7-PHP" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="qwH-g5-dcb">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="362" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                    </window>
+                    <connections>
+                        <segue destination="Cvk-8T-Trt" kind="relationship" relationship="window.shadowedContentViewController" id="ucj-IZ-xZw"/>
+                    </connections>
+                </windowController>
+                <customObject id="Puw-sK-f6K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="676" y="250"/>
+        </scene>
+        <!--Configuration View Controller-->
+        <scene sceneID="1KZ-YY-b8M">
+            <objects>
+                <viewController id="Cvk-8T-Trt" customClass="ConfigurationViewController" sceneMemberID="viewController">
+                    <view key="view" id="pK6-4a-1GR">
+                        <rect key="frame" x="0.0" y="0.0" width="151" height="196"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box autoresizesSubviews="NO" title="Filter" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="gIY-22-xxA">
+                                <rect key="frame" x="17" y="16" width="117" height="160"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="115" height="144"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V46-GK-1yH">
+                                            <rect key="frame" x="15" y="57" width="66" height="20"/>
+                                            <buttonCell key="cell" type="check" title="Warning" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="vPv-TD-g3s">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="filterCheckBox:" target="Cvk-8T-Trt" id="PY0-BG-RLj"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9j6-UZ-zpr">
+                                            <rect key="frame" x="15" y="37" width="62" height="20"/>
+                                            <buttonCell key="cell" type="check" title="Log" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="DZV-Op-Ax6">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="filterCheckBox:" target="Cvk-8T-Trt" id="oRd-X3-6ff"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKr-bj-iLO">
+                                            <rect key="frame" x="15" y="17" width="62" height="20"/>
+                                            <buttonCell key="cell" type="check" title="Minor" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="r1q-D6-WAA">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="filterCheckBox:" target="Cvk-8T-Trt" id="ehc-8y-SXg"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDu-QA-zrK">
+                                            <rect key="frame" x="15" y="97" width="62" height="20"/>
+                                            <buttonCell key="cell" type="check" title="Fatal" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="oKl-c2-eOz">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="filterCheckBox:" target="Cvk-8T-Trt" id="LGA-du-FBM"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-S4-ml2">
+                                            <rect key="frame" x="15" y="117" width="62" height="20"/>
+                                            <buttonCell key="cell" type="check" title="All" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="k3E-U8-L25">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" size="11" name="STHeitiSC-Light"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="filterCheckBox:" target="Cvk-8T-Trt" id="G5l-sx-kNc"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-Ud-d0O">
+                                            <rect key="frame" x="15" y="77" width="62" height="20"/>
+                                            <buttonCell key="cell" type="check" title="Error" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="aIR-Uk-Zzs">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="filterCheckBox:" target="Cvk-8T-Trt" id="EKp-oo-W54"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="5ze-Qk-kLf"/>
+                                    <constraint firstAttribute="height" constant="156" id="tzh-bh-c13"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gIY-22-xxA" secondAttribute="trailing" constant="20" id="UOl-Gv-tOr"/>
+                            <constraint firstItem="gIY-22-xxA" firstAttribute="leading" secondItem="pK6-4a-1GR" secondAttribute="leading" constant="20" id="aBI-hz-Tbn"/>
+                            <constraint firstAttribute="bottom" secondItem="gIY-22-xxA" secondAttribute="bottom" constant="20" id="rCA-g5-RWz"/>
+                            <constraint firstItem="gIY-22-xxA" firstAttribute="top" secondItem="pK6-4a-1GR" secondAttribute="top" constant="20" id="sAp-YQ-6zy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="filterAllCheckBox" destination="Kjk-S4-ml2" id="1OZ-sK-vpY"/>
+                        <outlet property="filterErrorCheckBox" destination="Ni0-Ud-d0O" id="g1L-aZ-5Yl"/>
+                        <outlet property="filterFatalCheckBox" destination="wDu-QA-zrK" id="Hr3-Ys-tIW"/>
+                        <outlet property="filterLogCheckBox" destination="9j6-UZ-zpr" id="Nkw-wb-VnF"/>
+                        <outlet property="filterMinorCheckBox" destination="SKr-bj-iLO" id="Z1r-iM-UxI"/>
+                        <outlet property="filterWarningCheckBox" destination="V46-GK-1yH" id="YBd-uo-S0a"/>
+                    </connections>
+                </viewController>
+                <customObject id="UNE-CL-yBt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1083.5" y="250"/>
         </scene>
     </scenes>
 </document>
