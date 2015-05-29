@@ -148,7 +148,7 @@
 }
 
 - (void)crash {
-    crash();
+    makeCrash();
 }
 
 - (void)showOrHideTime {
