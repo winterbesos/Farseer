@@ -973,7 +973,7 @@
 				TargetAttributes = {
 					39193C2A1AB9969800617804 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = DXZA325EJP;
+						DevelopmentTeam = S9SRRYER9Y;
 					};
 					397F5BDC1ABA5D4100720D32 = {
 						CreatedOnToolsVersion = 6.2;
@@ -998,7 +998,7 @@
 					};
 					39D0350C1AB9A4A600132F0F = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = DXZA325EJP;
+						DevelopmentTeam = S9SRRYER9Y;
 					};
 				};
 			};
@@ -1339,8 +1339,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1718,7 +1718,7 @@
 		39D035281AB9A4A700132F0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
