@@ -147,8 +147,8 @@
     [self.tableView reloadData];
 }
 
-- (void)crash {
-    crash();
+- (void)makeCrash {
+    makeCrash();
 }
 
 - (void)showOrHideTime {
@@ -204,7 +204,7 @@
             [self.navigationController popViewControllerAnimated:YES];
             break;
         case 5:
-            [self crash];
+            [self makeCrash];
             break;
         case 6:
             [self continueLog];
