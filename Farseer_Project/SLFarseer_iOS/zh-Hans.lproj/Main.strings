@@ -1,0 +1,63 @@
+
+/* Class = "UILabel"; text = "OS Version："; ObjectID = "1Mn-Fh-gRy"; */
+"1Mn-Fh-gRy.text" = "OS Version：";
+
+/* Class = "UIButton"; normalTitle = "Document"; ObjectID = "8g0-Kc-kIi"; */
+"8g0-Kc-kIi.normalTitle" = "Document";
+
+/* Class = "UINavigationItem"; title = "Document"; ObjectID = "Ae2-34-KrK"; */
+"Ae2-34-KrK.title" = "Document";
+
+/* Class = "UILabel"; text = "Display Time"; ObjectID = "Eft-hB-GkH"; */
+"Eft-hB-GkH.text" = "Display Time";
+
+/* Class = "UILabel"; text = "N/A"; ObjectID = "FDw-Dc-5Hg"; */
+"FDw-Dc-5Hg.text" = "N/A";
+
+/* Class = "UILabel"; text = "Farseer v1.0 build 05052 Copyright eitdesign, 2015 / farseer.eitsh.com"; ObjectID = "G77-9A-Gkt"; */
+"G77-9A-Gkt.text" = "Farseer v1.0 build 05052 Copyright eitdesign, 2015 / farseer.eitsh.com";
+
+/* Class = "UILabel"; text = "Device Type："; ObjectID = "He2-Fi-gJy"; */
+"He2-Fi-gJy.text" = "Device Type：";
+
+/* Class = "UILabel"; text = "N/A"; ObjectID = "Ifw-py-TT2"; */
+"Ifw-py-TT2.text" = "N/A";
+
+/* Class = "UITableViewSection"; headerTitle = "Current Device"; ObjectID = "Lp7-eM-pkx"; */
+"Lp7-eM-pkx.headerTitle" = "Current Device";
+
+/* Class = "UILabel"; text = "Display Sequence"; ObjectID = "N5N-Mk-0Da"; */
+"N5N-Mk-0Da.text" = "Display Sequence";
+
+/* Class = "UILabel"; text = "N/A"; ObjectID = "PCA-D9-XNr"; */
+"PCA-D9-XNr.text" = "N/A";
+
+/* Class = "UILabel"; text = "N/A"; ObjectID = "Plf-IJ-yfL"; */
+"Plf-IJ-yfL.text" = "N/A";
+
+/* Class = "UITabBarItem"; title = "OC"; ObjectID = "Q3U-SM-6RU"; */
+"Q3U-SM-6RU.title" = "OC";
+
+/* Class = "UIButton"; normalTitle = "Log >"; ObjectID = "T1I-ml-4Ar"; */
+"T1I-ml-4Ar.normalTitle" = "Log >";
+
+/* Class = "UILabel"; text = "OS Type："; ObjectID = "XwM-xU-Cu3"; */
+"XwM-xU-Cu3.text" = "OS Type：";
+
+/* Class = "UIButton"; normalTitle = "Other Device"; ObjectID = "dDH-UN-y4v"; */
+"dDH-UN-y4v.normalTitle" = "Other Device";
+
+/* Class = "UITableViewSection"; headerTitle = "Log Configuration"; ObjectID = "g3I-7a-jRu"; */
+"g3I-7a-jRu.headerTitle" = "Log Configuration";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "nK1-3C-P2W"; */
+"nK1-3C-P2W.text" = "Content";
+
+/* Class = "UILabel"; text = "Bundle Name："; ObjectID = "tEF-Xn-SQX"; */
+"tEF-Xn-SQX.text" = "Bundle Name：";
+
+/* Class = "UINavigationItem"; title = "File Filter"; ObjectID = "w0f-8w-y4b"; */
+"w0f-8w-y4b.title" = "File Filter";
+
+/* Class = "UILabel"; text = "No connected"; ObjectID = "xr2-gZ-fUb"; */
+"xr2-gZ-fUb.text" = "No connected";

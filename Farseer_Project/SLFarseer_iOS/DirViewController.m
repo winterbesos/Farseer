@@ -9,6 +9,7 @@
 #import "DirViewController.h"
 #import "FSLogManager.h"
 #import "LogViewController.h"
+#import "FilePreviewViewController.h"
 #import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 typedef NS_ENUM(NSInteger, DirType) {
@@ -146,6 +147,10 @@ typedef NS_ENUM(NSInteger, DirType) {
             DirViewController *dirVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DirViewController"];
             [dirVC setRemotePath:filePath directoryWrapper:_directoryWrapper];
             [self.navigationController pushViewController:dirVC animated:YES];
+        } else if ([_contents[indexPath.row][@"fileType"] isEqualToString:NSFileTypeRegular]) {
+            FilePreviewViewController *filePreviewVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FilePreviewViewController"];
+            [filePreviewVC setFileInfo:_contents[indexPath.row] filePath:filePath];
+            [self.navigationController pushViewController:filePreviewVC animated:YES];
         }
     }
 }

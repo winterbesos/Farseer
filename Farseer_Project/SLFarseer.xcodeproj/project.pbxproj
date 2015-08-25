@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390D75081B2594890048541D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D750A1B2594890048541D /* Main.storyboard */; };
+		390D750C1B2594B00048541D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 390D750B1B2594B00048541D /* InfoPlist.strings */; };
 		3922D1991B0AD612006E210C /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922D1981B0AD612006E210C /* ConfigurationViewController.m */; };
 		3939CDE61AC7D678008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
 		3939CDE71AC7D679008CF23B /* FSPackageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C492541AC7C6BA00EA3763 /* FSPackageDecoder.m */; };
@@ -21,6 +23,15 @@
 		3940CBD21AECBDE6002D7F95 /* FSDirectoryWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3941A9761ACC15F0008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		3941A9771ACC15F1008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
+		39476D551B83405400ADA56D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D541B83405400ADA56D /* main.m */; };
+		39476D581B83405400ADA56D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D571B83405400ADA56D /* AppDelegate.m */; };
+		39476D5B1B83405400ADA56D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D5A1B83405400ADA56D /* ViewController.m */; };
+		39476D5E1B83405400ADA56D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39476D5C1B83405400ADA56D /* Main.storyboard */; };
+		39476D601B83405400ADA56D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39476D5F1B83405400ADA56D /* Images.xcassets */; };
+		39476D631B83405400ADA56D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39476D611B83405400ADA56D /* LaunchScreen.xib */; };
+		39476D6F1B83405400ADA56D /* Farseer_iOS_FeatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D6E1B83405400ADA56D /* Farseer_iOS_FeatureTests.m */; };
+		39476D781B8340A200ADA56D /* FarseerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D771B8340A200ADA56D /* FarseerTableViewController.m */; };
+		39476D7A1B8340AF00ADA56D /* FarseerMainIPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39476D791B8340AF00ADA56D /* FarseerMainIPhone.storyboard */; };
 		394CDCA01ACFC0D8002DB63B /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394CDC9F1ACFC0D8002DB63B /* MainTableViewController.m */; };
 		394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 394CDCA21ACFCFA4002DB63B /* PeripheralTableViewCell.m */; };
 		394CDCA51ACFCFB6002DB63B /* PeripheralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 394CDCA41ACFCFB6002DB63B /* PeripheralTableViewCell.xib */; };
@@ -139,13 +150,20 @@
 		39DF7D961ACC26B1008B52FC /* FSBLEReqSandBoxInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */; };
 		39DF7D9A1ACC2A94008B52FC /* FSBLEResSandInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D981ACC29AE008B52FC /* FSBLEResSandInfoPacker.m */; };
 		39DF7D9B1ACC2A96008B52FC /* FSBLEResSandInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D981ACC29AE008B52FC /* FSBLEResSandInfoPacker.m */; };
-		39F48AEC1AFEEB0A00312AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 397F5C4C1ABA63F300720D32 /* Main.storyboard */; };
+		39E36AD31B8C18D80026B841 /* FilePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E36AD21B8C18D80026B841 /* FilePreviewViewController.m */; };
 		39F48AED1AFEEB7000312AA2 /* Farseer_Remote_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; };
 		39F48AEE1AFEEB7000312AA2 /* Farseer_Remote_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39FD81251B04D0D500B4ABCD /* Farseer.swift in Headers */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		39476D691B83405400ADA56D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39476D4F1B83405400ADA56D;
+			remoteInfo = Farseer_iOS_Feature;
+		};
 		397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
@@ -202,6 +220,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		390D75031B25910C0048541D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		390D75091B2594890048541D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		390D750B1B2594B00048541D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		3916B6BD1AEBC8FF00C5FBFC /* FSLogWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLogWrapper.h; path = ../../SLFarseer_iOS/FSLogWrapper.h; sourceTree = "<group>"; };
 		3916B6BE1AEBC8FF00C5FBFC /* FSLogWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLogWrapper.m; path = ../../SLFarseer_iOS/FSLogWrapper.m; sourceTree = "<group>"; };
 		39193C2B1AB9969800617804 /* Farseer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +234,22 @@
 		3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDirectoryWrapper.m; sourceTree = "<group>"; };
 		3941A9731ACC1529008B8E80 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
 		3941A9741ACC1529008B8E80 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
+		39476D501B83405400ADA56D /* Farseer_iOS_Feature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farseer_iOS_Feature.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		39476D531B83405400ADA56D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39476D541B83405400ADA56D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		39476D561B83405400ADA56D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		39476D571B83405400ADA56D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		39476D591B83405400ADA56D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		39476D5A1B83405400ADA56D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		39476D5D1B83405400ADA56D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		39476D5F1B83405400ADA56D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		39476D621B83405400ADA56D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		39476D681B83405400ADA56D /* Farseer_iOS_FeatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Farseer_iOS_FeatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39476D6D1B83405400ADA56D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39476D6E1B83405400ADA56D /* Farseer_iOS_FeatureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Farseer_iOS_FeatureTests.m; sourceTree = "<group>"; };
+		39476D761B8340A200ADA56D /* FarseerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarseerTableViewController.h; sourceTree = "<group>"; };
+		39476D771B8340A200ADA56D /* FarseerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarseerTableViewController.m; sourceTree = "<group>"; };
+		39476D791B8340AF00ADA56D /* FarseerMainIPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FarseerMainIPhone.storyboard; sourceTree = "<group>"; };
 		394CDC9E1ACFC0D8002DB63B /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		394CDC9F1ACFC0D8002DB63B /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
 		394CDCA11ACFCFA4002DB63B /* PeripheralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralTableViewCell.h; sourceTree = "<group>"; };
@@ -238,7 +275,6 @@
 		397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_Remote_Mac.h; path = Farseer_Remote_Mac/Farseer_Remote_Mac.h; sourceTree = SOURCE_ROOT; };
 		397F5C491ABA63E200720D32 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		397F5C4A1ABA63E200720D32 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		397F5C4C1ABA63F300720D32 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		397F5C521ABA665100720D32 /* Info_Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info_Mac.plist; path = Farseer_Mac/Info_Mac.plist; sourceTree = SOURCE_ROOT; };
 		397F5C541ABA667500720D32 /* Info_Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info_Mac.plist; path = Farseer_Remote_Mac/Info_Mac.plist; sourceTree = SOURCE_ROOT; };
 		397F5C741ABA6B5A00720D32 /* FSBLELog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLELog.h; sourceTree = "<group>"; };
@@ -333,10 +369,26 @@
 		39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEReqSandBoxInfoPacker.m; sourceTree = "<group>"; };
 		39DF7D971ACC29AE008B52FC /* FSBLEResSandInfoPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEResSandInfoPacker.h; sourceTree = "<group>"; };
 		39DF7D981ACC29AE008B52FC /* FSBLEResSandInfoPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEResSandInfoPacker.m; sourceTree = "<group>"; };
+		39E36AD11B8C18D80026B841 /* FilePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePreviewViewController.h; sourceTree = "<group>"; };
+		39E36AD21B8C18D80026B841 /* FilePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePreviewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		39193C271AB9969800617804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39476D4D1B83405400ADA56D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39476D651B83405400ADA56D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -407,6 +459,50 @@
 			path = Farseer_iOS;
 			sourceTree = SOURCE_ROOT;
 		};
+		39476D511B83405400ADA56D /* Farseer_iOS_Feature */ = {
+			isa = PBXGroup;
+			children = (
+				39476D561B83405400ADA56D /* AppDelegate.h */,
+				39476D571B83405400ADA56D /* AppDelegate.m */,
+				39476D591B83405400ADA56D /* ViewController.h */,
+				39476D5A1B83405400ADA56D /* ViewController.m */,
+				39476D761B8340A200ADA56D /* FarseerTableViewController.h */,
+				39476D771B8340A200ADA56D /* FarseerTableViewController.m */,
+				39476D791B8340AF00ADA56D /* FarseerMainIPhone.storyboard */,
+				39476D5C1B83405400ADA56D /* Main.storyboard */,
+				39476D5F1B83405400ADA56D /* Images.xcassets */,
+				39476D611B83405400ADA56D /* LaunchScreen.xib */,
+				39476D521B83405400ADA56D /* Supporting Files */,
+			);
+			path = Farseer_iOS_Feature;
+			sourceTree = "<group>";
+		};
+		39476D521B83405400ADA56D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39476D531B83405400ADA56D /* Info.plist */,
+				39476D541B83405400ADA56D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39476D6B1B83405400ADA56D /* Farseer_iOS_FeatureTests */ = {
+			isa = PBXGroup;
+			children = (
+				39476D6E1B83405400ADA56D /* Farseer_iOS_FeatureTests.m */,
+				39476D6C1B83405400ADA56D /* Supporting Files */,
+			);
+			path = Farseer_iOS_FeatureTests;
+			sourceTree = "<group>";
+		};
+		39476D6C1B83405400ADA56D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39476D6D1B83405400ADA56D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		397F5BDE1ABA5D4100720D32 /* SLFarseer_Mac */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,7 +513,7 @@
 				3922D1971B0AD612006E210C /* ConfigurationViewController.h */,
 				3922D1981B0AD612006E210C /* ConfigurationViewController.m */,
 				397F5BE91ABA5D4100720D32 /* Images.xcassets */,
-				397F5C4C1ABA63F300720D32 /* Main.storyboard */,
+				390D750A1B2594890048541D /* Main.storyboard */,
 				397F5BDF1ABA5D4100720D32 /* Supporting Files */,
 				39CCD1E91ACABD1E009A618D /* SLFarseer_Mac-Bridging-Header.h */,
 			);
@@ -427,6 +523,7 @@
 		397F5BDF1ABA5D4100720D32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				390D750B1B2594B00048541D /* InfoPlist.strings */,
 				397F5BE01ABA5D4100720D32 /* Info.plist */,
 				397F5BE41ABA5D4100720D32 /* main.m */,
 			);
@@ -648,6 +745,8 @@
 				394CDCA91AD0131F002DB63B /* DocumentTableViewController.m */,
 				39A617081AA841780058574E /* DirViewController.h */,
 				39A617091AA841780058574E /* DirViewController.m */,
+				39E36AD11B8C18D80026B841 /* FilePreviewViewController.h */,
+				39E36AD21B8C18D80026B841 /* FilePreviewViewController.m */,
 			);
 			name = Document;
 			sourceTree = "<group>";
@@ -675,6 +774,8 @@
 				397F5CDD1ABA6EC600720D32 /* Farseer_Remote */,
 				398DDFE91A80C63D0019BB12 /* SLFarseer_iOSTests */,
 				397F5BF51ABA5D4100720D32 /* SLFarseer_MacTests */,
+				39476D511B83405400ADA56D /* Farseer_iOS_Feature */,
+				39476D6B1B83405400ADA56D /* Farseer_iOS_FeatureTests */,
 				398DDFCB1A80C63D0019BB12 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -690,6 +791,8 @@
 				397F5BF21ABA5D4100720D32 /* SLFarseer_MacTests.xctest */,
 				397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */,
 				397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */,
+				39476D501B83405400ADA56D /* Farseer_iOS_Feature.app */,
+				39476D681B83405400ADA56D /* Farseer_iOS_FeatureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -833,6 +936,41 @@
 			productReference = 39193C2B1AB9969800617804 /* Farseer_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		39476D4F1B83405400ADA56D /* Farseer_iOS_Feature */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39476D741B83405400ADA56D /* Build configuration list for PBXNativeTarget "Farseer_iOS_Feature" */;
+			buildPhases = (
+				39476D4C1B83405400ADA56D /* Sources */,
+				39476D4D1B83405400ADA56D /* Frameworks */,
+				39476D4E1B83405400ADA56D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Farseer_iOS_Feature;
+			productName = Farseer_iOS_Feature;
+			productReference = 39476D501B83405400ADA56D /* Farseer_iOS_Feature.app */;
+			productType = "com.apple.product-type.application";
+		};
+		39476D671B83405400ADA56D /* Farseer_iOS_FeatureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39476D751B83405400ADA56D /* Build configuration list for PBXNativeTarget "Farseer_iOS_FeatureTests" */;
+			buildPhases = (
+				39476D641B83405400ADA56D /* Sources */,
+				39476D651B83405400ADA56D /* Frameworks */,
+				39476D661B83405400ADA56D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39476D6A1B83405400ADA56D /* PBXTargetDependency */,
+			);
+			name = Farseer_iOS_FeatureTests;
+			productName = Farseer_iOS_FeatureTests;
+			productReference = 39476D681B83405400ADA56D /* Farseer_iOS_FeatureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 397F5BFA1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_Mac" */;
@@ -975,6 +1113,13 @@
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = S9SRRYER9Y;
 					};
+					39476D4F1B83405400ADA56D = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					39476D671B83405400ADA56D = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 39476D4F1B83405400ADA56D;
+					};
 					397F5BDC1ABA5D4100720D32 = {
 						CreatedOnToolsVersion = 6.2;
 					};
@@ -1023,6 +1168,8 @@
 				397F5C041ABA5DE500720D32 /* Farseer_Mac */,
 				39D0350C1AB9A4A600132F0F /* Farseer_Remote_iOS */,
 				397F5C291ABA5E4C00720D32 /* Farseer_Remote_Mac */,
+				39476D4F1B83405400ADA56D /* Farseer_iOS_Feature */,
+				39476D671B83405400ADA56D /* Farseer_iOS_FeatureTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1035,12 +1182,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39476D4E1B83405400ADA56D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39476D5E1B83405400ADA56D /* Main.storyboard in Resources */,
+				39476D631B83405400ADA56D /* LaunchScreen.xib in Resources */,
+				39476D601B83405400ADA56D /* Images.xcassets in Resources */,
+				39476D7A1B8340AF00ADA56D /* FarseerMainIPhone.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39476D661B83405400ADA56D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		397F5BDB1ABA5D4100720D32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */,
-				39F48AEC1AFEEB0A00312AA2 /* Main.storyboard in Resources */,
+				390D750C1B2594B00048541D /* InfoPlist.strings in Resources */,
+				390D75081B2594890048541D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1304,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39476D4C1B83405400ADA56D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39476D5B1B83405400ADA56D /* ViewController.m in Sources */,
+				39476D581B83405400ADA56D /* AppDelegate.m in Sources */,
+				39476D781B8340A200ADA56D /* FarseerTableViewController.m in Sources */,
+				39476D551B83405400ADA56D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39476D641B83405400ADA56D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39476D6F1B83405400ADA56D /* Farseer_iOS_FeatureTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		397F5BD91ABA5D4100720D32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1219,6 +1404,7 @@
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
 				396578901ACCDAB800CEA918 /* DirViewController.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
+				39E36AD31B8C18D80026B841 /* FilePreviewViewController.m in Sources */,
 				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
 				394CDCAA1AD0131F002DB63B /* DocumentTableViewController.m in Sources */,
 				394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */,
@@ -1265,6 +1451,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		39476D6A1B83405400ADA56D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39476D4F1B83405400ADA56D /* Farseer_iOS_Feature */;
+			targetProxy = 39476D691B83405400ADA56D /* PBXContainerItemProxy */;
+		};
 		397F5BF41ABA5D4100720D32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */;
@@ -1288,10 +1479,35 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		390D750A1B2594890048541D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				390D75091B2594890048541D /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		39476D5C1B83405400ADA56D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39476D5D1B83405400ADA56D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		39476D611B83405400ADA56D /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39476D621B83405400ADA56D /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
 		398DDFDA1A80C63D0019BB12 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				398DDFDB1A80C63D0019BB12 /* Base */,
+				390D75031B25910C0048541D /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1324,7 +1540,7 @@
 				);
 				INFOPLIST_FILE = Farseer_iOS/Info_iOS.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1349,7 +1565,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Farseer_iOS/Info_iOS.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3505de9a-df14-4ad1-8f65-592b0e5ce79a";
@@ -1357,6 +1573,80 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		39476D701B83405400ADA56D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Farseer_iOS_Feature/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		39476D711B83405400ADA56D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Farseer_iOS_Feature/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		39476D721B83405400ADA56D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Farseer_iOS_FeatureTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Farseer_iOS_Feature.app/Farseer_iOS_Feature";
+			};
+			name = Debug;
+		};
+		39476D731B83405400ADA56D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Farseer_iOS_FeatureTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Farseer_iOS_Feature.app/Farseer_iOS_Feature";
 			};
 			name = Release;
 		};
@@ -1629,6 +1919,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = SLFarseer;
@@ -1647,6 +1938,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
 				COPY_PHASE_STRIP = YES;
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = SLFarseer;
@@ -1706,7 +1998,7 @@
 				);
 				INFOPLIST_FILE = Farseer_Remote_iOS/Info_iOS.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1729,7 +2021,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Farseer_Remote_iOS/Info_iOS.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1748,6 +2040,24 @@
 			buildConfigurations = (
 				39193C451AB9969800617804 /* Debug */,
 				39193C461AB9969800617804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39476D741B83405400ADA56D /* Build configuration list for PBXNativeTarget "Farseer_iOS_Feature" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39476D701B83405400ADA56D /* Debug */,
+				39476D711B83405400ADA56D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39476D751B83405400ADA56D /* Build configuration list for PBXNativeTarget "Farseer_iOS_FeatureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39476D721B83405400ADA56D /* Debug */,
+				39476D731B83405400ADA56D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -101,7 +101,7 @@ static FSBLECentralService *service = nil;
     [service writeValue:reqSendBoxInfoData toCharacteristic:service->_writeCMDCharacteristic];
 }
 
-+ (void)getSandBoxFileWithPath:(NSString *)path {
++ (void)getSandBoxFileWithPath:(NSString *)path callback:(void(^)(float progress, id object))callback {
     NSData *reqSandBoxFileData = [FSBLEUtilities getReqSendBoxFileWithData:[FSBLEUtilities getDataWithPkgString:path]];
     [service writeValue:reqSandBoxFileData toCharacteristic:service->_writeDataCharacteristic];
 }
@@ -139,7 +139,7 @@ static FSBLECentralService *service = nil;
 
 - (void)writeValue:(NSData *)value toCharacteristic:(CBCharacteristic *)characteristic {
     if (characteristic) {
-//        NSLog(@"C SEND: %@", value);
+        NSLog(@"C SEND: %@", value);
         [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
     }
 }
@@ -177,7 +177,7 @@ static FSBLECentralService *service = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     
-//    NSLog(@"C RECV: %@", characteristic.value);
+    NSLog(@"C RECV: %@", characteristic.value);
     struct PKG_HEADER header;
     [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
     

@@ -26,10 +26,14 @@
     NSArray *_logs;
     
     ConfigurationFilterType _filterType;
+    NSDateFormatter *_dateFormatter;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    _dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     
     _filterType = ConfigurationFilterTypeAll;
     
@@ -66,6 +70,7 @@
                 break;
             default:
                 NSAssert(false, @"error type");
+                self.logTextView.string = @"";
                 break;
         }
         if (display) {
@@ -129,7 +134,7 @@
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSError *error;
     NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[_fileArray[row] path] error:&error];
-    return attributes[NSFileCreationDate];
+    return [_dateFormatter stringFromDate:attributes[NSFileCreationDate]];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
