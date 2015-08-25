@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F99D5BC0-B05C-443B-92B2-DD251B3BCA7A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>SLFarseer</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
-		<string>github.com:winterbesos/Farseer.git</string>
+		<string>ssh://116.233.27.132/Users/Salo/Repositories/Farseer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Farseer_Project/SLFarseer.xcodeproj</string>
+	<string>Farseer_Project/SLFarseer.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:winterbesos/Farseer.git</string>
+	<string>ssh://116.233.27.132/Users/Salo/Repositories/Farseer.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

@@ -19,6 +19,8 @@
 //    Byte logLevel = [packageIn readByte];
 //    NSString *content = [packageIn readString];
 //    [client recvSyncLogWithLogNumber:logNum logDate:logDate logLevel:logLevel content:content peripheral:peripheral];
+    // TODO: 重构
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"aa" object:packageIn.readData];
 }
 
 @end

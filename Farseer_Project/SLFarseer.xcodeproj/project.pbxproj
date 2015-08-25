@@ -150,6 +150,7 @@
 		39DF7D961ACC26B1008B52FC /* FSBLEReqSandBoxInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */; };
 		39DF7D9A1ACC2A94008B52FC /* FSBLEResSandInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D981ACC29AE008B52FC /* FSBLEResSandInfoPacker.m */; };
 		39DF7D9B1ACC2A96008B52FC /* FSBLEResSandInfoPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DF7D981ACC29AE008B52FC /* FSBLEResSandInfoPacker.m */; };
+		39E36AD31B8C18D80026B841 /* FilePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E36AD21B8C18D80026B841 /* FilePreviewViewController.m */; };
 		39F48AED1AFEEB7000312AA2 /* Farseer_Remote_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; };
 		39F48AEE1AFEEB7000312AA2 /* Farseer_Remote_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39FD81251B04D0D500B4ABCD /* Farseer.swift in Headers */ = {isa = PBXBuildFile; fileRef = 39CCD1E61ACABCD1009A618D /* Farseer.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -368,6 +369,8 @@
 		39DF7D931ACC2474008B52FC /* FSBLEReqSandBoxInfoPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEReqSandBoxInfoPacker.m; sourceTree = "<group>"; };
 		39DF7D971ACC29AE008B52FC /* FSBLEResSandInfoPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEResSandInfoPacker.h; sourceTree = "<group>"; };
 		39DF7D981ACC29AE008B52FC /* FSBLEResSandInfoPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBLEResSandInfoPacker.m; sourceTree = "<group>"; };
+		39E36AD11B8C18D80026B841 /* FilePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePreviewViewController.h; sourceTree = "<group>"; };
+		39E36AD21B8C18D80026B841 /* FilePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePreviewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -742,6 +745,8 @@
 				394CDCA91AD0131F002DB63B /* DocumentTableViewController.m */,
 				39A617081AA841780058574E /* DirViewController.h */,
 				39A617091AA841780058574E /* DirViewController.m */,
+				39E36AD11B8C18D80026B841 /* FilePreviewViewController.h */,
+				39E36AD21B8C18D80026B841 /* FilePreviewViewController.m */,
 			);
 			name = Document;
 			sourceTree = "<group>";
@@ -1399,6 +1404,7 @@
 				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
 				396578901ACCDAB800CEA918 /* DirViewController.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
+				39E36AD31B8C18D80026B841 /* FilePreviewViewController.m in Sources */,
 				39C6F5DE1ACBEA9A003E4C36 /* LogExplorerViewController.m in Sources */,
 				394CDCAA1AD0131F002DB63B /* DocumentTableViewController.m in Sources */,
 				394CDCA31ACFCFA4002DB63B /* PeripheralTableViewCell.m in Sources */,
@@ -2044,6 +2050,7 @@
 				39476D711B83405400ADA56D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39476D751B83405400ADA56D /* Build configuration list for PBXNativeTarget "Farseer_iOS_FeatureTests" */ = {
 			isa = XCConfigurationList;
@@ -2052,6 +2059,7 @@
 				39476D731B83405400ADA56D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		397F5BFA1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_Mac" */ = {
 			isa = XCConfigurationList;
