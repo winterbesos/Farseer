@@ -998,7 +998,7 @@
 					};
 					39D0350C1AB9A4A600132F0F = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = DXZA325EJP;
+						DevelopmentTeam = S9SRRYER9Y;
 					};
 				};
 			};
@@ -1719,7 +1719,7 @@
 		39D035281AB9A4A700132F0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
