@@ -25,12 +25,13 @@
 }
 
 - (void)pushReceiveData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral {
-    struct PKG_HEADER pkg_header;
+//    static struct PKG_HEADER *lastHeader = NULL;
     
+    struct PKG_HEADER pkg_header;
     NSUInteger headerLen = sizeof(struct PKG_HEADER);
     [data getBytes:&pkg_header length:headerLen];
-    NSData *contentData = [data subdataWithRange:NSMakeRange(headerLen, data.length - headerLen)];
     
+    NSData *contentData = [data subdataWithRange:NSMakeRange(headerLen, data.length - headerLen)];
     [_packageLoop appendData:contentData];
     
     if (pkg_header.currentPackage == pkg_header.totalPackage) {
