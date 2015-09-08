@@ -31,6 +31,30 @@
     return kLifeCircleLogPath;
 }
 
+- (void)cleanLogBeforeDate:(NSDate *)date {
+    NSError *error = nil;
+    NSString *logPath = [FSUtilities FS_LogPath];
+    NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:logPath error:&error];
+    if (error) {
+        return;
+    }
+    
+    for (NSString *fileName in contents) {
+        NSString *filePath = [logPath stringByAppendingPathComponent:fileName];
+        NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:&error];
+        if (error) {
+            return;
+        }
+        NSDate *fileDate = attributes[NSFileCreationDate];
+        if ([fileDate earlierDate:date] == fileDate) {
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+            if (error) {
+                return;
+            }
+        }
+    }
+}
+
 - (void)inputLog:(FSBLELog *)log {
     [self FS_CreateLogFileIfNeed];
     

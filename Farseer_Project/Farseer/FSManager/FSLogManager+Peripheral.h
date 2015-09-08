@@ -12,6 +12,7 @@
 
 @interface FSLogManager (Peripheral)
 
+- (void)cleanLogBeforeDate:(NSDate *)date;
 - (void)inputLog:(FSBLELog *)log;
 
 - (NSArray *)logList;

@@ -75,6 +75,10 @@ void openBLEDebug(void(^callback)(NSError *error)) {
     [FSDebugCentral openBLEDebug:callback];
 }
 
+void cleanLogBefore(NSDate *date) {
+    [[FSDebugCentral getInstance].logManager cleanLogBeforeDate:date];
+}
+
 // TODO: doing
 
 #include <objc/runtime.h>
