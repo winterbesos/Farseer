@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3903272B1BCD387D006375FB /* FSPackageDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 390327251BCD33D1006375FB /* FSPackageDecoderTests.m */; settings = {ASSET_TAGS = (); }; };
+		390327611BCD446B006375FB /* Farseer_Remote_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */; };
 		390D75081B2594890048541D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D750A1B2594890048541D /* Main.storyboard */; };
 		390D750C1B2594B00048541D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 390D750B1B2594B00048541D /* InfoPlist.strings */; };
 		3922D1991B0AD612006E210C /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922D1981B0AD612006E210C /* ConfigurationViewController.m */; };
@@ -169,6 +171,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3903275B1BCD427E006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39D0350C1AB9A4A600132F0F;
+			remoteInfo = Farseer_Remote_iOS;
+		};
 		39476D691B83405400ADA56D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
@@ -182,13 +191,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 397F5BDC1ABA5D4100720D32;
 			remoteInfo = SLFarseer_Mac;
-		};
-		398DDFE71A80C63D0019BB12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 398DDFC91A80C63D0019BB12;
-			remoteInfo = SLFarseer_iOS;
 		};
 		399271331B9EF9BB00FE1E01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -250,6 +252,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		390327251BCD33D1006375FB /* FSPackageDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPackageDecoderTests.m; sourceTree = "<group>"; };
 		390D75031B25910C0048541D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		390D75091B2594890048541D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		390D750B1B2594B00048541D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -484,6 +487,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				390327611BCD446B006375FB /* Farseer_Remote_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +906,7 @@
 			isa = PBXGroup;
 			children = (
 				398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */,
+				390327251BCD33D1006375FB /* FSPackageDecoderTests.m */,
 				398DDFEA1A80C63D0019BB12 /* Supporting Files */,
 			);
 			path = SLFarseer_iOSTests;
@@ -1198,7 +1203,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				398DDFE81A80C63D0019BB12 /* PBXTargetDependency */,
+				3903275C1BCD427E006375FB /* PBXTargetDependency */,
 			);
 			name = SLFarseerTests_iOS;
 			productName = SLFarseer_iOSTests;
@@ -1603,6 +1608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3903272B1BCD387D006375FB /* FSPackageDecoderTests.m in Sources */,
 				398DDFED1A80C63D0019BB12 /* SLFarseer_iOSTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1655,6 +1661,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3903275C1BCD427E006375FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39D0350C1AB9A4A600132F0F /* Farseer_Remote_iOS */;
+			targetProxy = 3903275B1BCD427E006375FB /* PBXContainerItemProxy */;
+		};
 		39476D6A1B83405400ADA56D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 39476D4F1B83405400ADA56D /* Farseer_iOS_Feature */;
@@ -1664,11 +1675,6 @@
 			isa = PBXTargetDependency;
 			target = 397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */;
 			targetProxy = 397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */;
-		};
-		398DDFE81A80C63D0019BB12 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */;
-			targetProxy = 398DDFE71A80C63D0019BB12 /* PBXContainerItemProxy */;
 		};
 		399271341B9EF9BB00FE1E01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2177,7 +2183,6 @@
 		398DDFF41A80C63D0019BB12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2197,7 +2202,6 @@
 		398DDFF51A80C63D0019BB12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2293,6 +2297,7 @@
 		39D035271AB9A4A700132F0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -2320,6 +2325,7 @@
 		39D035281AB9A4A700132F0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;

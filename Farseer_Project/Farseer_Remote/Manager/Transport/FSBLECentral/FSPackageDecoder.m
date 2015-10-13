@@ -33,7 +33,9 @@
     // exception judge
     if ((_lastHeader == NULL && pkg_header.currentPackage != 0) // the first pkg verify
         ||
-        (_lastHeader != NULL && (pkg_header.currentPackage != _lastHeader->currentPackage + 1))) { // not the first pkg verify
+        (_lastHeader != NULL && (pkg_header.currentPackage != _lastHeader->currentPackage + 1)) // not the first pkg verify
+        ||
+        (_lastHeader != NULL && (_lastHeader->currentPackage == pow(2, sizeof(pkg_header.currentPackage) * 4)))) {
         [self clearCache];
         return;
     }
