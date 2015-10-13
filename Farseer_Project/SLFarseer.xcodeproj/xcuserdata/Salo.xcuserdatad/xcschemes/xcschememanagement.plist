@@ -29,7 +29,7 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>Farseer_iOS.xcscheme</key>
+		<key>Farseer_iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -39,12 +39,12 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>SLFarseer_Mac.xcscheme_^#shared#^_</key>
+		<key>SLFarseer_Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>SLFarseer_iOS.xcscheme_^#shared#^_</key>
+		<key>SLFarseer_iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
