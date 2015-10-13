@@ -1265,6 +1265,7 @@
 		398DDFC21A80C63D0019BB12 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Qeekers;
 				TargetAttributes = {
@@ -2416,6 +2417,7 @@
 				399271191B9EF94C00FE1E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39B14DCC1B9D89B1007FBEBA /* Build configuration list for PBXNativeTarget "Farseer-Plugin" */ = {
 			isa = XCConfigurationList;
