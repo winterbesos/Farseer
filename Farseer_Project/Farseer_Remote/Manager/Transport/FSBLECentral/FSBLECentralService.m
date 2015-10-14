@@ -28,6 +28,7 @@ static FSBLECentralService *service = nil;
     void(^didDisconveredCallback)(CBPeripheral *peripheral, NSNumber *RSSI);
     void(^connectionStatusChangedCallback)(CBPeripheral *peripheral);
     void(^stateChangedCallback)(CBCentralManagerState state);
+    void(^transmitFileCallback)(float progress, id object);
     
     CBPeripheral        *_peripheral;
     FSPackageDecoder    *_packageDecoder;
@@ -88,8 +89,8 @@ static FSBLECentralService *service = nil;
 + (void)makePeripheralCrash {
     struct PKG_HEADER header;
     header.cmd = CMDReqMakeCrash;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
+    header.currentPackageNumber = 1;
+    header.lastPackageNumber = 1;
     header.sequId = 0;
     NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
     
@@ -102,6 +103,10 @@ static FSBLECentralService *service = nil;
 }
 
 + (void)getSandBoxFileWithPath:(NSString *)path callback:(void(^)(float progress, id object))callback {
+    if (service->transmitFileCallback) {
+        return;
+    }
+    service->transmitFileCallback = callback;
     NSData *reqSandBoxFileData = [FSBLEUtilities getReqSendBoxFileWithData:[FSBLEUtilities getDataWithPkgString:path]];
     [service writeValue:reqSandBoxFileData toCharacteristic:service->_writeDataCharacteristic];
 }
@@ -139,7 +144,7 @@ static FSBLECentralService *service = nil;
 
 - (void)writeValue:(NSData *)value toCharacteristic:(CBCharacteristic *)characteristic {
     if (characteristic) {
-        NSLog(@"C SEND: %@", value);
+//        NSLog(@"C SEND: %@", value);
         [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
     }
 }
@@ -149,6 +154,18 @@ static FSBLECentralService *service = nil;
 - (void)packageDecoder:(FSPackageDecoder *)packageDecoder didDecodePackageData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral cmd:(CMD)cmd {
     FSPackageIn *packageIn = [FSPackageIn decode:data];
     [[FSBLECentralPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
+    if (cmd == CMDResData) {
+        transmitFileCallback(1, data);
+        transmitFileCallback = nil;
+    }
+}
+
+- (void)packageDecoder:(FSPackageDecoder *)packageDecoder didDecodePackageDataProgress:(float)progress fromPeripheral:(CBPeripheral *)peripheral cmd:(CMD)cmd {
+    if (cmd == CMDResData) {
+        if (transmitFileCallback) {
+            transmitFileCallback(progress, nil);
+        }
+    }
 }
 
 #pragma mark - CBPeripheral Delegate
@@ -177,14 +194,15 @@ static FSBLECentralService *service = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 //    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
     
-    NSLog(@"C RECV: %@", characteristic.value);
+//    NSLog(@"C RECV: %@", characteristic.value);
     struct PKG_HEADER header;
     [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
     
-    if (header.cmd != CMDCPInit) {
-        [self writeACKWithHeader:header];
+    if ([_packageDecoder pushReceiveData:characteristic.value fromPeripheral:peripheral]) {
+        if (header.cmd != CMDCPInit) {
+            [self writeACKWithHeader:header];
+        }
     }
-    [_packageDecoder pushReceiveData:characteristic.value fromPeripheral:peripheral];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {

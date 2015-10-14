@@ -26,17 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:@"aa" object:nil];
-    
     self.fileNameLabel.text = _name;
     self.fileSizeLabel.text = _size;
-}
-
-- (void)didReceiveData:(NSNotification *)notif {
-    UIImage *image = [UIImage imageWithData:notif.object scale:[UIScreen mainScreen].scale];
-    self.imageView.image = image;
-    
-    self.imageView.frame = CGRectMake(100, 120, image.size.width, image.size.height);
 }
 
 #pragma mark - Public Method

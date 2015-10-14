@@ -23,14 +23,15 @@ typedef NS_ENUM(Byte, CMD) {
     
     CMDReqMakeCrash         = 0xc7,
     
+    CMDCancel               = 0xFC,
     CMDAck                  = 0xFF,
 };
 
 struct PKG_HEADER {
     Byte cmd;
-    Byte sequId;
-    Byte totalPackage;
-    Byte currentPackage;
+    UInt32 sequId;
+    UInt16 lastPackageNumber;
+    UInt16 currentPackageNumber;
 };
 
 struct LOG_HEADER {

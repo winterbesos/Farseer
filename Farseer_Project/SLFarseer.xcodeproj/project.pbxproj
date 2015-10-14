@@ -178,6 +178,48 @@
 			remoteGlobalIDString = 39D0350C1AB9A4A600132F0F;
 			remoteInfo = Farseer_Remote_iOS;
 		};
+		390327E81BCE2B6D006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0A814632FD000B04273;
+			remoteInfo = OCMock;
+		};
+		390327EA1BCE2B6D006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03565A3118F0566E003AE91E;
+			remoteInfo = OCMockTests;
+		};
+		390327EC1BCE2B6D006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
+		390327EE1BCE2B6D006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D31108AD1828DB8700737925;
+			remoteInfo = OCMockLibTests;
+		};
+		390327F01BCE2B6D006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F0B950F11B0080BE00942C38;
+			remoteInfo = "OCMock iOS";
+		};
+		390327F21BCE2B7C006375FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F0B950F01B0080BE00942C38;
+			remoteInfo = "OCMock iOS";
+		};
 		39476D691B83405400ADA56D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
@@ -253,6 +295,7 @@
 
 /* Begin PBXFileReference section */
 		390327251BCD33D1006375FB /* FSPackageDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPackageDecoderTests.m; sourceTree = "<group>"; };
+		390327E01BCE2B6D006375FB /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ../../ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		390D75031B25910C0048541D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		390D75091B2594890048541D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		390D750B1B2594B00048541D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -518,6 +561,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		390327E11BCE2B6D006375FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				390327E91BCE2B6D006375FB /* OCMock.framework */,
+				390327EB1BCE2B6D006375FB /* OCMockTests.xctest */,
+				390327ED1BCE2B6D006375FB /* libOCMock.a */,
+				390327EF1BCE2B6D006375FB /* OCMockLibTests.xctest */,
+				390327F11BCE2B6D006375FB /* OCMock.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		39193C2D1AB9969800617804 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +960,7 @@
 		398DDFE91A80C63D0019BB12 /* SLFarseer_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				390327E01BCE2B6D006375FB /* OCMock.xcodeproj */,
 				398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */,
 				390327251BCD33D1006375FB /* FSPackageDecoderTests.m */,
 				398DDFEA1A80C63D0019BB12 /* Supporting Files */,
@@ -1203,6 +1259,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				390327F31BCE2B7C006375FB /* PBXTargetDependency */,
 				3903275C1BCD427E006375FB /* PBXTargetDependency */,
 			);
 			name = SLFarseerTests_iOS;
@@ -1300,7 +1357,7 @@
 					};
 					398DDFC91A80C63D0019BB12 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = S9SRRYER9Y;
+						DevelopmentTeam = 7BF4G2Q8M6;
 					};
 					398DDFE51A80C63D0019BB12 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1314,7 +1371,7 @@
 					};
 					39D0350C1AB9A4A600132F0F = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = S9SRRYER9Y;
+						DevelopmentTeam = 7BF4G2Q8M6;
 					};
 				};
 			};
@@ -1329,6 +1386,12 @@
 			mainGroup = 398DDFC11A80C63D0019BB12;
 			productRefGroup = 398DDFCB1A80C63D0019BB12 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 390327E11BCE2B6D006375FB /* Products */;
+					ProjectRef = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */,
@@ -1346,6 +1409,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		390327E91BCE2B6D006375FB /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = 390327E81BCE2B6D006375FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		390327EB1BCE2B6D006375FB /* OCMockTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockTests.xctest;
+			remoteRef = 390327EA1BCE2B6D006375FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		390327ED1BCE2B6D006375FB /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = 390327EC1BCE2B6D006375FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		390327EF1BCE2B6D006375FB /* OCMockLibTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockLibTests.xctest;
+			remoteRef = 390327EE1BCE2B6D006375FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		390327F11BCE2B6D006375FB /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = 390327F01BCE2B6D006375FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		39193C291AB9969800617804 /* Resources */ = {
@@ -1665,6 +1766,11 @@
 			isa = PBXTargetDependency;
 			target = 39D0350C1AB9A4A600132F0F /* Farseer_Remote_iOS */;
 			targetProxy = 3903275B1BCD427E006375FB /* PBXContainerItemProxy */;
+		};
+		390327F31BCE2B7C006375FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OCMock iOS";
+			targetProxy = 390327F21BCE2B7C006375FB /* PBXContainerItemProxy */;
 		};
 		39476D6A1B83405400ADA56D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2146,15 +2252,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: winterbesos@icloud.com (SKBX3ELZA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: winterbesos@icloud.com (SKBX3ELZA3)";
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_BUNDLE_IDENTIFIER = com.eitdesign.farseer;
+				PRODUCT_BUNDLE_IDENTIFIER = so.salo.universal;
 				PRODUCT_NAME = SLFarseer;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "60537cb3-1c40-49d0-9b27-08af0087dd04";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2165,16 +2271,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Eitdesign Information Technology Co., Ltd (S9SRRYER9Y)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				INFOPLIST_FILE = SLFarseer_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_BUNDLE_IDENTIFIER = com.eitdesign.farseer;
+				PRODUCT_BUNDLE_IDENTIFIER = so.salo.universal;
 				PRODUCT_NAME = SLFarseer;
-				PROVISIONING_PROFILE = "7ea6a4e1-6b48-4484-b3f8-5aa2ec055d7c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_iOS/SLFarseer_iOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

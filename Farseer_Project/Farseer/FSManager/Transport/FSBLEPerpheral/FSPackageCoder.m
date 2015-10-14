@@ -10,7 +10,7 @@
 #import "FSBLEDefine.h"
 #import <objc/runtime.h>
 
-#define MAX_PACKAGE_LENGTH 100
+#define MAX_PACKAGE_LENGTH 130 
 
 static char characteristicAssociatedHandle;
 
@@ -33,6 +33,14 @@ static char characteristicAssociatedHandle;
     
     NSMutableArray *pkgs = [NSMutableArray array];
     NSUInteger pkgCount = data.length / MAX_PACKAGE_LENGTH + (data.length % MAX_PACKAGE_LENGTH == 0 ? 0 : 1);
+   
+    static struct PKG_HEADER egHeader;
+    int max = ((typeof(egHeader.currentPackageNumber))-1);
+    if (pkgCount > max) {
+        NSLog(@"too larg package beyond the max limit");
+        return;
+    }
+    
     for (int index = 0; index < pkgCount; index++) {
         NSUInteger pkgLength;
         if (data.length > (index + 1) * MAX_PACKAGE_LENGTH) {
@@ -47,8 +55,8 @@ static char characteristicAssociatedHandle;
         struct PKG_HEADER pkg_header;
         pkg_header.cmd = cmd; // TODO: reserver value
         pkg_header.sequId = [self getSeqId];
-        pkg_header.totalPackage = pkgCount;
-        pkg_header.currentPackage = index + 1;
+        pkg_header.lastPackageNumber = pkgCount - 1;
+        pkg_header.currentPackageNumber = index;
         NSMutableData *pkgData = [NSMutableData dataWithBytes:&pkg_header length:sizeof(struct PKG_HEADER)];
         [pkgData appendData:originPkgData];
         

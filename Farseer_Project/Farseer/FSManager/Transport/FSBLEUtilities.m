@@ -56,8 +56,8 @@
     
     struct PKG_HEADER header;
     header.cmd = CMDCPInit;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
+    header.currentPackageNumber = 0;
+    header.lastPackageNumber = 0;
     header.sequId = 0;
     
     NSMutableData *infoData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
@@ -83,8 +83,8 @@
 + (NSData *)getReqSendBoxFileWithData:(NSData *)data {
     struct PKG_HEADER header;
     header.cmd = CMDReqData;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
+    header.currentPackageNumber = 1;
+    header.lastPackageNumber = 1;
     header.sequId = 0;
     
     NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
@@ -95,8 +95,8 @@
 + (NSData *)getReqSendBoxInfoWithData:(NSData *)data {
     struct PKG_HEADER header;
     header.cmd = CMDReqSandBoxInfo;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
+    header.currentPackageNumber = 1;
+    header.lastPackageNumber = 1;
     header.sequId = 0;
     
     NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
@@ -107,8 +107,8 @@
 + (NSData *)getReqLogWithNumber:(UInt32)number {
     struct PKG_HEADER header;
     header.cmd = CMDReqLogging;
-    header.currentPackage = 1;
-    header.totalPackage = 1;
+    header.currentPackageNumber = 1;
+    header.lastPackageNumber = 1;
     header.sequId = 0;
     
     NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];

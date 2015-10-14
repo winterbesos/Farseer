@@ -17,7 +17,7 @@
 #import "FSPackageCoder.h"
 #import <objc/runtime.h>
 
-#define MAX_PACKAGE_SIZE 100
+#define MAX_PACKAGE_SIZE 130
 
 static FSBLEPeripheralService *kBLEService = nil;
 
@@ -193,6 +193,10 @@ static FSBLEPeripheralService *kBLEService = nil;
             switch (header.cmd) {
                 case CMDAck:
                     [_packageCoder removeSendedPackage];
+                    [self runSendLoop];
+                    break;
+                case CMDCancel:
+                    _packageCoder clearCache];
                     [self runSendLoop];
                     break;
                 default: {

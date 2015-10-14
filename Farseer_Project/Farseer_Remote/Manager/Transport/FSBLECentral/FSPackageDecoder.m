@@ -24,31 +24,47 @@
     return self;
 }
 
-- (void)pushReceiveData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral {
+- (BOOL)pushReceiveData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral {
     // parse data
     struct PKG_HEADER pkg_header;
     NSUInteger headerLen = sizeof(struct PKG_HEADER);
     [data getBytes:&pkg_header length:headerLen];
     
     // exception judge
-    if ((_lastHeader == NULL && pkg_header.currentPackage != 0) // the first pkg verify
+    if ((_lastHeader == NULL && pkg_header.currentPackageNumber != 0) // the first pkg verify
         ||
-        (_lastHeader != NULL && (pkg_header.currentPackage != _lastHeader->currentPackage + 1)) // not the first pkg verify
+        (_lastHeader != NULL && (pkg_header.currentPackageNumber != _lastHeader->currentPackageNumber + 1)) // not the first pkg verify
         ||
-        (_lastHeader != NULL && (_lastHeader->currentPackage == pow(2, sizeof(pkg_header.currentPackage) * 4)))) {
+        (_lastHeader != NULL && pkg_header.cmd != _lastHeader->cmd) // not equal cmd
+        ||
+        (_lastHeader != NULL && pkg_header.sequId != _lastHeader->sequId + 1) // seq not countinuous
+        ) {
+        if (_lastHeader) {
+            NSLog(@"exception last package: %@ >> current package: %@", NSStringFromPKG_Header(_lastHeader), NSStringFromPKG_Header(&pkg_header));
+        } else {
+            NSLog(@"exception first package: %@", NSStringFromPKG_Header(&pkg_header));
+        }
         [self clearCache];
-        return;
+        return NO;
     }
-    _lastHeader = &pkg_header;
+    
+    [_delegate packageDecoder:self didDecodePackageDataProgress:(pkg_header.currentPackageNumber / (float)pkg_header.lastPackageNumber) fromPeripheral:peripheral cmd:pkg_header.cmd];
+#if DEBUG
+    NSLog(@"progress: %hu/%hu", pkg_header.currentPackageNumber, pkg_header.lastPackageNumber);
+#endif
+    
+    _lastHeader = (struct PKG_HEADER *)malloc(sizeof(struct PKG_HEADER));
+    memcpy(_lastHeader, &pkg_header, sizeof(struct PKG_HEADER));
     
     // normal
     NSData *contentData = [data subdataWithRange:NSMakeRange(headerLen, data.length - headerLen)];
     [_packageLoop appendData:contentData];
     
-    if (pkg_header.currentPackage == pkg_header.totalPackage) {
+    if (pkg_header.currentPackageNumber == pkg_header.lastPackageNumber) {
         [_delegate packageDecoder:self didDecodePackageData:_packageLoop fromPeripheral:peripheral cmd:pkg_header.cmd];
         [self clearCache];
     }
+    return YES;
 }
 
 - (void)clearCache {
@@ -56,6 +72,11 @@
         _packageLoop = [NSMutableData data];
     }
     _lastHeader = NULL;
+}
+
+
+NSString * NSStringFromPKG_Header(struct PKG_HEADER *header) {
+    return [NSString stringWithFormat:@"CMD: %X SeqId: %X current: %X last: %X", header->cmd, header->sequId, header->currentPackageNumber, header->lastPackageNumber];
 }
 
 @end

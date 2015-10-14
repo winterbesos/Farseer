@@ -315,7 +315,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" id="Kzd-Ch-r8U">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8g0-Kc-kIi">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <rect key="frame" x="20" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <state key="normal" title="Document">
@@ -328,7 +328,7 @@
                             </button>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="Wxr-Cd-UAo">
-                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
+                            <rect key="frame" x="180" y="6" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titlelogo" translatesAutoresizingMaskIntoConstraints="NO" id="aUH-fP-hTV">
@@ -345,7 +345,7 @@
                         </view>
                         <barButtonItem key="rightBarButtonItem" id="B91-6d-juh">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T1I-ml-4Ar">
-                                <rect key="frame" x="466" y="187" width="40" height="30"/>
+                                <rect key="frame" x="540" y="7" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <state key="normal" title="Log &gt;">
@@ -453,13 +453,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="287Byte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccK-3T-Z5f">
-                                <rect key="frame" x="120" y="569" width="54" height="17"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ok3-HR-2Re">
                                 <rect key="frame" x="16" y="559" width="568" height="2"/>
                                 <animations/>
@@ -468,11 +461,18 @@
                                 <rect key="frame" x="16" y="93" width="568" height="458"/>
                                 <animations/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="287Byte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccK-3T-Z5f">
+                                <rect key="frame" x="529" y="569" width="55" height="17"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ccK-3T-Z5f" firstAttribute="leading" secondItem="gUm-cW-F3a" secondAttribute="trailing" constant="14.5" id="2v0-LD-FsB"/>
+                            <constraint firstItem="ccK-3T-Z5f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gUm-cW-F3a" secondAttribute="trailing" constant="14.5" id="2v0-LD-FsB"/>
                             <constraint firstItem="Ok3-HR-2Re" firstAttribute="leading" secondItem="xcF-BP-Iwk" secondAttribute="leadingMargin" id="98q-Bc-gQP"/>
                             <constraint firstItem="ccK-3T-Z5f" firstAttribute="centerY" secondItem="gUm-cW-F3a" secondAttribute="centerY" id="HNE-EJ-qRL"/>
                             <constraint firstItem="rvv-Iz-ssG" firstAttribute="top" secondItem="HBP-8h-IYI" secondAttribute="bottom" constant="29" id="N09-L2-29j"/>
@@ -481,6 +481,7 @@
                             <constraint firstItem="N5b-NL-XRg" firstAttribute="top" secondItem="rvv-Iz-ssG" secondAttribute="bottom" constant="49" id="Z9O-8O-yPK"/>
                             <constraint firstItem="Ok3-HR-2Re" firstAttribute="top" secondItem="rvv-Iz-ssG" secondAttribute="bottom" constant="8" id="aLh-Il-0zD"/>
                             <constraint firstItem="rvv-Iz-ssG" firstAttribute="leading" secondItem="xcF-BP-Iwk" secondAttribute="leadingMargin" id="avT-4p-891"/>
+                            <constraint firstAttribute="trailing" secondItem="ccK-3T-Z5f" secondAttribute="trailing" constant="16" id="gfd-Wo-X5a"/>
                             <constraint firstItem="gUm-cW-F3a" firstAttribute="leading" secondItem="xcF-BP-Iwk" secondAttribute="leadingMargin" id="kL0-ji-CpS"/>
                             <constraint firstItem="gUm-cW-F3a" firstAttribute="top" secondItem="rvv-Iz-ssG" secondAttribute="bottom" constant="18" id="ndl-A9-XL0"/>
                         </constraints>

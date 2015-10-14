@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "81E1390765E1C30640CE099E674188AB815B761E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : 0,
+    "81E1390765E1C30640CE099E674188AB815B761E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F99D5BC0-B05C-443B-92B2-DD251B3BCA7A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : "Farseer\/ocmock\/",
+    "81E1390765E1C30640CE099E674188AB815B761E" : "Farseer"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SLFarseer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Farseer_Project\/SLFarseer.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/101.86.233.240\/Users\/Salo\/Repositories\/Farseer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "81E1390765E1C30640CE099E674188AB815B761E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erikdoe\/ocmock.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025"
+    }
+  ]
+}

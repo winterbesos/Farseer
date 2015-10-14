@@ -7,48 +7,148 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "FSPackageDecoder.h"
+#import "FSBLECentralService.h"
 
 @interface FSPackageDecoderTests : XCTestCase
 
 @end
 
-@implementation FSPackageDecoderTests
+@implementation FSPackageDecoderTests {
+    id _decoderMock;
+    id _decoderDelegateMock;
+}
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+  
+    id decoderDelegateMock = OCMClassMock([FSBLECentralService class]);
+    id decoder = [[FSPackageDecoder alloc] initWithDelegate:decoderDelegateMock];
+    OCMockObject *decoderMock = OCMPartialMock(decoder);
+    
+    _decoderDelegateMock = decoderDelegateMock;
+    _decoderMock = decoderMock;
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    _decoderMock = nil;
+    _decoderDelegateMock = nil;
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
-
-- (void)testDecoder {
-    FSPackageDecoder *decoder = [[FSPackageDecoder alloc] initWithDelegate:nil];
-
+- (void)testSimply {
     struct PKG_HEADER pkg_header;
     pkg_header.cmd = 1;
     pkg_header.sequId = 0;
-    pkg_header.currentPackage = 0;
-    pkg_header.totalPackage = 10;
+    pkg_header.currentPackageNumber = 0;
+    pkg_header.lastPackageNumber = 0;
     NSUInteger headerLen = sizeof(struct PKG_HEADER);
     NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    OCMVerify([_decoderDelegateMock packageDecoder:[OCMArg any] didDecodePackageData:[OCMArg any] fromPeripheral:[OCMArg any] cmd:1]);
+}
 
-    [decoder pushReceiveData:data fromPeripheral:nil];
+- (void)testDecoderExceptionPkgOverflow {
+    struct PKG_HEADER pkg_header;
+    pkg_header.sequId = -1;
+    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    int maxP1 = ((typeof(pkg_header.currentPackageNumber))-1);
+    for (int index = 0; index <= maxP1; index ++) {
+        pkg_header.cmd = 1;
+        pkg_header.sequId += 1;
+        pkg_header.currentPackageNumber = index;
+        pkg_header.lastPackageNumber = maxP1;
+        NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+        [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    }
+    
+    OCMVerify([_decoderMock clearCache]);
+    OCMVerify([_decoderDelegateMock packageDecoder:[OCMArg any] didDecodePackageData:[OCMArg any] fromPeripheral:[OCMArg any] cmd:1]);
+}
+
+- (void)testDecoderFirstPackageException {
+    struct PKG_HEADER pkg_header;
+    pkg_header.cmd = 1;
+    pkg_header.sequId = 0;
+    pkg_header.currentPackageNumber = 8; // verify first pkg
+    pkg_header.lastPackageNumber = 0;
+    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    OCMVerify([_decoderMock clearCache]);
+}
+
+- (void)testDecoderClearCache {
+    struct PKG_HEADER pkg_header;
+    pkg_header.cmd = 1;
+    pkg_header.sequId = 0;
+    pkg_header.currentPackageNumber = 0;
+    pkg_header.lastPackageNumber = 0;
+    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+}
+
+- (void)testDecoderReceivePackageSeqIdNotCountinuous {
+    struct PKG_HEADER pkg_header;
+    pkg_header.cmd = 1;
+    pkg_header.sequId = 0;
+    pkg_header.currentPackageNumber = 0;
+    pkg_header.lastPackageNumber = 5;
+    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    pkg_header.sequId = 2; // verify seq
+    pkg_header.currentPackageNumber = 1;
+    data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    OCMVerify([_decoderMock clearCache]);
+}
+
+- (void)testDecoderReceivePackageNotCountinuous {
+    struct PKG_HEADER pkg_header;
+    pkg_header.cmd = 1;
+    pkg_header.sequId = 0;
+    pkg_header.currentPackageNumber = 0;
+    pkg_header.lastPackageNumber = 5;
+    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    pkg_header.sequId = 1;
+    pkg_header.currentPackageNumber = 2;
+    data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    OCMVerify([_decoderMock clearCache]);
+}
+
+- (void)testCMDNotEqual {
+    struct PKG_HEADER pkg_header;
+    pkg_header.cmd = 1;
+    pkg_header.sequId = 0;
+    pkg_header.currentPackageNumber = 0;
+    pkg_header.lastPackageNumber = 5;
+    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    NSData *data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    pkg_header.cmd = 2;
+    pkg_header.sequId = 1;
+    pkg_header.currentPackageNumber = 1;
+    data = [NSData dataWithBytes:&pkg_header length:headerLen];
+    [_decoderMock pushReceiveData:data fromPeripheral:nil];
+    
+    OCMVerify([_decoderMock clearCache]);
+}
+
+- (void)testDecoderFirstPackageExceptionAfterClear {
+    [self testSimply];
+    [self testDecoderFirstPackageException];
 }
 
 @end
