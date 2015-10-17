@@ -10,8 +10,6 @@
 #import "FSBLEDefine.h"
 #import <objc/runtime.h>
 
-#define MAX_PACKAGE_LENGTH 130 
-
 static char characteristicAssociatedHandle;
 
 @implementation FSPackageCoder {

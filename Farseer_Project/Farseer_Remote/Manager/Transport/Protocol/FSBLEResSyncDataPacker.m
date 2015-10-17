@@ -14,12 +14,7 @@
 @implementation FSBLEResSyncDataPacker
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral {
-//    UInt32 logNum = [packageIn readUInt32];
-//    NSDate *logDate = [packageIn readDate];
-//    Byte logLevel = [packageIn readByte];
-//    NSString *content = [packageIn readString];
-//    [client recvSyncLogWithLogNumber:logNum logDate:logDate logLevel:logLevel content:content peripheral:peripheral];
-    // TODO: 重构
+    [client recvSandBoxFile:[packageIn readData]];
 }
 
 @end

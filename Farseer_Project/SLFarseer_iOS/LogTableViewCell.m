@@ -8,6 +8,7 @@
 
 #import "LogTableViewCell.h"
 #import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
+#import <FarseerBase_iOS/FSBLELog.h>
 
 #define MINOR_LOG_COLOR     [UIColor grayColor]
 #define LOG_LOG_COLOR       [UIColor greenColor]

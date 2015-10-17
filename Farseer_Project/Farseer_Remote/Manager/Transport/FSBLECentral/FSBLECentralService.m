@@ -8,7 +8,6 @@
 
 #import "FSBLECentralService.h"
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "FSPackageIn.h"
 #import "FSBLECentralPackerFactory.h"
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
@@ -16,19 +15,17 @@
 
 static FSBLECentralService *service = nil;
 
-@interface FSBLECentralService () <CBCentralManagerDelegate, CBPeripheralDelegate, FSPackageDecoderDelegate>
+@interface FSBLECentralService () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @end
 
 @implementation FSBLECentralService {
     CBCentralManager    *_manager;
-    id                  _client;
     NSTimer             *_bleConnectTimer;
     
     void(^didDisconveredCallback)(CBPeripheral *peripheral, NSNumber *RSSI);
     void(^connectionStatusChangedCallback)(CBPeripheral *peripheral);
     void(^stateChangedCallback)(CBCentralManagerState state);
-    void(^transmitFileCallback)(float progress, id object);
     
     CBPeripheral        *_peripheral;
     FSPackageDecoder    *_packageDecoder;
@@ -46,14 +43,12 @@ static FSBLECentralService *service = nil;
         service = [[FSBLECentralService alloc] init];
         service->stateChangedCallback = callback;
         service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
-        service->_client = [[FSCentralClient alloc] initWithDelegate:delegate];;
-        service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:service];
+        service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:delegate];
     }
 }
 
 + (void)uninstall {
     [service->_manager stopScan];
-    service->_client = nil;
     service->stateChangedCallback = nil;
     service->connectionStatusChangedCallback = nil;
     service->didDisconveredCallback = nil;
@@ -84,6 +79,10 @@ static FSBLECentralService *service = nil;
     }
 }
 
++ (void)writeToLogCharacteristicWithValue:(NSData *)value {
+    [service writeValue:value toCharacteristic:service->_writeLogCharacteristic];
+}
+
 #pragma mark -
 
 + (void)makePeripheralCrash {
@@ -102,18 +101,9 @@ static FSBLECentralService *service = nil;
     [service writeValue:reqSendBoxInfoData toCharacteristic:service->_writeCMDCharacteristic];
 }
 
-+ (void)getSandBoxFileWithPath:(NSString *)path callback:(void(^)(float progress, id object))callback {
-    if (service->transmitFileCallback) {
-        return;
-    }
-    service->transmitFileCallback = callback;
++ (void)getSandBoxFileWithPath:(NSString *)path {
     NSData *reqSandBoxFileData = [FSBLEUtilities getReqSendBoxFileWithData:[FSBLEUtilities getDataWithPkgString:path]];
     [service writeValue:reqSandBoxFileData toCharacteristic:service->_writeDataCharacteristic];
-}
-
-+ (void)requLogWithLogNumber:(UInt32)logNum {
-    NSData *reqLogData = [FSBLEUtilities getReqLogWithNumber:logNum];
-    [service writeValue:reqLogData toCharacteristic:service->_writeLogCharacteristic];
 }
 
 - (void)writeACKWithHeader:(struct PKG_HEADER)header {
@@ -146,25 +136,6 @@ static FSBLECentralService *service = nil;
     if (characteristic) {
 //        NSLog(@"C SEND: %@", value);
         [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
-    }
-}
-
-#pragma mark - Package Decoder Delegate
-
-- (void)packageDecoder:(FSPackageDecoder *)packageDecoder didDecodePackageData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral cmd:(CMD)cmd {
-    FSPackageIn *packageIn = [FSPackageIn decode:data];
-    [[FSBLECentralPackerFactory getObjectWithCMD:cmd] unpack:packageIn client:_client peripheral:peripheral];
-    if (cmd == CMDResData) {
-        transmitFileCallback(1, data);
-        transmitFileCallback = nil;
-    }
-}
-
-- (void)packageDecoder:(FSPackageDecoder *)packageDecoder didDecodePackageDataProgress:(float)progress fromPeripheral:(CBPeripheral *)peripheral cmd:(CMD)cmd {
-    if (cmd == CMDResData) {
-        if (transmitFileCallback) {
-            transmitFileCallback(progress, nil);
-        }
     }
 }
 

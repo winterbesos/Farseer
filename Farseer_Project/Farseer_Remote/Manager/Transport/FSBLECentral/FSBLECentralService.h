@@ -21,10 +21,7 @@
 + (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback;
 + (void)connectToPeripheral:(CBPeripheral *)peripheral;
 + (void)disconnectPeripheral:(CBPeripheral *)peripheral;
-+ (void)getSandBoxInfoWithPath:(NSString *)path;
-+ (void)getSandBoxFileWithPath:(NSString *)path callback:(void(^)(float progress, id object))callback;
 
-+ (void)requLogWithLogNumber:(UInt32)logNum;
-+ (void)makePeripheralCrash;
++ (void)writeToLogCharacteristicWithValue:(NSData *)value;
 
 @end

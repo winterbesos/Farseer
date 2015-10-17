@@ -1,20 +1,22 @@
 //
-//  FSLogManager.h
-//  SLFarseer
+//  FSLogManager+Peripheral.h
+//  SLFarseer_iOS
 //
-//  Created by Go Salo on 1/16/15.
-//  Copyright (c) 2015 Qeekers. All rights reserved.
+//  Created by Go Salo on 15/3/18.
+//  Copyright (c) 2015年 Eitdesign. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @class FSBLELog;
-@class CBPeripheral;
 
-@interface FSLogManager : NSObject {
-    NSString         *kLifeCircleLogPath; // 当前生命周期log文件路径
-    dispatch_queue_t logFileOperationQueue;
-    NSMutableArray   *cacheLogs;
-}
+@interface FSLogManager: NSObject
+
+- (void)cleanLogBeforeDate:(NSDate *)date;
+- (void)inputLog:(FSBLELog *)log;
+
+- (NSArray *)logList;
+- (void)uninstallLogFile;
+- (BOOL)installLogFile;
 
 @end

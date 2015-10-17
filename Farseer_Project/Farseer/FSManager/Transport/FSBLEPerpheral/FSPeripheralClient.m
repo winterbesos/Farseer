@@ -8,7 +8,7 @@
 
 #import "FSPeripheralClient.h"
 #import "FSBLEPeripheralService.h"
-#import "FSLogManager+Peripheral.h"
+#import "FSLogManager.h"
 #import "FSBLEUtilities.h"
 #import "FSBLELog.h"
 #import "FSDebugCentral.h"

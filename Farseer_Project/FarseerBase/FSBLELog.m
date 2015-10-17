@@ -15,7 +15,7 @@ static UInt32 logNumber = 0;
 
 + (FSBLELog *)logWithNumber:(UInt32)number date:(NSDate *)date level:(Byte)level content:(NSString *)content file:(NSString *)file function:(NSString *)function line:(UInt32)line {
     FSBLELog *log = [[FSBLELog alloc] init];
-    log->_log_number = number;
+    log->_sequence = number;
     log->_log_date = date;
     log->_log_level = level;
     log->_log_content = content;
@@ -33,7 +33,7 @@ static UInt32 logNumber = 0;
     });
     @synchronized(handleObject) {
         FSBLELog *log = [[FSBLELog alloc] init];
-        log->_log_number = logNumber;
+        log->_sequence = logNumber;
         log->_log_date = [NSDate date];
         log->_log_level = level;
         log->_log_content = content;
@@ -47,10 +47,16 @@ static UInt32 logNumber = 0;
     }
 }
 
-- (NSData *)dataValue {
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%u %@ %d %@", (unsigned int)self.sequence, self.log_date, self.log_level, self.log_content];
+}
+
+#pragma mark - FSBLELog Protocol
+
+- (NSData *)BLETransferEncode {
     NSTimeInterval logTimeInterval = [_log_date timeIntervalSinceReferenceDate];
     NSMutableData *data = [NSMutableData data];
-    [data appendBytes:&_log_number length:sizeof(_log_number)];
+    [data appendBytes:&_sequence length:sizeof(logNumber)];
     [data appendBytes:&logTimeInterval length:sizeof(logTimeInterval)];
     [data appendBytes:&_log_level length:sizeof(_log_level)];
     [data appendData:_log_content.dataValue];
@@ -61,8 +67,8 @@ static UInt32 logNumber = 0;
     return data;
 }
 
-- (NSString *)description {
-    return [NSString stringWithFormat:@"%u %@ %d %@", (unsigned int)self.log_number, self.log_date, self.log_level, self.log_content];
+- (void)BLETransferDecodeWithData:(NSData *)data {
+    
 }
 
 @end

@@ -17,8 +17,6 @@
 #import "FSPackageCoder.h"
 #import <objc/runtime.h>
 
-#define MAX_PACKAGE_SIZE 130
-
 static FSBLEPeripheralService *kBLEService = nil;
 
 @interface FSBLEPeripheralService () <CBPeripheralManagerDelegate, FSPackageCoderDelegate>

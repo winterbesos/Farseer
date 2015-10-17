@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <Farseer_Remote_iOS/Farseer_Remote.h>
-#import <Farseer_Remote_iOS/FSDefine.h>
-#import <Farseer_Remote_iOS/FSBLELog.h>
-#import <Farseer_Remote_iOS/FSBLELogInfo.h>
 #import <Farseer_Remote_iOS/FSCentralClientDelegate.h>
 #import <Farseer_Remote_iOS/FSLogWrapper.h>
 #import <Farseer_Remote_iOS/FSBLECentralService.h>

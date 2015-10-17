@@ -10,7 +10,7 @@
 #import "LogViewController.h"
 #import <objc/runtime.h>
 #import <Farseer_Remote_iOS/FSLogWrapper.h>
-#import <Farseer_Remote_iOS/FSBLELog.h>
+#import <FarseerBase_iOS/FSBLELog.h>
 
 @interface LogExplorerViewController () <FSLogWrapperDelegate>
 

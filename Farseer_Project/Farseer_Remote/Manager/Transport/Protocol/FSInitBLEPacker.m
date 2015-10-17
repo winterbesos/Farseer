@@ -8,7 +8,6 @@
 
 #import "FSInitBLEPacker.h"
 #import "FSBLECentralPackerProtocol.h"
-#import "FSPackageIn.h"
 #import "FSCentralClient.h"
 #import <CoreBluetooth/CBPeripheral.h>
 

@@ -10,9 +10,9 @@
 #import "LogTableViewCell.h"
 #import <CoreBluetooth/CBPeripheral.h>
 #import <objc/runtime.h>
-#import "FSPackageIn.h"
 #import "TracksView.h"
 #import "LogExplorerViewController.h"
+#import <FarseerBase_iOS/FarseerBase_iOS.h>
 #import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 
 @interface LogViewController () <TracksViewDelegate, FSLogWrapperDelegate>

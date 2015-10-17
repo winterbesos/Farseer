@@ -8,18 +8,21 @@
 
 #import "FSPackageDecoder.h"
 #import "FSBLEDefine.h"
+#import "FSCentralClientDelegate.h"
+#import "FSBLECentralPackerFactory.h"
+#import "FSCentralClient.h"
 
 @implementation FSPackageDecoder {
-    __weak id<FSPackageDecoderDelegate> _delegate;
+    FSCentralClient *_client;
     NSMutableData *_packageLoop;
     struct PKG_HEADER *_lastHeader;
 }
 
-- (instancetype)initWithDelegate:(id<FSPackageDecoderDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate {
     self = [super init];
     if (self) {
-        _delegate = delegate;
         _packageLoop = [NSMutableData data];
+        _client = [[FSCentralClient alloc] initWithDelegate:delegate];
     }
     return self;
 }
@@ -48,8 +51,6 @@
         return NO;
     }
     
-    [_delegate packageDecoder:self didDecodePackageDataProgress:(pkg_header.currentPackageNumber / (float)pkg_header.lastPackageNumber) fromPeripheral:peripheral cmd:pkg_header.cmd];
-    
     _lastHeader = (struct PKG_HEADER *)malloc(sizeof(struct PKG_HEADER));
     memcpy(_lastHeader, &pkg_header, sizeof(struct PKG_HEADER));
     
@@ -58,7 +59,8 @@
     [_packageLoop appendData:contentData];
     
     if (pkg_header.currentPackageNumber == pkg_header.lastPackageNumber) {
-        [_delegate packageDecoder:self didDecodePackageData:_packageLoop fromPeripheral:peripheral cmd:pkg_header.cmd];
+        FSPackageIn *packageIn = [FSPackageIn decode:data];
+        [[FSBLECentralPackerFactory getObjectWithCMD:pkg_header.cmd] unpack:packageIn client:_client peripheral:peripheral];
         [self clearCache];
     }
     return YES;

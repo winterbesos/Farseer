@@ -9,7 +9,7 @@
 #import "FSTransportManager.h"
 #import "FSPeripheralClient.h"
 #import "FSBLEPeripheralService.h"
-#import "FSLogManager+Peripheral.h"
+#import "FSLogManager.h"
 #import "FSDebugCentral.h"
 
 @implementation FSTransportManager

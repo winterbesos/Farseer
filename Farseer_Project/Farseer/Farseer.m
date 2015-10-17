@@ -18,7 +18,7 @@
 #include <pwd.h>
 #include <sys/types.h>
 #include <dirent.h>
-#import "FSLogManager+Peripheral.h"
+#import "FSLogManager.h"
 #import "FSOperationManager.h"
 #import "FSBLELog.h"
 #import "FSBLEDefine.h"

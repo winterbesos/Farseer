@@ -10,7 +10,7 @@
 #import "FSUtilities.h"
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
-#import "FSPackageIn.h"
+#import <FarseerBase_iOS/FSPackageIn.h>
 
 #define kCONTENT_KEY @"kCONTENT_KEY"
 #define kSUBNODE_KEY @"kSUBNODE_KEY"
@@ -212,7 +212,7 @@
         NSMutableData *logData = [NSMutableData data];
         NSArray *logList = _logDictionary[kCONTENT_KEY];
         for (FSBLELog *log in logList) {
-            [logData appendData:log.dataValue];
+            [logData appendData:[log BLETransferEncode]];
         }
         
         UInt64 bodySize = logData.length;

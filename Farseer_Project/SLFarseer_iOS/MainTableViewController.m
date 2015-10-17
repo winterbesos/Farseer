@@ -8,6 +8,7 @@
 
 #import "MainTableViewController.h"
 #import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
+#import <FarseerBase_iOS/FarseerBase_iOS.h>
 #import <CoreBluetooth/CBPeripheral.h>
 #import <objc/runtime.h>
 #import "LogViewController.h"
