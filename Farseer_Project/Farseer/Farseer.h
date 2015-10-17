@@ -12,6 +12,7 @@
 @class NSDate;
 @class NSError;
 @class NSString;
+@class NSData;
 
 #define FSFatal(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelFatal, __FILE__, __FUNCTION__, __LINE__)
 #define FSError(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelError, __FILE__, __FUNCTION__, __LINE__)
@@ -27,6 +28,7 @@
 
 FOUNDATION_EXTERN void FS_DebugLog(NSString *log, FSLogLevel level, const char *file, const char *function, unsigned int line);
 
+void FSSendOperationData(NSData *operationData);
 void closeBLEDebug();
 void cleanLogBefore(NSDate *date);
 void openBLEDebug(void(^callback)(NSError *error));

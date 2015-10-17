@@ -21,5 +21,6 @@
                       cmdCharacteristic:(CBMutableCharacteristic *)cmdCharacteristic;
 
 - (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log;
+- (void)writeOperationToCharacteristic:(NSData *)operationData;
 
 @end

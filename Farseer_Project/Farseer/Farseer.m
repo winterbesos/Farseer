@@ -19,6 +19,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #import "FSLogManager+Peripheral.h"
+#import "FSOperationManager.h"
 #import "FSBLELog.h"
 #import "FSBLEDefine.h"
 #import "FSDebugCentral.h"
@@ -65,6 +66,10 @@ void FS_DebugLog(NSString *log, FSLogLevel level, const char *file, const char *
     }
     
 #endif
+}
+
+void FSSendOperationData(NSData *operationData) {
+    [[FSDebugCentral getInstance].operationManager sendOperationData:operationData];
 }
 
 void closeBLEDebug() {

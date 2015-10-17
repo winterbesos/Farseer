@@ -43,4 +43,8 @@
 //    [_remoteDirVC recvSandBoxFile:sandBoxData];
 }
 
+- (void)recvOperationInfo:(NSData *)operationInfo {
+    [_delegate client:self didReceiveOperation:operationInfo];
+}
+
 @end

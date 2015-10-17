@@ -7,14 +7,13 @@
 //
 
 #import "MainTableViewController.h"
-#import "FSBLECentralService.h"
+#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
 #import <CoreBluetooth/CBPeripheral.h>
 #import <objc/runtime.h>
-#import <Farseer_Remote_iOS/Farseer_Remote_iOS.h>
-#import "PeripheralTableViewCell.h"
 #import "LogViewController.h"
 #import "DocumentTableViewController.h"
 #import "DirViewController.h"
+#import "PeripheralTableViewCell.h"
 
 static char AssociatedObjectHandle;
 

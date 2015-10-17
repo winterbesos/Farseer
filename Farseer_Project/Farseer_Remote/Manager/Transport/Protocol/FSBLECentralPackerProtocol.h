@@ -24,5 +24,6 @@
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral;
 - (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo;
 - (void)recvSandBoxFile:(NSData *)sandBoxData;
+- (void)recvOperationInfo:(NSData *)operationInfo;
 
 @end

@@ -14,6 +14,8 @@ typedef NS_ENUM(Byte, CMD) {
     
     CMDReqLogging           = 0xa1,
     CMDResLogging           = 0Xb1,
+    CMDReqOperation         = 0xa2,
+    CMDResOperation         = 0xb2,
     
     CMDReqData              = 0xc1,
     CMDResData              = 0xd1,

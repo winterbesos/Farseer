@@ -49,9 +49,6 @@
     }
     
     [_delegate packageDecoder:self didDecodePackageDataProgress:(pkg_header.currentPackageNumber / (float)pkg_header.lastPackageNumber) fromPeripheral:peripheral cmd:pkg_header.cmd];
-#if DEBUG
-    NSLog(@"progress: %hu/%hu", pkg_header.currentPackageNumber, pkg_header.lastPackageNumber);
-#endif
     
     _lastHeader = (struct PKG_HEADER *)malloc(sizeof(struct PKG_HEADER));
     memcpy(_lastHeader, &pkg_header, sizeof(struct PKG_HEADER));
@@ -76,7 +73,7 @@
 
 
 NSString * NSStringFromPKG_Header(struct PKG_HEADER *header) {
-    return [NSString stringWithFormat:@"CMD: %X SeqId: %X current: %X last: %X", header->cmd, header->sequId, header->currentPackageNumber, header->lastPackageNumber];
+    return [NSString stringWithFormat:@"CMD: %X SeqId: %X current: %X last: %X", header->cmd, (unsigned int)header->sequId, header->currentPackageNumber, header->lastPackageNumber];
 }
 
 @end

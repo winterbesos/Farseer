@@ -14,8 +14,10 @@
 
 @protocol FSCentralClientDelegate <NSObject>
 
+@optional
 - (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo;
 - (void)client:(FSCentralClient *)client didReceiveLog:(FSBLELog *)log;
 - (void)client:(FSCentralClient *)client didReceiveSandBoxInfo:(NSDictionary *)sandBoxInfo;
+- (void)client:(FSCentralClient *)client didReceiveOperation:(NSData *)operationData;
 
 @end

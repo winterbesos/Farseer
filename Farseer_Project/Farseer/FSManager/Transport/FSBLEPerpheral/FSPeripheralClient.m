@@ -70,6 +70,10 @@
     }
 }
 
+- (void)writeOperationToCharacteristic:(NSData *)operationData {
+    [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:operationData cmd:CMDResOperation];
+}
+
 - (void)recvGetSendBoxInfoWithPath:(NSString *)path {
     NSData *JSONData = [[FSDebugCentral getInstance].fileManager getDirectoryContentsWithPath:path];
     [FSBLEPeripheralService updateCharacteristic:_cmdCharacteristic withData:JSONData cmd:CMDResSandBoxInfo];

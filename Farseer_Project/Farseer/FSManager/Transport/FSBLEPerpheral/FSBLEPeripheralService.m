@@ -196,7 +196,7 @@ static FSBLEPeripheralService *kBLEService = nil;
                     [self runSendLoop];
                     break;
                 case CMDCancel:
-                    _packageCoder clearCache];
+                    [_packageCoder clearCache];
                     [self runSendLoop];
                     break;
                 default: {
