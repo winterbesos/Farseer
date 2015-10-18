@@ -64,14 +64,10 @@
     }
 }
 
-- (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log {
+- (void)writeLogToCharacteristic:(id<FSBLELogProtocol>)log {
     if (_waitingLogNumber == log.sequence) {
         [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:[log BLETransferEncode] cmd:CMDResLogging];
     }
-}
-
-- (void)writeOperationToCharacteristic:(NSData *)operationData {
-    [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:operationData cmd:CMDResOperation];
 }
 
 - (void)recvGetSendBoxInfoWithPath:(NSString *)path {

@@ -71,4 +71,12 @@ static UInt32 logNumber = 0;
     
 }
 
+- (BOOL)supportPrint {
+    return YES;
+}
+
+- (NSString *)saveFileExtension {
+    return @"fsl";
+}
+
 @end

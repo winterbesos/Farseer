@@ -18,7 +18,6 @@
 @property (nonatomic, readonly)FSLogManager *logManager;
 @property (nonatomic, readonly)FSTransportManager *transportManager;
 @property (nonatomic, readonly)FSFileManager *fileManager;
-@property (nonatomic, readonly)FSOperationManager *operationManager;
 
 + (FSDebugCentral *)getInstance;
 

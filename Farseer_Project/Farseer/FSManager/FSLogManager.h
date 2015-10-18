@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSBLELogProtocol.h"
 
 @class FSBLELog;
 
 @interface FSLogManager: NSObject
 
 - (void)cleanLogBeforeDate:(NSDate *)date;
-- (void)inputLog:(FSBLELog *)log;
+- (void)inputLog:(id<FSBLELogProtocol>)log;
 
 - (NSArray *)logList;
 - (void)uninstallLogFile;

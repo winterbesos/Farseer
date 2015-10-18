@@ -14,33 +14,30 @@
 #import <FarseerBase_iOS/FarseerBase_iOS.h>
 
 @implementation FSLogManager {
-    NSString         *kLifeCircleLogPath; // 当前生命周期log文件路径
-    dispatch_queue_t logFileOperationQueue;
-    NSMutableArray   *cacheLogs;
+    NSString            *logFileName;
+    dispatch_queue_t    logFileOperationQueue;
+    NSMutableDictionary *cacheLogDictionary;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
+        logFileName = [NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]];
         logFileOperationQueue = dispatch_queue_create("logFileOperationQueue", NULL);
     }
     return self;
 }
 
-- (NSString *)FS_CreateLogFileIfNeed {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        NSString *fileName = [NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]];
-        NSString *filePath = [[FSUtilities FS_LogPath] stringByAppendingPathComponent:fileName];
-        if (![FSUtilities filePathExists:filePath]) {
-            [FSUtilities FS_CreateLogFileIfNeed:filePath];
+- (NSString *)FS_CreateLogFileIfNeedWithLog:(id<FSBLELogProtocol>)log {
+    @synchronized(self) {
+        NSString *fileFullName = [NSString stringWithFormat:@"%@.%@", logFileName, [log saveFileExtension]];
+        NSString *filePathWithExtension = [[FSUtilities FS_LogPath] stringByAppendingPathComponent:fileFullName];
+        if (![FSUtilities filePathExists:filePathWithExtension]) {
+            [FSUtilities FS_CreateLogFileIfNeed:filePathWithExtension];
         }
-        kLifeCircleLogPath = filePath;
         
-    });
-    return kLifeCircleLogPath;
+        return filePathWithExtension;
+    }
 }
 
 - (void)cleanLogBeforeDate:(NSDate *)date {
@@ -67,49 +64,66 @@
     }
 }
 
-- (void)inputLog:(FSBLELog *)log {
-    [self FS_CreateLogFileIfNeed];
+- (void)inputLog:(id<FSBLELogProtocol>)log {
+    [self FS_CreateLogFileIfNeedWithLog:log];
     
     dispatch_async(logFileOperationQueue, ^{
-        const char *filePath = [kLifeCircleLogPath cStringUsingEncoding:NSUTF8StringEncoding];
-        [FSUtilities writeLog:log ToFile:filePath];
+        NSString *fileFullName = [NSString stringWithFormat:@"%@.%@", logFileName, [log saveFileExtension]];
+        NSString *filePathWithExtension = [[FSUtilities FS_LogPath] stringByAppendingPathComponent:fileFullName];
+        const char *filePath = [filePathWithExtension cStringUsingEncoding:NSUTF8StringEncoding];
+        if ([log supportPrint]) {
+            [FSUtilities writeLog:log ToFile:filePath];
+        }
         [self cacheLogIfNeed:log];
-        [[FSDebugCentral getInstance].transportManager.peripheralClient writeLogToCharacteristicIfWaitingWithLog:log];
+        [[FSDebugCentral getInstance].transportManager.peripheralClient writeLogToCharacteristic:log];
     });
 }
 
 // Memory
 
-- (void)cacheLogIfNeed:(FSBLELog *)log {
-    if (cacheLogs) {
-        [cacheLogs addObject:log];
+- (void)cacheLogIfNeed:(id<FSBLELogProtocol>)log {
+    if (cacheLogDictionary) {
+        NSMutableArray *logList = cacheLogDictionary[[log saveFileExtension]];
+        if (logList == nil) {
+            logList = [NSMutableArray array];
+            [cacheLogDictionary setObject:logList forKey:[log saveFileExtension]];
+        }
+        [logList addObject:log];
     }
 }
 
 - (BOOL)installLogFile {
-    if (cacheLogs) {
+    if (cacheLogDictionary) {
         return NO;
     }
     
     dispatch_async(logFileOperationQueue, ^{
-        cacheLogs = [NSMutableArray array];
-        
-        NSData *data = [[NSData alloc] initWithContentsOfFile:kLifeCircleLogPath];
-        data = [data subdataWithRange:NSMakeRange(sizeof(struct LOG_HEADER), data.length - sizeof(struct LOG_HEADER))];
-        FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
-        
-        while (1) {
-            UInt32 number = [packageIn readUInt32];
-            NSDate *date = [packageIn readDate];
-            Byte level = [packageIn readByte];
-            NSString *content = [packageIn readString];
-            NSString *fileName = [packageIn readString];
-            NSString *functionName = [packageIn readString];
-            UInt32 line = [packageIn readUInt32];
-            if (!content) {
-                break;
+        cacheLogDictionary = [NSMutableDictionary dictionary];
+        NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[FSUtilities FS_LogPath] error:nil];
+        for (NSString *fileName in fileNames) {
+            if([fileName hasPrefix:logFileName]) {
+                NSMutableArray *typeLogList = [NSMutableArray array];
+                [cacheLogDictionary setObject:typeLogList forKey:fileName.pathExtension];
+                
+                
+                NSData *data = [[NSData alloc] initWithContentsOfFile:[[FSUtilities FS_LogPath] stringByAppendingPathComponent:fileName]];
+                data = [data subdataWithRange:NSMakeRange(sizeof(struct LOG_HEADER), data.length - sizeof(struct LOG_HEADER))];
+                FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
+                
+                while (1) {
+                    UInt32 number = [packageIn readUInt32];
+                    NSDate *date = [packageIn readDate];
+                    Byte level = [packageIn readByte];
+                    NSString *content = [packageIn readString];
+                    NSString *fileName = [packageIn readString];
+                    NSString *functionName = [packageIn readString];
+                    UInt32 line = [packageIn readUInt32];
+                    if (!content) {
+                        break;
+                    }
+                    [typeLogList addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
+                }
             }
-            [cacheLogs addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
         }
     });
     
@@ -118,12 +132,12 @@
 
 - (void)uninstallLogFile {
     dispatch_async(logFileOperationQueue, ^{
-        cacheLogs = nil;
+        cacheLogDictionary = nil;
     });
 }
 
 - (NSArray *)logList {
-    return cacheLogs;
+    return cacheLogDictionary[@"fsl"];
 }
 
 @end

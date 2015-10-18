@@ -32,7 +32,7 @@
 
 FOUNDATION_EXTERN void FS_DebugLog(NSString *log, FSLogLevel level, const char *file, const char *function, unsigned int line);
 
-void FSSendOperationData(NSData *operationData);
+void FSSendLog(id<FSBLELogProtocol> log);
 void closeBLEDebug();
 void cleanLogBefore(NSDate *date);
 void openBLEDebug(void(^callback)(NSError *error));

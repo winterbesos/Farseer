@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FSBLEDefine.h"
 #import "FSBLEPeripheralPackerProtocol.h"
+#import "FSBLELogProtocol.h"
 
 @class FSBLELog;
 @class CBMutableCharacteristic;
@@ -20,7 +21,6 @@
                      dataCharacteristic:(CBMutableCharacteristic *)dataCharacteristic
                       cmdCharacteristic:(CBMutableCharacteristic *)cmdCharacteristic;
 
-- (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log;
-- (void)writeOperationToCharacteristic:(NSData *)operationData;
+- (void)writeLogToCharacteristic:(id<FSBLELogProtocol>)log;
 
 @end

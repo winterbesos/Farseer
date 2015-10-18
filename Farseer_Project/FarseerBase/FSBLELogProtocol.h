@@ -14,5 +14,7 @@
 @property (readonly, nonatomic)UInt32 sequence;
 - (NSData *)BLETransferEncode;
 - (void)BLETransferDecodeWithData:(NSData *)data;
+- (BOOL)supportPrint;
+- (NSString *)saveFileExtension;
 
 @end
