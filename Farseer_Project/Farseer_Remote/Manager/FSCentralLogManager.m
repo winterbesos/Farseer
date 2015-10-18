@@ -10,6 +10,7 @@
 #import "FSUtilities.h"
 #import "FSBLELogInfo.h"
 #import "FSBLECentralService.h"
+#import "FSDebugCentral_Remote.h"
 
 @implementation FSCentralLogManager {
     FSBLELogInfo *_logInfo;
@@ -45,48 +46,8 @@
     [FSUtilities writeLog:log ToFile:[fileFullPath UTF8String]];
 }
 
-#pragma mark - Public Method
-// DOING:
-- (void)sendLogToEmailToAddress:(NSString *)address withSubject:(NSString *)subject attachments:(NSArray *)attachments {
-    /*
-    NSString *bodyText = @"Copyright (c) 2014 Farseer";
-    
-    NSString *emailString = [NSString stringWithFormat:@"\
-                             tell application \"Mail\"\n\
-                             set newMessage to make new outgoing message with properties {subject:\"%@\", content:\"%@\" & return} \n\
-                             tell newMessage\n\
-                             set visible to false\n\
-                             set sender to \"%@\"\n\
-                             make new to recipient at end of to recipients with properties {name:\"%@\", address:\"%@\"}\n\
-                             tell content\n\
-                             ", subject, bodyText, @"McAlarm alert", @"McAlarm User", address];
-    
-    //add attachments to script
-    for (NSString *alarmPhoto in attachments) {
-        emailString = [emailString stringByAppendingFormat:@"make new attachment with properties {file name:\"%@\"} at after the last paragraph\n\
-                       ",alarmPhoto];
-    }
-    //finish script
-    emailString = [emailString stringByAppendingFormat:@"\
-                   end tell\n\
-                   send\n\
-                   end tell\n\
-                   end tell"];
-    
-    
-    
-    //NSLog(@"%@",emailString);
-    NSAppleScript *emailScript = [[NSAppleScript alloc] initWithSource:emailString];
-    [emailScript executeAndReturnError:nil];
-//    [emailScript release];
-    
-
-    NSLog(@"Message passed to Mail");
-    */
-}
-
 - (void)requestLog {
-    [FSBLECentralService requLogWithLogNumber:(UInt32)_logList.count];
+    [[FSDebugCentral_Remote getInstance].centralClient requestLog];
 }
 
 - (void)saveLogCallback:(void(^)(float percentage))callback {
@@ -117,10 +78,6 @@
             callback(1);
         });
     });
-}
-
-- (void)makePeripheralCrash {
-    [FSBLECentralService makePeripheralCrash];
 }
 
 @end

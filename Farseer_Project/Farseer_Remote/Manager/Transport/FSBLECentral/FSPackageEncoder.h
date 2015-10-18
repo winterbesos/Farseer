@@ -7,7 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FarseerBase_iOS/FSBLEDefine.h>
+
+@class FSPackageEncoder;
+
+@protocol FSPackageEncoderDelegate <NSObject>
+
+- (void)packageEncoderDidPushData:(FSPackageEncoder *)encoder;
+
+@end
 
 @interface FSPackageEncoder : NSObject
+
+- (instancetype)initWithDelegate:(id<FSPackageEncoderDelegate>)delegate;
+
+- (void)pushDataToSendQueue:(NSData *)data cmd:(CMD)cmd;
+- (NSArray *)getTopPackageGroup;
 
 @end

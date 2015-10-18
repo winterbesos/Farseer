@@ -54,7 +54,7 @@
     if (logList.count > logNum) {
         FSBLELog *log = logList[logNum];
         
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue cmd:CMDResLogging];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:[log BLETransferEncode] cmd:CMDResLogging];
         
         if (_waitingLogNumber != -1) {
             _waitingLogNumber = -1;
@@ -65,8 +65,8 @@
 }
 
 - (void)writeLogToCharacteristicIfWaitingWithLog:(FSBLELog *)log {
-    if (_waitingLogNumber == log.log_number) {
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:log.dataValue cmd:CMDResLogging];
+    if (_waitingLogNumber == log.sequence) {
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:[log BLETransferEncode] cmd:CMDResLogging];
     }
 }
 

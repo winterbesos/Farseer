@@ -17,6 +17,7 @@
     dispatch_once(&onceToken, ^{
         instance = [[FSDebugCentral_Remote alloc] init];
         instance->_logManager = [[FSCentralLogManager alloc] init];
+        instance->_centralClient = [[FSCentralClient alloc] init];
     });
     return instance;
 }

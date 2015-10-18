@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSCentralClient.h"
 
 @class FSCentralLogManager;
 
 @interface FSDebugCentral_Remote : NSObject
 
 @property (nonatomic, readonly)FSCentralLogManager *logManager;
+@property (nonatomic, readonly)FSCentralClient *centralClient;
 
 + (FSDebugCentral_Remote *)getInstance;
 

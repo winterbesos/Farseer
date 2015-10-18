@@ -53,14 +53,16 @@
 #endif
     bundleName = [[NSBundle mainBundle] bundleIdentifier];
     
-    
     struct PKG_HEADER header;
-    header.cmd = CMDCPInit;
     header.currentPackageNumber = 0;
     header.lastPackageNumber = 0;
     header.sequId = 0;
     
+    struct PROTOCOL_HEADER protocolHeader;
+    protocolHeader.cmd = CMDCPInit;
+    
     NSMutableData *infoData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+    [infoData appendBytes:&protocolHeader length:sizeof(protocolHeader)];
     [infoData appendBytes:&OSType length:sizeof(OSType)];
     [infoData appendData:[self getDataWithPkgString:OSVersion]];
     [infoData appendData:[self getDataWithPkgString:deviceType]];
@@ -78,43 +80,6 @@
     [pkgData appendData:bodyData];
     
     return pkgData;
-}
-
-+ (NSData *)getReqSendBoxFileWithData:(NSData *)data {
-    struct PKG_HEADER header;
-    header.cmd = CMDReqData;
-    header.currentPackageNumber = 1;
-    header.lastPackageNumber = 1;
-    header.sequId = 0;
-    
-    NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    [sendData appendData:data];
-    return sendData;
-}
-
-+ (NSData *)getReqSendBoxInfoWithData:(NSData *)data {
-    struct PKG_HEADER header;
-    header.cmd = CMDReqSandBoxInfo;
-    header.currentPackageNumber = 1;
-    header.lastPackageNumber = 1;
-    header.sequId = 0;
-    
-    NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    [sendData appendData:data];
-    return sendData;
-}
-
-+ (NSData *)getReqLogWithNumber:(UInt32)number {
-    struct PKG_HEADER header;
-    header.cmd = CMDReqLogging;
-    header.currentPackageNumber = 1;
-    header.lastPackageNumber = 1;
-    header.sequId = 0;
-    
-    NSMutableData *logData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    [logData appendBytes:&number length:sizeof(number)];
-    
-    return logData;
 }
 
 @end

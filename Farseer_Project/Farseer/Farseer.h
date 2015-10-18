@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/NSObjCRuntime.h>
-#import "FSDefine.h"
+#if TARGET_OS_IHONE
+#import <FarseerBase_iOS/FarseerBase_iOS.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FarseerBase_OSX.h>
+#endif
 
 @class NSDate;
 @class NSError;

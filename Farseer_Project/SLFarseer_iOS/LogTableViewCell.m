@@ -66,7 +66,7 @@ static NSDateFormatter *kLogDateFormatter;
     NSMutableString *contentString = [NSMutableString string];
     
     if (showLogNumber) {
-        [contentString appendString:[NSString stringWithFormat:@"%05d ", (unsigned int)log.log_number]];
+        [contentString appendString:[NSString stringWithFormat:@"%05d ", (unsigned int)log.sequence]];
     }
     
     if (showLogDate) {

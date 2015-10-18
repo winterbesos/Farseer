@@ -48,7 +48,7 @@ static char AssociatedObjectHandle;
     self.displayLogTimeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_TIME_KEY];
     self.displayLogNumberSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:DISPLAY_LOG_NUMBER_KEY];
     
-    [FSBLECentralService installWithDelegate:self stateChangedCallback:^(CBCentralManagerState state) {
+    setupBLEClient(self, ^(CBCentralManagerState state) {
         _activePeripheral = nil;
         otherDeviceButton.hidden = YES;
         currentDeviceNameLabel.text = @"No connected";
@@ -58,34 +58,13 @@ static char AssociatedObjectHandle;
             [self scanPeripheral];
             otherDeviceButton.hidden = YES;
         }
-    }];
+    });
 }
 
 #pragma mark - Private Method
 
 - (void)scanPeripheral {
-    [FSBLECentralService setConnectPeripheralCallback:^(CBPeripheral *peripheral) {
-        switch (peripheral.state) {
-            case CBPeripheralStateConnected: {
-                _activePeripheral = peripheral;
-                currentDeviceNameLabel.text = peripheral.name;
-                [self closePeripheralList];
-            }
-                break;
-            default: {
-                if (_activePeripheral.state != CBPeripheralStateConnected) {
-                    otherDeviceButton.hidden = NO;
-                    currentDeviceNameLabel.text = @"No connected";
-                    [self displayLogInfo:nil];
-                    _activePeripheral = nil;
-                    otherDeviceButton.hidden = YES;
-                    [self scanPeripheral];
-                }
-            }
-                break;
-        }
-    }];
-    [FSBLECentralService scanDidDisconvered:^(CBPeripheral *peripheral, NSNumber *RSSI) {
+    scanPeripheral(^(CBPeripheral *peripheral, NSNumber *RSSI) {
         NSInteger index = [_peripheralsDataList indexOfObject:peripheral];
         objc_setAssociatedObject(peripheral, &AssociatedObjectHandle, RSSI, OBJC_ASSOCIATION_RETAIN);
         
@@ -98,7 +77,7 @@ static char AssociatedObjectHandle;
             [_peripheralsDataList replaceObjectAtIndex:index withObject:peripheral];
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index + 1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         }
-    }];
+    });
 }
 
 - (void)closePeripheralList {
@@ -114,7 +93,7 @@ static char AssociatedObjectHandle;
 }
 
 - (void)stopScanAndClearPeripheral {
-    [FSBLECentralService stopScan];
+    stopScan();
     [_peripheralsDataList removeAllObjects];
 }
 
@@ -256,8 +235,28 @@ static char AssociatedObjectHandle;
     if (section == 0 && row != 0) {
         CBPeripheral *peripheral = _peripheralsDataList[indexPath.row - 1];
         if (_activePeripheral != peripheral) {
-            [FSBLECentralService disconnectPeripheral:_activePeripheral];
-            [FSBLECentralService connectToPeripheral:peripheral];
+            disconnectPeripheral(_activePeripheral);
+            connectToPeripheral(peripheral, ^(CBPeripheral *peripheral) {
+                switch (peripheral.state) {
+                    case CBPeripheralStateConnected: {
+                        _activePeripheral = peripheral;
+                        currentDeviceNameLabel.text = peripheral.name;
+                        [self closePeripheralList];
+                    }
+                        break;
+                    default: {
+                        if (_activePeripheral.state != CBPeripheralStateConnected) {
+                            otherDeviceButton.hidden = NO;
+                            currentDeviceNameLabel.text = @"No connected";
+                            [self displayLogInfo:nil];
+                            _activePeripheral = nil;
+                            otherDeviceButton.hidden = YES;
+                            [self scanPeripheral];
+                        }
+                    }
+                        break;
+                }
+            });
         } else {
             [self closePeripheralList];
         }

@@ -12,131 +12,123 @@
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
 #import "FSPackageDecoder.h"
-
-static FSBLECentralService *service = nil;
+#import "FSPackageEncoder.h"
 
 @interface FSBLECentralService () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @end
 
 @implementation FSBLECentralService {
+    __weak FSPackageDecoder    *_packageDecoder;
+    __weak FSPackageEncoder    *_packageEncoder;
+    
     CBCentralManager    *_manager;
     NSTimer             *_bleConnectTimer;
+    NSTimer             *_writeCMDTimer;
     
     void(^didDisconveredCallback)(CBPeripheral *peripheral, NSNumber *RSSI);
     void(^connectionStatusChangedCallback)(CBPeripheral *peripheral);
     void(^stateChangedCallback)(CBCentralManagerState state);
     
     CBPeripheral        *_peripheral;
-    FSPackageDecoder    *_packageDecoder;
+    NSMutableArray      *_sendingPackageGroup;
+    NSData              *_sendingData;
     
     CBCharacteristic    *_peripheralInfoCharacteristic;
-    CBCharacteristic    *_writeLogCharacteristic;
-    CBCharacteristic    *_writeDataCharacteristic;
     CBCharacteristic    *_writeCMDCharacteristic;
 }
 
-#pragma mark - Class Method
-
-+ (void)installWithDelegate:(id<FSCentralClientDelegate>)delegate stateChangedCallback:(void(^)(CBCentralManagerState state))callback {
-    if (!service) {
-        service = [[FSBLECentralService alloc] init];
-        service->stateChangedCallback = callback;
-        service->_manager = [[CBCentralManager alloc] initWithDelegate:service queue:nil];
-        service->_packageDecoder = [[FSPackageDecoder alloc] initWithDelegate:delegate];
+- (instancetype)initWithEncoder:(FSPackageEncoder *)encoder decoder:(FSPackageDecoder *)decoder stateChangedCallback:(void(^)(CBCentralManagerState state))callback {
+    self = [super init];
+    if (self) {
+        stateChangedCallback = callback;
+        _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        _packageDecoder = decoder;
+        _packageEncoder = encoder;
     }
+    return self;
 }
 
-+ (void)uninstall {
-    [service->_manager stopScan];
-    service->stateChangedCallback = nil;
-    service->connectionStatusChangedCallback = nil;
-    service->didDisconveredCallback = nil;
-    service = nil;
+- (void)uninstall {
+    [_bleConnectTimer invalidate];
+    [_writeCMDTimer invalidate];
+    stateChangedCallback = nil;
+    connectionStatusChangedCallback = nil;
+    didDisconveredCallback = nil;
 }
 
-+ (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback {
-    service->didDisconveredCallback = callback;
+- (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback {
+    didDisconveredCallback = callback;
     CBUUID *serviceUUID = [CBUUID UUIDWithString:kServiceUUIDString];
-    [service->_manager scanForPeripheralsWithServices:@[serviceUUID] options:@{}];
+    [_manager scanForPeripheralsWithServices:@[serviceUUID] options:@{}];
 }
 
-+ (void)stopScan {
-    [service->_manager stopScan];
+- (void)stopScan {
+    [_manager stopScan];
 }
 
-+ (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback {
-    service->connectionStatusChangedCallback = callback;
-}
-
-+ (void)connectToPeripheral:(CBPeripheral *)peripheral {
-    [service connectToPeripheral:peripheral];
-}
-
-+ (void)disconnectPeripheral:(CBPeripheral *)peripheral {
-    if (peripheral) {
-        [service->_manager cancelPeripheralConnection:peripheral];
-    }
-}
-
-+ (void)writeToLogCharacteristicWithValue:(NSData *)value {
-    [service writeValue:value toCharacteristic:service->_writeLogCharacteristic];
-}
-
-#pragma mark -
-
-+ (void)makePeripheralCrash {
-    struct PKG_HEADER header;
-    header.cmd = CMDReqMakeCrash;
-    header.currentPackageNumber = 1;
-    header.lastPackageNumber = 1;
-    header.sequId = 0;
-    NSMutableData *sendData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    
-    [service writeValue:sendData toCharacteristic:service->_writeCMDCharacteristic];
-}
-
-+ (void)getSandBoxInfoWithPath:(NSString *)path {
-    NSData *reqSendBoxInfoData = [FSBLEUtilities getReqSendBoxInfoWithData:[FSBLEUtilities getDataWithPkgString:path]];
-    [service writeValue:reqSendBoxInfoData toCharacteristic:service->_writeCMDCharacteristic];
-}
-
-+ (void)getSandBoxFileWithPath:(NSString *)path {
-    NSData *reqSandBoxFileData = [FSBLEUtilities getReqSendBoxFileWithData:[FSBLEUtilities getDataWithPkgString:path]];
-    [service writeValue:reqSandBoxFileData toCharacteristic:service->_writeDataCharacteristic];
-}
-
-- (void)writeACKWithHeader:(struct PKG_HEADER)header {
-    header.cmd = CMDAck;
-    NSData *data = [NSData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    [self writeValue:data toCharacteristic:_writeCMDCharacteristic];
-}
-
-#pragma mark - Instance Method
-
-- (void)connectToPeripheral:(CBPeripheral *)peripheral {
+- (void)connectToPeripheral:(CBPeripheral *)peripheral callback:(void(^)(CBPeripheral *peripheral))callback {
+    connectionStatusChangedCallback = callback;
     if (peripheral.state == CBPeripheralStateConnecting) {
-        [service->_manager cancelPeripheralConnection:peripheral];
+        [_manager cancelPeripheralConnection:peripheral];
         return;
     } else if (peripheral.state == CBPeripheralStateDisconnected) {
-        service->_bleConnectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(connectTimeout:) userInfo:peripheral repeats:NO];
-        [service->_manager connectPeripheral:peripheral options:nil];
+        _bleConnectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(connectTimeout:) userInfo:peripheral repeats:NO];
+        [_manager connectPeripheral:peripheral options:nil];
     } else {
         return;
     }
     connectionStatusChangedCallback(peripheral);
 }
 
+- (void)disconnectPeripheral:(CBPeripheral *)peripheral {
+    if (peripheral) {
+        [_manager cancelPeripheralConnection:peripheral];
+    }
+}
+
 - (void)connectTimeout:(NSTimer *)timer {
     [_manager cancelPeripheralConnection:timer.userInfo];
-    [self performSelector:@selector(connectToPeripheral:) withObject:timer.userInfo afterDelay:1];
+}
+
+- (void)writeValueTimeout:(NSTimer *)timer {
+    [self clearBuffer];
 }
 
 - (void)writeValue:(NSData *)value toCharacteristic:(CBCharacteristic *)characteristic {
     if (characteristic) {
 //        NSLog(@"C SEND: %@", value);
-        [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+        _sendingData = value;
+        [_peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+        _writeCMDTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(writeValueTimeout:) userInfo:nil repeats:NO];
     }
+}
+
+- (void)writeACKWithHeader:(struct PKG_HEADER)header {
+    NSMutableData *data = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
+    struct PROTOCOL_HEADER protocolHeader;
+    protocolHeader.cmd = CMDAck;
+    [data appendBytes:&protocolHeader length:sizeof(protocolHeader)];
+    [self writeValue:data toCharacteristic:_writeCMDCharacteristic];
+}
+
+- (void)runSendLoop {
+    if (!_sendingData) {
+        if (!_sendingPackageGroup || _sendingPackageGroup.count == 0) {
+            _sendingPackageGroup = [[_packageEncoder getTopPackageGroup] mutableCopy];
+        }
+        
+        NSData *firstPackage = [_sendingPackageGroup firstObject];
+        [_sendingPackageGroup removeObject:firstPackage];
+        if (firstPackage) {
+            [self writeValue:firstPackage toCharacteristic:_writeCMDCharacteristic];
+        }
+    }
+}
+
+- (void)clearBuffer {
+    _sendingPackageGroup = nil;
+    _sendingData = nil;
 }
 
 #pragma mark - CBPeripheral Delegate
@@ -163,21 +155,19 @@ static FSBLECentralService *service = nil;
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-//    NSLog(@"%s value: %@", __FUNCTION__, characteristic.value);
-    
 //    NSLog(@"C RECV: %@", characteristic.value);
     struct PKG_HEADER header;
     [characteristic.value getBytes:&header length:sizeof(struct PKG_HEADER)];
-    
     if ([_packageDecoder pushReceiveData:characteristic.value fromPeripheral:peripheral]) {
-        if (header.cmd != CMDCPInit) {
-            [self writeACKWithHeader:header];
-        }
+        [self writeACKWithHeader:header];
     }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-//    NSLog(@"%s", __FUNCTION__);
+//    NSLog(@"C SEND SUCCESS");
+    [_writeCMDTimer invalidate];
+    _sendingData = nil;
+    [self runSendLoop];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
@@ -207,7 +197,6 @@ static FSBLECentralService *service = nil;
     for (CBCharacteristic *characteristic in service.characteristics) {
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteLogCharacteristicUUIDString]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-            _writeLogCharacteristic = characteristic;
         }
         
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteCMDCharacteristicUUIDString]) {
@@ -217,7 +206,6 @@ static FSBLECentralService *service = nil;
         
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kWriteDataCharacteristicUUIDString]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-            _writeDataCharacteristic = characteristic;
         }
         
         if ([[characteristic.UUID.UUIDString uppercaseString] isEqualToString:kPeripheralInfoCharacteristicUUIDString]) {
@@ -265,12 +253,14 @@ static FSBLECentralService *service = nil;
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 //    NSLog(@"%s: %@ %@ %@", __FUNCTION__, central, peripheral, error);
     _peripheral = nil;
+    [self clearBuffer];
     connectionStatusChangedCallback(peripheral);
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 //    NSLog(@"%s: %@ %@ %@", __FUNCTION__, central, peripheral, error);
     _peripheral = nil;
+    [self clearBuffer];
     connectionStatusChangedCallback(peripheral);
     [_packageDecoder clearCache];
 }

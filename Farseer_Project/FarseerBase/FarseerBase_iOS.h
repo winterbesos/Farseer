@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <FarseerBase_iOS/FSDefine.h>
-#import <FarseerBase_iOS/FSBLELog.h>
-#import <FarseerBase_iOS/FSBLELogInfo.h>
 #import <FarseerBase_iOS/FSPackageIn.h>
+#import <FarseerBase_iOS/FSBLELog.h>
+#import <FarseerBase_iOS/FSBLEDefine.h>
+#import <FarseerBase_iOS/FSBLELogInfo.h>
 
 //! Project version number for FarseerBase_iOS.
 FOUNDATION_EXPORT double FarseerBase_iOSVersionNumber;

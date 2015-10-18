@@ -11,17 +11,18 @@
 
 @class CBPeripheral;
 @protocol FSCentralClientDelegate;
+@class FSPackageEncoder;
+@class FSPackageDecoder;
 
 @interface FSBLECentralService : NSObject
 
-+ (void)installWithDelegate:(id<FSCentralClientDelegate>)delegate stateChangedCallback:(void(^)(CBCentralManagerState state))callback;
-+ (void)uninstall;
-+ (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback;
-+ (void)stopScan;
-+ (void)setConnectPeripheralCallback:(void(^)(CBPeripheral *peripheral))callback;
-+ (void)connectToPeripheral:(CBPeripheral *)peripheral;
-+ (void)disconnectPeripheral:(CBPeripheral *)peripheral;
+- (instancetype)initWithEncoder:(FSPackageEncoder *)encoder decoder:(FSPackageDecoder *)decoder stateChangedCallback:(void(^)(CBCentralManagerState state))callback;
+- (void)uninstall;
+- (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback;
+- (void)connectToPeripheral:(CBPeripheral *)peripheral callback:(void(^)(CBPeripheral *peripheral))callback;
+- (void)disconnectPeripheral:(CBPeripheral *)peripheral;
+- (void)stopScan;
 
-+ (void)writeToLogCharacteristicWithValue:(NSData *)value;
+- (void)runSendLoop;
 
 @end

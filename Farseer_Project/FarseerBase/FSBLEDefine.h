@@ -9,7 +9,7 @@
 #ifndef SLBTServiceDemo_FSDefine_h
 #define SLBTServiceDemo_FSDefine_h
 
-#define MAX_PACKAGE_SIZE 130
+#define MAX_PACKAGE_DATA_SIZE 130
 
 typedef NS_ENUM(Byte, CMD) {
     CMDCPInit               = 0xa0,
@@ -32,10 +32,13 @@ typedef NS_ENUM(Byte, CMD) {
 };
 
 struct PKG_HEADER {
-    Byte cmd;
     UInt32 sequId;
     UInt16 lastPackageNumber;
     UInt16 currentPackageNumber;
+};
+
+struct PROTOCOL_HEADER {
+    Byte cmd;
 };
 
 struct LOG_HEADER {

@@ -27,10 +27,14 @@ static char characteristicAssociatedHandle;
     return self;
 }
 
-- (void)pushDataToSendQueue:(NSData *)data characteristic:(CBMutableCharacteristic *)characteristic cmd:(CMD)cmd {
-    
+- (void)pushDataToSendQueue:(NSData *)originData characteristic:(CBMutableCharacteristic *)characteristic cmd:(CMD)cmd {
+    // protocol header
+    struct PROTOCOL_HEADER protocolHeader;
+    protocolHeader.cmd = cmd;
+    NSMutableData *data = [NSMutableData dataWithBytes:&protocolHeader length:sizeof(protocolHeader)];
+    [data appendData:originData];
     NSMutableArray *pkgs = [NSMutableArray array];
-    NSUInteger pkgCount = data.length / MAX_PACKAGE_LENGTH + (data.length % MAX_PACKAGE_LENGTH == 0 ? 0 : 1);
+    NSUInteger pkgCount = data.length / MAX_PACKAGE_DATA_SIZE + (data.length % MAX_PACKAGE_DATA_SIZE == 0 ? 0 : 1);
    
     static struct PKG_HEADER egHeader;
     int max = ((typeof(egHeader.currentPackageNumber))-1);
@@ -41,20 +45,20 @@ static char characteristicAssociatedHandle;
     
     for (int index = 0; index < pkgCount; index++) {
         NSUInteger pkgLength;
-        if (data.length > (index + 1) * MAX_PACKAGE_LENGTH) {
-            pkgLength = MAX_PACKAGE_LENGTH;
+        if (data.length > (index + 1) * MAX_PACKAGE_DATA_SIZE) {
+            pkgLength = MAX_PACKAGE_DATA_SIZE;
         } else {
-            pkgLength = data.length - index * MAX_PACKAGE_LENGTH;
+            pkgLength = data.length - index * MAX_PACKAGE_DATA_SIZE;
         }
         
-        NSData *originPkgData = [data subdataWithRange:NSMakeRange(index * MAX_PACKAGE_LENGTH, pkgLength)];
+        NSData *originPkgData = [data subdataWithRange:NSMakeRange(index * MAX_PACKAGE_DATA_SIZE, pkgLength)];
         
         // add header
         struct PKG_HEADER pkg_header;
-        pkg_header.cmd = cmd; // TODO: reserver value
         pkg_header.sequId = [self getSeqId];
         pkg_header.lastPackageNumber = pkgCount - 1;
         pkg_header.currentPackageNumber = index;
+        
         NSMutableData *pkgData = [NSMutableData dataWithBytes:&pkg_header length:sizeof(struct PKG_HEADER)];
         [pkgData appendData:originPkgData];
         
@@ -63,11 +67,13 @@ static char characteristicAssociatedHandle;
         [pkgs addObject:pkgData];
     }
     
-    if (_packageLoop.count == 0) {
-        [_packageLoop addObjectsFromArray:pkgs];
+    NSUInteger count = _packageLoop.count;
+    [_packageLoop addObjectsFromArray:pkgs];
+    if (count == 0) {
         [_delegate didPushPackageToEmptyPackageLoopPackageCoder:self];
     }
 }
+
 
 - (void)getPackageToSendWithBlock:(FSPackageCorderGetPackageBlock)block {
     NSData *pkgData = _packageLoop.firstObject;
@@ -79,7 +85,9 @@ static char characteristicAssociatedHandle;
 }
 
 - (void)removeSendedPackage {
-    [_packageLoop removeObjectAtIndex:0];
+    if (_packageLoop.count) {
+        [_packageLoop removeObjectAtIndex:0];
+    }
 }
 
 - (void)clearCache {

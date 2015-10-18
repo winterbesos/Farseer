@@ -9,9 +9,7 @@
 #import "Farseer_Remote.h"
 #import "FSCentralLogManager.h"
 #import "FSDebugCentral_Remote.h"
-
-#define kFARSEER_SEND_LOG_TO_EMAIL_ADDRESS @"2680914103@qq.com"
-#define kFARSEER_SEND_LOG_TO_EMAIL_SUBJECT @"Farseer Log fsl Documents"
+#import "FSBLECentralService.h"
 
 void requestLog() {
     [[FSDebugCentral_Remote getInstance].logManager requestLog];
@@ -22,9 +20,36 @@ void saveLog(void(^callback)(float percentage)) {
 }
 
 void makeCrash() {
-    [[FSDebugCentral_Remote getInstance].logManager makePeripheralCrash];
+    [[FSDebugCentral_Remote getInstance].centralClient makePeripheralCrash];
 }
 
-void sendLogThroughEmail() {
-    [[FSDebugCentral_Remote getInstance].logManager sendLogToEmailToAddress:kFARSEER_SEND_LOG_TO_EMAIL_ADDRESS withSubject:kFARSEER_SEND_LOG_TO_EMAIL_SUBJECT attachments:@[]];
+void getSandBoxInfo(NSString *path) {
+    [[FSDebugCentral_Remote getInstance].centralClient getSandBoxInfoWithPath:path];
 }
+
+void getSandBoxFile(NSString *path) {
+    [[FSDebugCentral_Remote getInstance].centralClient getSandBoxFileWithPath:path];
+}
+
+#pragma mark - BLE Operation
+
+void setupBLEClient(id<FSCentralClientDelegate> delegate, void(^statusChangedCallback)(CBCentralManagerState state)) {
+    [[FSDebugCentral_Remote getInstance].centralClient setupWithDelegate:delegate statusChangedCallback:statusChangedCallback];
+}
+
+void scanPeripheral(void(^callback)(CBPeripheral *peripheral, NSNumber *RSSI)) {
+    [[FSDebugCentral_Remote getInstance].centralClient.service scanDidDisconvered:callback];
+}
+
+void stopScan() {
+    [[FSDebugCentral_Remote getInstance].centralClient.service stopScan];
+}
+
+void connectToPeripheral(CBPeripheral *peripheral, void(^callback)(CBPeripheral *peripheral)) {
+    [[FSDebugCentral_Remote getInstance].centralClient.service connectToPeripheral:peripheral callback:callback];
+}
+
+void disconnectPeripheral(CBPeripheral *peripheral) {
+    [[FSDebugCentral_Remote getInstance].centralClient.service disconnectPeripheral:peripheral];
+}
+

@@ -13,9 +13,13 @@
 @class FSPackageDecoder;
 @class CBPeripheral;
 
+@protocol FSPackageDecoderDelegate <NSObject>
+
+@end
+
 @interface FSPackageDecoder : NSObject
 
-- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate;
+- (instancetype)initWithDelegate:(id<FSPackageDecoderDelegate>)delegate;
 - (BOOL)pushReceiveData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral;
 - (void)clearCache;
 

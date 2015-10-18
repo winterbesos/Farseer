@@ -9,41 +9,45 @@
 #import "FSCentralClient.h"
 #import "FSBLEUtilities.h"
 #import "FSBLECentralService.h"
-#import "FSBLELogInfo.h"
-#import "FSBLELog.h"
 #import "FSPackageEncoder.h"
+#import "FSPackageDecoder.h"
+#import <FarseerBase_iOS/FarseerBase_iOS.h>
+
+@interface FSCentralClient () <FSPackageEncoderDelegate, FSPackageDecoderDelegate>
+
+@end
 
 @implementation FSCentralClient {
     id<FSCentralClientDelegate> _delegate;
     FSPackageEncoder *_encoder;
+    FSPackageDecoder *_decoder;
+    FSBLECentralService *_service;
 }
 
-- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate
-{
-    self = [super init];
-    if (self) {
-        _delegate = delegate;
-        _encoder = [[FSPackageEncoder alloc] init];
-    }
-    return self;
+- (void)setupWithDelegate:(id<FSCentralClientDelegate>)delegate statusChangedCallback:(void(^)(CBCentralManagerState state))callback {
+    _delegate = delegate;
+    _encoder = [[FSPackageEncoder alloc] initWithDelegate:self];
+    _decoder = [[FSPackageDecoder alloc] initWithDelegate:self];
+    _service = [[FSBLECentralService alloc] initWithEncoder:_encoder decoder:_decoder stateChangedCallback:callback];
 }
 
-- (void)requestLogFromLogSequence:(UInt32)sequence callback:(void(^)(FSBLELog *log))callback {
-
-    struct PKG_HEADER header;
-    header.cmd = CMDReqLogging;
-    header.currentPackageNumber = 1;
-    header.lastPackageNumber = 1;
-    header.sequId = 0;
-    
-    NSMutableData *requestData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
-    [requestData appendBytes:&sequence length:sizeof(sequence)];
-    
-    [FSBLECentralService writeToLogCharacteristicWithValue:requestData];
+- (void)requestLog {
+    [_encoder pushDataToSendQueue:nil cmd:CMDReqLogging];
 }
 
+- (void)makePeripheralCrash {
+    [_encoder pushDataToSendQueue:nil cmd:CMDReqMakeCrash];
+}
 
+- (void)getSandBoxInfoWithPath:(NSString *)path {
+    [_encoder pushDataToSendQueue:[FSBLEUtilities getDataWithPkgString:path] cmd:CMDReqSandBoxInfo];
+}
 
+- (void)getSandBoxFileWithPath:(NSString *)path {
+    [_encoder pushDataToSendQueue:[FSBLEUtilities getDataWithPkgString:path] cmd:CMDReqData];
+}
+
+#pragma mark - Callback
 
 - (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral deviceUUID:(NSString *)deviceUUID {
     FSBLELogInfo *logInfo = [FSBLELogInfo infoWithType:osType osVersion:osVersion deviceType:deviceType deviceName:deviceName bundleName:bundleName deviceUUID:deviceUUID];
@@ -53,18 +57,30 @@
 - (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral {
     FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content file:fileName function:functionName line:line];
     [_delegate client:self didReceiveLog:log];
-    [FSBLECentralService requLogWithLogNumber:(logNumber + 1)];
+    
+    UInt32 nextSequence = logNumber + 1;
+    NSMutableData *logData = [NSMutableData dataWithBytes:&nextSequence length:sizeof(nextSequence)];
+    [_encoder pushDataToSendQueue:logData cmd:CMDReqLogging];
 }
+
 - (void)recvSendBoxInfo:(NSDictionary *)sandBoxInfo {
     [_delegate client:self didReceiveSandBoxInfo:sandBoxInfo];
 }
 
 - (void)recvSandBoxFile:(NSData *)sandBoxData {
-//    [_remoteDirVC recvSandBoxFile:sandBoxData];
+    //    [_remoteDirVC recvSandBoxFile:sandBoxData];
 }
 
 - (void)recvOperationInfo:(NSData *)operationInfo {
     [_delegate client:self didReceiveOperation:operationInfo];
+}
+
+#pragma mark - PackageDecoder Delegate
+
+#pragma mark - PackageEncoder Delegate
+
+- (void)packageEncoderDidPushData:(FSPackageEncoder *)encoder {
+    [_service runSendLoop];
 }
 
 @end

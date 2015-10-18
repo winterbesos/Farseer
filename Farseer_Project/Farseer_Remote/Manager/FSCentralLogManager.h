@@ -26,8 +26,5 @@ typedef NS_ENUM(NSInteger, FSLogCategory) {
 
 - (void)requestLog;
 - (void)saveLogCallback:(void(^)(float percentage))callback;
-- (void)makePeripheralCrash;
-
-- (void)sendLogToEmailToAddress:(NSString *)address withSubject:(NSString *)subject attachments:(NSArray *)attachments;
 
 @end

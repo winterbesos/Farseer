@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, DirType) {
     }
     
     _directoryWrapper = directoryWrapper;
-    [FSBLECentralService getSandBoxInfoWithPath:path];
+    getSandBoxInfo(path);
     _contents = [_directoryWrapper registerWithDelegate:self path:path];
 }
 

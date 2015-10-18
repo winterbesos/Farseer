@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <Farseer_Mac/Farseer_Mac.h>
+#import <FarseerBase_OSX/FarseerBase_OSX.h>
 
 @interface ViewController ()
 

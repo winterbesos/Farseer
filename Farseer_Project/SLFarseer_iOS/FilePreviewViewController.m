@@ -38,15 +38,16 @@
     self.fileNameLabel.text = _name;
     self.fileSizeLabel.text = _size;
     
-    // TODO: 当前用notif传输文件效率过低
-    [FSBLECentralService getSandBoxFileWithPath:filePath callback:^(float progress, id object) {
-        self.progressView.progress = progress;
-        if (progress == 1) {
-            UIImage *image = [UIImage imageWithData:object scale:[UIScreen mainScreen].scale];
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(100, 120, image.size.width, image.size.height);
-        }
-    }];
+    getSandBoxFile(filePath);
+//    // TODO: 当前用notif传输文件效率过低
+//    [FSBLECentralService getSandBoxFileWithPath:filePath callback:^(float progress, id object) {
+//        self.progressView.progress = progress;
+//        if (progress == 1) {
+//            UIImage *image = [UIImage imageWithData:object scale:[UIScreen mainScreen].scale];
+//            self.imageView.image = image;
+//            self.imageView.frame = CGRectMake(100, 120, image.size.width, image.size.height);
+//        }
+//    }];
 }
 
 @end

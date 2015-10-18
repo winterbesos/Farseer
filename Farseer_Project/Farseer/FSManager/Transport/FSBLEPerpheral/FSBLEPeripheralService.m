@@ -80,16 +80,16 @@ static FSBLEPeripheralService *kBLEService = nil;
     
     // log transfer characteristic
     CBUUID *writeLogCharacteristicUUID = [CBUUID UUIDWithString:kWriteLogCharacteristicUUIDString];
-    CBCharacteristicProperties properties = CBCharacteristicPropertyWriteWithoutResponse | CBCharacteristicPropertyNotify;
-    CBMutableCharacteristic *writeLogCharacteristic = [[CBMutableCharacteristic alloc] initWithType:writeLogCharacteristicUUID properties:properties value:nil permissions:CBAttributePermissionsWriteable];
+    CBMutableCharacteristic *writeLogCharacteristic = [[CBMutableCharacteristic alloc] initWithType:writeLogCharacteristicUUID properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsWriteable];
     _logCharacteristic = writeLogCharacteristic;
     
     // data transfer characteristic
     CBUUID *dataCharacteristicUUID = [CBUUID UUIDWithString:kWriteDataCharacteristicUUIDString];
-    CBMutableCharacteristic *writeDataCharacteristic = [[CBMutableCharacteristic alloc] initWithType:dataCharacteristicUUID properties:properties value:nil permissions:CBAttributePermissionsWriteable];
+    CBMutableCharacteristic *writeDataCharacteristic = [[CBMutableCharacteristic alloc] initWithType:dataCharacteristicUUID properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsWriteable];
     _dataCharacteristic = writeDataCharacteristic;
     
     // CMD transfer characteristic
+    CBCharacteristicProperties properties = CBCharacteristicPropertyWrite | CBCharacteristicPropertyNotify;
     CBUUID *cmdCharacteristicUUID = [CBUUID UUIDWithString:kWriteCMDCharacteristicUUIDString];
     CBMutableCharacteristic *cmdCharacteristic = [[CBMutableCharacteristic alloc] initWithType:cmdCharacteristicUUID properties:properties value:nil permissions:CBAttributePermissionsWriteable];
     _cmdCharacteristic = cmdCharacteristic;
@@ -181,14 +181,17 @@ static FSBLEPeripheralService *kBLEService = nil;
     for (CBATTRequest *request in requests) {
         if (request.value) {
 //            NSLog(@"P RECV: %@", request.value);
+            [peripheral respondToRequest:request withResult:CBATTErrorSuccess];
             
             struct PKG_HEADER header;
+            struct PROTOCOL_HEADER protocolHeader;
             [request.value getBytes:&header length:sizeof(struct PKG_HEADER)];
+            [request.value getBytes:&protocolHeader range:NSMakeRange(sizeof(struct PKG_HEADER), sizeof(struct PROTOCOL_HEADER))];
 
-            NSData *recvData = [request.value subdataWithRange:NSMakeRange(sizeof(struct PKG_HEADER), request.value.length - sizeof(struct PKG_HEADER))];
+            NSData *recvData = [request.value subdataWithRange:NSMakeRange(sizeof(struct PKG_HEADER) + sizeof(struct PROTOCOL_HEADER), request.value.length - sizeof(struct PKG_HEADER) - sizeof(struct PROTOCOL_HEADER))];
             
             // distribute cmd
-            switch (header.cmd) {
+            switch (protocolHeader.cmd) {
                 case CMDAck:
                     [_packageCoder removeSendedPackage];
                     [self runSendLoop];
@@ -199,7 +202,7 @@ static FSBLEPeripheralService *kBLEService = nil;
                     break;
                 default: {
                     FSPackageIn *packageIn = [FSPackageIn decode:recvData];
-                    [[FSBLEPeripheralPackerFactory getObjectWithCMD:header.cmd request:request] unpack:packageIn client:_client];
+                    [[FSBLEPeripheralPackerFactory getObjectWithCMD:protocolHeader.cmd request:request] unpack:packageIn client:_client];
                 }
                     break;
             }

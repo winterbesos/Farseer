@@ -9,18 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "FSDefine.h"
 #import "FSCentralClientDelegate.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
+@class FSBLECentralService;
 @class CBPeripheral;
 @class FSBLELog;
 
 @interface FSCentralClient : NSObject
 
-- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate;
-- (void)requestLogFromLogSequence:(UInt32)sequence callback:(void(^)(FSBLELog *log))callback;
+@property (nonatomic, readonly)FSBLECentralService *service;
 
-//+ (void)getSandBoxInfoWithPath:(NSString *)path;
-//+ (void)getSandBoxFileWithPath:(NSString *)path;
-//+ (void)requLogWithLogNumber:(UInt32)logNum;
-//+ (void)makePeripheralCrash;
+- (void)setupWithDelegate:(id<FSCentralClientDelegate>)delegate statusChangedCallback:(void(^)(CBCentralManagerState state))callback;
+- (void)requestLog;
+- (void)getSandBoxInfoWithPath:(NSString *)path;
+- (void)getSandBoxFileWithPath:(NSString *)path;
+- (void)makePeripheralCrash;
 
 @end

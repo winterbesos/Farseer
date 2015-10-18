@@ -13,16 +13,16 @@
 #import "FSCentralClient.h"
 
 @implementation FSPackageDecoder {
-    FSCentralClient *_client;
     NSMutableData *_packageLoop;
     struct PKG_HEADER *_lastHeader;
+    __weak id<FSPackageDecoderDelegate> _delegate;
 }
 
-- (instancetype)initWithDelegate:(id<FSCentralClientDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<FSPackageDecoderDelegate>)delegate {
     self = [super init];
     if (self) {
         _packageLoop = [NSMutableData data];
-        _client = [[FSCentralClient alloc] initWithDelegate:delegate];
+        _delegate = delegate;
     }
     return self;
 }
@@ -30,15 +30,13 @@
 - (BOOL)pushReceiveData:(NSData *)data fromPeripheral:(CBPeripheral *)peripheral {
     // parse data
     struct PKG_HEADER pkg_header;
-    NSUInteger headerLen = sizeof(struct PKG_HEADER);
+    static NSUInteger headerLen = sizeof(struct PKG_HEADER);
     [data getBytes:&pkg_header length:headerLen];
     
     // exception judge
     if ((_lastHeader == NULL && pkg_header.currentPackageNumber != 0) // the first pkg verify
         ||
         (_lastHeader != NULL && (pkg_header.currentPackageNumber != _lastHeader->currentPackageNumber + 1)) // not the first pkg verify
-        ||
-        (_lastHeader != NULL && pkg_header.cmd != _lastHeader->cmd) // not equal cmd
         ||
         (_lastHeader != NULL && pkg_header.sequId != _lastHeader->sequId + 1) // seq not countinuous
         ) {
@@ -59,8 +57,13 @@
     [_packageLoop appendData:contentData];
     
     if (pkg_header.currentPackageNumber == pkg_header.lastPackageNumber) {
-        FSPackageIn *packageIn = [FSPackageIn decode:data];
-        [[FSBLECentralPackerFactory getObjectWithCMD:pkg_header.cmd] unpack:packageIn client:_client peripheral:peripheral];
+        static NSUInteger protocolHeaderLen = sizeof(struct PROTOCOL_HEADER);
+        struct PROTOCOL_HEADER protocolHeader;
+        [_packageLoop getBytes:&protocolHeader length:protocolHeaderLen];
+        
+        NSData *protocolData = [_packageLoop subdataWithRange:NSMakeRange(protocolHeaderLen, _packageLoop.length - protocolHeaderLen)];
+        FSPackageIn *packageIn = [FSPackageIn decode:protocolData];
+        [[FSBLECentralPackerFactory getObjectWithCMD:protocolHeader.cmd] unpack:packageIn client:_delegate peripheral:peripheral];
         [self clearCache];
     }
     return YES;
@@ -75,7 +78,7 @@
 
 
 NSString * NSStringFromPKG_Header(struct PKG_HEADER *header) {
-    return [NSString stringWithFormat:@"CMD: %X SeqId: %X current: %X last: %X", header->cmd, (unsigned int)header->sequId, header->currentPackageNumber, header->lastPackageNumber];
+    return [NSString stringWithFormat:@"SeqId: %X current: %X last: %X",  (unsigned int)header->sequId, header->currentPackageNumber, header->lastPackageNumber];
 }
 
 @end
