@@ -7,7 +7,6 @@
 //
 
 #include "Farseer.h"
-#include <Foundation/NSString.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
@@ -18,9 +17,8 @@
 #include <pwd.h>
 #include <sys/types.h>
 #include <dirent.h>
+#import <Foundation/NSString.h>
 #import "FSLogManager.h"
-#import "FSBLELog.h"
-#import "FSBLEDefine.h"
 #import "FSDebugCentral.h"
 
 #define SLCONSOLE_LEVEL FSLogLevelWarning

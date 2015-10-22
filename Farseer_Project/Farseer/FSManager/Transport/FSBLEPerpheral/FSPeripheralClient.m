@@ -10,7 +10,11 @@
 #import "FSBLEPeripheralService.h"
 #import "FSLogManager.h"
 #import "FSBLEUtilities.h"
-#import "FSBLELog.h"
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSBLELog.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSBLELog.h>
+#endif
 #import "FSDebugCentral.h"
 #import "FSFileManager.h"
 

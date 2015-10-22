@@ -9,7 +9,7 @@
 #ifndef SLFarseer_FSDefine_h
 #define SLFarseer_FSDefine_h
 
-typedef NS_ENUM(unsigned char, FSLogLevel) {
+typedef NS_ENUM(Byte, FSLogLevel) {
     FSLogLevelMinor = 0,
     FSLogLevelLog,
     FSLogLevelWarning,
@@ -17,12 +17,12 @@ typedef NS_ENUM(unsigned char, FSLogLevel) {
     FSLogLevelFatal,
 };
 
-typedef NS_ENUM(unsigned char, BLEOSType) {
+typedef NS_ENUM(Byte, BLEOSType) {
     BLEOSTypeIOS,
     BLEOSTypeOSX
 };
 
-typedef NS_ENUM(unsigned char, BLEDeviceType) {
+typedef NS_ENUM(Byte, BLEDeviceType) {
     BLEDeviceTypeIPod,
     BLEDeviceTypeIPhone,
     BLEDeviceTypeIPad,

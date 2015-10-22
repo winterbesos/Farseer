@@ -8,9 +8,15 @@
 
 #import "FSLogWrapper.h"
 #import "FSUtilities.h"
-#import "FSBLELog.h"
-#import "FSBLELogInfo.h"
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSBLELog.h>
+#import <FarseerBase_iOS/FSBLELogInfo.h>
 #import <FarseerBase_iOS/FSPackageIn.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSBLELog.h>
+#import <FarseerBase_OSX/FSBLELogInfo.h>
+#import <FarseerBase_OSX/FSPackageIn.h>
+#endif
 
 #define kCONTENT_KEY @"kCONTENT_KEY"
 #define kSUBNODE_KEY @"kSUBNODE_KEY"

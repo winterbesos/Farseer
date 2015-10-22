@@ -12,6 +12,8 @@
 	<dict>
 		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
 		<string>ssh://101.86.233.240/Users/Salo/Repositories/Farseer.git</string>
+		<key>E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025</key>
+		<string>https://github.com/erikdoe/ocmock.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Farseer_Project/SLFarseer.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>81E1390765E1C30640CE099E674188AB815B761E</key>
 		<string>../../..</string>
+		<key>E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025</key>
+		<string>../../../ocmock/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://101.86.233.240/Users/Salo/Repositories/Farseer.git</string>
@@ -35,6 +39,14 @@
 			<string>81E1390765E1C30640CE099E674188AB815B761E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Farseer</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ocmock</string>
 		</dict>
 	</array>
 </dict>

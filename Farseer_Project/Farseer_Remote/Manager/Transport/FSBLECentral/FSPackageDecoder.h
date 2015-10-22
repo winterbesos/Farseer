@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FSBLEDefine.h"
-#import "FSCentralClientDelegate.h"
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSBLEDefine.h>
+#import <Farseer_Remote_iOS/FSCentralClientDelegate.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSBLEDefine.h>
+#import <Farseer_Remote_Mac/FSCentralClientDelegate.h>
+#endif
 
 @class FSPackageDecoder;
 @class CBPeripheral;

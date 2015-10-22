@@ -7,7 +7,12 @@
 //
 
 #import "FSBLEReqSyncLogPacker.h"
-#import "FSPackageIn.h"
+
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSPackageIn.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSPackageIn.h>
+#endif
 #import "FSBLEPeripheralPackerProtocol.h"
 
 @implementation FSBLEReqSyncLogPacker

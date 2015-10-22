@@ -7,7 +7,6 @@
 //
 
 #import "FSPackageDecoder.h"
-#import "FSBLEDefine.h"
 #import "FSCentralClientDelegate.h"
 #import "FSBLECentralPackerFactory.h"
 #import "FSCentralClient.h"

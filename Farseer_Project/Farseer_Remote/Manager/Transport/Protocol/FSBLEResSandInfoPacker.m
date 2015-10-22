@@ -8,8 +8,12 @@
 
 #import "FSBLEResSandInfoPacker.h"
 #import "FSBLECentralPackerProtocol.h"
-#import "FSPackageIn.h"
 #import "FSCentralClient.h"
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSPackageIn.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSPackageIn.h>
+#endif
 
 @implementation FSBLEResSandInfoPacker
 

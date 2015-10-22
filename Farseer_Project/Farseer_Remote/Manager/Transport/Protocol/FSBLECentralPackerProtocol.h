@@ -6,8 +6,13 @@
 //  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#import "FSPackageIn.h"
-#import "FSDefine.h"
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSDefine.h>
+#import <FarseerBase_iOS/FSPackageIn.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSDefine.h>
+#import <FarseerBase_OSX/FSPackageIn.h>
+#endif
 
 @class CBPeripheral;
 

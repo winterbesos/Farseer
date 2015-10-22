@@ -11,7 +11,6 @@
 #import "FSDebugCentral.h"
 #import "FSTransportManager.h"
 #import "FSPeripheralClient.h"
-#import <FarseerBase_iOS/FarseerBase_iOS.h>
 
 @implementation FSLogManager {
     NSString            *logFileName;
