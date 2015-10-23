@@ -10,8 +10,10 @@
 #import <FarseerBase_OSX/FSDefine.h>
 #import <FarseerBase_OSX/FSPackageIn.h>
 #import <FarseerBase_OSX/FSBLELog.h>
+#import <FarseerBase_OSX/FSRelationOperation.h>
 #import <FarseerBase_OSX/FSBLEDefine.h>
 #import <FarseerBase_OSX/FSBLELogInfo.h>
+#import <FarseerBase_OSX/NSString+FSBLECatetory.h>
 
 //! Project version number for FarseerBase_OSX.
 FOUNDATION_EXPORT double FarseerBase_OSXVersionNumber;

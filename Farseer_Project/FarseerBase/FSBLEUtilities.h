@@ -11,6 +11,5 @@
 @interface FSBLEUtilities : NSObject
 
 + (NSData *)getPeripheralInfoData;
-+ (NSData *)getDataWithPkgString:(NSString *)string;
 
 @end

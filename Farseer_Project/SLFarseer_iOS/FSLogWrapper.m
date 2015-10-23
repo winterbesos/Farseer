@@ -58,20 +58,18 @@
     NSMutableArray *logs = [NSMutableArray array];
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
     data = [data subdataWithRange:NSMakeRange(sizeof(struct LOG_HEADER), data.length - sizeof(struct LOG_HEADER))];
-    FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
     
-    while (1) {
-        UInt32 number = [packageIn readUInt32];
-        NSDate *date = [packageIn readDate];
-        Byte level = [packageIn readByte];
-        NSString *content = [packageIn readString];
-        NSString *fileName = [packageIn readString];
-        NSString *functionName = [packageIn readString];
-        UInt32 line = [packageIn readUInt32];
-        if (!content) {
-            break;
+    FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
+    while ([packageIn hasMore]) {
+        NSString *className = [packageIn readString];
+        UInt32 logLength = [packageIn readUInt32];
+        NSData *logData = [packageIn readDataWithLength:logLength];
+        Class cls = NSClassFromString(className);
+        if (cls) {
+            id log = [[cls alloc] init];
+            [log BLETransferDecodeWithData:logData];
+            [logs addObject:log];
         }
-        [logs addObject:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
     }
     
     return logs;
@@ -107,21 +105,16 @@
         NSData *logData = [data subdataWithRange:NSMakeRange(pointer, (NSUInteger)bodySize)];
         
         FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:logData];
-        
-        while (1) {
-            // TODO: add read LOG
-            UInt32 number = [packageIn readUInt32];
-            NSDate *date = [packageIn readDate];
-            Byte level = [packageIn readByte];
-            NSString *content = [packageIn readString];
-            NSString *fileName = [packageIn readString];
-            NSString *functionName = [packageIn readString];
-            UInt32 line = [packageIn readUInt32];
-            if (!content) {
-                break;
+        while ([packageIn hasMore]) {
+            NSString *className = [packageIn readString];
+            UInt32 logLength = [packageIn readUInt32];
+            NSData *logData = [packageIn readDataWithLength:logLength];
+            Class cls = NSClassFromString(className);
+            if (cls) {
+                id log = [[cls alloc] init];
+                [log BLETransferDecodeWithData:logData];
+                [self insertLog:log];
             }
-            
-            [self insertLog:[FSBLELog logWithNumber:number date:date level:level content:content file:fileName function:functionName line:line]];
         }
     }
     return self;

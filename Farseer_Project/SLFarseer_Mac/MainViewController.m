@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "ConfigurationViewController.h"
 #import <Farseer_Remote_Mac/Farseer_Remote_Mac.h>
+#import <FarseerBase_OSX/FarseerBase_OSX.h>
 
 #define kSELECTED_URL_KEY @"kSELECTED_URL_KEY"
 
@@ -50,32 +51,8 @@
 
 - (void)filterLogs {
     NSMutableString *logString = [NSMutableString string];
-    for (FSBLELog *log in _logs) {
-        BOOL display = NO;
-        switch (log.log_level) {
-            case FSLogLevelFatal:
-                display = _filterType & ConfigurationFilterTypeFatal;
-                break;
-            case FSLogLevelError:
-                display = _filterType & ConfigurationFilterTypeError;
-                break;
-            case FSLogLevelWarning:
-                display = _filterType & ConfigurationFilterTypeWarning;
-                break;
-            case FSLogLevelLog:
-                display = _filterType & ConfigurationFilterTypeLog;
-                break;
-            case FSLogLevelMinor:
-                display = _filterType & ConfigurationFilterTypeMinor;
-                break;
-            default:
-                NSAssert(false, @"error type");
-                self.logTextView.string = @"";
-                break;
-        }
-        if (display) {
-            [logString appendFormat:@"%@\n", log];
-        }
+    for (id log in _logs) {
+        [logString appendFormat:@"%@\n", log];
     }
     self.logTextView.string = logString;
 }

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <FarseerBase_iOS/FarseerBase_iOS.h>
 
 @interface SLFarseer_iOSTests : XCTestCase
 
@@ -23,6 +24,17 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testEncoderAndDecoder {
+    NSDate *date = [NSDate date];
+    FSBLELog *log = [FSBLELog logWithNumber:0 date:date level:1 content:@"content" file:@"file" function:@"function" line:10];
+    NSData *data = [log BLETransferEncode];
+    
+    FSBLELog *log2 = [[FSBLELog alloc] init];
+    [log2 BLETransferDecodeWithData:data];
+    
+    
 }
 
 - (void)testExample {

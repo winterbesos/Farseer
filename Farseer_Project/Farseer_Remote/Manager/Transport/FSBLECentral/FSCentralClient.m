@@ -14,9 +14,11 @@
 #if TARGET_OS_IPHONE
 #import <FarseerBase_iOS/FSBLELogInfo.h>
 #import <FarseerBase_iOS/FSBLELog.h>
+#import <FarseerBase_iOS/NSString+FSBLECatetory.h>
 #elif TARGET_OS_MAC
 #import <FarseerBase_OSX/FSBLELogInfo.h>
 #import <FarseerBase_OSX/FSBLELog.h>
+#import <FarseerBase_OSX/NSString+FSBLECatetory.h>
 #endif
 
 @interface FSCentralClient () <FSPackageEncoderDelegate, FSPackageDecoderDelegate>
@@ -46,11 +48,11 @@
 }
 
 - (void)getSandBoxInfoWithPath:(NSString *)path {
-    [_encoder pushDataToSendQueue:[FSBLEUtilities getDataWithPkgString:path] cmd:CMDReqSandBoxInfo];
+    [_encoder pushDataToSendQueue:path.SLEncodeData cmd:CMDReqSandBoxInfo];
 }
 
 - (void)getSandBoxFileWithPath:(NSString *)path {
-    [_encoder pushDataToSendQueue:[FSBLEUtilities getDataWithPkgString:path] cmd:CMDReqData];
+    [_encoder pushDataToSendQueue:path.SLEncodeData cmd:CMDReqData];
 }
 
 #pragma mark - Callback
@@ -60,11 +62,10 @@
     [_delegate client:self didReceiveLogInfo:logInfo];
 }
 
-- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral {
-    FSBLELog *log = [FSBLELog logWithNumber:logNumber date:logDate level:logLevel content:content file:fileName function:functionName line:line];
+- (void)recvLog:(id<FSBLELogProtocol>)log {
     [_delegate client:self didReceiveLog:log];
     
-    UInt32 nextSequence = logNumber + 1;
+    UInt32 nextSequence = log.sequence + 1;
     NSMutableData *logData = [NSMutableData dataWithBytes:&nextSequence length:sizeof(nextSequence)];
     [_encoder pushDataToSendQueue:logData cmd:CMDReqLogging];
 }

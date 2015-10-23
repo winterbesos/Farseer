@@ -11,10 +11,12 @@
 @protocol FSBLELogProtocol <NSObject>
 
 @required
-@property (readonly, nonatomic)UInt32 sequence;
+@property (nonatomic)UInt32 sequence;
 - (NSData *)BLETransferEncode;
 - (void)BLETransferDecodeWithData:(NSData *)data;
-- (BOOL)supportPrint;
-- (NSString *)saveFileExtension;
+
+@optional
+- (void)log_print;
+- (void)log_printToConsole;
 
 @end

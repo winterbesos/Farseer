@@ -9,11 +9,11 @@
 #import "FSBLEUtilities.h"
 #import "FSBLEDefine.h"
 #import "FSDefine.h"
+#import "NSString+FSBLECatetory.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIDevice.h>
 #elif TARGET_OS_MAC
 #import <Cocoa/Cocoa.h>
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -64,22 +64,13 @@
     NSMutableData *infoData = [NSMutableData dataWithBytes:&header length:sizeof(struct PKG_HEADER)];
     [infoData appendBytes:&protocolHeader length:sizeof(protocolHeader)];
     [infoData appendBytes:&OSType length:sizeof(OSType)];
-    [infoData appendData:[self getDataWithPkgString:OSVersion]];
-    [infoData appendData:[self getDataWithPkgString:deviceType]];
-    [infoData appendData:[self getDataWithPkgString:deviceName]];
-    [infoData appendData:[self getDataWithPkgString:bundleName]];
+    
+    [infoData appendData:OSVersion.SLEncodeData];
+    [infoData appendData:deviceType.SLEncodeData];
+    [infoData appendData:deviceName.SLEncodeData];
+    [infoData appendData:bundleName.SLEncodeData];
     
     return infoData;
-}
-
-+ (NSData *)getDataWithPkgString:(NSString *)string {
-    NSData *bodyData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    
-    UInt32 len = (UInt32)bodyData.length;
-    NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
-    [pkgData appendData:bodyData];
-    
-    return pkgData;
 }
 
 @end

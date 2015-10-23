@@ -19,15 +19,15 @@
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral {
     
-    UInt32 logNum = [packageIn readUInt32];
-    NSDate *logDate = [packageIn readDate];
-    Byte logLevel = [packageIn readByte];
-    NSString *content = [packageIn readString];
-    NSString *fileName = [packageIn readString];
-    NSString *functionName = [packageIn readString];
-    UInt32 line = [packageIn readUInt32];
-    
-    [client recvSyncLogWithLogNumber:logNum logDate:logDate logLevel:logLevel content:content fileName:fileName functionName:functionName line:line peripheral:peripheral];
+    NSString *className = [packageIn readString];
+    UInt32 logLength = [packageIn readUInt32];
+    NSData *logData = [packageIn readDataWithLength:logLength];
+    Class cls = NSClassFromString(className);
+    if (cls) {
+        id log = [[cls alloc] init];
+        [log BLETransferDecodeWithData:logData];
+        [client recvLog:log];
+    }
 }
 
 @end

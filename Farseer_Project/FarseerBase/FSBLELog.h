@@ -17,7 +17,7 @@
 
 @interface FSBLELog : NSObject <FSBLELogProtocol>
 
-@property (nonatomic, readonly)UInt32       sequence;
+@property (nonatomic)UInt32       sequence;
 @property (nonatomic, readonly)NSDate       *log_date;
 @property (nonatomic, readonly)FSLogLevel   log_level;
 @property (nonatomic, readonly)NSString     *log_content;

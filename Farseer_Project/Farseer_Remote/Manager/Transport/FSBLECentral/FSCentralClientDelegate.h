@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FSBLELogProtocol.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FSBLELogProtocol.h>
+#endif
 
 @class FSCentralClient;
 @class FSBLELogInfo;
@@ -16,7 +21,7 @@
 
 @optional
 - (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo;
-- (void)client:(FSCentralClient *)client didReceiveLog:(FSBLELog *)log;
+- (void)client:(FSCentralClient *)client didReceiveLog:(id<FSBLELogProtocol>)log;
 - (void)client:(FSCentralClient *)client didReceiveSandBoxInfo:(NSDictionary *)sandBoxInfo;
 - (void)client:(FSCentralClient *)client didReceiveOperation:(NSData *)operationData;
 

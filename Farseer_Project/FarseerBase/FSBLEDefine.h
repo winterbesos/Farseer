@@ -9,7 +9,7 @@
 #ifndef SLBTServiceDemo_FSDefine_h
 #define SLBTServiceDemo_FSDefine_h
 
-#define MAX_PACKAGE_DATA_SIZE 130
+#define MAX_PACKAGE_DATA_SIZE 80
 
 typedef NS_ENUM(Byte, CMD) {
     CMDCPInit               = 0xa0,

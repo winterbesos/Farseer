@@ -127,13 +127,13 @@ static char AssociatedObjectHandle;
 
 #pragma mark - BLE Client Delegate
 
-- (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo; {
+- (void)client:(FSCentralClient *)client didReceiveLogInfo:(FSBLELogInfo *)logInfo {
     [self displayLogInfo:logInfo];
     _logWrapper = [[FSLogWrapper alloc] initWithLogInfo:logInfo];
     _directoryWrapper = [[FSDirectoryWrapper alloc] init];
 }
 
-- (void)client:(FSCentralClient *)client didReceiveLog:(FSBLELog *)log {
+- (void)client:(FSCentralClient *)client didReceiveLog:(id<FSBLELogProtocol>)log {
     [_logWrapper insertLog:log];
 }
 

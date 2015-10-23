@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
+#import <FarseerBase_iOS/FarseerBase_iOS.h>
+#elif TARGET_OS_MAC
+#import <FarseerBase_OSX/FarseerBase_OSX.h>
+#endif
 
 @class FSBLELog;
 
@@ -24,7 +29,7 @@
 + (void)FS_CreatePathIfNeed:(NSString *)path;
 + (void)FS_CreateLogFileIfNeed:(NSString *)path;
 
-+ (void)writeLog:(FSBLELog *)log ToFile:(const char *)filePath;
++ (void)writeLog:(id<FSBLELogProtocol>)log ToFile:(const char *)filePath;
 
 @end
 

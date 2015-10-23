@@ -91,4 +91,14 @@
     return _pkg;
 }
 
+- (NSData *)readDataWithLength:(NSInteger)length {
+    NSData *data = [_pkg subdataWithRange:NSMakeRange(_readPos, length)];
+    _readPos += length;
+    return data;
+}
+
+- (BOOL)hasMore {
+    return _readPos < _pkg.length;
+}
+
 @end

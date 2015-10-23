@@ -124,7 +124,7 @@
 
 // File
 
-+ (void)writeLog:(FSBLELog *)log ToFile:(const char *)filePath {
++ (void)writeLog:(id<FSBLELogProtocol>)log ToFile:(const char *)filePath {
     @synchronized(self) {
         FILE    *fp = fopen(filePath, "a");
         if (!fp)
@@ -132,51 +132,21 @@
             assert(false);
         }
         
+        NSData *classNameData = NSStringFromClass(log.class).SLEncodeData;
         NSData *dataValue = [log BLETransferEncode];
-        const void *bytes = [dataValue bytes];
-        fwrite(bytes, sizeof(Byte), dataValue.length, fp);
+        UInt32 length = (UInt32)dataValue.length;
+        
+        NSMutableData *writeData = [NSMutableData dataWithData:classNameData];
+        [writeData appendBytes:&length length:sizeof(length)];
+        [writeData appendData:dataValue];
+        
+        const void *bytes = [writeData bytes];
+        fwrite(bytes, sizeof(Byte), writeData.length, fp);
         fclose(fp);
         
 #ifdef OUTPUT_CONSOLE
-        static NSString *currentPath = nil;
-        if (!currentPath) {
-            currentPath = [[FSUtilities FS_LogPath] stringByAppendingPathComponent:@"current.log"];
-            
-            fp = fopen(currentPath.UTF8String, "w");
-            fprintf(fp, "\33[2J");
-            fclose(fp);
-        }
-        
-        fp = fopen(currentPath.UTF8String, "a");
-        if (fp != NULL) {
-            char *format = NULL;
-            switch (log.log_level) {
-                case 0:
-                    format = "\033[37m%s %s \033[0m\n";
-                    break;
-                case 1:
-                    format = "\033[32m%s %s \033[0m\n";
-                    break;
-                case 2:
-                    format = "\033[33m%s %s \033[0m\n";
-                    break;
-                case 3:
-                    format = "\033[31m%s %s \033[0m\n";
-                    break;
-                case 4:
-                    format = "\033[41;37m%s %s \033[0m\n";
-                    break;
-            }
-            
-            static NSDateFormatter *kLogDateFormatter = nil;
-            if (!kLogDateFormatter) {
-                kLogDateFormatter = [[NSDateFormatter alloc] init];
-                [kLogDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                [kLogDateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-            }
-            
-            fprintf(fp, format, [kLogDateFormatter stringFromDate:log.log_date].UTF8String, log.log_content.UTF8String);
-            fclose(fp);
+        if ([log respondsToSelector:@selector(log_printToConsole)]) {
+            [log log_printToConsole];
         }
 #endif
     }

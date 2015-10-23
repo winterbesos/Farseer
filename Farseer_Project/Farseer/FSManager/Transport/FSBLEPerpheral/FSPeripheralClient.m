@@ -12,8 +12,10 @@
 #import "FSBLEUtilities.h"
 #if TARGET_OS_IPHONE
 #import <FarseerBase_iOS/FSBLELog.h>
+#import <FarseerBase_iOS/NSString+FSBLECatetory.h>
 #elif TARGET_OS_MAC
 #import <FarseerBase_OSX/FSBLELog.h>
+#import <FarseerBase_OSX/NSString+FSBLECatetory.h>
 #endif
 #import "FSDebugCentral.h"
 #import "FSFileManager.h"
@@ -56,9 +58,15 @@
 - (void)recvSyncLogWithLogNumber:(UInt32)logNum {
     NSArray *logList = [[FSDebugCentral getInstance].logManager logList];
     if (logList.count > logNum) {
-        FSBLELog *log = logList[logNum];
+        id<FSBLELogProtocol> log = logList[logNum];
+        NSData *classNameData = NSStringFromClass(log.class).SLEncodeData;
+        NSData *dataValue = [log BLETransferEncode];
+        UInt32 length = (UInt32)dataValue.length;
         
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:[log BLETransferEncode] cmd:CMDResLogging];
+        NSMutableData *writeData = [NSMutableData dataWithData:classNameData];
+        [writeData appendBytes:&length length:sizeof(length)];
+        [writeData appendData:dataValue];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:writeData cmd:CMDResLogging];
         
         if (_waitingLogNumber != -1) {
             _waitingLogNumber = -1;
@@ -70,7 +78,14 @@
 
 - (void)writeLogToCharacteristic:(id<FSBLELogProtocol>)log {
     if (_waitingLogNumber == log.sequence) {
-        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:[log BLETransferEncode] cmd:CMDResLogging];
+        NSData *classNameData = NSStringFromClass(log.class).SLEncodeData;
+        NSData *dataValue = [log BLETransferEncode];
+        UInt32 length = (UInt32)dataValue.length;
+        
+        NSMutableData *writeData = [NSMutableData dataWithData:classNameData];
+        [writeData appendBytes:&length length:sizeof(length)];
+        [writeData appendData:dataValue];
+        [FSBLEPeripheralService updateCharacteristic:_logCharacteristic withData:writeData cmd:CMDResLogging];
     }
 }
 

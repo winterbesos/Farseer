@@ -9,9 +9,11 @@
 #if TARGET_OS_IPHONE
 #import <FarseerBase_iOS/FSDefine.h>
 #import <FarseerBase_iOS/FSPackageIn.h>
+#import <FarseerBase_iOS/FSBLELogProtocol.h>
 #elif TARGET_OS_MAC
 #import <FarseerBase_OSX/FSDefine.h>
 #import <FarseerBase_OSX/FSPackageIn.h>
+#import <FarseerBase_OSX/FSBLELogProtocol.h>
 #endif
 
 @class CBPeripheral;
@@ -26,7 +28,7 @@
 @protocol FSBLEReqDelegate <NSObject>
 
 - (void)recvInitBLEWithOSType:(BLEOSType)osType osVersion:(NSString *)osVersion deviceType:(NSString *)deviceType deviceName:(NSString *)deviceName bundleName:(NSString *)bundleName peripheral:(CBPeripheral *)peripheral deviceUUID:(NSString *)deviceUUID;
-- (void)recvSyncLogWithLogNumber:(UInt32)logNumber logDate:(NSDate *)logDate logLevel:(Byte)logLevel content:(NSString *)content fileName:(NSString *)fileName functionName:(NSString *)functionName line:(UInt32)line peripheral:(CBPeripheral *)peripheral;
+- (void)recvLog:(id<FSBLELogProtocol>)log;
 - (void)recvSendBoxInfo:(NSDictionary *)sendBoxInfo;
 - (void)recvSandBoxFile:(NSData *)sandBoxData;
 - (void)recvOperationInfo:(NSData *)operationInfo;

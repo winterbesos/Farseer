@@ -80,26 +80,3 @@ void openBLEDebug(void(^callback)(NSError *error)) {
 void cleanLogBefore(NSDate *date) {
     [[FSDebugCentral getInstance].logManager cleanLogBeforeDate:date];
 }
-
-// TODO: doing
-
-#include <objc/runtime.h>
-
-static dispatch_once_t onceToken;
-
-#define FSRegister(obj) dispatch_once(&onceToken, ^{ \
-                            Register(obj);           \
-                        });
-
-void Register(id obj) {
-    FSRegister([NSObject new]);
-    static char kRegisterAssociatedhandleKey;
-    static NSMutableArray *objs = nil;
-    if (!objs) {
-        objs = [NSMutableArray array];
-    }
-    
-    NSObject *baseObj = [NSObject new];
-    objc_setAssociatedObject(baseObj, &kRegisterAssociatedhandleKey, obj, OBJC_ASSOCIATION_ASSIGN);
-    [objs addObject:baseObj];
-}

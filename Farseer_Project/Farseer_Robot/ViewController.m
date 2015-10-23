@@ -34,26 +34,39 @@
 #pragma mark - Private Method
 
 - (void)testLog {
-    FSLogLevel level = arc4random() % 4;
-    switch (level) {
-        case FSLogLevelLog:
-            FSLog(@"log level");
+    int ran = arc4random() % 2;
+    switch (ran) {
+        case 0: {
+            FSRelationOperation *operation = [[FSRelationOperation alloc] initWithFromNodeName:@"UIViewController" toNodeName:@"VSViewController"];
+            FSSendLog(operation);
+        }
             break;
-        case FSLogLevelError:
-            FSError(@"error level");
-            break;
-        case FSLogLevelFatal:
-            FSFatal(@"fatal level");
-            break;
-        case FSLogLevelMinor:
-            FSMinor(@"minor level");
-            break;
-        case FSLogLevelWarning:
-            FSWarning(@"warning level");
-            break;
+        case 1: {
+            FSLogLevel level = arc4random() % 4;
+            switch (level) {
+                case FSLogLevelLog:
+                    FSLog(@"log level");
+                    break;
+                case FSLogLevelError:
+                    FSError(@"error level");
+                    break;
+                case FSLogLevelFatal:
+                    FSFatal(@"fatal level");
+                    break;
+                case FSLogLevelMinor:
+                    FSMinor(@"minor level");
+                    break;
+                case FSLogLevelWarning:
+                    FSWarning(@"warning level");
+                    break;
+                default:
+                    break;
+            }
+        }
         default:
             break;
     }
+    
 }
 
 #pragma mark - Action
