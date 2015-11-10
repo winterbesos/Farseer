@@ -36,6 +36,7 @@
     
     CBCharacteristic    *_peripheralInfoCharacteristic;
     CBCharacteristic    *_writeCMDCharacteristic;
+    NSMutableArray      *_activePeripherals;
 }
 
 - (instancetype)initWithEncoder:(FSPackageEncoder *)encoder decoder:(FSPackageDecoder *)decoder stateChangedCallback:(void(^)(CBCentralManagerState state))callback {
@@ -45,6 +46,7 @@
         _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         _packageDecoder = decoder;
         _packageEncoder = encoder;
+        _activePeripherals = [NSMutableArray array];
     }
     return self;
 }
@@ -71,10 +73,12 @@
     connectionStatusChangedCallback = callback;
     if (peripheral.state == CBPeripheralStateConnecting) {
         [_manager cancelPeripheralConnection:peripheral];
+        [_activePeripherals removeObject:peripheral];
         return;
     } else if (peripheral.state == CBPeripheralStateDisconnected) {
         _bleConnectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(connectTimeout:) userInfo:peripheral repeats:NO];
         [_manager connectPeripheral:peripheral options:nil];
+        [_activePeripherals addObject:peripheral];
     } else {
         return;
     }
@@ -84,11 +88,22 @@
 - (void)disconnectPeripheral:(CBPeripheral *)peripheral {
     if (peripheral) {
         [_manager cancelPeripheralConnection:peripheral];
+        [_activePeripherals removeObject:peripheral];
+    }
+}
+
+- (void)disconnectAllPeripherals {
+    for (CBPeripheral *peripheral in _activePeripherals) {
+        if (peripheral.state != CBPeripheralStateDisconnected) {
+            [_activePeripherals removeObject:peripheral];
+            [_manager cancelPeripheralConnection:peripheral];
+        }
     }
 }
 
 - (void)connectTimeout:(NSTimer *)timer {
     [_manager cancelPeripheralConnection:timer.userInfo];
+    [_activePeripherals removeObject:timer.userInfo];
 }
 
 - (void)writeValueTimeout:(NSTimer *)timer {
@@ -144,6 +159,7 @@
 - (void)peripheral:(CBPeripheral *)peripheral didModifyServices:(NSArray *)invalidatedServices {
 //    NSLog(@"%s", __FUNCTION__);
     [_manager cancelPeripheralConnection:peripheral];
+    [_activePeripherals removeObject:peripheral];
 }
 
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error {

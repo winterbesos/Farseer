@@ -118,7 +118,7 @@
             if (cls) {
                 id log = [[cls alloc] init];
                 [log BLETransferDecodeWithData:logData];
-                [cacheLogArray addObjectsFromArray:log];
+                [cacheLogArray addObject:log];
                 
                 if (!cacheLogDictionary[className]) {
                     NSMutableArray *typeLogArray = [NSMutableArray array];

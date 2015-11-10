@@ -21,6 +21,7 @@
 - (void)scanDidDisconvered:(void(^)(CBPeripheral *peripheral, NSNumber *RSSI))callback;
 - (void)connectToPeripheral:(CBPeripheral *)peripheral callback:(void(^)(CBPeripheral *peripheral))callback;
 - (void)disconnectPeripheral:(CBPeripheral *)peripheral;
+- (void)disconnectAllPeripherals;
 - (void)stopScan;
 
 - (void)runSendLoop;

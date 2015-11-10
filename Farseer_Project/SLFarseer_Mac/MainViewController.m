@@ -76,7 +76,6 @@
     openDlg.canChooseFiles = NO;
     openDlg.canChooseDirectories = YES;
     if ([openDlg runModal] == NSModalResponseOK) {
-
         NSArray *files = openDlg.URLs;
         self.pathControl.URL = files.firstObject;
         

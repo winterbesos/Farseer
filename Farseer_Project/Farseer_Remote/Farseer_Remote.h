@@ -23,3 +23,5 @@ void setupBLEClient(id<FSCentralClientDelegate> delegate, void(^statusChangedCal
 void scanPeripheral(void(^callback)(CBPeripheral *peripheral, NSNumber *RSSI));
 void stopScan();
 void connectToPeripheral(CBPeripheral *peripheral, void(^callback)(CBPeripheral *peripheral));
+void disconnectPeripheral(CBPeripheral *peripheral);
+void disconnectAllPeripheral();

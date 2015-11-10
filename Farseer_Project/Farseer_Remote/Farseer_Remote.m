@@ -53,3 +53,7 @@ void disconnectPeripheral(CBPeripheral *peripheral) {
     [[FSDebugCentral_Remote getInstance].centralClient.service disconnectPeripheral:peripheral];
 }
 
+void disconnectAllPeripheral() {
+    [[FSDebugCentral_Remote getInstance].centralClient.service disconnectAllPeripherals];
+}
+
