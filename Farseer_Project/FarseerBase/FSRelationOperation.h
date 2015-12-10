@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FSBLELogProtocol.h"
 
-@interface FSRelationOperation : NSObject <FSBLELogProtocol>
+@interface FSRelationOperation : NSObject <FSBLELogProtocol, NSCoding>
 
 @property (nonatomic, copy)NSString *fromNodeName;
 @property (nonatomic, copy)NSString *toNodeName;
