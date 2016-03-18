@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <FarseerBase_iOS/FarseerBase_iOS.h>
+#import <Farseer_iOS/Farseer_iOS.h>
 
 @interface SLFarseer_iOSTests : XCTestCase
 
@@ -33,12 +34,11 @@
     
     FSBLELog *log2 = [[FSBLELog alloc] init];
     [log2 BLETransferDecodeWithData:data];
-    
-    
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
+
+    
     XCTAssert(YES, @"Pass");
 }
 

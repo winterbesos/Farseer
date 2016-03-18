@@ -21,51 +21,53 @@
 #import "FSLogManager.h"
 #import "FSDebugCentral.h"
 
-#define SLCONSOLE_LEVEL FSLogLevelWarning
+static BOOL isDebug = NO;
+static FSLogLevel consoleLevel = FSLogLevelError;
 
-void FS_DebugLog(NSString *log, FSLogLevel level, const char *file, const char *function, unsigned int line)
-{   
-    [[FSDebugCentral getInstance].logManager inputLog:[FSBLELog createLogWithLevel:level content:log file:file function: function line: line]];
+void FS_DebugLog(NSInteger code, NSString *domain, FSLogLevel level, NSDictionary <NSString *, id>*info, const char *file, const char *function, unsigned int line)
+{
+    FSBLELog *log = [FSBLELog createLogWithLevel:level domain:domain info:info file:file function:function line:line];
+    [[FSDebugCentral getInstance].logManager inputLog:log];
     
-#ifdef DEBUG
-    const char *cLog = [log cStringUsingEncoding:NSUTF8StringEncoding];
-    char *prefix = NULL;
-    switch (level) {
-        case FSLogLevelFatal:
-            prefix = "[FATAL]";
-            break;
-        case FSLogLevelError:
-            prefix = "[ERROR]";
-            break;
-        case FSLogLevelWarning:
-            prefix = "[WARNING]";
-            break;
-        case FSLogLevelLog:
-            prefix = "[LOG]";
-            break;
-        case FSLogLevelMinor:
-            prefix = "[MINOR]";
-            break;
-        default:
+    if (isDebug) {
+        const char *cLog = [domain cStringUsingEncoding:NSUTF8StringEncoding];
+        char *prefix = NULL;
+        switch (level) {
+            case FSLogLevelFatal:
+                prefix = "[FATAL]";
+                break;
+            case FSLogLevelError:
+                prefix = "[ERROR]";
+                break;
+            case FSLogLevelWarning:
+                prefix = "[WARNING]";
+                break;
+            case FSLogLevelLog:
+                prefix = "[LOG]";
+                break;
+            case FSLogLevelMinor:
+                prefix = "[MINOR]";
+                break;
+            default:
+                assert(false);
+                return;
+        }
+        
+        if (level >= consoleLevel)
+        {
+            printf("%s:%s\n", prefix, cLog);
+        }
+        
+        if (level == FSLogLevelFatal)
+        {
+            printf("fatal error");
             assert(false);
-            break;
+        }
     }
     
-    if (level >= SLCONSOLE_LEVEL)
-    {
-        printf("%s:%s\n", prefix, cLog);
-    }
-    
-    if (level == FSLogLevelFatal)
-    {
-        printf("fatal error");
-        assert(false);
-    }
-    
-#endif
 }
 
-void FSSendLog(id<FSBLELogProtocol> log) {
+void FSSendLog(id<FSBLELogProtocol, FSStorageLogProtocol> log) {
     [[FSDebugCentral getInstance].logManager inputLog:log];
 }
 

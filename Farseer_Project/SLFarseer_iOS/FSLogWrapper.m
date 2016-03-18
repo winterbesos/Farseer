@@ -62,12 +62,11 @@
     FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
     while ([packageIn hasMore]) {
         NSString *className = [packageIn readString];
-        UInt32 logLength = [packageIn readUInt32];
-        NSData *logData = [packageIn readDataWithLength:logLength];
+        NSData *logData = [packageIn readData];
         Class cls = NSClassFromString(className);
         if (cls) {
             id log = [[cls alloc] init];
-            [log BLETransferDecodeWithData:logData];
+            [log storageDecodeWithData:logData];
             [logs addObject:log];
         }
     }

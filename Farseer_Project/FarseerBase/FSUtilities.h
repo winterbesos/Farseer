@@ -29,12 +29,18 @@
 + (void)FS_CreatePathIfNeed:(NSString *)path;
 + (void)FS_CreateLogFileIfNeed:(NSString *)path;
 
-+ (void)writeLog:(id<FSBLELogProtocol>)log ToFile:(const char *)filePath;
++ (void)writeLog:(id<FSStorageLogProtocol>)log toFile:(const char *)filePath;
 
 @end
 
 @interface NSString (FSData)
 
 @property (nonatomic, readonly)NSData *dataValue;
+
+@end
+
+@interface NSData (FSData)
+
+@property (nonatomic, readonly)NSData *streamData;
 
 @end

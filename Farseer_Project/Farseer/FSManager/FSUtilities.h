@@ -24,7 +24,7 @@
 + (void)FS_CreatePathIfNeed:(NSString *)path;
 + (void)FS_CreateLogFileIfNeed:(NSString *)path;
 
-+ (void)writeLog:(FSBLELog *)log ToFile:(const char *)filePath;
++ (void)writeLog:(FSBLELog *)log toFile:(const char *)filePath;
 
 @end
 

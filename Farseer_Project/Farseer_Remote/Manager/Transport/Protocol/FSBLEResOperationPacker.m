@@ -18,7 +18,7 @@
 @implementation FSBLEResOperationPacker
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral {
-    [client recvOperationInfo:[packageIn readData]];
+    [client recvOperationInfo:[packageIn readFullData]];
 }
 
 @end

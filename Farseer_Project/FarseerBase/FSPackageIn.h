@@ -29,6 +29,7 @@
 - (UInt64)readUInt64;
 - (NSData *)readData;
 - (NSData *)readDataWithLength:(NSInteger)length;
+- (NSData *)readFullData;
 - (BOOL)hasMore;
 
 @end

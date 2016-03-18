@@ -18,7 +18,7 @@
 @implementation FSBLEResSyncDataPacker
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral {
-    [client recvSandBoxFile:[packageIn readData]];
+    [client recvSandBoxFile:[packageIn readFullData]];
 }
 
 @end

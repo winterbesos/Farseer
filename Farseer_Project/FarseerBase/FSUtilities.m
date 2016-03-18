@@ -124,16 +124,16 @@
 
 // File
 
-+ (void)writeLog:(id<FSBLELogProtocol>)log ToFile:(const char *)filePath {
++ (void)writeLog:(id<FSStorageLogProtocol>)log toFile:(const char *)filePath {
     @synchronized(self) {
-        FILE    *fp = fopen(filePath, "a");
+        FILE *fp = fopen(filePath, "a");
         if (!fp)
         {
             assert(false);
         }
         
         NSData *classNameData = NSStringFromClass(log.class).SLEncodeData;
-        NSData *dataValue = [log BLETransferEncode];
+        NSData *dataValue = [log storageEncode];
         UInt32 length = (UInt32)dataValue.length;
         
         NSMutableData *writeData = [NSMutableData dataWithData:classNameData];
@@ -143,13 +143,13 @@
         const void *bytes = [writeData bytes];
         fwrite(bytes, sizeof(Byte), writeData.length, fp);
         fclose(fp);
-        
-#ifdef OUTPUT_CONSOLE
-        if ([log respondsToSelector:@selector(log_printToConsole)]) {
-            [log log_printToConsole];
-        }
-#endif
     }
+    
+#ifdef OUTPUT_CONSOLE
+    if ([log respondsToSelector:@selector(log_printToConsole)]) {
+        [log log_printToConsole];
+    }
+#endif
 }
 
 @end
@@ -162,6 +162,18 @@
     UInt32 len = (UInt32)bodyData.length;
     NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
     [pkgData appendData:bodyData];
+    
+    return pkgData;
+}
+
+@end
+
+@implementation NSData (FSData)
+
+- (NSData *)streamData {
+    UInt32 len = (UInt32)self.length;
+    NSMutableData *pkgData = [NSMutableData dataWithBytes:&len length:sizeof(len)];
+    [pkgData appendData:self];
     
     return pkgData;
 }

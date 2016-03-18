@@ -15,8 +15,4 @@
 - (NSData *)BLETransferEncode;
 - (void)BLETransferDecodeWithData:(NSData *)data;
 
-@optional
-- (void)log_print;
-- (void)log_printToConsole;
-
 @end

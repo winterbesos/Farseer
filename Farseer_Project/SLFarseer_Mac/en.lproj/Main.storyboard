@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -682,7 +682,6 @@
                                         <subviews>
                                             <pathControl focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2hZ-by-PBa">
                                                 <rect key="frame" x="16" y="40" width="621" height="20"/>
-                                                <animations/>
                                                 <pathCell key="cell" controlSize="small" selectable="YES" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="tGV-1e-SvV">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <url key="url" string="file://localhost/Applications/"/>
@@ -694,7 +693,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="122" id="sXg-jw-ZIQ"/>
                                                 </constraints>
-                                                <animations/>
                                                 <buttonCell key="cell" type="roundRect" title="Log Dirctory" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2pJ-Vq-bGq">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
@@ -708,7 +706,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="122" id="v5A-Sf-hpe"/>
                                                 </constraints>
-                                                <animations/>
                                                 <buttonCell key="cell" type="roundRect" title="Filter" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o3k-Fz-2CJ">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
@@ -728,7 +725,6 @@
                                             <constraint firstAttribute="trailing" secondItem="imu-jf-6S9" secondAttribute="trailing" constant="17" id="auF-el-u7u"/>
                                             <constraint firstItem="Dx0-Kf-BXe" firstAttribute="top" secondItem="g70-aW-MLy" secondAttribute="top" constant="15" id="ePR-1l-OGA"/>
                                         </constraints>
-                                        <animations/>
                                     </customView>
                                     <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" id="8vB-l1-dMd">
                                         <rect key="frame" x="0.0" y="74" width="800" height="526"/>
@@ -744,7 +740,6 @@
                                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="mRB-wd-Mwe">
                                                             <rect key="frame" x="0.0" y="0.0" width="195" height="19"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -769,19 +764,15 @@
                                                             </connections>
                                                         </tableView>
                                                     </subviews>
-                                                    <animations/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </clipView>
-                                                <animations/>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="iev-4y-dXs">
+                                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="iev-4y-dXs">
                                                     <rect key="frame" x="1" y="509" width="195" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <animations/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1hd-El-Mea">
                                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <animations/>
                                                 </scroller>
                                             </scrollView>
                                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" id="G0i-yg-Yrj">
@@ -794,7 +785,6 @@
                                                         <textView editable="NO" importsGraphics="NO" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="NUi-an-Oes">
                                                             <rect key="frame" x="0.0" y="0.0" width="591" height="524"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <animations/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <size key="minSize" width="591" height="524"/>
                                                             <size key="maxSize" width="593" height="10000000"/>
@@ -803,23 +793,18 @@
                                                             <size key="maxSize" width="593" height="10000000"/>
                                                         </textView>
                                                     </subviews>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </clipView>
-                                                <animations/>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Zgw-hP-xPL">
                                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <animations/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="B5G-R4-L5l">
                                                     <rect key="frame" x="576" y="1" width="16" height="524"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <animations/>
                                                 </scroller>
                                             </scrollView>
                                         </subviews>
-                                        <animations/>
                                         <holdingPriorities>
                                             <real value="311"/>
                                             <real value="250"/>
@@ -830,7 +815,6 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="800" id="Fwt-oR-7HS"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="600" id="JnP-ln-AdU"/>
                                 </constraints>
-                                <animations/>
                                 <holdingPriorities>
                                     <real value="250"/>
                                     <real value="250"/>
@@ -847,7 +831,6 @@
                             <constraint firstItem="05p-Lu-sg5" firstAttribute="leading" secondItem="t82-fN-m7v" secondAttribute="leading" id="hwi-42-99j"/>
                             <constraint firstItem="05p-Lu-sg5" firstAttribute="top" secondItem="t82-fN-m7v" secondAttribute="top" id="wXh-qT-ubG"/>
                         </constraints>
-                        <animations/>
                     </view>
                     <connections>
                         <outlet property="fileTableView" destination="mRB-wd-Mwe" id="ffM-Ju-YvZ"/>
@@ -893,7 +876,6 @@
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V46-GK-1yH">
                                             <rect key="frame" x="15" y="57" width="66" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Warning" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="vPv-TD-g3s">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -904,7 +886,6 @@
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9j6-UZ-zpr">
                                             <rect key="frame" x="15" y="37" width="62" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Log" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="DZV-Op-Ax6">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -915,7 +896,6 @@
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKr-bj-iLO">
                                             <rect key="frame" x="15" y="17" width="62" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Minor" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="r1q-D6-WAA">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -926,7 +906,6 @@
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDu-QA-zrK">
                                             <rect key="frame" x="15" y="97" width="62" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Fatal" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="oKl-c2-eOz">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -937,7 +916,6 @@
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-S4-ml2">
                                             <rect key="frame" x="15" y="117" width="62" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="All" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="k3E-U8-L25">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="11" name="STHeitiSC-Light"/>
@@ -948,7 +926,6 @@
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-Ud-d0O">
                                             <rect key="frame" x="15" y="77" width="62" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Error" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="aIR-Uk-Zzs">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -958,13 +935,11 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <animations/>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="5ze-Qk-kLf"/>
                                     <constraint firstAttribute="height" constant="156" id="tzh-bh-c13"/>
                                 </constraints>
-                                <animations/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
@@ -975,7 +950,6 @@
                             <constraint firstAttribute="bottom" secondItem="gIY-22-xxA" secondAttribute="bottom" constant="20" id="rCA-g5-RWz"/>
                             <constraint firstItem="gIY-22-xxA" firstAttribute="top" secondItem="pK6-4a-1GR" secondAttribute="top" constant="20" id="sAp-YQ-6zy"/>
                         </constraints>
-                        <animations/>
                     </view>
                     <connections>
                         <outlet property="filterAllCheckBox" destination="Kjk-S4-ml2" id="1OZ-sK-vpY"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -672,29 +672,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ko1-L5-Zwm">
-                                <rect key="frame" x="97" y="17" width="96" height="20"/>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ko1-L5-Zwm">
+                                <rect key="frame" x="98" y="17" width="96" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="Ne6-ey-Ucr"/>
                                 </constraints>
-                                <animations/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="C1C-a7-G1l"/>
                                 <connections>
                                     <action selector="frequencySliderAction:" target="XfG-lQ-9wD" id="xFL-IE-PDl"/>
                                 </connections>
                             </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDo-Al-WmI">
-                                <rect key="frame" x="18" y="19" width="65" height="17"/>
-                                <animations/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cDo-Al-WmI">
+                                <rect key="frame" x="18" y="19" width="66" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="frequency" id="MlD-Ng-cI5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fiH-dx-lO7">
-                                <rect key="frame" x="209" y="19" width="19" height="17"/>
-                                <animations/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fiH-dx-lO7">
+                                <rect key="frame" x="210" y="19" width="17" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1s" id="dS1-P9-78l">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -710,7 +707,6 @@
                             <constraint firstAttribute="bottom" secondItem="ko1-L5-Zwm" secondAttribute="bottom" constant="19" id="rq8-pd-lOc"/>
                             <constraint firstAttribute="bottom" secondItem="fiH-dx-lO7" secondAttribute="bottom" constant="19" id="wsf-cS-EqN"/>
                         </constraints>
-                        <animations/>
                     </view>
                     <connections>
                         <outlet property="frequencyLabel" destination="fiH-dx-lO7" id="8Mc-8y-jmL"/>

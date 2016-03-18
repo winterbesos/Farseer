@@ -19,7 +19,7 @@
 
 - (void)unpack:(FSPackageIn *)packageIn client:(id)client peripheral:(CBPeripheral *)peripheral {
     
-    NSData *data = [packageIn readData];
+    NSData *data = [packageIn readFullData];
     NSDictionary *sendBoxInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     
     [client recvSendBoxInfo:sendBoxInfo];

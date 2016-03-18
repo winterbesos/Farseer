@@ -37,8 +37,8 @@
     int ran = arc4random() % 2;
     switch (ran) {
         case 0: {
-            FSRelationOperation *operation = [[FSRelationOperation alloc] initWithFromNodeName:@"UIViewController" toNodeName:@"VSViewController"];
-            FSSendLog(operation);
+//            FSRelationOperation *operation = [[FSRelationOperation alloc] initWithFromNodeName:@"UIViewController" toNodeName:@"VSViewController"];
+//            FSSendLog(operation);
         }
             break;
         case 1: {
@@ -48,7 +48,7 @@
                     FSLog(@"log level");
                     break;
                 case FSLogLevelError:
-                    FSError(@"error level");
+                    FSError(kDefaultLogCode, @"error level", @{@"response" : [NSData data]});
                     break;
                 case FSLogLevelFatal:
                     FSFatal(@"fatal level");

@@ -18,19 +18,26 @@
 @class NSString;
 @class NSData;
 
-#define FSFatal(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelFatal, __FILE__, __FUNCTION__, __LINE__)
-#define FSError(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelError, __FILE__, __FUNCTION__, __LINE__)
-#define FSWarning(format, ...)  FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelWarning, __FILE__, __FUNCTION__, __LINE__)
-#define FSLog(format, ...)      FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelLog, __FILE__, __FUNCTION__, __LINE__)
-#define FSMinor(format, ...)    FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelMinor, __FILE__, __FUNCTION__, __LINE__)
+static const NSInteger kDefaultLogCode = -1;
 
-#define FSCFatal(condition, format, ...)    if (condition) { FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelFatal, __FILE__, __FUNCTION__, __LINE__); }
-#define FSCError(condition, format, ...)    if (condition) { FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelError, __FILE__, __FUNCTION__, __LINE__); }
-#define FSCWarning(condition, format, ...)  if (condition) { FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelWarning, __FILE__, __FUNCTION__, __LINE__); }
-#define FSCLog(condition, format, ...)      if (condition) { FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelLog, __FILE__, __FUNCTION__, __LINE__); }
-#define FSCMinor(condition, format, ...)    if (condition) { FS_DebugLog([NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelMinor, __FILE__, __FUNCTION__, __LINE__); }
+#define FSFatal(format, ...)                FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelFatal, nil, __FILE__, __FUNCTION__, __LINE__)
+#define FSError(code, domain, info)         FS_DebugLog(code, \
+                                                        domain, \
+                                                        FSLogLevelError, \
+                                                        info, \
+                                                        __FILE__, __FUNCTION__, __LINE__)
 
-FOUNDATION_EXTERN void FS_DebugLog(NSString *log, FSLogLevel level, const char *file, const char *function, unsigned int line);
+#define FSWarning(format, ...)              FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelWarning, nil, __FILE__, __FUNCTION__, __LINE__)
+#define FSLog(format, ...)                  FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelLog, nil, __FILE__, __FUNCTION__, __LINE__)
+#define FSMinor(format, ...)                FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelMinor, nil, __FILE__, __FUNCTION__, __LINE__)
+
+#define FSCFatal(condition, format, ...)    if (condition) { FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelFatal, nil, __FILE__, __FUNCTION__, __LINE__); }
+#define FSCError(condition, code, info, format, ...)    if (condition) { FS_DebugLog(code, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelError, info, __FILE__, __FUNCTION__, __LINE__); }
+#define FSCWarning(condition, format, ...)  if (condition) { FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelWarning, nil __FILE__, __FUNCTION__, __LINE__); }
+#define FSCLog(condition, format, ...)      if (condition) { FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelLog, nil, __FILE__, __FUNCTION__, __LINE__); }
+#define FSCMinor(condition, format, ...)    if (condition) { FS_DebugLog(kDefaultLogCode, [NSString stringWithFormat: format, ##__VA_ARGS__], FSLogLevelMinor, nil __FILE__, __FUNCTION__, __LINE__); }
+
+FOUNDATION_EXTERN void FS_DebugLog(NSInteger code, NSString *domain, FSLogLevel level, NSDictionary <NSString *, id>*info, const char *file, const char *function, unsigned int line);
 
 void FSSendLog(id<FSBLELogProtocol> log);
 void closeBLEDebug();

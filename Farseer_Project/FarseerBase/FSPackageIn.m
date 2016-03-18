@@ -8,13 +8,13 @@
 
 #import "FSPackageIn.h"
 
-#define READTYPE(a, headSize) if (_readPos + headSize + sizeof(a) <= _pkg.length) {     \
-                           a value;                                                  \
-                           [_pkg getBytes:&value range:NSMakeRange(_readPos + headSize, sizeof(a))]; \
-                           _readPos += sizeof(a);                                       \
-                           return value;                                                \
-                        }                                                                   \
-                        return 0;
+#define READTYPE(a, headSize)   if (_readPos + headSize + sizeof(a) <= _pkg.length) {     \
+                                   a value;                                                  \
+                                   [_pkg getBytes:&value range:NSMakeRange(_readPos + headSize, sizeof(a))]; \
+                                   _readPos += sizeof(a);                                       \
+                                   return value;                                                \
+                                }                                                                   \
+                                return 0;
 
 #define READSTRING(headSize) if (_readPos + headSize + sizeof(UInt32) <= _pkg.length) { \
                              UInt32 len;                                                      \
@@ -88,6 +88,22 @@
 }
 
 - (NSData *)readData {
+    UInt32 len;
+    [_pkg getBytes:&len range:NSMakeRange(_readPos + 0, sizeof(UInt32))];
+    _readPos += sizeof(UInt32);
+    
+    NSData *data;
+    if (len) {
+        data = [_pkg subdataWithRange:NSMakeRange(_readPos, len)];
+    } else {
+        data = [NSData data];
+    }
+    _readPos += len;
+    
+    return data;
+}
+
+- (NSData *)readFullData {
     return _pkg;
 }
 

@@ -47,7 +47,7 @@
 
 - (void)inputLog:(FSBLELog *)log UUIDString:(NSString *)UUIDString bundleName:(NSString *)bundleName fileName:(NSString *)fileName {
     NSString *fileFullPath = [self FS_CreateLogFileIfNeedWithUUIDString:UUIDString bundleName:bundleName fileName:fileName];
-    [FSUtilities writeLog:log ToFile:[fileFullPath UTF8String]];
+    [FSUtilities writeLog:log toFile:[fileFullPath UTF8String]];
 }
 
 - (void)requestLog {
@@ -75,7 +75,7 @@
                 }
             });
         
-            [FSUtilities writeLog:log ToFile:[fileFullPath UTF8String]];
+            [FSUtilities writeLog:log toFile:[fileFullPath UTF8String]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

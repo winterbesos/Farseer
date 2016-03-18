@@ -20,7 +20,7 @@
 @interface FSLogManager: NSObject
 
 - (void)cleanLogBeforeDate:(NSDate *)date;
-- (void)inputLog:(id<FSBLELogProtocol>)log;
+- (void)inputLog:(id<FSStorageLogProtocol>)log;
 
 - (NSArray *)logList;
 - (void)uninstallLogFile;

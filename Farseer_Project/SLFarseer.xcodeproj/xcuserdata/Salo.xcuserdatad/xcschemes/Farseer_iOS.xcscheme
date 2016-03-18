@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39B6C7201C9B9A110066AD9D"
+               BuildableName = "Farseer_Tests.xctest"
+               BlueprintName = "Farseer_Tests"
+               ReferencedContainer = "container:SLFarseer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "39193C2A1AB9969800617804"
+            BuildableName = "Farseer_iOS.framework"
+            BlueprintName = "Farseer_iOS"
+            ReferencedContainer = "container:SLFarseer.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

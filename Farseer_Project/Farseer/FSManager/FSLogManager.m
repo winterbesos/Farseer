@@ -65,14 +65,14 @@
     }
 }
 
-- (void)inputLog:(id<FSBLELogProtocol>)log {
+- (void)inputLog:(id<FSStorageLogProtocol, FSBLELogProtocol>)log {
     [self FS_CreateLogFileIfNeedWithLog:log];
     dispatch_async(logFileOperationQueue, ^{
         log.sequence = logNumber++;
         NSString *fileFullName = [NSString stringWithFormat:@"%@.%@", logFileName, @"fsl"];
         NSString *filePathWithExtension = [[FSUtilities FS_LogPath] stringByAppendingPathComponent:fileFullName];
         const char *filePath = [filePathWithExtension cStringUsingEncoding:NSUTF8StringEncoding];
-        [FSUtilities writeLog:log ToFile:filePath];
+        [FSUtilities writeLog:log toFile:filePath];
         [self cacheLogIfNeed:log];
         [[FSDebugCentral getInstance].transportManager.peripheralClient writeLogToCharacteristic:log];
     });
