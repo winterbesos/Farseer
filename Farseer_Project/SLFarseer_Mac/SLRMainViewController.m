@@ -6,23 +6,30 @@
 //  Copyright (c) 2015 eitdesign. All rights reserved.
 //
 
-#import "MainViewController.h"
-#import "ConfigurationViewController.h"
 #import <Farseer_Remote_Mac/Farseer_Remote_Mac.h>
 #import <FarseerBase_OSX/FarseerBase_OSX.h>
+#import "SLRMainViewController.h"
+#import "SLRConfigurationViewController.h"
+#import "SLRLogDetailViewController.h"
 
 #define kSELECTED_URL_KEY @"kSELECTED_URL_KEY"
 
-@interface MainViewController () <NSTableViewDataSource, NSTableViewDelegate, ConfigurationViewControllerDelegate>
+@interface SLRMainViewController () <
+                                     NSTableViewDataSource,
+                                     NSTableViewDelegate,
+                                     ConfigurationViewControllerDelegate
+                                    >
 
 @property (weak) IBOutlet NSPathControl *pathControl;
 @property (weak) IBOutlet NSTableView *fileTableView;
-@property (unsafe_unretained) IBOutlet NSTextView *logTextView;
+@property (weak) IBOutlet NSTableView *logTableView;
 @property (strong, nonatomic) NSWindowController *configurationWC;
+@property (strong, nonatomic) NSWindowController *logDetailWC;
+@property (nonatomic, strong) NSArray *filters;
 
 @end
 
-@implementation MainViewController {
+@implementation SLRMainViewController {
     NSArray *_fileArray;
     NSArray *_logs;
     
@@ -49,12 +56,13 @@
 
 #pragma mark - Private Method
 
-- (void)filterLogs {
-    NSMutableString *logString = [NSMutableString string];
+- (NSArray *)filterLogs {
+    NSMutableArray *filters = [NSMutableArray array];
     for (id log in _logs) {
-        [logString appendFormat:@"%@\n", log];
+        [filters addObject:log];
     }
-    self.logTextView.string = logString;
+    
+    return filters;
 }
 
 #pragma mark - Properties
@@ -88,7 +96,7 @@
 }
 
 - (IBAction)filterButtonAction:(id)sender {
-    ConfigurationViewController *configurationVC = (ConfigurationViewController *)self.configurationWC.contentViewController;
+    SLRConfigurationViewController *configurationVC = (SLRConfigurationViewController *)self.configurationWC.contentViewController;
     [configurationVC loadType:_filterType];
     configurationVC.delegate = self;
     [self.configurationWC showWindow:self];
@@ -96,9 +104,10 @@
 
 #pragma mark - ConfigurationViewController Delegate
 
-- (void)viewController:(ConfigurationViewController *)viewController didSelectedFilterType:(ConfigurationFilterType)type {
+- (void)viewController:(SLRConfigurationViewController *)viewController didSelectedFilterType:(ConfigurationFilterType)type {
     _filterType = type;
-    [self filterLogs];
+    self.filters = [self filterLogs];
+    [self.logTableView reloadData];
 }
 
 #pragma mark - NSTableView DataSource and Delegate
@@ -108,15 +117,35 @@
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSError *error;
-    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[_fileArray[row] path] error:&error];
-    return [_dateFormatter stringFromDate:attributes[NSFileCreationDate]];
+    if (tableView == self.fileTableView) {
+        NSError *error;
+        NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[_fileArray[row] path] error:&error];
+        return [_dateFormatter stringFromDate:attributes[NSFileCreationDate]];
+    } else if (tableView == self.logTableView) {
+        return [self.filters[row] description];
+    }
+    
+    return nil;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-    _logs = [FSLogWrapper logsWithOriginalFilePath:_fileArray[row]];
-    [self filterLogs];
-    return YES;
+    if (tableView == self.fileTableView) {
+        _logs = [FSLogWrapper logsWithOriginalFilePath:_fileArray[row]];
+        self.filters = [self filterLogs];
+        [self.logTableView reloadData];
+        return YES;
+    } else if (tableView == self.logTableView) {
+        NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        NSWindowController *logDetailWC = [storyboard instantiateControllerWithIdentifier:@"SLRLogDetailWindowController"];
+        SLRLogDetailViewController *logDetailVC = (SLRLogDetailViewController *)[logDetailWC contentViewController];
+        [logDetailVC setupLog:self.filters[row]];
+        self.logDetailWC = logDetailWC;
+        [logDetailWC showWindow:self];
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

@@ -16,20 +16,20 @@
                                 }                                                                   \
                                 return 0;
 
-#define READSTRING(headSize) if (_readPos + headSize + sizeof(UInt32) <= _pkg.length) { \
-                             UInt32 len;                                                      \
-                             [_pkg getBytes:&len range:NSMakeRange(_readPos + headSize, sizeof(UInt32))];\
-                             _readPos += sizeof(UInt32);\
-                             if (_readPos + headSize + len <= _pkg.length) {\
-                                NSData *stringData = [_pkg subdataWithRange:NSMakeRange(_readPos + headSize, len)];\
-                                NSString *string = [[NSString alloc] initWithData:stringData encoding:NSUTF8StringEncoding];\
-                                _readPos += len;\
-                                return string;\
-                             } else {\
-                                return @"";\
-                             }\
-                         }\
-                         return nil;
+#define READSTRING(headSize)    if (_readPos + headSize + sizeof(UInt32) <= _pkg.length) { \
+                                    UInt32 len;                                                      \
+                                    [_pkg getBytes:&len range:NSMakeRange(_readPos + headSize, sizeof(UInt32))];\
+                                    _readPos += sizeof(UInt32);\
+                                    if (_readPos + headSize + len <= _pkg.length) {\
+                                        NSData *stringData = [_pkg subdataWithRange:NSMakeRange(_readPos + headSize, len)];\
+                                        NSString *string = [[NSString alloc] initWithData:stringData encoding:NSUTF8StringEncoding];\
+                                        _readPos += len;\
+                                        return string;\
+                                    } else {\
+                                        return @"";\
+                                    }\
+                                }\
+                                return nil;
 
 
 @implementation FSPackageIn {

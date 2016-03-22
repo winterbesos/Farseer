@@ -11,7 +11,7 @@
 		390327611BCD446B006375FB /* Farseer_Remote_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */; };
 		390D75081B2594890048541D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D750A1B2594890048541D /* Main.storyboard */; };
 		390D750C1B2594B00048541D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 390D750B1B2594B00048541D /* InfoPlist.strings */; };
-		3922D1991B0AD612006E210C /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922D1981B0AD612006E210C /* ConfigurationViewController.m */; };
+		3922D1991B0AD612006E210C /* SLRConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922D1981B0AD612006E210C /* SLRConfigurationViewController.m */; };
 		3933F9D21BCF898C00F2CBC1 /* Farseer_Remote_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3933F9D41BCF8AA700F2CBC1 /* FSCentralClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5CE61ABA6EC600720D32 /* FSCentralClient.m */; };
 		393799BE1BD8C7DB00EE4A96 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D034E21AB9A3EE00132F0F /* UIKit.framework */; };
@@ -61,7 +61,7 @@
 		3941A9761ACC15F0008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		3941A9771ACC15F1008B8E80 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3941A9741ACC1529008B8E80 /* FSFileManager.m */; };
 		39476D551B83405400ADA56D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D541B83405400ADA56D /* main.m */; };
-		39476D581B83405400ADA56D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D571B83405400ADA56D /* AppDelegate.m */; };
+		39476D581B83405400ADA56D /* SLRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D571B83405400ADA56D /* SLRAppDelegate.m */; };
 		39476D5B1B83405400ADA56D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39476D5A1B83405400ADA56D /* ViewController.m */; };
 		39476D5E1B83405400ADA56D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39476D5C1B83405400ADA56D /* Main.storyboard */; };
 		39476D601B83405400ADA56D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39476D5F1B83405400ADA56D /* Images.xcassets */; };
@@ -80,12 +80,11 @@
 		397E5CF21AF87A9B008004DC /* FSBLECentralService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5CE31ABA6EC600720D32 /* FSBLECentralService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		397E5CF31AF87AA7008004DC /* FSDirectoryWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3940CBCE1AECB9F7002D7F95 /* FSDirectoryWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		397E5CF41AF87CD1008004DC /* FSDirectoryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3940CBCF1AECB9F7002D7F95 /* FSDirectoryWrapper.m */; };
-		397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* AppDelegate.m */; };
+		397F5BE31ABA5D4100720D32 /* SLRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE21ABA5D4100720D32 /* SLRAppDelegate.m */; };
 		397F5BE51ABA5D4100720D32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BE41ABA5D4100720D32 /* main.m */; };
 		397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397F5BE91ABA5D4100720D32 /* Images.xcassets */; };
-		397F5BF91ABA5D4100720D32 /* SLFarseer_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5BF81ABA5D4100720D32 /* SLFarseer_MacTests.m */; };
 		397F5C0A1ABA5DE500720D32 /* Farseer_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C091ABA5DE500720D32 /* Farseer_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		397F5C4B1ABA63E200720D32 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C4A1ABA63E200720D32 /* MainViewController.m */; };
+		397F5C4B1ABA63E200720D32 /* SLRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C4A1ABA63E200720D32 /* SLRMainViewController.m */; };
 		397F5C9E1ABA6B5A00720D32 /* Farseer.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C781ABA6B5A00720D32 /* Farseer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		397F5C9F1ABA6B5A00720D32 /* Farseer.h in Headers */ = {isa = PBXBuildFile; fileRef = 397F5C781ABA6B5A00720D32 /* Farseer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		397F5CA41ABA6B5A00720D32 /* FSDebugCentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 397F5C7C1ABA6B5A00720D32 /* FSDebugCentral.m */; };
@@ -135,8 +134,6 @@
 		3987907B1BDA0BC700078518 /* NSString+FSBLECatetory.h in Headers */ = {isa = PBXBuildFile; fileRef = 398790541BDA068200078518 /* NSString+FSBLECatetory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3987907C1BDA180A00078518 /* FarseerBase_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39395C8F1BD1E165006856B9 /* FarseerBase_OSX.framework */; };
 		3987907D1BDA180A00078518 /* FarseerBase_OSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39395C8F1BD1E165006856B9 /* FarseerBase_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		398790801BDA184900078518 /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
-		398790811BDA184900078518 /* FarseerBase_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39395C8F1BD1E165006856B9 /* FarseerBase_OSX.framework */; };
 		3989C5AE1BD0E0B300826DD5 /* FSBLEResOperationPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978C76C1BCFA713000D5B53 /* FSBLEResOperationPacker.m */; };
 		3989C5AF1BD0E0B300826DD5 /* FSBLEResOperationPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978C76C1BCFA713000D5B53 /* FSBLEResOperationPacker.m */; };
 		398C39981BD344B3002D6E8C /* FSPackageEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39395CD51BD25974006856B9 /* FSPackageEncoder.m */; };
@@ -146,12 +143,12 @@
 		398C399E1BD37EEC002D6E8C /* FarseerBase_OSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39395C8F1BD1E165006856B9 /* FarseerBase_OSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		398C39A11BD37F10002D6E8C /* FarseerBase_OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 398C399C1BD37D4A002D6E8C /* FarseerBase_OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		398DDFD01A80C63D0019BB12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFCF1A80C63D0019BB12 /* main.m */; };
-		398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFD21A80C63D0019BB12 /* AppDelegate.m */; };
+		398DDFD31A80C63D0019BB12 /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFD21A80C63D0019BB12 /* SLAppDelegate.m */; };
 		398DDFDC1A80C63D0019BB12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDA1A80C63D0019BB12 /* Main.storyboard */; };
 		398DDFDE1A80C63D0019BB12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDD1A80C63D0019BB12 /* Images.xcassets */; };
 		398DDFE11A80C63D0019BB12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398DDFDF1A80C63D0019BB12 /* LaunchScreen.xib */; };
 		398DDFED1A80C63D0019BB12 /* SLFarseer_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 398DDFEC1A80C63D0019BB12 /* SLFarseer_iOSTests.m */; };
-		399271011B9EF94C00FE1E01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 399271001B9EF94C00FE1E01 /* AppDelegate.m */; };
+		399271011B9EF94C00FE1E01 /* SLRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 399271001B9EF94C00FE1E01 /* SLRAppDelegate.m */; };
 		399271031B9EF94C00FE1E01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 399271021B9EF94C00FE1E01 /* main.m */; };
 		399271081B9EF94C00FE1E01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 399271071B9EF94C00FE1E01 /* Images.xcassets */; };
 		3992712F1B9EF9A100FE1E01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992712D1B9EF9A000FE1E01 /* ViewController.m */; };
@@ -175,6 +172,7 @@
 		39B6C74F1C9BD7730066AD9D /* FSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7361C9BA9B50066AD9D /* FSLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B6C7501C9BDC9D0066AD9D /* FSStorageLogProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7351C9BA9410066AD9D /* FSStorageLogProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B6C7511C9BDC9D0066AD9D /* FSStorageLogProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7351C9BA9410066AD9D /* FSStorageLogProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39B6C7551C9FA45B0066AD9D /* SLRLogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7531C9F9D700066AD9D /* SLRLogDetailViewController.m */; };
 		39C4924E1AC7A8DD00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
 		39C4924F1AC7A8DE00EA3763 /* FSPackageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */; };
 		39C68DA41ABA77E100BCDA4F /* Farseer_Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C68DA21ABA77C200BCDA4F /* Farseer_Remote.m */; };
@@ -211,19 +209,47 @@
 			remoteGlobalIDString = 39476D4F1B83405400ADA56D;
 			remoteInfo = Farseer_iOS_Feature;
 		};
+		39569D0B1CA0D9F70074974C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0A814632FD000B04273;
+			remoteInfo = OCMock;
+		};
+		39569D0D1CA0D9F70074974C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03565A3118F0566E003AE91E;
+			remoteInfo = OCMockTests;
+		};
+		39569D0F1CA0D9F70074974C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
+		39569D111CA0D9F70074974C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D31108AD1828DB8700737925;
+			remoteInfo = OCMockLibTests;
+		};
+		39569D131CA0D9F70074974C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F0B950F11B0080BE00942C38;
+			remoteInfo = "OCMock iOS";
+		};
 		39788FB01BDA1D7F001AA434 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 39395C811BD1E148006856B9;
 			remoteInfo = FarseerBase_iOS;
-		};
-		397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 398DDFC21A80C63D0019BB12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 397F5BDC1ABA5D4100720D32;
-			remoteInfo = SLFarseer_Mac;
 		};
 		3987907E1BDA180A00078518 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -307,8 +333,8 @@
 		39193C2B1AB9969800617804 /* Farseer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39193C2E1AB9969800617804 /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_iOS.plist; sourceTree = "<group>"; };
 		39193C2F1AB9969800617804 /* Farseer_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_iOS.h; path = Farseer_iOS/Farseer_iOS.h; sourceTree = SOURCE_ROOT; };
-		3922D1971B0AD612006E210C /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
-		3922D1981B0AD612006E210C /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
+		3922D1971B0AD612006E210C /* SLRConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRConfigurationViewController.h; sourceTree = "<group>"; };
+		3922D1981B0AD612006E210C /* SLRConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRConfigurationViewController.m; sourceTree = "<group>"; };
 		39395C821BD1E148006856B9 /* FarseerBase_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FarseerBase_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39395C8F1BD1E165006856B9 /* FarseerBase_OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FarseerBase_OSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39395C981BD1E1E6006856B9 /* FarseerBase_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarseerBase_iOS.h; sourceTree = "<group>"; };
@@ -335,8 +361,8 @@
 		39476D501B83405400ADA56D /* Farseer_iOS_Feature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farseer_iOS_Feature.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39476D531B83405400ADA56D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39476D541B83405400ADA56D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		39476D561B83405400ADA56D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		39476D571B83405400ADA56D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		39476D561B83405400ADA56D /* SLRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLRAppDelegate.h; sourceTree = "<group>"; };
+		39476D571B83405400ADA56D /* SLRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLRAppDelegate.m; sourceTree = "<group>"; };
 		39476D591B83405400ADA56D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		39476D5A1B83405400ADA56D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		39476D5D1B83405400ADA56D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -360,21 +386,18 @@
 		3965789E1ACCEB3800CEA918 /* FSBLEReqDataPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FSBLEReqDataPacker.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3978C76B1BCFA713000D5B53 /* FSBLEResOperationPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBLEResOperationPacker.h; sourceTree = "<group>"; };
 		3978C76C1BCFA713000D5B53 /* FSBLEResOperationPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FSBLEResOperationPacker.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		397F5BDD1ABA5D4100720D32 /* SLFarseer_Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer_Reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5BE01ABA5D4100720D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		397F5BE11ABA5D4100720D32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		397F5BE21ABA5D4100720D32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		397F5BE11ABA5D4100720D32 /* SLRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLRAppDelegate.h; sourceTree = "<group>"; };
+		397F5BE21ABA5D4100720D32 /* SLRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLRAppDelegate.m; sourceTree = "<group>"; };
 		397F5BE41ABA5D4100720D32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		397F5BE91ABA5D4100720D32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		397F5BF21ABA5D4100720D32 /* SLFarseer_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLFarseer_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		397F5BF71ABA5D4100720D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		397F5BF81ABA5D4100720D32 /* SLFarseer_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFarseer_MacTests.m; sourceTree = "<group>"; };
 		397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5C091ABA5DE500720D32 /* Farseer_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_Mac.h; path = Farseer_Mac/Farseer_Mac.h; sourceTree = SOURCE_ROOT; };
 		397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Farseer_Remote_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		397F5C2E1ABA5E4C00720D32 /* Farseer_Remote_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Farseer_Remote_Mac.h; path = Farseer_Remote_Mac/Farseer_Remote_Mac.h; sourceTree = SOURCE_ROOT; };
-		397F5C491ABA63E200720D32 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		397F5C4A1ABA63E200720D32 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		397F5C491ABA63E200720D32 /* SLRMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRMainViewController.h; sourceTree = "<group>"; };
+		397F5C4A1ABA63E200720D32 /* SLRMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRMainViewController.m; sourceTree = "<group>"; };
 		397F5C521ABA665100720D32 /* Info_Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info_Mac.plist; path = Farseer_Mac/Info_Mac.plist; sourceTree = SOURCE_ROOT; };
 		397F5C541ABA667500720D32 /* Info_Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info_Mac.plist; path = Farseer_Remote_Mac/Info_Mac.plist; sourceTree = SOURCE_ROOT; };
 		397F5C781ABA6B5A00720D32 /* Farseer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Farseer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -424,8 +447,8 @@
 		398DDFCA1A80C63D0019BB12 /* SLFarseer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLFarseer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		398DDFCE1A80C63D0019BB12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		398DDFCF1A80C63D0019BB12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		398DDFD11A80C63D0019BB12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		398DDFD21A80C63D0019BB12 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		398DDFD11A80C63D0019BB12 /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
+		398DDFD21A80C63D0019BB12 /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
 		398DDFDB1A80C63D0019BB12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		398DDFDD1A80C63D0019BB12 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		398DDFE01A80C63D0019BB12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -435,8 +458,8 @@
 		398DE0221A80C8CE0019BB12 /* SLFarseer_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SLFarseer_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		399270FB1B9EF94C00FE1E01 /* Farseer_Robot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farseer_Robot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399270FE1B9EF94C00FE1E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		399270FF1B9EF94C00FE1E01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		399271001B9EF94C00FE1E01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		399270FF1B9EF94C00FE1E01 /* SLRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLRAppDelegate.h; sourceTree = "<group>"; };
+		399271001B9EF94C00FE1E01 /* SLRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLRAppDelegate.m; sourceTree = "<group>"; };
 		399271021B9EF94C00FE1E01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		399271071B9EF94C00FE1E01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3992712C1B9EF9A000FE1E01 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -465,6 +488,8 @@
 		39B6C74A1C9BB3EA0066AD9D /* FSLog_Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLog_Test.h; sourceTree = "<group>"; };
 		39B6C74B1C9BC0770066AD9D /* NSDictionary+Contents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Contents.h"; sourceTree = "<group>"; };
 		39B6C74C1C9BC0770066AD9D /* NSDictionary+Contents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Contents.m"; sourceTree = "<group>"; };
+		39B6C7521C9F9D700066AD9D /* SLRLogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRLogDetailViewController.h; sourceTree = "<group>"; };
+		39B6C7531C9F9D700066AD9D /* SLRLogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRLogDetailViewController.m; sourceTree = "<group>"; };
 		39C4924B1AC7A42D00EA3763 /* FSPackageCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FSPackageCoder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		39C4924C1AC7A42D00EA3763 /* FSPackageCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FSPackageCoder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		39C492531AC7C6BA00EA3763 /* FSPackageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FSPackageDecoder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -538,15 +563,6 @@
 			files = (
 				39F48AED1AFEEB7000312AA2 /* Farseer_Remote_Mac.framework in Frameworks */,
 				3987907C1BDA180A00078518 /* FarseerBase_OSX.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		397F5BEF1ABA5D4100720D32 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				398790801BDA184900078518 /* Farseer_Mac.framework in Frameworks */,
-				398790811BDA184900078518 /* FarseerBase_OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,8 +720,8 @@
 		39476D511B83405400ADA56D /* Farseer_iOS_Feature */ = {
 			isa = PBXGroup;
 			children = (
-				39476D561B83405400ADA56D /* AppDelegate.h */,
-				39476D571B83405400ADA56D /* AppDelegate.m */,
+				39476D561B83405400ADA56D /* SLRAppDelegate.h */,
+				39476D571B83405400ADA56D /* SLRAppDelegate.m */,
 				39476D591B83405400ADA56D /* ViewController.h */,
 				39476D5A1B83405400ADA56D /* ViewController.m */,
 				39476D761B8340A200ADA56D /* FarseerTableViewController.h */,
@@ -745,20 +761,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		397F5BDE1ABA5D4100720D32 /* SLFarseer_Mac */ = {
+		39569D041CA0D9F70074974C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				397F5BE11ABA5D4100720D32 /* AppDelegate.h */,
-				397F5BE21ABA5D4100720D32 /* AppDelegate.m */,
-				397F5C491ABA63E200720D32 /* MainViewController.h */,
-				397F5C4A1ABA63E200720D32 /* MainViewController.m */,
-				3922D1971B0AD612006E210C /* ConfigurationViewController.h */,
-				3922D1981B0AD612006E210C /* ConfigurationViewController.m */,
+				39569D0C1CA0D9F70074974C /* OCMock.framework */,
+				39569D0E1CA0D9F70074974C /* OCMockTests.xctest */,
+				39569D101CA0D9F70074974C /* libOCMock.a */,
+				39569D121CA0D9F70074974C /* OCMockLibTests.xctest */,
+				39569D141CA0D9F70074974C /* OCMock.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		397F5BDE1ABA5D4100720D32 /* SLFarseer_Reader */ = {
+			isa = PBXGroup;
+			children = (
+				397F5BE11ABA5D4100720D32 /* SLRAppDelegate.h */,
+				397F5BE21ABA5D4100720D32 /* SLRAppDelegate.m */,
+				397F5C491ABA63E200720D32 /* SLRMainViewController.h */,
+				397F5C4A1ABA63E200720D32 /* SLRMainViewController.m */,
+				3922D1971B0AD612006E210C /* SLRConfigurationViewController.h */,
+				3922D1981B0AD612006E210C /* SLRConfigurationViewController.m */,
+				39B6C7521C9F9D700066AD9D /* SLRLogDetailViewController.h */,
+				39B6C7531C9F9D700066AD9D /* SLRLogDetailViewController.m */,
 				397F5BE91ABA5D4100720D32 /* Images.xcassets */,
 				390D750A1B2594890048541D /* Main.storyboard */,
 				397F5BDF1ABA5D4100720D32 /* Supporting Files */,
 				39CCD1E91ACABD1E009A618D /* SLFarseer_Mac-Bridging-Header.h */,
 			);
+			name = SLFarseer_Reader;
 			path = SLFarseer_Mac;
 			sourceTree = "<group>";
 		};
@@ -768,23 +799,6 @@
 				390D750B1B2594B00048541D /* InfoPlist.strings */,
 				397F5BE01ABA5D4100720D32 /* Info.plist */,
 				397F5BE41ABA5D4100720D32 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		397F5BF51ABA5D4100720D32 /* SLFarseer_MacTests */ = {
-			isa = PBXGroup;
-			children = (
-				397F5BF81ABA5D4100720D32 /* SLFarseer_MacTests.m */,
-				397F5BF61ABA5D4100720D32 /* Supporting Files */,
-			);
-			path = SLFarseer_MacTests;
-			sourceTree = "<group>";
-		};
-		397F5BF61ABA5D4100720D32 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				397F5BF71ABA5D4100720D32 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -978,7 +992,7 @@
 			children = (
 				390327E01BCE2B6D006375FB /* OCMock.xcodeproj */,
 				398DDFCC1A80C63D0019BB12 /* SLFarseer_iOS */,
-				397F5BDE1ABA5D4100720D32 /* SLFarseer_Mac */,
+				397F5BDE1ABA5D4100720D32 /* SLFarseer_Reader */,
 				397F5C711ABA6B5A00720D32 /* Farseer */,
 				397F5CDD1ABA6EC600720D32 /* Farseer_Remote */,
 				39395C971BD1E1E6006856B9 /* FarseerBase */,
@@ -986,7 +1000,6 @@
 				39B14DBF1B9D89B1007FBEBA /* Farseer-Plugin */,
 				399270FC1B9EF94C00FE1E01 /* Farseer_Robot */,
 				398DDFE91A80C63D0019BB12 /* SLFarseer_iOSTests */,
-				397F5BF51ABA5D4100720D32 /* SLFarseer_MacTests */,
 				39B6C7401C9BB03F0066AD9D /* FarseerBaseTests */,
 				39B6C7221C9B9A110066AD9D /* FarseerTests */,
 				39476D6B1B83405400ADA56D /* Farseer_iOS_FeatureTests */,
@@ -1002,8 +1015,7 @@
 				398DDFE61A80C63D0019BB12 /* SLFarseerTests.xctest */,
 				39193C2B1AB9969800617804 /* Farseer_iOS.framework */,
 				39D0350D1AB9A4A600132F0F /* Farseer_Remote_iOS.framework */,
-				397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */,
-				397F5BF21ABA5D4100720D32 /* SLFarseer_MacTests.xctest */,
+				397F5BDD1ABA5D4100720D32 /* SLFarseer_Reader.app */,
 				397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */,
 				397F5C2A1ABA5E4C00720D32 /* Farseer_Remote_Mac.framework */,
 				39476D501B83405400ADA56D /* Farseer_iOS_Feature.app */,
@@ -1021,8 +1033,8 @@
 		398DDFCC1A80C63D0019BB12 /* SLFarseer_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				398DDFD11A80C63D0019BB12 /* AppDelegate.h */,
-				398DDFD21A80C63D0019BB12 /* AppDelegate.m */,
+				398DDFD11A80C63D0019BB12 /* SLAppDelegate.h */,
+				398DDFD21A80C63D0019BB12 /* SLAppDelegate.m */,
 				394CDC9E1ACFC0D8002DB63B /* MainTableViewController.h */,
 				394CDC9F1ACFC0D8002DB63B /* MainTableViewController.m */,
 				39850DFE1AD10F8F003D1742 /* Log */,
@@ -1070,8 +1082,8 @@
 		399270FC1B9EF94C00FE1E01 /* Farseer_Robot */ = {
 			isa = PBXGroup;
 			children = (
-				399270FF1B9EF94C00FE1E01 /* AppDelegate.h */,
-				399271001B9EF94C00FE1E01 /* AppDelegate.m */,
+				399270FF1B9EF94C00FE1E01 /* SLRAppDelegate.h */,
+				399271001B9EF94C00FE1E01 /* SLRAppDelegate.m */,
 				3992712C1B9EF9A000FE1E01 /* ViewController.h */,
 				3992712D1B9EF9A000FE1E01 /* ViewController.m */,
 				3992712E1B9EF9A000FE1E01 /* Main.storyboard */,
@@ -1333,9 +1345,9 @@
 			productReference = 39476D681B83405400ADA56D /* Farseer_iOS_FeatureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */ = {
+		397F5BDC1ABA5D4100720D32 /* SLFarseer_Reader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 397F5BFA1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_Mac" */;
+			buildConfigurationList = 397F5BFA1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_Reader" */;
 			buildPhases = (
 				397F5BD91ABA5D4100720D32 /* Sources */,
 				397F5BDA1ABA5D4100720D32 /* Frameworks */,
@@ -1348,28 +1360,10 @@
 				39F48AF01AFEEB7000312AA2 /* PBXTargetDependency */,
 				3987907F1BDA180A00078518 /* PBXTargetDependency */,
 			);
-			name = SLFarseer_Mac;
+			name = SLFarseer_Reader;
 			productName = SLFarseer_Mac;
-			productReference = 397F5BDD1ABA5D4100720D32 /* SLFarseer_Mac.app */;
+			productReference = 397F5BDD1ABA5D4100720D32 /* SLFarseer_Reader.app */;
 			productType = "com.apple.product-type.application";
-		};
-		397F5BF11ABA5D4100720D32 /* SLFarseer_MacTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 397F5BFD1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_MacTests" */;
-			buildPhases = (
-				397F5BEE1ABA5D4100720D32 /* Sources */,
-				397F5BEF1ABA5D4100720D32 /* Frameworks */,
-				397F5BF01ABA5D4100720D32 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				397F5BF41ABA5D4100720D32 /* PBXTargetDependency */,
-			);
-			name = SLFarseer_MacTests;
-			productName = SLFarseer_MacTests;
-			productReference = 397F5BF21ABA5D4100720D32 /* SLFarseer_MacTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		397F5C041ABA5DE500720D32 /* Farseer_Mac */ = {
 			isa = PBXNativeTarget;
@@ -1541,7 +1535,7 @@
 		398DDFC21A80C63D0019BB12 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = FS;
+				CLASSPREFIX = FSR;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = so.salo;
@@ -1564,10 +1558,6 @@
 					};
 					397F5BDC1ABA5D4100720D32 = {
 						CreatedOnToolsVersion = 6.2;
-					};
-					397F5BF11ABA5D4100720D32 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 397F5BDC1ABA5D4100720D32;
 					};
 					397F5C041ABA5DE500720D32 = {
 						CreatedOnToolsVersion = 6.2;
@@ -1610,10 +1600,16 @@
 			mainGroup = 398DDFC11A80C63D0019BB12;
 			productRefGroup = 398DDFCB1A80C63D0019BB12 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 39569D041CA0D9F70074974C /* Products */;
+					ProjectRef = 390327E01BCE2B6D006375FB /* OCMock.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				398DDFC91A80C63D0019BB12 /* SLFarseer_iOS */,
-				397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */,
+				397F5BDC1ABA5D4100720D32 /* SLFarseer_Reader */,
 				39476D4F1B83405400ADA56D /* Farseer_iOS_Feature */,
 				399270FA1B9EF94C00FE1E01 /* Farseer_Robot */,
 				39193C2A1AB9969800617804 /* Farseer_iOS */,
@@ -1623,7 +1619,6 @@
 				39395C811BD1E148006856B9 /* FarseerBase_iOS */,
 				39395C8E1BD1E165006856B9 /* FarseerBase_OSX */,
 				398DDFE51A80C63D0019BB12 /* SLFarseerTests_iOS */,
-				397F5BF11ABA5D4100720D32 /* SLFarseer_MacTests */,
 				39476D671B83405400ADA56D /* Farseer_iOS_FeatureTests */,
 				39B14DB81B9D89B1007FBEBA /* Farseer-Plugin */,
 				39B6C7201C9B9A110066AD9D /* Farseer_Tests */,
@@ -1631,6 +1626,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		39569D0C1CA0D9F70074974C /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = 39569D0B1CA0D9F70074974C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		39569D0E1CA0D9F70074974C /* OCMockTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockTests.xctest;
+			remoteRef = 39569D0D1CA0D9F70074974C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		39569D101CA0D9F70074974C /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = 39569D0F1CA0D9F70074974C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		39569D121CA0D9F70074974C /* OCMockLibTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockLibTests.xctest;
+			remoteRef = 39569D111CA0D9F70074974C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		39569D141CA0D9F70074974C /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = 39569D131CA0D9F70074974C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		39193C291AB9969800617804 /* Resources */ = {
@@ -1679,13 +1712,6 @@
 				397F5BEA1ABA5D4100720D32 /* Images.xcassets in Resources */,
 				390D750C1B2594B00048541D /* InfoPlist.strings in Resources */,
 				390D75081B2594890048541D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		397F5BF01ABA5D4100720D32 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1835,7 +1861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39476D5B1B83405400ADA56D /* ViewController.m in Sources */,
-				39476D581B83405400ADA56D /* AppDelegate.m in Sources */,
+				39476D581B83405400ADA56D /* SLRAppDelegate.m in Sources */,
 				39476D781B8340A200ADA56D /* FarseerTableViewController.m in Sources */,
 				39476D551B83405400ADA56D /* main.m in Sources */,
 			);
@@ -1853,18 +1879,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39B6C7551C9FA45B0066AD9D /* SLRLogDetailViewController.m in Sources */,
 				397F5BE51ABA5D4100720D32 /* main.m in Sources */,
-				397F5C4B1ABA63E200720D32 /* MainViewController.m in Sources */,
-				397F5BE31ABA5D4100720D32 /* AppDelegate.m in Sources */,
-				3922D1991B0AD612006E210C /* ConfigurationViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		397F5BEE1ABA5D4100720D32 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				397F5BF91ABA5D4100720D32 /* SLFarseer_MacTests.m in Sources */,
+				397F5C4B1ABA63E200720D32 /* SLRMainViewController.m in Sources */,
+				397F5BE31ABA5D4100720D32 /* SLRAppDelegate.m in Sources */,
+				3922D1991B0AD612006E210C /* SLRConfigurationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1916,7 +1935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39CF61BD1AA2CDC800C51434 /* TracksView.m in Sources */,
-				398DDFD31A80C63D0019BB12 /* AppDelegate.m in Sources */,
+				398DDFD31A80C63D0019BB12 /* SLAppDelegate.m in Sources */,
 				396578901ACCDAB800CEA918 /* DirViewController.m in Sources */,
 				39CE6A3C1A9DF8A9005E626C /* LogTableViewCell.m in Sources */,
 				39E36AD31B8C18D80026B841 /* FilePreviewViewController.m in Sources */,
@@ -1944,7 +1963,7 @@
 			files = (
 				3992712F1B9EF9A100FE1E01 /* ViewController.m in Sources */,
 				399271031B9EF94C00FE1E01 /* main.m in Sources */,
-				399271011B9EF94C00FE1E01 /* AppDelegate.m in Sources */,
+				399271011B9EF94C00FE1E01 /* SLRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2013,11 +2032,6 @@
 			isa = PBXTargetDependency;
 			target = 39395C811BD1E148006856B9 /* FarseerBase_iOS */;
 			targetProxy = 39788FB01BDA1D7F001AA434 /* PBXContainerItemProxy */;
-		};
-		397F5BF41ABA5D4100720D32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 397F5BDC1ABA5D4100720D32 /* SLFarseer_Mac */;
-			targetProxy = 397F5BF31ABA5D4100720D32 /* PBXContainerItemProxy */;
 		};
 		3987907F1BDA180A00078518 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2132,8 +2146,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2187,8 +2201,8 @@
 		39395C891BD1E148006856B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2382,50 +2396,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "SLFarseer_Mac/SLFarseer_Mac-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		397F5BFE1ABA5D4100720D32 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SLFarseer_MacTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.imoffice.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLFarseer_Mac.app/Contents/MacOS/SLFarseer_Mac";
-			};
-			name = Debug;
-		};
-		397F5BFF1ABA5D4100720D32 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				INFOPLIST_FILE = SLFarseer_MacTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.imoffice.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLFarseer_Mac.app/Contents/MacOS/SLFarseer_Mac";
 			};
 			name = Release;
 		};
@@ -2922,20 +2892,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		397F5BFA1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_Mac" */ = {
+		397F5BFA1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_Reader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				397F5BFB1ABA5D4100720D32 /* Debug */,
 				397F5BFC1ABA5D4100720D32 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		397F5BFD1ABA5D4100720D32 /* Build configuration list for PBXNativeTarget "SLFarseer_MacTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				397F5BFE1ABA5D4100720D32 /* Debug */,
-				397F5BFF1ABA5D4100720D32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3010,6 +2971,7 @@
 				39B6C72A1C9B9A120066AD9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39B6C7471C9BB03F0066AD9D /* Build configuration list for PBXNativeTarget "FarseerBaseTests" */ = {
 			isa = XCConfigurationList;
@@ -3018,6 +2980,7 @@
 				39B6C7491C9BB03F0066AD9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39D035261AB9A4A700132F0F /* Build configuration list for PBXNativeTarget "Farseer_Remote_iOS" */ = {
 			isa = XCConfigurationList;

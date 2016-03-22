@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MainViewController : NSViewController
-
+@interface SLRMainViewController : NSViewController
 
 @end
 

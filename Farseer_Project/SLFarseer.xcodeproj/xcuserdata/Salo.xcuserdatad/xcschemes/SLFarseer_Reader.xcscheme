@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "397F5BDC1ABA5D4100720D32"
-               BuildableName = "SLFarseer_Mac.app"
-               BlueprintName = "SLFarseer_Mac"
+               BuildableName = "SLFarseer_Reader.app"
+               BlueprintName = "SLFarseer_Reader"
                ReferencedContainer = "container:SLFarseer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -81,8 +81,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "397F5BDC1ABA5D4100720D32"
-            BuildableName = "SLFarseer_Mac.app"
-            BlueprintName = "SLFarseer_Mac"
+            BuildableName = "SLFarseer_Reader.app"
+            BlueprintName = "SLFarseer_Reader"
             ReferencedContainer = "container:SLFarseer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -104,8 +104,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "397F5BDC1ABA5D4100720D32"
-            BuildableName = "SLFarseer_Mac.app"
-            BlueprintName = "SLFarseer_Mac"
+            BuildableName = "SLFarseer_Reader.app"
+            BlueprintName = "SLFarseer_Reader"
             ReferencedContainer = "container:SLFarseer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -123,8 +123,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "397F5BDC1ABA5D4100720D32"
-            BuildableName = "SLFarseer_Mac.app"
-            BlueprintName = "SLFarseer_Mac"
+            BuildableName = "SLFarseer_Reader.app"
+            BlueprintName = "SLFarseer_Reader"
             ReferencedContainer = "container:SLFarseer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

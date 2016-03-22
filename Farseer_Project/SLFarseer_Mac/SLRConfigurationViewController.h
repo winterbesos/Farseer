@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class ConfigurationViewController;
+@class SLRConfigurationViewController;
 
 typedef NS_ENUM(NSInteger, ConfigurationFilterType) {
     ConfigurationFilterTypeNone         =   0,
@@ -24,11 +24,11 @@ typedef NS_ENUM(NSInteger, ConfigurationFilterType) {
 
 @protocol ConfigurationViewControllerDelegate <NSObject>
 
-- (void)viewController:(ConfigurationViewController *)viewController didSelectedFilterType:(ConfigurationFilterType)type;
+- (void)viewController:(SLRConfigurationViewController *)viewController didSelectedFilterType:(ConfigurationFilterType)type;
 
 @end
 
-@interface ConfigurationViewController : NSViewController
+@interface SLRConfigurationViewController : NSViewController
 
 @property (nonatomic, weak)id<ConfigurationViewControllerDelegate> delegate;
 

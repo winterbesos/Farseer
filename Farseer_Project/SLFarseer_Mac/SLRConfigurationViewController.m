@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#import "ConfigurationViewController.h"
+#import "SLRConfigurationViewController.h"
 
-@interface ConfigurationViewController ()
+@interface SLRConfigurationViewController ()
 
 @property (weak) IBOutlet NSButton *filterAllCheckBox;
 @property (weak) IBOutlet NSButton *filterFatalCheckBox;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation ConfigurationViewController
+@implementation SLRConfigurationViewController
 
 #pragma mark - Public Method
 

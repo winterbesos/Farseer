@@ -26,6 +26,9 @@
 }
 
 - (BOOL)checkObject:(id)object {
+    if (!object) {
+        return NO;
+    }
     
     NSMutableDictionary *checked = [NSMutableDictionary dictionary];
     

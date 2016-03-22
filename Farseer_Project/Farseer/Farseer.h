@@ -1,9 +1,9 @@
 //
 //  FSLog.h
-//  imoffice_for_mac
+//  Farseer
 //
 //  Created by Go Salo on 1/30/15.
-//  Copyright (c) 2015 imo. All rights reserved.
+//  Copyright (c) 2015 so.salo. All rights reserved.
 //
 
 #import <Foundation/NSObjCRuntime.h>
@@ -17,6 +17,26 @@
 @class NSError;
 @class NSString;
 @class NSData;
+
+#define STRINGIZE(arg) #arg
+#define CONCATENATE(arg1, arg2) arg1##arg2
+
+#define FSINFO_OFFSETS_1(kv, ...) kv ?: @"nil"
+#define FSINFO_OFFSETS_2(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_1(__VA_ARGS__)
+#define FSINFO_OFFSETS_3(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_2(__VA_ARGS__)
+#define FSINFO_OFFSETS_4(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_3(__VA_ARGS__)
+#define FSINFO_OFFSETS_5(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_4(__VA_ARGS__)
+#define FSINFO_OFFSETS_6(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_5(__VA_ARGS__)
+#define FSINFO_OFFSETS_7(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_6(__VA_ARGS__)
+#define FSINFO_OFFSETS_8(kv, ...) kv ?: @"nil", FSINFO_OFFSETS_7(__VA_ARGS__)
+
+#define FSINFO_OFFSETS_NARG(...) FSINFO_OFFSETS_NARG_(__VA_ARGS__, FSINFO_OFFSETS_RSEQ_N())
+#define FSINFO_OFFSETS_NARG_(...) FSINFO_OFFSETS_ARG_N(__VA_ARGS__)
+#define FSINFO_OFFSETS_ARG_N(_1, _2, _3, _4, _5, _6, _7, _8, N, ...) N
+#define FSINFO_OFFSETS_RSEQ_N() 8, 7, 6, 5, 4, 3, 2, 1, 0
+
+#define FSINFO_OFFSETS_(N, kv, ...) CONCATENATE(FSINFO_OFFSETS_, N)(kv, __VA_ARGS__)
+#define FSINFO(kv, ...) @{FSINFO_OFFSETS_(FSINFO_OFFSETS_NARG(kv, __VA_ARGS__), kv, __VA_ARGS__)}
 
 static const NSInteger kDefaultLogCode = -1;
 

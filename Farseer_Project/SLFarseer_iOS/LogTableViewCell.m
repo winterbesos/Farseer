@@ -72,7 +72,7 @@ static NSDateFormatter *kLogDateFormatter;
         [contentString appendFormat:@"%@ ", [LogTableViewCell getDateStringWithDate:log.log_date]];
     }
     
-    [contentString appendString:log.log_content];
+    [contentString appendString:log.log_domain];
     
     return contentString;
 }

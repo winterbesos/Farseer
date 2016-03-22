@@ -134,7 +134,7 @@ static char AssociatedObjectHandle;
 }
 
 - (void)client:(FSCentralClient *)client didReceiveLog:(id<FSBLELogProtocol>)log {
-    [_logWrapper insertLog:log];
+    [_logWrapper insertLog:(FSBLELog *)log];
 }
 
 - (void)client:(FSCentralClient *)client didReceiveSandBoxInfo:(NSDictionary *)sandBoxInfo {

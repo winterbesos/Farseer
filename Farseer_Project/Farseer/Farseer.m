@@ -1,9 +1,9 @@
 //
 //  FSLog.m
-//  imoffice_for_mac
+//  Farseer
 //
 //  Created by Go Salo on 1/30/15.
-//  Copyright (c) 2015 imo. All rights reserved.
+//  Copyright (c) 2015 so.salo. All rights reserved.
 //
 
 #include "Farseer.h"

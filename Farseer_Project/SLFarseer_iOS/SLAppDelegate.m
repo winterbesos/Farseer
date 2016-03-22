@@ -1,22 +1,23 @@
 //
 //  AppDelegate.m
-//  Farseer_iOS_Feature
+//  SLFarseer_iOS
 //
-//  Created by Go Salo on 15/8/18.
-//  Copyright (c) 2015年 Qeekers. All rights reserved.
+//  Created by Go Salo on 2/3/15.
+//  Copyright (c) 2015 Qeekers. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SLAppDelegate.h"
 
-@interface AppDelegate ()
+@interface SLAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation SLAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     return YES;
 }
 
