@@ -36,7 +36,7 @@
 #define FSINFO_OFFSETS_RSEQ_N() 8, 7, 6, 5, 4, 3, 2, 1, 0
 
 #define FSINFO_OFFSETS_(N, kv, ...) CONCATENATE(FSINFO_OFFSETS_, N)(kv, __VA_ARGS__)
-#define FSINFO(kv, ...) @{FSINFO_OFFSETS_(FSINFO_OFFSETS_NARG(kv, __VA_ARGS__), kv, __VA_ARGS__)}
+#define FSINFO(...) @{FSINFO_OFFSETS_(FSINFO_OFFSETS_NARG(__VA_ARGS__), __VA_ARGS__)}
 
 static const NSInteger kDefaultLogCode = -1;
 
