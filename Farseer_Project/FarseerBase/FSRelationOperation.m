@@ -24,6 +24,22 @@ static NSString *header = @"RO";
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:@(self.sequence) forKey:@"sequence"];
+    [aCoder encodeObject:self.fromNodeName forKey:@"fromNodeName"];
+    [aCoder encodeObject:self.toNodeName forKey:@"toNodeName"];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        self.sequence = (UInt32)[[aDecoder decodeObjectForKey:@"sequence"] unsignedIntegerValue];
+        self.fromNodeName = [aDecoder decodeObjectForKey:@"fromNodeName"];
+        self.toNodeName = [aDecoder decodeObjectForKey:@"toNodeName"];
+    }
+    return self;
+}
+
 - (NSData *)BLETransferEncode {
     NSMutableData *data = [NSMutableData data];
     [data appendBytes:&(_sequence) length:sizeof(_sequence)];

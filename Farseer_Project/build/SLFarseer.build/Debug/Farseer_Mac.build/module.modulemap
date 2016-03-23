@@ -1,6 +1,0 @@
-framework module Farseer_Mac {
-  umbrella header "Farseer_Mac.h"
-
-  export *
-  module * { export * }
-}
