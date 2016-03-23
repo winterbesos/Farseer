@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSLog.h>
+#import <FarseerBase_iOS/FSStorageLog.h>
 #import <FarseerBase_iOS/FSBLELogProtocol.h>
 #import <FarseerBase_iOS/FSDefine.h>
 #elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSLog.h>
+#import <FarseerBase_OSX/FSStorageLog.h>
 #import <FarseerBase_OSX/FSBLELogProtocol.h>
 #import <FarseerBase_OSX/FSDefine.h>
 #endif
 
-@interface FSBLELog : FSLog <FSBLELogProtocol>
+@interface FSBLELog : FSStorageLog <FSBLELogProtocol>
 
 @property (nonatomic)UInt32       sequence;
 

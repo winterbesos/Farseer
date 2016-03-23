@@ -61,7 +61,7 @@
                            @"3": @[@"a", @(2), [NSData data], @[@"a"]]}
                    };
     
-    id log = [FSLog new];
+    id log = [FSStorageLog new];
     
     XCTAssertFalse([log checkObject:obj1]);
     XCTAssertFalse([log checkObject:obj2]);

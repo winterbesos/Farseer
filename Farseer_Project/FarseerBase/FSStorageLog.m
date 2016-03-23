@@ -6,11 +6,11 @@
 //  Copyright © 2016年 Qeekers. All rights reserved.
 //
 
-#import "FSLog.h"
+#import "FSStorageLog.h"
 #import "FSUtilities.h"
 #import "FSPackageIn.h"
 
-@implementation FSLog
+@implementation FSStorageLog
 
 + (instancetype)createLogWithLevel:(Byte)level domain:(NSString *)domain info:(NSDictionary *)info file:(const char *)file function:(const char *)function line:(unsigned int)line {
     FSBLELog *log = [[FSBLELog alloc] init];

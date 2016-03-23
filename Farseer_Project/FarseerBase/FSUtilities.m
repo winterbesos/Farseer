@@ -66,7 +66,11 @@
 + (void)FS_CreateLogFileIfNeed:(NSString *)path {
     struct LOG_HEADER header;
     header.createTime = [NSDate timeIntervalSinceReferenceDate];
-    NSData *contentData = [NSData dataWithBytes:&header length:sizeof(header)];
+    header.version = 1;
+    header.lVersion = 2;
+    
+    NSMutableData *contentData = [NSMutableData dataWithBytes:&fslPrefix length:4];
+    [contentData appendBytes:&header length:sizeof(struct LOG_HEADER)];
     NSError *err = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:[path stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:&err];
     [[NSFileManager defaultManager] createFileAtPath:path contents:contentData attributes:nil];

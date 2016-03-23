@@ -57,7 +57,31 @@
 + (NSArray *)logsWithOriginalFilePath:(NSURL *)fileURL {
     NSMutableArray *logs = [NSMutableArray array];
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
-    data = [data subdataWithRange:NSMakeRange(sizeof(struct LOG_HEADER), data.length - sizeof(struct LOG_HEADER))];
+    
+    if (data.length < 4) {
+        return nil;
+    }
+    
+    NSUInteger loc = 0;
+    Byte prefix[4];
+    [data getBytes:&prefix length:4];
+    for (int index = 0; index < 4; index++) {
+        if (prefix[index] != fslPrefix[index]) {
+            return nil;
+        }
+    }
+    loc += 4;
+    
+    struct LOG_HEADER header;
+    [data getBytes:&header range:NSMakeRange(loc, sizeof(struct LOG_HEADER))];
+    if (header.version < 1
+        ||
+        header.lVersion < 2) {
+        return nil;
+    }
+    loc += sizeof(struct LOG_HEADER);
+    
+    data = [data subdataWithRange:NSMakeRange(loc, data.length - loc)];
     
     FSPackageIn *packageIn = [[FSPackageIn alloc] initWithData:data];
     while ([packageIn hasMore]) {

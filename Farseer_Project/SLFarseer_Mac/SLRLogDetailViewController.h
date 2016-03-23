@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class FSLog;
+@class FSStorageLog;
 
 @interface SLRLogDetailViewController : NSViewController
 
-- (void)setupLog:(FSLog *)log;
+- (void)setupLog:(FSStorageLog *)log;
 
 @end

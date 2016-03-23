@@ -13,11 +13,11 @@
 typedef NS_ENUM(NSInteger, ConfigurationFilterType) {
     ConfigurationFilterTypeNone         =   0,
 
-    ConfigurationFilterTypeFatal        =   0b10000,
-    ConfigurationFilterTypeError        =   0b01000,
-    ConfigurationFilterTypeWarning      =   0b00100,
-    ConfigurationFilterTypeLog          =   0b00010,
-    ConfigurationFilterTypeMinor        =   0b00001,
+    ConfigurationFilterTypeFatal        =   1 << 4,
+    ConfigurationFilterTypeError        =   1 << 3,
+    ConfigurationFilterTypeWarning      =   1 << 2,
+    ConfigurationFilterTypeLog          =   1 << 1,
+    ConfigurationFilterTypeMinor        =   1,
     
     ConfigurationFilterTypeAll          =   0b11111
 };

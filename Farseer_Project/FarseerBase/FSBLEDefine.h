@@ -43,7 +43,11 @@ struct PROTOCOL_HEADER {
 
 struct LOG_HEADER {
     NSTimeInterval  createTime;
+    NSUInteger version;
+    NSUInteger lVersion;
 };
+
+static const Byte fslPrefix[4] = {'f', 's', 'l', 0xff};
 
 static NSString *kPeripheralInfoCharacteristicUUIDString = @"838D0104-C9B7-4B34-97B9-8213E24D5493";
 static NSString *kWriteLogCharacteristicUUIDString = @"622C6B76-5A52-48F7-8595-468F7B8DD11D";

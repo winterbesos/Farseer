@@ -49,9 +49,32 @@
             self.filterLogCheckBox.state = NSOffState;
             self.filterMinorCheckBox.state = NSOffState;
         }
+    } else {
+        if (self.filterFatalCheckBox.state
+            &&
+            self.filterErrorCheckBox.state
+            &&
+            self.filterWarningCheckBox.state
+            &&
+            self.filterLogCheckBox.state
+            &&
+            self.filterMinorCheckBox.state) {
+            self.filterAllCheckBox.state = NSOnState;
+        } else {
+            self.filterAllCheckBox.state = NSOffState;
+        }
     }
     
-    ConfigurationFilterType type = (self.filterFatalCheckBox.state << 4 | self.filterErrorCheckBox.state << 3 | self.filterWarningCheckBox.state << 2 | self.filterLogCheckBox.state << 1 | self.filterMinorCheckBox.state);
+    ConfigurationFilterType type = (self.filterFatalCheckBox.state << 4
+                                    |
+                                    self.filterErrorCheckBox.state << 3
+                                    |
+                                    self.filterWarningCheckBox.state << 2
+                                    |
+                                    self.filterLogCheckBox.state << 1
+                                    |
+                                    self.filterMinorCheckBox.state);
+    
     if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFilterType:)]) {
         [self.delegate viewController:self didSelectedFilterType:type];
     }

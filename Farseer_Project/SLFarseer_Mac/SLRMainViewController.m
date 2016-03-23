@@ -58,8 +58,41 @@
 
 - (NSArray *)filterLogs {
     NSMutableArray *filters = [NSMutableArray array];
-    for (id log in _logs) {
-        [filters addObject:log];
+    for (FSStorageLog *log in _logs) {
+        BOOL add = NO;
+        switch (log.log_level) {
+            case FSLogLevelMinor:
+                if (_filterType & ConfigurationFilterTypeMinor) {
+                    add = YES;
+                }
+                break;
+            case FSLogLevelLog:
+                if (_filterType & ConfigurationFilterTypeLog) {
+                    add = YES;
+                }
+                break;
+            case FSLogLevelWarning:
+                if (_filterType & ConfigurationFilterTypeWarning) {
+                    add = YES;
+                }
+                break;
+            case FSLogLevelError:
+                if (_filterType & ConfigurationFilterTypeError) {
+                    add = YES;
+                }
+                break;
+            case FSLogLevelFatal:
+                if (_filterType & ConfigurationFilterTypeFatal) {
+                    add = YES;
+                }
+                break;
+            default:
+                continue;
+        }
+    
+        if (add) {
+            [filters addObject:log];
+        }
     }
     
     return filters;
@@ -113,7 +146,11 @@
 #pragma mark - NSTableView DataSource and Delegate
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return _fileArray.count;
+    if (tableView == self.fileTableView) {
+        return _fileArray.count;
+    } else {
+        return _filters.count;
+    }
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {

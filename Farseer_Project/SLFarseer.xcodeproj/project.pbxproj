@@ -163,13 +163,13 @@
 		39B14DC91B9D89B1007FBEBA /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B14DC81B9D89B1007FBEBA /* NSObject_Extension.m */; };
 		39B6C7241C9B9A120066AD9D /* FarseerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7231C9B9A120066AD9D /* FarseerTests.m */; };
 		39B6C7341C9B9D640066AD9D /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
-		39B6C7391C9BAC7E0066AD9D /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7371C9BA9B50066AD9D /* FSLog.m */; };
-		39B6C73A1C9BAC7F0066AD9D /* FSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7371C9BA9B50066AD9D /* FSLog.m */; };
+		39B6C7391C9BAC7E0066AD9D /* FSStorageLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7371C9BA9B50066AD9D /* FSStorageLog.m */; };
+		39B6C73A1C9BAC7F0066AD9D /* FSStorageLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7371C9BA9B50066AD9D /* FSStorageLog.m */; };
 		39B6C7421C9BB03F0066AD9D /* FarseerBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7411C9BB03F0066AD9D /* FarseerBaseTests.m */; };
 		39B6C7441C9BB03F0066AD9D /* FarseerBase_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39395C821BD1E148006856B9 /* FarseerBase_iOS.framework */; };
 		39B6C74D1C9BC0770066AD9D /* NSDictionary+Contents.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C74C1C9BC0770066AD9D /* NSDictionary+Contents.m */; };
-		39B6C74E1C9BD7720066AD9D /* FSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7361C9BA9B50066AD9D /* FSLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39B6C74F1C9BD7730066AD9D /* FSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7361C9BA9B50066AD9D /* FSLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39B6C74E1C9BD7720066AD9D /* FSStorageLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7361C9BA9B50066AD9D /* FSStorageLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39B6C74F1C9BD7730066AD9D /* FSStorageLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7361C9BA9B50066AD9D /* FSStorageLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B6C7501C9BDC9D0066AD9D /* FSStorageLogProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7351C9BA9410066AD9D /* FSStorageLogProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B6C7511C9BDC9D0066AD9D /* FSStorageLogProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B6C7351C9BA9410066AD9D /* FSStorageLogProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B6C7551C9FA45B0066AD9D /* SLRLogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7531C9F9D700066AD9D /* SLRLogDetailViewController.m */; };
@@ -480,8 +480,8 @@
 		39B6C7231C9B9A120066AD9D /* FarseerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarseerTests.m; sourceTree = "<group>"; };
 		39B6C7251C9B9A120066AD9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39B6C7351C9BA9410066AD9D /* FSStorageLogProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStorageLogProtocol.h; sourceTree = "<group>"; };
-		39B6C7361C9BA9B50066AD9D /* FSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLog.h; sourceTree = "<group>"; };
-		39B6C7371C9BA9B50066AD9D /* FSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLog.m; sourceTree = "<group>"; };
+		39B6C7361C9BA9B50066AD9D /* FSStorageLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStorageLog.h; sourceTree = "<group>"; };
+		39B6C7371C9BA9B50066AD9D /* FSStorageLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStorageLog.m; sourceTree = "<group>"; };
 		39B6C73F1C9BB03F0066AD9D /* FarseerBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarseerBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B6C7411C9BB03F0066AD9D /* FarseerBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarseerBaseTests.m; sourceTree = "<group>"; };
 		39B6C7431C9BB03F0066AD9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -672,8 +672,8 @@
 		39395C9E1BD1E1FB006856B9 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				39B6C7361C9BA9B50066AD9D /* FSLog.h */,
-				39B6C7371C9BA9B50066AD9D /* FSLog.m */,
+				39B6C7361C9BA9B50066AD9D /* FSStorageLog.h */,
+				39B6C7371C9BA9B50066AD9D /* FSStorageLog.m */,
 				39395C9F1BD1E20A006856B9 /* FSBLELog.h */,
 				39395CA01BD1E20A006856B9 /* FSBLELog.m */,
 				39395CA11BD1E20A006856B9 /* FSBLELogInfo.h */,
@@ -1182,7 +1182,7 @@
 			files = (
 				3987907A1BDA0BC600078518 /* NSString+FSBLECatetory.h in Headers */,
 				39395CB21BD1E3A5006856B9 /* FSDefine.h in Headers */,
-				39B6C74E1C9BD7720066AD9D /* FSLog.h in Headers */,
+				39B6C74E1C9BD7720066AD9D /* FSStorageLog.h in Headers */,
 				398790511BDA03A500078518 /* FSRelationOperation.h in Headers */,
 				39395CB71BD1E64F006856B9 /* FSPackageIn.h in Headers */,
 				39395CA31BD1E20A006856B9 /* FSBLELog.h in Headers */,
@@ -1203,7 +1203,7 @@
 			files = (
 				3987907B1BDA0BC700078518 /* NSString+FSBLECatetory.h in Headers */,
 				39395CD31BD1EE6A006856B9 /* FSBLELogProtocol.h in Headers */,
-				39B6C74F1C9BD7730066AD9D /* FSLog.h in Headers */,
+				39B6C74F1C9BD7730066AD9D /* FSStorageLog.h in Headers */,
 				398790521BDA03A500078518 /* FSRelationOperation.h in Headers */,
 				39395CB31BD1E3A5006856B9 /* FSDefine.h in Headers */,
 				39395CA41BD1E20A006856B9 /* FSBLELog.h in Headers */,
@@ -1537,7 +1537,7 @@
 			attributes = {
 				CLASSPREFIX = FSR;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = so.salo;
 				TargetAttributes = {
 					39193C2A1AB9969800617804 = {
@@ -1835,7 +1835,7 @@
 				39395CC21BD1E70E006856B9 /* FSUtilities.m in Sources */,
 				3987904F1BDA03A000078518 /* FSRelationOperation.m in Sources */,
 				39395CC81BD1E720006856B9 /* FSBLEUtilities.m in Sources */,
-				39B6C7391C9BAC7E0066AD9D /* FSLog.m in Sources */,
+				39B6C7391C9BAC7E0066AD9D /* FSStorageLog.m in Sources */,
 				39395CB91BD1E64F006856B9 /* FSPackageIn.m in Sources */,
 				39395CA91BD1E20A006856B9 /* FSBLELogInfo.m in Sources */,
 			);
@@ -1850,7 +1850,7 @@
 				39395CC31BD1E70E006856B9 /* FSUtilities.m in Sources */,
 				398790501BDA03A100078518 /* FSRelationOperation.m in Sources */,
 				39395CC91BD1E720006856B9 /* FSBLEUtilities.m in Sources */,
-				39B6C73A1C9BAC7F0066AD9D /* FSLog.m in Sources */,
+				39B6C73A1C9BAC7F0066AD9D /* FSStorageLog.m in Sources */,
 				39395CBA1BD1E64F006856B9 /* FSPackageIn.m in Sources */,
 				39395CAA1BD1E20A006856B9 /* FSBLELogInfo.m in Sources */,
 			);
@@ -2734,6 +2734,7 @@
 		39B6C7291C9B9A120066AD9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Farseer_iOSTests/Info.plist;
@@ -2742,13 +2743,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "so.salo.Farseer-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.11;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		39B6C72A1C9B9A120066AD9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2757,7 +2759,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "so.salo.Farseer-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.11;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

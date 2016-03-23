@@ -17,7 +17,7 @@
 
 @implementation SLRLogDetailViewController
 
-- (void)setupLog:(FSLog *)log {
+- (void)setupLog:(FSStorageLog *)log {
     self.view.window.title = log.description;
     
     NSMutableString *content = [NSMutableString string];

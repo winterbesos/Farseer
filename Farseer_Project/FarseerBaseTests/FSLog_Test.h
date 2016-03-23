@@ -6,9 +6,9 @@
 //  Copyright © 2016年 so.salo. All rights reserved.
 //
 
-#import "FSLog.h"
+#import "FSStorageLog.h"
 
-@interface FSLog ()
+@interface FSStorageLog ()
 
 - (BOOL)checkObject:(id)object;
 

@@ -15,7 +15,7 @@
 #import <FarseerBase_OSX/FSDefine.h>
 #endif
 
-@interface FSLog : NSObject <FSStorageLogProtocol>
+@interface FSStorageLog : NSObject <FSStorageLogProtocol>
 
 @property (nonatomic, strong)NSDate       *log_date;
 @property (nonatomic, assign)FSLogLevel   log_level;
