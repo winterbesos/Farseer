@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39B6C73E1C9BB03F0066AD9D"
-               BuildableName = "FarseerBaseTests.xctest"
-               BlueprintName = "FarseerBaseTests"
-               ReferencedContainer = "container:SLFarseer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39395C811BD1E148006856B9"
-            BuildableName = "FarseerBase_iOS.framework"
-            BlueprintName = "FarseerBase_iOS"
-            ReferencedContainer = "container:SLFarseer.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -95,23 +76,5 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
-      <PostActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "echo finish_archive &gt;&gt; /Users/Salo/Desktop/test.txt&#10;echo ${BUILT_PRODUCTS_DIR} &gt;&gt; /Users/Salo/Desktop/test.txt">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "39395C811BD1E148006856B9"
-                     BuildableName = "FarseerBase_iOS.framework"
-                     BlueprintName = "FarseerBase_iOS"
-                     ReferencedContainer = "container:SLFarseer.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PostActions>
    </ArchiveAction>
 </Scheme>
