@@ -15,7 +15,7 @@ In Farseer, the log is divided into five levels, Fatal, Error, Warning, Log and 
   s.osx.deployment_target = "10.10"
 
   s.source       = { :git => "https://github.com/winterbesos/Farseer.git", :tag => "#{s.version}" }
-  s.source_files  = "Farseer_Project/Farseer/*.{h,m}"
+  s.source_files  = "Farseer_Project/Farseer/*.{h,m}", "Farseer_Project/Farseer/**/*.{h,m}"
   s.exclude_files = "Farseer_Project/Farseer/Farseer.swift"
 
   s.frameworks = "Foundation", "CoreBluetooth"
