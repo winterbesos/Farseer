@@ -14,6 +14,7 @@ In Farseer, the log is divided into five levels, Fatal, Error, Warning, Log and 
 
   s.source       = { :git => "https://github.com/winterbesos/Farseer.git", :tag => "#{s.version}" }
   s.source_files  = "Farseer_Project/FarseerBase/*.{h,m}"
+  s.exclude_files = "Farseer_Project/FarseerBase/FarseerBase_iOS.h", "Farseer_Project/FarseerBase/FarseerBase_OSX.h"
 
   s.frameworks = "Foundation", "CoreBluetooth"
   s.requires_arc = true
