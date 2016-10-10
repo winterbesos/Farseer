@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSDefine.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSDefine.h>
-#endif
+#import "FSDefine.h"
 
 @interface FSBLELogInfo : NSObject
 
