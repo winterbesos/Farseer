@@ -8,11 +8,7 @@
 
 #import "FSBLEReqSandBoxInfoPacker.h"
 #import "FSBLEPeripheralPackerProtocol.h"
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSBLEDefine.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSBLEDefine.h>
-#endif
+#import "FSBLEDefine.h"
 
 @implementation FSBLEReqSandBoxInfoPacker
 
