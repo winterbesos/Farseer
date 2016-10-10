@@ -10,7 +10,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F99D5BC0-B05C-443B-92B2-DD251B3BCA7A",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : "Farseer\/ocmock\/",
-    "81E1390765E1C30640CE099E674188AB815B761E" : "Farseer"
+    "81E1390765E1C30640CE099E674188AB815B761E" : "Farseer\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "SLFarseer",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
