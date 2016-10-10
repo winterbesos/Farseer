@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FarseerBase_iOS.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FarseerBase_OSX.h>
-#endif
+#import "FarseerBase.h"
 
 @class FSBLELog;
 

@@ -7,13 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSStorageLogProtocol.h>
-#import <FarseerBase_iOS/FSDefine.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSStorageLogProtocol.h>
-#import <FarseerBase_OSX/FSDefine.h>
-#endif
+#import "FSStorageLogProtocol.h"
+#import "FSDefine.h"
 
 @interface FSStorageLog : NSObject <FSStorageLogProtocol>
 
