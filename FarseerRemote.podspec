@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/winterbesos/Farseer.git", :tag => "#{s.version}" }
   s.source_files  = "Farseer_Project/Farseer_Remote/*.{h,m}", "Farseer_Project/Farseer_Remote/**/*.{h,m}",
                     "Farseer_Project/FarseerBase/*.{h,m}"
-  s.exclude_files = "Farseer_Project/FarseerRemote/Farseer_Remote_iOS.h", "Farseer_Project/FarseerRemote/Farseer_Remote_Mac.h",
+  s.exclude_files = "Farseer_Project/Farseer_Remote/Farseer_Remote_iOS.h", "Farseer_Project/Farseer_Remote/Farseer_Remote_Mac.h",
                     "Farseer_Project/FarseerBase/FarseerBase_iOS.h", "Farseer_Project/FarseerBase/FarseerBase_OSX.h"
 
   s.frameworks = "Foundation", "CoreBluetooth"
