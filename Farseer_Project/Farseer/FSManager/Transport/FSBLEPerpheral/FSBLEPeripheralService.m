@@ -8,13 +8,8 @@
 
 #import "FSBLEPeripheralService.h"
 #import <CoreBluetooth/CoreBluetooth.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSPackageIn.h>
-#import <FarseerBase_iOS/FSBLELog.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSPackageIn.h>
-#import <FarseerBase_OSX/FSBLELog.h>
-#endif
+#import "FSPackageIn.h"
+#import "FSBLELog.h"
 #import "FSBLEPeripheralPackerFactory.h"
 #import "FSPeripheralClient.h"
 #import "FSBLEUtilities.h"

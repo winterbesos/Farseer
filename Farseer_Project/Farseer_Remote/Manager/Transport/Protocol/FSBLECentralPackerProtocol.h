@@ -6,15 +6,9 @@
 //  Copyright (c) 2015年 Qeekers. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSDefine.h>
-#import <FarseerBase_iOS/FSPackageIn.h>
-#import <FarseerBase_iOS/FSBLELogProtocol.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSDefine.h>
-#import <FarseerBase_OSX/FSPackageIn.h>
-#import <FarseerBase_OSX/FSBLELogProtocol.h>
-#endif
+#import "FSDefine.h"
+#import "FSPackageIn.h"
+#import "FSBLELogProtocol.h"
 
 @class CBPeripheral;
 

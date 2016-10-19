@@ -7,11 +7,7 @@
 //
 
 #import "FSBLEReqMakeCrashPacker.h"
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSPackageIn.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSPackageIn.h>
-#endif
+#import "FSPackageIn.h"
 #import "FSBLEPeripheralPackerProtocol.h"
 
 @implementation FSBLEReqMakeCrashPacker

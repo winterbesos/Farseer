@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSBLELogProtocol.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSBLELogProtocol.h>
-#endif
+#import "FSBLELogProtocol.h"
 
 @class FSCentralClient;
 @class FSBLELogInfo;

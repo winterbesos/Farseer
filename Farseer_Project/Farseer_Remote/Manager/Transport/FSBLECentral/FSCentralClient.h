@@ -8,13 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSDefine.h>
-#import <Farseer_Remote_iOS/FSCentralClientDelegate.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSDefine.h>
-#import <Farseer_Remote_Mac/FSCentralClientDelegate.h>
-#endif
+#import "FSDefine.h"
+#import "FSCentralClientDelegate.h"
 
 @class FSBLECentralService;
 @class CBPeripheral;

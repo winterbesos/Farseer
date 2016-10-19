@@ -7,11 +7,7 @@
 //
 
 #import "FSCentralLogManager.h"
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSBLELogInfo.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSBLELogInfo.h>
-#endif
+#import "FSBLELogInfo.h"
 #import "FSUtilities.h"
 #import "FSBLECentralService.h"
 #import "FSDebugCentral_Remote.h"
