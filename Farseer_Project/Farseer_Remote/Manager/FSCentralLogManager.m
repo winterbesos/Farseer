@@ -11,6 +11,7 @@
 #import "FSUtilities.h"
 #import "FSBLECentralService.h"
 #import "FSDebugCentral_Remote.h"
+#import "FSBLELog.h"
 
 @implementation FSCentralLogManager {
     FSBLELogInfo *_logInfo;
