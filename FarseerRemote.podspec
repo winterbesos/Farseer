@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/winterbesos/Farseer"
   s.license      = "MIT"
   s.author             = { "Salo" => "2680914103@qq.com" }
-  s.ios.deployment_target = "10.0"
+  s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
 
   s.source        = { :git => "https://github.com/winterbesos/Farseer.git", :tag => "#{s.version}" }
