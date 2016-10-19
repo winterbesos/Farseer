@@ -157,12 +157,12 @@
 		39B14DC61B9D89B1007FBEBA /* FarseerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B14DC51B9D89B1007FBEBA /* FarseerPlugin.m */; };
 		39B14DC91B9D89B1007FBEBA /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B14DC81B9D89B1007FBEBA /* NSObject_Extension.m */; };
 		39B374301DB75F38003C7605 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B3742F1DB75F38003C7605 /* CoreBluetooth.framework */; };
-		39B374381DB763A1003C7605 /* Farseer_Remote_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B374361DB763A1003C7605 /* Farseer_Remote_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39B3743A1DB763A9003C7605 /* Farseer_Remote_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B374371DB763A1003C7605 /* Farseer_Remote_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B3743D1DB7640E003C7605 /* FSLogWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B3743B1DB7640E003C7605 /* FSLogWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B3743E1DB7640E003C7605 /* FSLogWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B3743B1DB7640E003C7605 /* FSLogWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B3743F1DB7640E003C7605 /* FSLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B3743C1DB7640E003C7605 /* FSLogWrapper.m */; };
 		39B374401DB7640E003C7605 /* FSLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B3743C1DB7640E003C7605 /* FSLogWrapper.m */; };
+		39B374431DB773B8003C7605 /* Farseer_Remote_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B374361DB763A1003C7605 /* Farseer_Remote_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39B374441DB773BC003C7605 /* Farseer_Remote_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B374371DB763A1003C7605 /* Farseer_Remote_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39B6C7241C9B9A120066AD9D /* FarseerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7231C9B9A120066AD9D /* FarseerTests.m */; };
 		39B6C7341C9B9D640066AD9D /* Farseer_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397F5C051ABA5DE500720D32 /* Farseer_Mac.framework */; };
 		39B6C7391C9BAC7E0066AD9D /* FSStorageLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C7371C9BA9B50066AD9D /* FSStorageLog.m */; };
@@ -1189,7 +1189,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39B374381DB763A1003C7605 /* Farseer_Remote_iOS.h in Headers */,
 				399463EF1AB9A624009F927D /* Farseer_iOS.h in Headers */,
 				397F5C9E1ABA6B5A00720D32 /* Farseer.h in Headers */,
 			);
@@ -1243,7 +1242,6 @@
 			files = (
 				397F5C0A1ABA5DE500720D32 /* Farseer_Mac.h in Headers */,
 				397F5C9F1ABA6B5A00720D32 /* Farseer.h in Headers */,
-				39B3743A1DB763A9003C7605 /* Farseer_Remote_Mac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,6 +1254,7 @@
 				39B3743E1DB7640E003C7605 /* FSLogWrapper.h in Headers */,
 				39850E031AD16509003D1742 /* FSCentralClientDelegate.h in Headers */,
 				397E5CF31AF87AA7008004DC /* FSDirectoryWrapper.h in Headers */,
+				39B374441DB773BC003C7605 /* Farseer_Remote_Mac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1266,6 +1265,7 @@
 				3940CBCD1AECB990002D7F95 /* FSBLECentralService.h in Headers */,
 				39C68DA61ABA77E500BCDA4F /* Farseer_Remote.h in Headers */,
 				39B3743D1DB7640E003C7605 /* FSLogWrapper.h in Headers */,
+				39B374431DB773B8003C7605 /* Farseer_Remote_iOS.h in Headers */,
 				39850E021AD16509003D1742 /* FSCentralClientDelegate.h in Headers */,
 				3940CBD21AECBDE6002D7F95 /* FSDirectoryWrapper.h in Headers */,
 			);
@@ -2848,6 +2848,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eitdesign.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2874,6 +2875,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eitdesign.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

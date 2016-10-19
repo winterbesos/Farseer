@@ -11,7 +11,7 @@
 #import "FSBLELogProtocol.h"
 #import "FSDefine.h"
 
-@interface FSBLELog : FSStorageLog <FSBLELogProtocol>
+@interface FSBLELog : FSStorageLog <FSBLELogProtocol, FSStorageLogProtocol>
 
 @property (nonatomic)UInt32       sequence;
 
