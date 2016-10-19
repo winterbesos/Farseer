@@ -7,10 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSBLEDefine.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSBLEDefine.h>
+#import "FSBLEDefine.h"
+#import "FSBLEDefine.h"
 #endif
 
 @class FSPackageEncoder;

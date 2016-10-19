@@ -11,15 +11,9 @@
 #import "FSBLECentralService.h"
 #import "FSPackageEncoder.h"
 #import "FSPackageDecoder.h"
-#if TARGET_OS_IPHONE
-#import <FarseerBase_iOS/FSBLELogInfo.h>
-#import <FarseerBase_iOS/FSBLELog.h>
-#import <FarseerBase_iOS/NSString+FSBLECatetory.h>
-#elif TARGET_OS_MAC
-#import <FarseerBase_OSX/FSBLELogInfo.h>
-#import <FarseerBase_OSX/FSBLELog.h>
-#import <FarseerBase_OSX/NSString+FSBLECatetory.h>
-#endif
+#import "FSBLELogInfo.h"
+#import "FSBLELog.h"
+#import "NSString+FSBLECatetory.h"
 
 @interface FSCentralClient () <FSPackageEncoderDelegate, FSPackageDecoderDelegate>
 
