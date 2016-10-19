@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FarseerBase.h"
+#import "FSStorageLogProtocol.h"
 
 @class FSBLELog;
 

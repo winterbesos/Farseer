@@ -12,9 +12,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "10.0"
   s.osx.deployment_target = "10.10"
 
-  s.source       = { :git => "https://github.com/winterbesos/Farseer.git", :tag => "#{s.version}" }
+  s.source        = { :git => "https://github.com/winterbesos/Farseer.git", :tag => "#{s.version}" }
   s.source_files  = "Farseer_Project/Farseer_Remote/*.{h,m}", "Farseer_Project/Farseer_Remote/**/*.{h,m}",
                     "Farseer_Project/FarseerBase/*.{h,m}"
+  s.exclude_files = "Farseer_Project/Farseer/Farseer_Remote_iOS.h", "Farseer_Project/Farseer/Farseer_Remote_Mac.h"
+                    "Farseer_Project/FarseerBase/FarseerBase_iOS.h", "Farseer_Project/FarseerBase/FarseerBase_OSX.h"
 
   s.frameworks = "Foundation", "CoreBluetooth"
 end

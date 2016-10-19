@@ -9,6 +9,7 @@
 #import "FSStorageLog.h"
 #import "FSUtilities.h"
 #import "FSPackageIn.h"
+#import "FSBLELog.h"
 
 @implementation FSStorageLog
 

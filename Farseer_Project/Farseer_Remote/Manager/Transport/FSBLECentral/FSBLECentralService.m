@@ -235,7 +235,7 @@
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
 //    NSLog(@"%s: %ld", __FUNCTION__, (long)central.state);
     if (stateChangedCallback) {
-        stateChangedCallback(central.state);
+        stateChangedCallback((CBCentralManagerState)central.state);
     }
 }
 

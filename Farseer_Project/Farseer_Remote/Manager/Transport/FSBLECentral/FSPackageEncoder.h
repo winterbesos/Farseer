@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "FSBLEDefine.h"
-#import "FSBLEDefine.h"
-#endif
 
 @class FSPackageEncoder;
 

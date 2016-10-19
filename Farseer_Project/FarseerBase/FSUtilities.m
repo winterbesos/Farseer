@@ -11,6 +11,7 @@
 #import "FSBLEDefine.h"
 #import "FSBLELog.h"
 #import "FSBLELogInfo.h"
+#import "NSString+FSBLECatetory.h"
 
 #define OUTPUT_CONSOLE
 
