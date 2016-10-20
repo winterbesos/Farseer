@@ -34,6 +34,8 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     _logList = [NSMutableArray array];
 }
 

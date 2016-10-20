@@ -9,6 +9,8 @@
 #ifndef SLFarseer_FSDefine_h
 #define SLFarseer_FSDefine_h
 
+#import <MacTypes.h>
+
 typedef NS_ENUM(Byte, FSLogLevel) {
     FSLogLevelMinor = 0,
     FSLogLevelLog,

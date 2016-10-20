@@ -15,6 +15,8 @@
     
 }
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     self.textLabel.font = [UIFont systemFontOfSize:15.0f];
 }
 

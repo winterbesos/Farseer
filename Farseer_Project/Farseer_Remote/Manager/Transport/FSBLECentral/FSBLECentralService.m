@@ -239,9 +239,9 @@
     }
 }
 
-- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary *)dict {
-//    NSLog(@"%s: %@ %@", __FUNCTION__, central, dict);
-}
+//- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary<NSString *,id> *)dict {
+////    NSLog(@"%s: %@ %@", __FUNCTION__, central, dict);
+//}
 
 - (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals {
 //    NSLog(@"%s: %@ %@", __FUNCTION__, central, peripherals);
@@ -252,7 +252,7 @@
 }
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-//    NSLog(@"%s: %@ %@ %@", __FUNCTION__, peripheral, advertisementData, RSSI);
+    NSLog(@"%s: %@ %@ %@", __FUNCTION__, peripheral, advertisementData, RSSI);
     didDisconveredCallback(peripheral, RSSI);
 }
 
